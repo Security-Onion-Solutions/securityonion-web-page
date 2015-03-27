@@ -1,0 +1,35 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ securityonion-web-page (20141015-0ubuntu0securityonion11) precise; urgency=low
+ .
+   * Issue 659: securityonion-web-page: add ELSA query for bro_conn groupby:resp_country_code
+Author: Doug Burks <doug.burks@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- securityonion-web-page-20141015.orig/elsa/menu.php
++++ securityonion-web-page-20141015/elsa/menu.php
+@@ -59,6 +59,7 @@ background-color:#A3C3E0;
+ <a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=BRO_CONN +BRO_CONN.dstport=53 groupby:service" target="dynamic" onclick="turnBackBold (this);">Port 53 groupby Service</a><br>
+ <a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=BRO_CONN +BRO_CONN.dstport=80 groupby:service" target="dynamic" onclick="turnBackBold (this);">Port 80 groupby Service</a><br>
+ <a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=BRO_CONN +BRO_CONN.dstport=443 groupby:service" target="dynamic" onclick="turnBackBold (this);">Port 443 groupby Service</a><br>
++<a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=BRO_CONN groupby:resp_country_code" target="dynamic" onclick="turnBackBold (this);">Groupby Resp Country</a><br>
+ </span>
+ <br><a href="javascript:showhide('dhcp','tri_dhcp')"><img src="tri_c.gif" id="tri_dhcp" width="14" height="10" border="0" alt=""></a><a href="javascript:showhide('dhcp','tri_dhcp')" class="navlnk">DHCP</a><br>
+ <span id="dhcp"  style="display: none">

@@ -1,0 +1,114 @@
+securityonion-web-page (20141015-0ubuntu0securityonion19) precise; urgency=low
+
+  * Move from Google Code to Github #703 
+
+ -- Doug Burks <doug.burks@gmail.com>  Fri, 27 Mar 2015 11:39:33 -0400
+
+securityonion-web-page (20141015-0ubuntu0securityonion18) precise; urgency=low
+
+  * Improve local.php.empty again 
+
+ -- Doug Burks <doug.burks@gmail.com>  Tue, 03 Mar 2015 09:16:34 -0500
+
+securityonion-web-page (20141015-0ubuntu0securityonion17) precise; urgency=low
+
+  * Improve local.php.empty 
+
+ -- Doug Burks <doug.burks@gmail.com>  Tue, 03 Mar 2015 08:53:24 -0500
+
+securityonion-web-page (20141015-0ubuntu0securityonion16) precise; urgency=low
+
+  * Issue 696: ELSA custom menu
+
+ -- Doug Burks <doug.burks@gmail.com>  Mon, 02 Mar 2015 16:47:53 -0500
+
+securityonion-web-page (20141015-0ubuntu0securityonion15) precise; urgency=low
+
+  * Issue 685: securityonion-web-page: update links 
+
+ -- Doug Burks <doug.burks@gmail.com>  Fri, 30 Jan 2015 17:18:21 -0500
+
+securityonion-web-page (20141015-0ubuntu0securityonion14) precise; urgency=low
+
+  * Issue 670: securityonion-web-page: add queries for updated bro_dns parser
+
+ -- Doug Burks <doug.burks@gmail.com>  Fri, 09 Jan 2015 15:02:18 -0500
+
+securityonion-web-page (20141015-0ubuntu0securityonion13) precise; urgency=low
+
+  * improve resp_country_code query 
+
+ -- Doug Burks <doug.burks@gmail.com>  Tue, 30 Dec 2014 21:08:23 -0500
+
+securityonion-web-page (20141015-0ubuntu0securityonion12) precise; urgency=low
+
+  * added "icmp or tcp or udp" to resp_country_code query 
+  * renamed "Top Snort Alerts" to "Top NIDS Alerts"
+
+ -- Doug Burks <doug.burks@gmail.com>  Tue, 30 Dec 2014 20:27:40 -0500
+
+securityonion-web-page (20141015-0ubuntu0securityonion11) precise; urgency=low
+
+  * Issue 659: securityonion-web-page: add ELSA query for bro_conn groupby:resp_country_code 
+
+ -- Doug Burks <doug.burks@gmail.com>  Wed, 24 Dec 2014 14:50:38 -0500
+
+securityonion-web-page (20141015-0ubuntu0securityonion10) precise; urgency=low
+
+  * add queries for RADIUS 
+
+ -- Doug Burks <doug.burks@gmail.com>  Tue, 18 Nov 2014 15:21:34 -0500
+
+securityonion-web-page (20141015-0ubuntu0securityonion9) precise; urgency=low
+
+  * add queries for SNMP 
+
+ -- Doug Burks <doug.burks@gmail.com>  Tue, 18 Nov 2014 11:19:04 -0500
+
+securityonion-web-page (20141015-0ubuntu0securityonion8) precise; urgency=low
+
+  * Issue 578: securityonion-web-page: add ELSA queries for new Bro 2.3 logs 
+
+ -- Doug Burks <doug.burks@gmail.com>  Mon, 17 Nov 2014 16:54:11 -0500
+
+securityonion-web-page (20141015-0ubuntu0securityonion7) precise; urgency=low
+
+  * remove sudo from preinst 
+
+ -- Doug Burks <doug.burks@gmail.com>  Fri, 24 Oct 2014 23:04:54 -0400
+
+securityonion-web-page (20141015-0ubuntu0securityonion6) precise; urgency=low
+
+  * fix typo in preinst 
+
+ -- Doug Burks <doug.burks@gmail.com>  Fri, 24 Oct 2014 23:02:14 -0400
+
+securityonion-web-page (20141015-0ubuntu0securityonion5) precise; urgency=low
+
+  * add error handling to preinst 
+
+ -- Doug Burks <doug.burks@gmail.com>  Fri, 24 Oct 2014 21:30:05 -0400
+
+securityonion-web-page (20141015-0ubuntu0securityonion4) precise; urgency=low
+
+  * move fix to preinst in case this package is installing at the same time as squert 
+
+ -- Doug Burks <doug.burks@gmail.com>  Fri, 24 Oct 2014 21:14:09 -0400
+
+securityonion-web-page (20141015-0ubuntu0securityonion3) precise; urgency=low
+
+  * Issue 640:	securityonion-web-page: previous update broke ssl symlink 
+
+ -- Doug Burks <doug.burks@gmail.com>  Fri, 24 Oct 2014 21:03:40 -0400
+
+securityonion-web-page (20141015-0ubuntu0securityonion2) precise; urgency=low
+
+  * Issue 634:	securityonion-web-page: add queries for ssl_version and ssl_cipher 
+
+ -- Doug Burks <doug.burks@gmail.com>  Thu, 16 Oct 2014 13:11:12 -0400
+
+securityonion-web-page (20141015-0ubuntu0securityonion1) precise; urgency=low
+
+  * Initial release
+
+ -- Doug Burks <doug.burks@gmail.com>  Wed, 15 Oct 2014 23:39:50 -0400

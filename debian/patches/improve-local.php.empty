@@ -1,0 +1,45 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ securityonion-web-page (20141015-0ubuntu0securityonion17) precise; urgency=low
+ .
+   * Improve local.php.empty
+Author: Doug Burks <doug.burks@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- securityonion-web-page-20141015.orig/elsa/local.php.empty
++++ securityonion-web-page-20141015/elsa/local.php.empty
+@@ -1,6 +1,12 @@
+-Edit /var/www/elsa/local.php to<br>
+-include your own query links here!<br>
++Edit /var/www/elsa/local.php<br>
++to include your own query<br>
++links here!<br>
+ <br>
+-You can copy some of the links<br>
+-from /var/www/elsa/menu.php<br>
+-to get started.
++The query links above can<br>
++be used as a starting<br>
++point and are stored in:<br>
++/var/www/elsa/menu.php<br>
++<br>
++Here's a sample query link<br>
++to get you started:<br>
++<a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=BRO_CONN &quot;-&quot; groupby:resp_country_code" target="dynamic" onclick="turnBackBold (this);">Conn Groupby Country</a><br>

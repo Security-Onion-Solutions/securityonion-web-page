@@ -1,0 +1,50 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ securityonion-web-page (20141015-0ubuntu0securityonion16) precise; urgency=low
+ .
+   * Issue 696: ELSA custom menu
+Author: Doug Burks <doug.burks@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- /dev/null
++++ securityonion-web-page-20141015/elsa/local.php.empty
+@@ -0,0 +1,6 @@
++Edit /var/www/elsa/local.php to<br>
++include your own query links here!<br>
++<br>
++You can copy some of the links<br>
++from /var/www/elsa/menu.php<br>
++to get started.
+--- securityonion-web-page-20141015.orig/elsa/menu.php
++++ securityonion-web-page-20141015/elsa/menu.php
+@@ -220,5 +220,13 @@ background-color:#A3C3E0;
+ <a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=BRO_X509 &quot;-&quot; groupby:cert_sig_alg" target="dynamic" onclick="turnBackBold (this);">Sig Algorithm</a><br>
+ <a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=BRO_X509 &quot;-&quot; groupby:cert_key_type" target="dynamic" onclick="turnBackBold (this);">Key Type</a><br>
+ </span>
++
++<?php if (file_exists("local.php")): ?>
++          <br /><a href="javascript:showhide('local','tri_local')"><img src="tri_c.gif" id="tri_local" width="14" height="10" border="0" alt=""></a><a href="javascript:showhide('local','tri_local')" class="navlnk">Local</a><br />
++          <span id="local" style="display: none">
++          <?php require_once("local.php"); ?>
++          </span>
++<?php endif; ?>
++
+ </body>
+ </html>
