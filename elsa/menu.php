@@ -82,6 +82,13 @@ background-color:#A3C3E0;
 <a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=BRO_FILES &quot;-&quot; groupby:mime_type" target="dynamic" onclick="turnBackBold (this);">MIME Types</a><br>
 <a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=BRO_FILES &quot;-&quot; groupby:source" target="dynamic" onclick="turnBackBold (this);">Sources</a><br>
 </span>
+<br><a href="javascript:showhide('firewall','tri_firewall')"><img src="tri_c.gif" id="tri_files" width="14" height="10" border="0" alt=""></a><a href="javascript:showhide('firewall','tri_firewall')" class="navlnk">Firewall</a><br>
+<span id="firewall"  style="display: none">
+<a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=FIREWALL_CONNECTION_END groupby:srcip" target="dynamic" onclick="turnBackBold (this);">Top SRC IPs Allowed</a><br>
+<a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=FIREWALL_CONNECTION_END groupby:dstip" target="dynamic" onclick="turnBackBold (this);">Top DST IPs Allowed</a><br>
+<a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=FIREWALL_ACCESS_DENY groupby:srcip" target="dynamic" onclick="turnBackBold (this);">Top SRC IPs Denied</a><br>
+<a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=FIREWALL_ACCESS_DENY groupby:dstip" target="dynamic" onclick="turnBackBold (this);">Top DST IPs Denied</a><br>
+</span>
 <br><a href="javascript:showhide('ftp','tri_ftp')"><img src="tri_c.gif" id="tri_ftp" width="14" height="10" border="0" alt=""></a><a href="javascript:showhide('ftp','tri_ftp')" class="navlnk">FTP</a><br>
 <span id="ftp"  style="display: none">
 <a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=BRO_FTP &quot;-&quot; groupby:srcip" target="dynamic" onclick="turnBackBold (this);">Top SRC IPs</a><br>
@@ -100,6 +107,7 @@ background-color:#A3C3E0;
 <a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=none -program=ossec_archive -program=ossec groupby:program" target="dynamic" onclick="turnBackBold (this);">Syslog-NG (Program)</a><br>
 <a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=none -program=ossec_archive -program=ossec groupby:host" target="dynamic" onclick="turnBackBold (this);">Syslog-NG (Host)</a><br>
 <a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=BRO_SYSLOG udp or tcp" target="dynamic" onclick="turnBackBold (this);">Syslog Detected by Bro</a><br>
+<a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:3154/?query_string=class=&quot;WINDOWS_PROCESS&quot; &quot;new process&quot; groupby:image" target="dynamic" onclick="turnBackBold (this);">Windows Processes</a><br>
 </span>
 <br><a href="javascript:showhide('http','tri_http')"><img src="tri_c.gif" id="tri_http" width="14" height="10" border="0" alt=""></a><a href="javascript:showhide('http','tri_http')" class="navlnk">HTTP</a><br>
 <span id="http"  style="display: none">
