@@ -101,7 +101,7 @@ function showhide(tspan, tri) {
 <a href="javascript:showhide('dns','tri_dns')" title="<?php echo $descr ?>" class="navlnk">DNS</a><br />
 <span id="dns" style="display: none">
 	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:srcip"			<?php echo $h2; ?>>Top SRC IPs</a><br />
-	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:dstip"			<?php echo $h2; ?>>DST IPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:dstip"			<?php echo $h2; ?>>Top DST IPs</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:hostname"		<?php echo $h2; ?>>Top Requests</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:answer"			<?php echo $h2; ?>>Top Responses</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:query_class"		<?php echo $h2; ?>>Top Query Class</a><br />
@@ -185,7 +185,7 @@ function showhide(tspan, tri) {
 <a href="javascript:showhide('intel','tri_intel')"><img src="tri_c.gif" id="tri_intel" width="14" height="10" border="0" alt=""></a>
 <a href="javascript:showhide('intel','tri_intel')" title="<?php echo $descr ?>" class="navlnk">Intel</a><br />
 <span id="intel" style="display: none">
-	<a href="<?php echo $h1; ?>class=BRO_INTEL &quot;intel&quot; groupby:srcip"			<?php echo $h2; ?>>SRC IPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_INTEL &quot;intel&quot; groupby:srcip"			<?php echo $h2; ?>>Top SRC IPs</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_INTEL &quot;intel&quot; groupby:dstip"			<?php echo $h2; ?>>Top DST IPs</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_INTEL &quot;intel&quot; groupby:dstport"			<?php echo $h2; ?>>Top DST Ports</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_INTEL &quot;intel&quot; groupby:indicator"			<?php echo $h2; ?>>Top Indicators</a><br />
@@ -308,8 +308,8 @@ function showhide(tspan, tri) {
 
 <!-- 'Tunnels' ELSA Queries -->
 <?php $descr = "Tunnels seen by Bro"; ?>
-<a href="javascript:showhide('tun','tri_tun')"><img src="tri_c.gif" id="tri_tun" width="14" height="10" border="0" alt="">
-</a><a href="javascript:showhide('tun','tri_tun')" title="<?php echo $descr ?>" class="navlnk">Tunnels</a><br />
+<a href="javascript:showhide('tun','tri_tun')"><img src="tri_c.gif" id="tri_tun" width="14" height="10" border="0" alt=""></a>
+<a href="javascript:showhide('tun','tri_tun')" title="<?php echo $descr ?>" class="navlnk">Tunnels</a><br />
 <span id="tun" style="display: none">
 	<a href="<?php echo $h1; ?>class=BRO_TUNNEL &quot;Tunnel&quot; groupby:tunnel_type"		<?php echo $h2; ?>>Top Tunnels</a><br />
 </span><br />

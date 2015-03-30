@@ -1,0 +1,56 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ securityonion-web-page (20141015-0ubuntu0securityonion22) precise; urgency=low
+ .
+   * fix typos
+Author: Doug Burks <doug.burks@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- securityonion-web-page-20141015.orig/elsa/menu.php
++++ securityonion-web-page-20141015/elsa/menu.php
+@@ -101,7 +101,7 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('dns','tri_dns')" title="<?php echo $descr ?>" class="navlnk">DNS</a><br />
+ <span id="dns" style="display: none">
+ 	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:srcip"			<?php echo $h2; ?>>Top SRC IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:dstip"			<?php echo $h2; ?>>DST IPs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:dstip"			<?php echo $h2; ?>>Top DST IPs</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:hostname"		<?php echo $h2; ?>>Top Requests</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:answer"			<?php echo $h2; ?>>Top Responses</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:query_class"		<?php echo $h2; ?>>Top Query Class</a><br />
+@@ -185,7 +185,7 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('intel','tri_intel')"><img src="tri_c.gif" id="tri_intel" width="14" height="10" border="0" alt=""></a>
+ <a href="javascript:showhide('intel','tri_intel')" title="<?php echo $descr ?>" class="navlnk">Intel</a><br />
+ <span id="intel" style="display: none">
+-	<a href="<?php echo $h1; ?>class=BRO_INTEL &quot;intel&quot; groupby:srcip"			<?php echo $h2; ?>>SRC IPs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_INTEL &quot;intel&quot; groupby:srcip"			<?php echo $h2; ?>>Top SRC IPs</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_INTEL &quot;intel&quot; groupby:dstip"			<?php echo $h2; ?>>Top DST IPs</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_INTEL &quot;intel&quot; groupby:dstport"			<?php echo $h2; ?>>Top DST Ports</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_INTEL &quot;intel&quot; groupby:indicator"			<?php echo $h2; ?>>Top Indicators</a><br />
+@@ -308,8 +308,8 @@ function showhide(tspan, tri) {
+ 
+ <!-- 'Tunnels' ELSA Queries -->
+ <?php $descr = "Tunnels seen by Bro"; ?>
+-<a href="javascript:showhide('tun','tri_tun')"><img src="tri_c.gif" id="tri_tun" width="14" height="10" border="0" alt="">
+-</a><a href="javascript:showhide('tun','tri_tun')" title="<?php echo $descr ?>" class="navlnk">Tunnels</a><br />
++<a href="javascript:showhide('tun','tri_tun')"><img src="tri_c.gif" id="tri_tun" width="14" height="10" border="0" alt=""></a>
++<a href="javascript:showhide('tun','tri_tun')" title="<?php echo $descr ?>" class="navlnk">Tunnels</a><br />
+ <span id="tun" style="display: none">
+ 	<a href="<?php echo $h1; ?>class=BRO_TUNNEL &quot;Tunnel&quot; groupby:tunnel_type"		<?php echo $h2; ?>>Top Tunnels</a><br />
+ </span><br />
