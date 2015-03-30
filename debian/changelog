@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion21) precise; urgency=low
+
+  * new formatting from BBCan177 and add descriptions to categories 
+
+ -- Doug Burks <doug.burks@gmail.com>  Mon, 30 Mar 2015 16:21:44 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion20) precise; urgency=low
 
   * Add Windows Process and Firewall queries 
