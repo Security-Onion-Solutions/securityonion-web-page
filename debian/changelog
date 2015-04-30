@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion23) precise; urgency=low
+
+  * fix HTTP mime type queries for new ELSA 
+
+ -- Doug Burks <doug.burks@gmail.com>  Thu, 30 Apr 2015 15:54:10 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion22) precise; urgency=low
 
   * fix typos 
