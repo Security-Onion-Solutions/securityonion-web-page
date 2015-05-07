@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion24) precise; urgency=low
+
+  * add ELSA queries for JARs and ZIPs 
+
+ -- Doug Burks <doug.burks@gmail.com>  Thu, 07 May 2015 11:02:40 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion23) precise; urgency=low
 
   * fix HTTP mime type queries for new ELSA 

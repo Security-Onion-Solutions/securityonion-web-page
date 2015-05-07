@@ -175,8 +175,10 @@ function showhide(tspan, tri) {
 	<a href="<?php echo $h1; ?>class=BRO_HTTP &quot;-&quot; groupby:user_agent"			<?php echo $h2; ?>>Top User Agents</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_HTTP &quot;-&quot; groupby:site"				<?php echo $h2; ?>>Top Sites</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=x-dosexec groupby:site"<?php echo $h2; ?>>Sites hosting EXEs</a><br />
-	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=x-rar groupby:site"	<?php echo $h2; ?>>Sites hosting RARs</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=vnd.ms-cab-compressed groupby:site"<?php echo $h2; ?>>Sites hosting CABs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=java-archive groupby:site"	<?php echo $h2; ?>>Sites hosting JARs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=x-rar groupby:site"	<?php echo $h2; ?>>Sites hosting RARs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=zip groupby:site"	<?php echo $h2; ?>>Sites hosting ZIPs</a><br />
 </span><br />
 
 <!-- 'Intel' ELSA Queries -->
