@@ -178,6 +178,7 @@ function showhide(tspan, tri) {
 	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=java-archive groupby:site"	<?php echo $h2; ?>>Sites hosting JARs</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=x-rar groupby:site"	<?php echo $h2; ?>>Sites hosting RARs</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=zip groupby:site"	<?php echo $h2; ?>>Sites hosting ZIPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_HTTP &quot;HTTP::URI_SQLI&quot; &quot;URI_SQLI&quot;"	<?php echo $h2; ?>>Potential SQL Injection</a><br />
 </span><br />
 
 <!-- 'Intel' ELSA Queries -->
