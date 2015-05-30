@@ -76,7 +76,6 @@ function showhide(tspan, tri) {
 <a href="javascript:showhide('conn','tri_conn')"><img src="tri_c.gif" id="tri_conn" width="14" height="10" border="0" alt=""></a>
 <a href="javascript:showhide('conn','tri_conn')" title="<?php echo $descr ?>" class="navlnk">Connections</a><br />
 <span id="conn" style="display: none">
-	<a href="<?php echo $h1; ?>class=BRO_CONN icmp or tcp or udp groupby:node"			<?php echo $h2; ?>>Grouped by Node</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_CONN icmp or tcp or udp groupby:srcip"			<?php echo $h2; ?>>Top SRC IPs</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_CONN icmp or tcp or udp groupby:dstip"			<?php echo $h2; ?>>Top DST IPs</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_CONN icmp or tcp or udp groupby:dstport"			<?php echo $h2; ?>>Top DST Ports</a><br />
