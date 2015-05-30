@@ -47,14 +47,14 @@ function showhide(tspan, tri) {
 		background-color:#A3C3E0;
 	}
 
-	@media all and (min-width: 0px) and (max-width: 150px) {
+	@media all and (min-width: 0px) and (max-width: 230px) {
 		.tab {
 			font-size:12px;
 			margin:0px;
 		}
 	}
 
-	@media all and (min-width: 151px) {
+	@media all and (min-width: 231px) {
 		.tab {
 			margin:25px;
 		}
