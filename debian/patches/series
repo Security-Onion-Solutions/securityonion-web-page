@@ -16,3 +16,5 @@ new-formatting-from-BBCan177-and-add-descriptions-to-categories
 fix-typos
 fix-HTTP-mime-type-queries-for-new-ELSA
 add-ELSA-queries-for-JARs-and-ZIPs
+add-HTTP-Potential-SQL-Injection-query
+securityonion-web-page:-add-SSL-Top-Subjects-query-#767

@@ -1,3 +1,15 @@
+securityonion-web-page (20141015-0ubuntu0securityonion26) precise; urgency=low
+
+  * securityonion-web-page: add SSL Top Subjects query #767 
+
+ -- Doug Burks <doug.burks@gmail.com>  Sat, 04 Jul 2015 09:55:47 -0400
+
+securityonion-web-page (20141015-0ubuntu0securityonion25) precise; urgency=low
+
+  * add HTTP Potential SQL Injection query 
+
+ -- Doug Burks <doug.burks@gmail.com>  Sat, 30 May 2015 06:26:02 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion24) precise; urgency=low
 
   * add ELSA queries for JARs and ZIPs 

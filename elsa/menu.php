@@ -300,6 +300,7 @@ function showhide(tspan, tri) {
 	<a href="<?php echo $h1; ?>class=BRO_SSL &quot;-&quot; groupby:dstip"				<?php echo $h2; ?>>Top DST IPs</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_SSL &quot;-&quot; groupby:dstport"				<?php echo $h2; ?>>Top DST Ports</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_SSL &quot;-&quot; groupby:hostname"			<?php echo $h2; ?>>Top Hostnames</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_SSL &quot;-&quot; groupby:subject"				<?php echo $h2; ?>>Top Subjects</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_SSL &quot;sslv3&quot; groupby:srcip"			<?php echo $h2; ?>>Top SSLv3 SRC IPs</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_SSL &quot;sslv3&quot; groupby:dstip"			<?php echo $h2; ?>>Top SSLv3 DST IPs</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_SSL &quot;sslv3&quot; groupby:hostname"			<?php echo $h2; ?>>Top SSLv3 Hostnames</a><br />
