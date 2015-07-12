@@ -18,3 +18,4 @@ fix-HTTP-mime-type-queries-for-new-ELSA
 add-ELSA-queries-for-JARs-and-ZIPs
 add-HTTP-Potential-SQL-Injection-query
 securityonion-web-page:-add-SSL-Top-Subjects-query-#767
+securityonion-web-page:-add-groupby:site-to-ELSA-HTTP-SQL-Injection-query-#775

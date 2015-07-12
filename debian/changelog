@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion27) precise; urgency=low
+
+  * securityonion-web-page: add groupby:site to ELSA HTTP SQL Injection query #775 
+
+ -- Doug Burks <doug.burks@gmail.com>  Sun, 12 Jul 2015 07:34:26 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion26) precise; urgency=low
 
   * securityonion-web-page: add SSL Top Subjects query #767 
