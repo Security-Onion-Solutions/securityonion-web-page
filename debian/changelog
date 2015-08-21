@@ -1,3 +1,15 @@
+securityonion-web-page (20141015-0ubuntu0securityonion28) precise; urgency=low
+
+  * Issue 801: securityonion-web-page: add queries for Bro kerberos logs
+  * Issue 802: securityonion-web-page: add queries for Bro mysql logs
+  * Issue 803: securityonion-web-page: add queries for Bro pe logs
+  * Issue 804: securityonion-web-page: add queries for Bro rdp logs
+  * Issue 805: securityonion-web-page: add queries for Bro sip logs
+  * Issue 794: securityonion-web-page: add DHCP Servers query
+  * Issue 798: securityonion-web-page: add HTTP sites hosting SWF 
+
+ -- Doug Burks <doug.burks@gmail.com>  Fri, 21 Aug 2015 16:01:16 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion27) precise; urgency=low
 
   * securityonion-web-page: add groupby:site to ELSA HTTP SQL Injection query #775 

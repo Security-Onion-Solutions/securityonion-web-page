@@ -1,0 +1,150 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ securityonion-web-page (20141015-0ubuntu0securityonion28) precise; urgency=low
+ .
+   * Issue 801: securityonion-web-page: add queries for Bro kerberos logs
+   * Issue 802: securityonion-web-page: add queries for Bro mysql logs
+   * Issue 803: securityonion-web-page: add queries for Bro pe logs
+   * Issue 804: securityonion-web-page: add queries for Bro rdp logs
+   * Issue 805: securityonion-web-page: add queries for Bro sip logs
+   * Issue 794: securityonion-web-page: add DHCP Servers query
+   * Issue 798: securityonion-web-page: add HTTP sites hosting SWF
+Author: Doug Burks <doug.burks@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- securityonion-web-page-20141015.orig/elsa/menu.php
++++ securityonion-web-page-20141015/elsa/menu.php
+@@ -92,6 +92,7 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('dhcp','tri_dhcp')" title="<?php echo $descr ?>" class="navlnk">DHCP</a><br />
+ <span id="dhcp" style="display: none">
+ 	<a href="<?php echo $h1; ?>class=BRO_DHCP &quot;68&quot; groupby:assigned_ip"			<?php echo $h2; ?>>Top Assigned IPs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_DHCP &quot;68&quot; groupby:dstip"				<?php echo $h2; ?>>DHCP Servers</a><br />
+ </span><br />
+ 
+ <!-- 'DNS' ELSA Queries -->
+@@ -173,11 +174,12 @@ function showhide(tspan, tri) {
+ 	<a href="<?php echo $h1; ?>class=BRO_HTTP &quot;-&quot; groupby:mime_type"			<?php echo $h2; ?>>Top MIME Types</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_HTTP &quot;-&quot; groupby:user_agent"			<?php echo $h2; ?>>Top User Agents</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_HTTP &quot;-&quot; groupby:site"				<?php echo $h2; ?>>Top Sites</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=x-dosexec groupby:site"<?php echo $h2; ?>>Sites hosting EXEs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=x-dosexec groupby:site"		<?php echo $h2; ?>>Sites hosting EXEs</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=vnd.ms-cab-compressed groupby:site"<?php echo $h2; ?>>Sites hosting CABs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=java-archive groupby:site"	<?php echo $h2; ?>>Sites hosting JARs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=x-rar groupby:site"	<?php echo $h2; ?>>Sites hosting RARs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=zip groupby:site"	<?php echo $h2; ?>>Sites hosting ZIPs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=java-archive groupby:site"		<?php echo $h2; ?>>Sites hosting JARs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=x-rar groupby:site"		<?php echo $h2; ?>>Sites hosting RARs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=x-shockwave-flash groupby:site"	<?php echo $h2; ?>>Sites hosting SWFs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=zip groupby:site"			<?php echo $h2; ?>>Sites hosting ZIPs</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_HTTP &quot;HTTP::URI_SQLI&quot; &quot;URI_SQLI&quot; groupby:site"	<?php echo $h2; ?>>Potential SQL Injection</a><br />
+ </span><br />
+ 
+@@ -205,6 +207,31 @@ function showhide(tspan, tri) {
+ 	<a href="<?php echo $h1; ?>class=BRO_IRC &quot;-&quot; groupby:mime_type"			<?php echo $h2; ?>>Top MIME Types</a><br />
+ </span><br />
+ 
++<!-- 'Kerberos' ELSA Queries -->
++<?php $descr = "Kerberos traffic seen by Bro"; ?>
++<a href="javascript:showhide('kerberos','tri_kerberos')"><img src="tri_c.gif" id="tri_kerberos" width="14" height="10" border="0" alt=""></a>
++<a href="javascript:showhide('kerberos','tri_kerberos')" title="<?php echo $descr ?>" class="navlnk">Kerberos</a><br />
++<span id="kerberos" style="display: none">
++	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:srcip"			<?php echo $h2; ?>>Top SRC IPs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:dstip"			<?php echo $h2; ?>>Top DST IPs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:dstport"			<?php echo $h2; ?>>Top DST Ports</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:request_type"		<?php echo $h2; ?>>Top Request Types</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:client"			<?php echo $h2; ?>>Top Clients</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:service"			<?php echo $h2; ?>>Top Services</a><br />
++</span><br />
++
++<!-- 'MySQL' ELSA Queries -->
++<?php $descr = "MySQL traffic seen by Bro"; ?>
++<a href="javascript:showhide('mysql','tri_mysql')"><img src="tri_c.gif" id="tri_mysql" width="14" height="10" border="0" alt=""></a>
++<a href="javascript:showhide('mysql','tri_mysql')" title="<?php echo $descr ?>" class="navlnk">MySQL</a><br />
++<span id="mysql" style="display: none">
++	<a href="<?php echo $h1; ?>class=BRO_MYSQL &quot;-&quot; groupby:srcip"				<?php echo $h2; ?>>Top SRC IPs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_MYSQL &quot;-&quot; groupby:dstip"				<?php echo $h2; ?>>Top DST IPs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_MYSQL &quot;-&quot; groupby:dstport"			<?php echo $h2; ?>>Top DST Ports</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_MYSQL &quot;-&quot; groupby:cmd"				<?php echo $h2; ?>>Top Commands</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_MYSQL &quot;-&quot; groupby:arg"				<?php echo $h2; ?>>Top Arguments</a><br />
++</span><br />
++
+ <!-- 'Notice' ELSA Queries -->
+ <?php $descr = "Notices generated by Bro"; ?>
+ <a href="javascript:showhide('notice','tri_notice')"><img src="tri_c.gif" id="tri_notice" width="14" height="10" border="0" alt=""></a>
+@@ -217,6 +244,18 @@ function showhide(tspan, tri) {
+ 	<a href="<?php echo $h1; ?>class=BRO_NOTICE &quot;ShellShock::Scanner&quot;"			<?php echo $h2; ?>>ShellShock Scanners</a><br />
+ </span><br />
+ 
++<!-- 'PE' ELSA Queries -->
++<?php $descr = "PE files seen by Bro"; ?>
++<a href="javascript:showhide('pe','tri_pe')"><img src="tri_c.gif" id="tri_pe" width="14" height="10" border="0" alt=""></a>
++<a href="javascript:showhide('pe','tri_pe')" title="<?php echo $descr ?>" class="navlnk">PE</a><br />
++<span id="pe" style="display: none">
++	<a href="<?php echo $h1; ?>class=BRO_PE groupby:machine"					<?php echo $h2; ?>>Machine</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_PE groupby:subsystem"					<?php echo $h2; ?>>Subsystem</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_PE groupby:is_exe"						<?php echo $h2; ?>>is_exe</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_PE groupby:is_64bit"					<?php echo $h2; ?>>is_64bit</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_PE groupby:section_names"					<?php echo $h2; ?>>Sections</a><br />
++</span><br />
++
+ <!-- 'RADIUS' ELSA Queries -->
+ <?php $descr = "RADIUS traffic seen by Bro"; ?>
+ <a href="javascript:showhide('radius','tri_radius')"><img src="tri_c.gif" id="tri_radius" width="14" height="10" border="0" alt=""></a>
+@@ -232,6 +271,40 @@ function showhide(tspan, tri) {
+ 	<a href="<?php echo $h1; ?>class=BRO_RADIUS &quot;-&quot; groupby:result"			<?php echo $h2; ?>>Result</a><br />
+ </span><br />
+ 
++<!-- 'RDP' ELSA Queries -->
++<?php $descr = "RDP traffic seen by Bro"; ?>
++<a href="javascript:showhide('rdp','tri_rdp')"><img src="tri_c.gif" id="tri_rdp" width="14" height="10" border="0" alt=""></a>
++<a href="javascript:showhide('rdp','tri_rdp')" title="<?php echo $descr ?>" class="navlnk">RDP</a><br />
++<span id="rdp" style="display: none">
++	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:srcip"						<?php echo $h2; ?>>Top SRC IPs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:dstip"						<?php echo $h2; ?>>Top DST IPs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:dstport"					<?php echo $h2; ?>>Top DST Ports</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:desktop_width"					<?php echo $h2; ?>>Desktop Width</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:desktop_height"				<?php echo $h2; ?>>Desktop Height</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:result"					<?php echo $h2; ?>>Result</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:security_protocol"				<?php echo $h2; ?>>Security Protocol</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:keyboard_layout"				<?php echo $h2; ?>>Keyboard Layout</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:client_build"					<?php echo $h2; ?>>Client Build</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:client_name"					<?php echo $h2; ?>>Client Name</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:encryption_level"				<?php echo $h2; ?>>Encryption Level</a><br />
++</span><br />
++
++<!-- 'SIP' ELSA Queries -->
++<?php $descr = "SIP traffic seen by Bro"; ?>
++<a href="javascript:showhide('sip','tri_sip')"><img src="tri_c.gif" id="tri_sip" width="14" height="10" border="0" alt=""></a>
++<a href="javascript:showhide('sip','tri_sip')" title="<?php echo $descr ?>" class="navlnk">SIP</a><br />
++<span id="sip" style="display: none">
++	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:srcip"						<?php echo $h2; ?>>Top SRC IPs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:dstip"						<?php echo $h2; ?>>Top DST IPs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:dstport"					<?php echo $h2; ?>>Top DST Ports</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:trans_depth"					<?php echo $h2; ?>>Trans Depth</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:status_code"					<?php echo $h2; ?>>Status Code</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:method"					<?php echo $h2; ?>>Method</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:uri"						<?php echo $h2; ?>>URI</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:user_agent"					<?php echo $h2; ?>>User Agent</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:status_msg"					<?php echo $h2; ?>>Status Msg</a><br />
++</span><br />
++
+ <!-- 'SMTP' ELSA Queries -->
+ <?php $descr = "SMTP traffic seen by Bro"; ?>
+ <a href="javascript:showhide('smtp','tri_smtp')"><img src="tri_c.gif" id="tri_smtp" width="14" height="10" border="0" alt=""></a>
