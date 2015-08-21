@@ -210,12 +210,12 @@ function showhide(tspan, tri) {
 <a href="javascript:showhide('kerberos','tri_kerberos')"><img src="tri_c.gif" id="tri_kerberos" width="14" height="10" border="0" alt=""></a>
 <a href="javascript:showhide('kerberos','tri_kerberos')" title="<?php echo $descr ?>" class="navlnk">Kerberos</a><br />
 <span id="kerberos" style="display: none">
-	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:srcip"				<?php echo $h2; ?>>Top SRC IPs</a><br />
-	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:dstip"				<?php echo $h2; ?>>Top DST IPs</a><br />
-	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:dstport"				<?php echo $h2; ?>>Top DST Ports</a><br />
-	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:request_type"			<?php echo $h2; ?>>Top Request Types</a><br />
-	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:client"				<?php echo $h2; ?>>Top Clients</a><br />
-	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:service"				<?php echo $h2; ?>>Top Services</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:srcip"			<?php echo $h2; ?>>Top SRC IPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:dstip"			<?php echo $h2; ?>>Top DST IPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:dstport"			<?php echo $h2; ?>>Top DST Ports</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:request_type"		<?php echo $h2; ?>>Top Request Types</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:client"			<?php echo $h2; ?>>Top Clients</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:service"			<?php echo $h2; ?>>Top Services</a><br />
 </span><br />
 
 <!-- 'MySQL' ELSA Queries -->
