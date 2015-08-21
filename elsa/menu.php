@@ -242,6 +242,18 @@ function showhide(tspan, tri) {
 	<a href="<?php echo $h1; ?>class=BRO_NOTICE &quot;ShellShock::Scanner&quot;"			<?php echo $h2; ?>>ShellShock Scanners</a><br />
 </span><br />
 
+<!-- 'PE' ELSA Queries -->
+<?php $descr = "PE files seen by Bro"; ?>
+<a href="javascript:showhide('pe','tri_pe')"><img src="tri_c.gif" id="tri_pe" width="14" height="10" border="0" alt=""></a>
+<a href="javascript:showhide('pe','tri_pe')" title="<?php echo $descr ?>" class="navlnk">PE</a><br />
+<span id="pe" style="display: none">
+	<a href="<?php echo $h1; ?>class=BRO_PE groupby:machine"					<?php echo $h2; ?>>Machine</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_PE groupby:subsystem"					<?php echo $h2; ?>>Subsystem</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_PE groupby:is_exe"						<?php echo $h2; ?>>is_exe</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_PE groupby:is_64bit"					<?php echo $h2; ?>>is_64bit</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_PE groupby:section_names"					<?php echo $h2; ?>>Sections</a><br />
+</span><br />
+
 <!-- 'RADIUS' ELSA Queries -->
 <?php $descr = "RADIUS traffic seen by Bro"; ?>
 <a href="javascript:showhide('radius','tri_radius')"><img src="tri_c.gif" id="tri_radius" width="14" height="10" border="0" alt=""></a>
