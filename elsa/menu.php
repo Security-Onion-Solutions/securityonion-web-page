@@ -287,6 +287,22 @@ function showhide(tspan, tri) {
 	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:encryption_level"				<?php echo $h2; ?>>Encryption Level</a><br />
 </span><br />
 
+<!-- 'SIP' ELSA Queries -->
+<?php $descr = "SIP traffic seen by Bro"; ?>
+<a href="javascript:showhide('sip','tri_sip')"><img src="tri_c.gif" id="tri_sip" width="14" height="10" border="0" alt=""></a>
+<a href="javascript:showhide('sip','tri_sip')" title="<?php echo $descr ?>" class="navlnk">SIP</a><br />
+<span id="sip" style="display: none">
+	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:srcip"						<?php echo $h2; ?>>Top SRC IPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:dstip"						<?php echo $h2; ?>>Top DST IPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:dstport"					<?php echo $h2; ?>>Top DST Ports</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:trans_depth"					<?php echo $h2; ?>>Trans Depth</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:status_code"					<?php echo $h2; ?>>Status Code</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:method"					<?php echo $h2; ?>>Method</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:uri"						<?php echo $h2; ?>>URI</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:user_agent"					<?php echo $h2; ?>>User Agent</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_SIP groupby:status_msg"					<?php echo $h2; ?>>Status Msg</a><br />
+</span><br />
+
 <!-- 'SMTP' ELSA Queries -->
 <?php $descr = "SMTP traffic seen by Bro"; ?>
 <a href="javascript:showhide('smtp','tri_smtp')"><img src="tri_c.gif" id="tri_smtp" width="14" height="10" border="0" alt=""></a>
