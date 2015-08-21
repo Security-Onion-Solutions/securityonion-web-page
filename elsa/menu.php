@@ -92,6 +92,7 @@ function showhide(tspan, tri) {
 <a href="javascript:showhide('dhcp','tri_dhcp')" title="<?php echo $descr ?>" class="navlnk">DHCP</a><br />
 <span id="dhcp" style="display: none">
 	<a href="<?php echo $h1; ?>class=BRO_DHCP &quot;68&quot; groupby:assigned_ip"			<?php echo $h2; ?>>Top Assigned IPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_DHCP &quot;68&quot; groupby:dstip"				<?php echo $h2; ?>>DHCP Servers</a><br />
 </span><br />
 
 <!-- 'DNS' ELSA Queries -->
