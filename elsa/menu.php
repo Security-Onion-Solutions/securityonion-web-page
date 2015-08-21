@@ -269,6 +269,24 @@ function showhide(tspan, tri) {
 	<a href="<?php echo $h1; ?>class=BRO_RADIUS &quot;-&quot; groupby:result"			<?php echo $h2; ?>>Result</a><br />
 </span><br />
 
+<!-- 'RDP' ELSA Queries -->
+<?php $descr = "RDP traffic seen by Bro"; ?>
+<a href="javascript:showhide('rdp','tri_rdp')"><img src="tri_c.gif" id="tri_rdp" width="14" height="10" border="0" alt=""></a>
+<a href="javascript:showhide('rdp','tri_rdp')" title="<?php echo $descr ?>" class="navlnk">RDP</a><br />
+<span id="rdp" style="display: none">
+	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:srcip"						<?php echo $h2; ?>>Top SRC IPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:dstip"						<?php echo $h2; ?>>Top DST IPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:dstport"					<?php echo $h2; ?>>Top DST Ports</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:desktop_width"					<?php echo $h2; ?>>Desktop Width</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:desktop_height"				<?php echo $h2; ?>>Desktop Height</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:result"					<?php echo $h2; ?>>Result</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:security_protocol"				<?php echo $h2; ?>>Security Protocol</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:keyboard_layout"				<?php echo $h2; ?>>Keyboard Layout</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:client_build"					<?php echo $h2; ?>>Client Build</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:client_name"					<?php echo $h2; ?>>Client Name</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:encryption_level"				<?php echo $h2; ?>>Encryption Level</a><br />
+</span><br />
+
 <!-- 'SMTP' ELSA Queries -->
 <?php $descr = "SMTP traffic seen by Bro"; ?>
 <a href="javascript:showhide('smtp','tri_smtp')"><img src="tri_c.gif" id="tri_smtp" width="14" height="10" border="0" alt=""></a>
