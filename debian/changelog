@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion29) trusty; urgency=medium
+
+  * move to /var/www/html/ for trusty 
+
+ -- Doug Burks <doug.burks@gmail.com>  Thu, 01 Oct 2015 16:08:53 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion28) precise; urgency=low
 
   * Issue 801: securityonion-web-page: add queries for Bro kerberos logs
