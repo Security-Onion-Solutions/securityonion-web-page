@@ -21,7 +21,7 @@ case "$1" in
 	fi
 
 	# Add ELSA local queries if not already present
-	FILE="/var/www/elsa/local.php"
+	FILE="/var/www/html/elsa/local.php"
 	if [ -f $FILE ]; then
 		echo "* $FILE already exists, not overwriting."
 	else
