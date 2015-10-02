@@ -13,15 +13,14 @@
 </center>
 <br> 
 <b>What is it?</b><br>
-Security Onion is a Linux distro for intrusion detection, network security monitoring, and log management. It's based on Ubuntu 12.04 and contains Snort, Suricata, Sguil, Squert, Snorby, Bro, NetworkMiner, Xplico, and many other security tools. The easy-to-use Setup wizard allows you to build an army of distributed sensors for your enterprise in minutes!<br>
+Security Onion is a Linux distro for intrusion detection, network security monitoring, and log management. It's based on Ubuntu 12.04 and contains Snort, Suricata, Sguil, Squert, Bro, NetworkMiner, Xplico, and many other security tools. The easy-to-use Setup wizard allows you to build an army of distributed sensors for your enterprise in minutes!<br>
 <br>
 <b>How do I install and configure it?</b><br>
 Please follow the <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki/Installation">Installation guides</a> on our <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki">Wiki</a>.<br>
 <br>
 <b>Local Server</b><br>
-Links to quickly access your local Squert, Snorby, ELSA, and Xplico instances:<br>
+Links to quickly access your local Squert, ELSA, and Xplico instances:<br>
 * <a href="/squert/">Squert</a>: View NIDS/HIDS alerts and HTTP logs<br>
-* <a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:444">Snorby</a>: View and annotate IDS alerts<br>
 * <a href="/elsa/">ELSA</a>: Search logs (IDS, Bro, and syslog)<br>
 * <a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:9876">Xplico</a>: Carve PCAP files (please note that <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki/Firewall">port 9876 is not open to the outside world by default</a>)<br>
 <br>
