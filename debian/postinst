@@ -31,10 +31,14 @@ case "$1" in
 	fi
 
 	# Copy default Apache site to new site called securityonion
-	cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/securityonion.conf || echo "Unable to create /etc/apache2/sites-available/securityonion.conf."
+	FILE="/etc/apache2/sites-available/securityonion.conf"
+	cp /etc/apache2/sites-available/default-ssl.conf $FILE || echo "Unable to create $FILE."
+
+	# Update DocumentRoot to /var/www/so
+	sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/so|g' $FILE || echo "Error updating DocumentRoot in $FILE."
 
 	# Enable new securityonion site
-	a2ensite securityonion || echo "Error enabling Apache2 site called securityonion."
+	a2ensite securityonion || echo "Error enabling Apache2 site $FILE."
 
 	# Restart Apache2
 	service apache2 restart || echo "Error restarting Apache2."
