@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion35) trusty; urgency=medium
+
+  * remove 12.04 
+
+ -- Doug Burks <doug.burks@gmail.com>  Fri, 02 Oct 2015 15:39:59 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion34) trusty; urgency=medium
 
   * remove Snorby 
