@@ -21,7 +21,7 @@ case "$1" in
 	fi
 
 	# Add ELSA local queries if not already present
-	FILE="/var/www/html/elsa/local.php"
+	FILE="/var/www/so/elsa/local.php"
 	if [ -f $FILE ]; then
 		echo "* $FILE already exists, not overwriting."
 	else
@@ -29,7 +29,16 @@ case "$1" in
 		echo "* Copying $FILE.empty to $FILE."
 		cp $FILE.empty $FILE || echo "Error copying $FILE.empty to $FILE."
 	fi
-        
+
+	# Copy default Apache site to new site called securityonion
+	cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/securityonion.conf || echo "Unable to create /etc/apache2/sites-available/securityonion.conf."
+
+	# Enable new securityonion site
+	a2ensite securityonion || echo "Error enabling Apache2 site called securityonion."
+
+	# Restart Apache2
+	service apache2 restart || echo "Error restarting Apache2."
+
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

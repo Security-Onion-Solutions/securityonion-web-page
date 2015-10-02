@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion31) trusty; urgency=medium
+
+  * move to /var/www/so 
+
+ -- Doug Burks <doug.burks@gmail.com>  Fri, 02 Oct 2015 14:58:46 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion30) trusty; urgency=medium
 
   * update postinst to reference /var/www/html 
