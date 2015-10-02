@@ -40,6 +40,9 @@ case "$1" in
 	# Enable new securityonion site
 	a2ensite securityonion || echo "Error enabling Apache2 site $FILE."
 
+	# Disable old default-ssl site
+	a2dissite default-ssl || echo "Error disabling Apache2 site default-ssl."
+
 	# Restart Apache2
 	service apache2 restart || echo "Error restarting Apache2."
 

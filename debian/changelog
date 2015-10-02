@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion33) trusty; urgency=medium
+
+  * disable default-ssl site 
+
+ -- Doug Burks <doug.burks@gmail.com>  Fri, 02 Oct 2015 15:26:52 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion32) trusty; urgency=medium
 
   * update DocumentRoot 
