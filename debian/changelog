@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion36) trusty; urgency=medium
+
+  * Issue 824: securityonion-web-page: htmlspecialchars 
+
+ -- Doug Burks <doug.burks@gmail.com>  Mon, 19 Oct 2015 10:39:05 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion35) trusty; urgency=medium
 
   * remove 12.04 
