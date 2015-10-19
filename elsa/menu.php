@@ -161,6 +161,7 @@ function showhide(tspan, tri) {
 	<a href="<?php echo $h1; ?>class=BRO_SYSLOG udp or tcp"						<?php echo $h2; ?>>Syslog Detected by Bro</a><br />
 	<a href="<?php echo $h1; ?>class=&quot;WINDOWS_PROCESS&quot; &quot;new process&quot; groupby:image"
 													<?php echo $h2; ?>>Windows Processes</a><br />
+	<a href="<?php echo $h1; ?>class=SSH_LOGIN port groupby:user"					<?php echo $h2; ?>>SSH Logins</a><br />
 </span><br />
 
 <!-- 'HTTP' ELSA Queries -->
@@ -361,7 +362,6 @@ function showhide(tspan, tri) {
 	<a href="<?php echo $h1; ?>class=BRO_SSH &quot;-&quot; groupby:dstport"				<?php echo $h2; ?>>Top DST Ports</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_SSH &quot;-&quot; groupby:country"				<?php echo $h2; ?>>Top Countries</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_SSH &quot;-&quot; groupby:status"				<?php echo $h2; ?>>Status</a><br />
-	<a href="<?php echo $h1; ?>class=SSH_LOGIN port groupby:user"					<?php echo $h2; ?>>Logins</a><br />
 </span><br />
 
 <!-- 'SSL' ELSA Queries -->

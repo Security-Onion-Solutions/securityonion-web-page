@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion37) trusty; urgency=medium
+
+  * securityonion-web-page: move SSH Logins query to Host Logs category #810 
+
+ -- Doug Burks <doug.burks@gmail.com>  Mon, 19 Oct 2015 10:42:55 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion36) trusty; urgency=medium
 
   * Issue 824: securityonion-web-page: htmlspecialchars 
