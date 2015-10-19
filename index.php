@@ -22,7 +22,7 @@ Please follow the <a href="https://github.com/Security-Onion-Solutions/security-
 Links to quickly access your local Squert, ELSA, and Xplico instances:<br>
 * <a href="/squert/">Squert</a>: View NIDS/HIDS alerts and HTTP logs<br>
 * <a href="/elsa/">ELSA</a>: Search logs (IDS, Bro, and syslog)<br>
-* <a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>:9876">Xplico</a>: Carve PCAP files (please note that <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki/Firewall">port 9876 is not open to the outside world by default</a>)<br>
+* <a href="https://<?php echo htmlspecialchars("{$_SERVER['HTTP_HOST']}"); ?>:9876">Xplico</a>: Carve PCAP files (please note that <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki/Firewall">port 9876 is not open to the outside world by default</a>)<br>
 <br>
 <b>Useful Links</b><br>
 Links to useful Security Onion information:<br>
