@@ -93,6 +93,8 @@ function showhide(tspan, tri) {
 <span id="dhcp" style="display: none">
 	<a href="<?php echo $h1; ?>class=BRO_DHCP &quot;68&quot; groupby:assigned_ip"			<?php echo $h2; ?>>Top Assigned IPs</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_DHCP &quot;68&quot; groupby:dstip"				<?php echo $h2; ?>>DHCP Servers</a><br />
+	<a href="<?php echo $h1; ?>class=none program=&quot;bro_known_devices&quot;"			<?php echo $h2; ?>>BRO DHCP Known Devices</a><br />
+	<a href="<?php echo $h1; ?>class=none -program=ossec_archive -program=ossec groupby:host"	<?php echo $h2; ?>>Syslog-NG (Host)</a><br />
 </span><br />
 
 <!-- 'DNS' ELSA Queries -->
