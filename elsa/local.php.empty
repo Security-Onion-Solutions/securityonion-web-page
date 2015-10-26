@@ -5,4 +5,4 @@ The query links above can be used as a starting point and are stored in:<br>
 <i>/var/www/elsa/menu.php</i><br>
 <br>
 Here's a sample query link to get you started:<br>
-<a href="https://<?php echo htmlspecialchars("{$_SERVER['HTTP_HOST']}"); ?>:3154/?query_string=class=BRO_CONN &quot;-&quot; groupby:resp_country_code" target="dynamic" onclick="turnBackBold (this);">Conn Groupby Country</a><br>
+<a href="/elsa-query/?query_string=class=BRO_CONN &quot;-&quot; groupby:resp_country_code" target="dynamic" onclick="turnBackBold (this);">Conn Groupby Country</a><br>

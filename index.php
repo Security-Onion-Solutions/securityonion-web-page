@@ -19,10 +19,9 @@ Security Onion is a Linux distro for intrusion detection, network security monit
 Please follow the <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki/Installation">Installation guides</a> on our <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki">Wiki</a>.<br>
 <br>
 <b>Local Server</b><br>
-Links to quickly access your local Squert, ELSA, and Xplico instances:<br>
+Links to quickly access your local Squert and ELSA instances:<br>
 * <a href="/squert/">Squert</a>: View NIDS/HIDS alerts and HTTP logs<br>
 * <a href="/elsa/">ELSA</a>: Search logs (IDS, Bro, and syslog)<br>
-* <a href="https://<?php echo htmlspecialchars("{$_SERVER['HTTP_HOST']}"); ?>:9876">Xplico</a>: Carve PCAP files (please note that <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki/Firewall">port 9876 is not open to the outside world by default</a>)<br>
 <br>
 <b>Useful Links</b><br>
 Links to useful Security Onion information:<br>

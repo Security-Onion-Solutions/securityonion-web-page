@@ -65,7 +65,7 @@ function showhide(tspan, tri) {
 
 <?php
 	/* Define href variables */
-	$h1 = "https://" . htmlspecialchars("{$_SERVER['HTTP_HOST']}") . ":3154/?query_string=";
+	$h1 = "/elsa-query/?query_string=";
 	$h2 = " class=\"tab\" target=\"dynamic\" onclick=\"turnBackBold (this);\"";
 ?>
 

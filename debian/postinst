@@ -30,22 +30,6 @@ case "$1" in
 		cp $FILE.empty $FILE || echo "Error copying $FILE.empty to $FILE."
 	fi
 
-	# Copy default Apache site to new site called securityonion
-	FILE="/etc/apache2/sites-available/securityonion.conf"
-	cp /etc/apache2/sites-available/default-ssl.conf $FILE || echo "Unable to create $FILE."
-
-	# Update DocumentRoot to /var/www/so
-	sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/so|g' $FILE || echo "Error updating DocumentRoot in $FILE."
-
-	# Enable new securityonion site
-	a2ensite securityonion || echo "Error enabling Apache2 site $FILE."
-
-	# Disable old default-ssl site
-	a2dissite default-ssl || echo "Error disabling Apache2 site default-ssl."
-
-	# Restart Apache2
-	service apache2 restart || echo "Error restarting Apache2."
-
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
