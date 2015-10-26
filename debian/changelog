@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion42) trusty; urgency=medium
+
+  * update main web page 
+
+ -- Doug Burks <doug.burks@gmail.com>  Mon, 26 Oct 2015 17:10:09 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion41) trusty; urgency=medium
 
   * ProxyRequests off 

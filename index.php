@@ -12,18 +12,18 @@
 </b> 
 </center>
 <br> 
-<b>What is it?</b><br>
+<b>What is Security Onion?</b><br>
 Security Onion is a Linux distro for intrusion detection, network security monitoring, and log management. It's based on Ubuntu and contains Snort, Suricata, Sguil, Squert, Bro, NetworkMiner, Xplico, and many other security tools. The easy-to-use Setup wizard allows you to build an army of distributed sensors for your enterprise in minutes!<br>
 <br>
-<b>How do I install and configure it?</b><br>
+<b>How do I install and configure Security Onion?</b><br>
 Please follow the <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki/Installation">Installation guides</a> on our <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki">Wiki</a>.<br>
 <br>
-<b>Local Server</b><br>
+<b>How do I access logs from this Security Onion installation?</b><br>
 Links to quickly access your local Squert and ELSA instances:<br>
 * <a href="/squert/">Squert</a>: View NIDS/HIDS alerts and HTTP logs<br>
 * <a href="/elsa/">ELSA</a>: Search logs (IDS, Bro, and syslog)<br>
 <br>
-<b>Useful Links</b><br>
+<b>How do I learn more about Security Onion?</b><br>
 Links to useful Security Onion information:<br>
 * <a href="http://blog.securityonion.net">Blog</a>: Get the latest news and updates</a><br>
 * <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki">Wiki</a>: Table of Contents<br>
