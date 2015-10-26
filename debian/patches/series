@@ -27,3 +27,4 @@ securityonion-web-page:-move-SSH-Logins-query-to-Host-Logs-category-#810
 add-more-htmlspecialchars
 Apache-is-going-to-proxy-from-elsa-query-to-port-3154
 fix-proxy-configuration
+ProxyRequests-off
