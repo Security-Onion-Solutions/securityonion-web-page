@@ -30,6 +30,9 @@ case "$1" in
 		cp $FILE.empty $FILE || echo "Error copying $FILE.empty to $FILE."
 	fi
 
+	# Enable Apache proxy modules
+	a2enmod proxy proxy_http || echo "Error enabling Apache proxy modules."
+
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
