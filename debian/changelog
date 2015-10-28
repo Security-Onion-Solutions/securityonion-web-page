@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion43) trusty; urgency=medium
+
+  * update site and module config in postinst 
+
+ -- Doug Burks <doug.burks@gmail.com>  Wed, 28 Oct 2015 14:06:00 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion42) trusty; urgency=medium
 
   * update main web page 

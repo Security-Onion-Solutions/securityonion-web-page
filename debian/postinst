@@ -30,8 +30,26 @@ case "$1" in
 		cp $FILE.empty $FILE || echo "Error copying $FILE.empty to $FILE."
 	fi
 
+	# Disable default-ssl site
+	if [ -f /etc/apache2/sites-enabled/default-ssl ] ; then 
+		a2dissite default-ssl || echo "Error disabling default-ssl site in Apache."
+	fi
+
+	# Disable Snorby site
+	if [ -f /etc/apache2/sites-enabled/snorby ] ; then 
+		a2dissite snorby || echo "Error disabling snorby site in Apache."
+	fi
+
+	# Disable passenger module
+	if [ -f /etc/apache2/mods-enabled/passenger.conf ] ; then 
+		a2dismod passenger || echo "Error disabling snorby passenger module in Apache."
+	fi
+
 	# Enable Apache proxy modules
 	a2enmod proxy proxy_http || echo "Error enabling Apache proxy modules."
+
+	# Enable securityonion site
+	a2ensite securityonion || echo "Error enabling securityonion site in Apache."
 
     ;;
 
