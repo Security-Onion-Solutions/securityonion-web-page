@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion45) trusty; urgency=medium
+
+  * postinst - add error checking and make sure SSLv3 is disabled 
+
+ -- Doug Burks <doug.burks@gmail.com>  Wed, 04 Nov 2015 11:50:24 -0500
+
 securityonion-web-page (20141015-0ubuntu0securityonion44) trusty; urgency=medium
 
   * postinst - remove old sites and modules using rm 

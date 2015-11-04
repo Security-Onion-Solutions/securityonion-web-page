@@ -8,11 +8,21 @@ case "$1" in
 	# Make modifications to the target of the ssl.conf symlink (/etc/apache2/mods-available/ssl.conf)
 	FILE="/etc/apache2/mods-available/ssl.conf"
 	if [ -f $FILE ]; then
+		# Ubuntu 12.04
 		if grep "^SSLProtocol all -SSLv2$" $FILE >/dev/null 2>&1; then
 			if sed -i 's|SSLProtocol all -SSLv2|SSLProtocol all -SSLv2 -SSLv3|g' $FILE; then 
 				echo "* Apache config has been updated to disable SSLv3."
 				echo "* Please restart Apache using the following command:"
 				echo "  sudo service apache2 restart"
+			else
+				echo "* Error updating $FILE to disable SSLv3."
+				echo "* Please disable SSLv3 manually."
+			fi
+		fi
+		# Ubuntu 14.04
+		if grep "SSLProtocol all$" $FILE >/dev/null 2>&1; then
+			if sed -i 's|SSLProtocol all|SSLProtocol all -SSLv3|g' $FILE; then 
+				echo "* Apache config has been updated to disable SSLv3."
 			else
 				echo "* Error updating $FILE to disable SSLv3."
 				echo "* Please disable SSLv3 manually."
@@ -31,21 +41,30 @@ case "$1" in
 	fi
 
 	# Disable default-ssl site
-	if [ -f /etc/apache2/sites-enabled/default-ssl ] ; then 
+	FILE="/etc/apache2/sites-enabled/default-ssl"
+	if [ -f $FILE ] ; then 
 		a2dissite default-ssl || echo "Error disabling default-ssl site in Apache."
-		rm -f /etc/apache2/sites-enabled/default-ssl
+		if [ -f $FILE ] ; then 
+			rm -f $FILE || echo "Error removing $FILE."
+		fi
 	fi
 
 	# Disable Snorby site
-	if [ -f /etc/apache2/sites-enabled/snorby ] ; then 
+	FILE="/etc/apache2/sites-enabled/snorby"
+	if [ -f $FILE ] ; then 
 		a2dissite snorby || echo "Error disabling snorby site in Apache."
-		rm -f /etc/apache2/sites-enabled/snorby
+		if [ -f $FILE ] ; then 
+			rm -f $FILE || echo "Error removing $FILE."
+		fi
 	fi
 
 	# Disable passenger module
-	if [ -f /etc/apache2/mods-enabled/passenger.conf ] ; then 
+	FILE="/etc/apache2/mods-enabled/passenger.conf"
+	if [ -f $FILE ] ; then 
 		a2dismod passenger || echo "Error disabling snorby passenger module in Apache."
-		rm -f /etc/apache2/mods-enabled/passenger.conf
+		if [ -f $FILE ] ; then 
+			rm -f $FILE || echo "Error removing $FILE."
+		fi
 	fi
 
 	# Enable Apache proxy modules
