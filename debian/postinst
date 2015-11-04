@@ -33,16 +33,19 @@ case "$1" in
 	# Disable default-ssl site
 	if [ -f /etc/apache2/sites-enabled/default-ssl ] ; then 
 		a2dissite default-ssl || echo "Error disabling default-ssl site in Apache."
+		rm -f /etc/apache2/sites-enabled/default-ssl
 	fi
 
 	# Disable Snorby site
 	if [ -f /etc/apache2/sites-enabled/snorby ] ; then 
 		a2dissite snorby || echo "Error disabling snorby site in Apache."
+		rm -f /etc/apache2/sites-enabled/snorby
 	fi
 
 	# Disable passenger module
 	if [ -f /etc/apache2/mods-enabled/passenger.conf ] ; then 
 		a2dismod passenger || echo "Error disabling snorby passenger module in Apache."
+		rm -f /etc/apache2/mods-enabled/passenger.conf
 	fi
 
 	# Enable Apache proxy modules
