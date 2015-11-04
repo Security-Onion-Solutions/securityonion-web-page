@@ -48,6 +48,13 @@ case "$1" in
 			rm -f $FILE || echo "Error removing $FILE."
 		fi
 	fi
+	FILE="/etc/apache2/sites-enabled/default-ssl.conf"
+	if [ -f $FILE ] ; then 
+		a2dissite default-ssl || echo "Error disabling default-ssl site in Apache."
+		if [ -f $FILE ] ; then 
+			rm -f $FILE || echo "Error removing $FILE."
+		fi
+	fi
 
 	# Disable Snorby site
 	FILE="/etc/apache2/sites-enabled/snorby"
