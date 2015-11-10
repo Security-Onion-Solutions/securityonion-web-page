@@ -1,0 +1,36 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ securityonion-web-page (20141015-0ubuntu0securityonion47) trusty; urgency=medium
+ .
+   * remove Xplico and add ELSA
+Author: Doug Burks <doug.burks@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- securityonion-web-page-20141015.orig/index.php
++++ securityonion-web-page-20141015/index.php
+@@ -13,7 +13,7 @@
+ </center>
+ <br> 
+ <b>What is Security Onion?</b><br>
+-Security Onion is a Linux distro for intrusion detection, network security monitoring, and log management. It's based on Ubuntu and contains Snort, Suricata, Sguil, Squert, Bro, NetworkMiner, Xplico, and many other security tools. The easy-to-use Setup wizard allows you to build an army of distributed sensors for your enterprise in minutes!<br>
++Security Onion is a Linux distro for intrusion detection, network security monitoring, and log management. It's based on Ubuntu and contains Snort, Suricata, Bro, OSSEC, Sguil, Squert, ELSA, NetworkMiner, and many other security tools. The easy-to-use Setup wizard allows you to build an army of distributed sensors for your enterprise in minutes!<br>
+ <br>
+ <b>How do I install and configure Security Onion?</b><br>
+ Please follow the <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki/Installation">Installation guides</a> on our <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki">Wiki</a>.<br>

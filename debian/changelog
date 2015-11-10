@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion47) trusty; urgency=medium
+
+  * remove Xplico and add ELSA 
+
+ -- Doug Burks <doug.burks@gmail.com>  Tue, 10 Nov 2015 14:05:24 -0500
+
 securityonion-web-page (20141015-0ubuntu0securityonion46) trusty; urgency=medium
 
   * postinst - make sure default-ssl.conf is removed 
