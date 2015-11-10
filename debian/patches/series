@@ -30,3 +30,4 @@ fix-proxy-configuration
 ProxyRequests-off
 update-main-web-page
 remove-Xplico-and-add-ELSA
+add-ELSA-groupby-node-query

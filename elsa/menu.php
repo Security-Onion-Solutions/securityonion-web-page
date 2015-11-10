@@ -84,6 +84,7 @@ function showhide(tspan, tri) {
 	<a href="<?php echo $h1; ?>class=BRO_CONN +BRO_CONN.dstport=80 groupby:service"			<?php echo $h2; ?>>Port 80 groupby Service</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_CONN +BRO_CONN.dstport=443 groupby:service"		<?php echo $h2; ?>>Port 443 groupby Service</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:resp_country_code"		<?php echo $h2; ?>>Groupby Resp Country</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:node"				<?php echo $h2; ?>>Groupby Node</a><br />
 </span><br />
 
 <!-- 'DHCP' ELSA Queries -->
