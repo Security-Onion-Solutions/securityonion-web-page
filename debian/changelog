@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion49) trusty; urgency=medium
+
+  * add ELSA connections groupby proto query 
+
+ -- Doug Burks <doug.burks@gmail.com>  Thu, 12 Nov 2015 08:40:31 -0500
+
 securityonion-web-page (20141015-0ubuntu0securityonion48) trusty; urgency=medium
 
   * add ELSA groupby node query 
