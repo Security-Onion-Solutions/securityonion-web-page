@@ -1,0 +1,48 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ securityonion-web-page (20141015-0ubuntu0securityonion50) trusty; urgency=medium
+ .
+   * change ELSA connections queries for proper graphing
+Author: Doug Burks <doug.burks@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- securityonion-web-page-20141015.orig/elsa/menu.php
++++ securityonion-web-page-20141015/elsa/menu.php
+@@ -76,16 +76,16 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('conn','tri_conn')"><img src="tri_c.gif" id="tri_conn" width="14" height="10" border="0" alt=""></a>
+ <a href="javascript:showhide('conn','tri_conn')" title="<?php echo $descr ?>" class="navlnk">Connections</a><br />
+ <span id="conn" style="display: none">
+-	<a href="<?php echo $h1; ?>class=BRO_CONN icmp or tcp or udp groupby:srcip"			<?php echo $h2; ?>>Top SRC IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_CONN icmp or tcp or udp groupby:dstip"			<?php echo $h2; ?>>Top DST IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_CONN icmp or tcp or udp groupby:dstport"			<?php echo $h2; ?>>Top DST Ports</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:srcip"			<?php echo $h2; ?>>Top SRC IPs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:dstip"			<?php echo $h2; ?>>Top DST IPs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:dstport"			<?php echo $h2; ?>>Top DST Ports</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:service"			<?php echo $h2; ?>>Top Services</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_CONN +BRO_CONN.dstport=53 groupby:service"			<?php echo $h2; ?>>Port 53 groupby Service</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_CONN +BRO_CONN.dstport=80 groupby:service"			<?php echo $h2; ?>>Port 80 groupby Service</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_CONN +BRO_CONN.dstport=443 groupby:service"		<?php echo $h2; ?>>Port 443 groupby Service</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:proto"				<?php echo $h2; ?>>Groupby Protocol</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:resp_country_code"		<?php echo $h2; ?>>Groupby Resp Country</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:node"				<?php echo $h2; ?>>Groupby Node</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:proto"				<?php echo $h2; ?>>Groupby Protocol</a><br />
+ </span><br />
+ 
+ <!-- 'DHCP' ELSA Queries -->

@@ -76,16 +76,16 @@ function showhide(tspan, tri) {
 <a href="javascript:showhide('conn','tri_conn')"><img src="tri_c.gif" id="tri_conn" width="14" height="10" border="0" alt=""></a>
 <a href="javascript:showhide('conn','tri_conn')" title="<?php echo $descr ?>" class="navlnk">Connections</a><br />
 <span id="conn" style="display: none">
-	<a href="<?php echo $h1; ?>class=BRO_CONN icmp or tcp or udp groupby:srcip"			<?php echo $h2; ?>>Top SRC IPs</a><br />
-	<a href="<?php echo $h1; ?>class=BRO_CONN icmp or tcp or udp groupby:dstip"			<?php echo $h2; ?>>Top DST IPs</a><br />
-	<a href="<?php echo $h1; ?>class=BRO_CONN icmp or tcp or udp groupby:dstport"			<?php echo $h2; ?>>Top DST Ports</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:srcip"			<?php echo $h2; ?>>Top SRC IPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:dstip"			<?php echo $h2; ?>>Top DST IPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:dstport"			<?php echo $h2; ?>>Top DST Ports</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:service"			<?php echo $h2; ?>>Top Services</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_CONN +BRO_CONN.dstport=53 groupby:service"			<?php echo $h2; ?>>Port 53 groupby Service</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_CONN +BRO_CONN.dstport=80 groupby:service"			<?php echo $h2; ?>>Port 80 groupby Service</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_CONN +BRO_CONN.dstport=443 groupby:service"		<?php echo $h2; ?>>Port 443 groupby Service</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:proto"				<?php echo $h2; ?>>Groupby Protocol</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:resp_country_code"		<?php echo $h2; ?>>Groupby Resp Country</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:node"				<?php echo $h2; ?>>Groupby Node</a><br />
-	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:proto"				<?php echo $h2; ?>>Groupby Protocol</a><br />
 </span><br />
 
 <!-- 'DHCP' ELSA Queries -->
