@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion51) trusty; urgency=medium
+
+  * remove groupby node query until it's fixed 
+
+ -- Doug Burks <doug.burks@gmail.com>  Thu, 19 Nov 2015 13:36:07 -0500
+
 securityonion-web-page (20141015-0ubuntu0securityonion50) trusty; urgency=medium
 
   * change ELSA connections queries for proper graphing 
