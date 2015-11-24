@@ -34,3 +34,4 @@ add-ELSA-groupby-node-query
 add-ELSA-connections-groupby-proto-query
 change-ELSA-connections-queries-for-proper-graphing
 remove-groupby-node-query-until-it's-fixed
+add-back-groupby-node-query

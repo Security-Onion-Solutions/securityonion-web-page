@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion52) trusty; urgency=medium
+
+  * add back groupby node query 
+
+ -- Doug Burks <doug.burks@gmail.com>  Mon, 23 Nov 2015 22:08:33 -0500
+
 securityonion-web-page (20141015-0ubuntu0securityonion51) trusty; urgency=medium
 
   * remove groupby node query until it's fixed 
