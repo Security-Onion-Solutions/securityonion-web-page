@@ -32,12 +32,13 @@ case "$1" in
 
 	# Check for local queries and migrate if necessary
 	OLDFILE="/var/www/elsa/local.php"
+	OLDFILEDEFAULT="/var/www/elsa/local.php.empty"
 	FILE="/var/www/so/elsa/local.php"
-	if [ -f $OLDFILE ]; then
+	if [ -f $OLDFILE ] && [ -f $OLDFILEDEFAULT ] ; then
 		# Old file exists
-		# if it's the default file, we don't want to move it
+		# if it's identical to the default file, we don't want to move it
 		# if instead the user has modified the default file, we do want to move it
-		if ! grep "/var/www/elsa/local.php" $OLDFILE >/dev/null 2>&1; then
+		if ! diff $OLDFILE $OLDFILEDEFAULT >/dev/null 2>&1; then
 			if [ -f $FILE ] ; then
 				cp $FILE $FILE.bak || echo "Error backing up $FILE."
 			fi

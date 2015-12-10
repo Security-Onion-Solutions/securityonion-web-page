@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion56) trusty; urgency=medium
+
+  * improve postinst check for local.php 
+
+ -- Doug Burks <doug.burks@gmail.com>  Wed, 09 Dec 2015 21:17:32 -0500
+
 securityonion-web-page (20141015-0ubuntu0securityonion55) trusty; urgency=medium
 
   * update local.php with new path 
