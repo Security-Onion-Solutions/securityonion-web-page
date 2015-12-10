@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion55) trusty; urgency=medium
+
+  * update local.php with new path 
+
+ -- Doug Burks <doug.burks@gmail.com>  Wed, 09 Dec 2015 19:44:21 -0500
+
 securityonion-web-page (20141015-0ubuntu0securityonion54) trusty; urgency=medium
 
   * back up local.php before moving old local.php into place 

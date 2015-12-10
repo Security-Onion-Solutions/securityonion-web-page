@@ -34,10 +34,15 @@ case "$1" in
 	OLDFILE="/var/www/elsa/local.php"
 	FILE="/var/www/so/elsa/local.php"
 	if [ -f $OLDFILE ]; then
-		if [ -f $FILE ] ; then
-			cp $FILE $FILE.bak || echo "Error backing up $FILE."
+		# Old file exists
+		# if it's the default file, we don't want to move it
+		# if instead the user has modified the default file, we do want to move it
+		if ! grep "/var/www/elsa/local.php" $OLDFILE >/dev/null 2>&1; then
+			if [ -f $FILE ] ; then
+				cp $FILE $FILE.bak || echo "Error backing up $FILE."
+			fi
+			mv $OLDFILE $FILE || echo "Error moving $OLDFILE to $FILE."
 		fi
-		mv $OLDFILE $FILE || echo "Error moving $OLDFILE to $FILE."
 	fi
 
 	# Add ELSA local queries if not already present
