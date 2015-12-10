@@ -34,7 +34,10 @@ case "$1" in
 	OLDFILE="/var/www/elsa/local.php"
 	FILE="/var/www/so/elsa/local.php"
 	if [ -f $OLDFILE ]; then
-		cp $OLDFILE $FILE || echo "Error copying $OLDFILE to $FILE."
+		if [ -f $FILE ] ; then
+			cp $FILE $FILE.bak || echo "Error backing up $FILE."
+		fi
+		mv $OLDFILE $FILE || echo "Error moving $OLDFILE to $FILE."
 	fi
 
 	# Add ELSA local queries if not already present

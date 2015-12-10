@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion54) trusty; urgency=medium
+
+  * back up local.php before moving old local.php into place 
+
+ -- Doug Burks <doug.burks@gmail.com>  Wed, 09 Dec 2015 19:38:11 -0500
+
 securityonion-web-page (20141015-0ubuntu0securityonion53) trusty; urgency=medium
 
   * migrate ELSA local.php to new location 
