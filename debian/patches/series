@@ -36,3 +36,4 @@ change-ELSA-connections-queries-for-proper-graphing
 remove-groupby-node-query-until-it's-fixed
 add-back-groupby-node-query
 update-local.php-with-new-path
+update-wording-for-Squert

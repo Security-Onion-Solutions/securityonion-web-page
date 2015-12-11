@@ -20,7 +20,7 @@ Please follow the <a href="https://github.com/Security-Onion-Solutions/security-
 <br>
 <b>How do I access logs from this Security Onion installation?</b><br>
 Links to quickly access your local Squert and ELSA instances:<br>
-* <a href="/squert/">Squert</a>: View NIDS/HIDS alerts and HTTP logs<br>
+* <a href="/squert/">Squert</a>: View and categorize NIDS/HIDS alerts<br>
 * <a href="/elsa/">ELSA</a>: Search logs (IDS, Bro, and syslog)<br>
 <br>
 <b>How do I learn more about Security Onion?</b><br>
