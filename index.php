@@ -6,9 +6,9 @@
 <center> 
 <br> 
 <b> 
-<a href="http://www.securityonion.net"><img STYLE="border: none;" src="securityonion_logo.jpg" alt="Security Onion"></img></a><br>
-<a href="http://www.securityonion.net">http://www.securityonion.net</a><br> 
-<a href="http://www.securityonionsolutions.com">http://www.securityonionsolutions.com</a><br> 
+<a href="https://www.securityonion.net"><img STYLE="border: none;" src="securityonion_logo.jpg" alt="Security Onion"></img></a><br>
+<a href="https://www.securityonion.net">http://www.securityonion.net</a><br> 
+<a href="https://www.securityonionsolutions.com">http://www.securityonionsolutions.com</a><br> 
 </b> 
 </center>
 <br> 
