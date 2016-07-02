@@ -1,0 +1,47 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ securityonion-web-page (20141015-0ubuntu0securityonion60) trusty; urgency=medium
+ .
+   * change remaining http hyperlinks to https
+Author: Doug Burks <doug.burks@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- securityonion-web-page-20141015.orig/index.php
++++ securityonion-web-page-20141015/index.php
+@@ -7,8 +7,8 @@
+ <br> 
+ <b> 
+ <a href="https://www.securityonion.net"><img STYLE="border: none;" src="securityonion_logo.jpg" alt="Security Onion"></img></a><br>
+-<a href="https://www.securityonion.net">http://www.securityonion.net</a><br> 
+-<a href="https://www.securityonionsolutions.com">http://www.securityonionsolutions.com</a><br> 
++<a href="https://www.securityonion.net">https://www.securityonion.net</a><br> 
++<a href="https://www.securityonionsolutions.com">https://www.securityonionsolutions.com</a><br> 
+ </b> 
+ </center>
+ <br> 
+@@ -34,7 +34,7 @@ Links to useful Security Onion informati
+ <br> 
+ <b>Commercial Support and Training</b><br>
+ Need training or commercial support?<br>
+-<a href="http://www.securityonionsolutions.com">http://www.securityonionsolutions.com</a><br> 
++<a href="https://www.securityonionsolutions.com">https://www.securityonionsolutions.com</a><br> 
+ <br> 
+ <b>Disclaimer of Warranty<br>
+ <small>THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM .AS IS. WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.</small><br>

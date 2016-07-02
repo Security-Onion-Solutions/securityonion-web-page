@@ -7,8 +7,8 @@
 <br> 
 <b> 
 <a href="https://www.securityonion.net"><img STYLE="border: none;" src="securityonion_logo.jpg" alt="Security Onion"></img></a><br>
-<a href="https://www.securityonion.net">http://www.securityonion.net</a><br> 
-<a href="https://www.securityonionsolutions.com">http://www.securityonionsolutions.com</a><br> 
+<a href="https://www.securityonion.net">https://www.securityonion.net</a><br> 
+<a href="https://www.securityonionsolutions.com">https://www.securityonionsolutions.com</a><br> 
 </b> 
 </center>
 <br> 
@@ -34,7 +34,7 @@ Links to useful Security Onion information:<br>
 <br> 
 <b>Commercial Support and Training</b><br>
 Need training or commercial support?<br>
-<a href="http://www.securityonionsolutions.com">http://www.securityonionsolutions.com</a><br> 
+<a href="https://www.securityonionsolutions.com">https://www.securityonionsolutions.com</a><br> 
 <br> 
 <b>Disclaimer of Warranty<br>
 <small>THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM .AS IS. WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.</small><br>
