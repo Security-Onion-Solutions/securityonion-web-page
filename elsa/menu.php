@@ -145,6 +145,7 @@ function showhide(tspan, tri) {
 	<a href="<?php echo $h1; ?>class=BRO_FTP &quot;-&quot; groupby:command"				<?php echo $h2; ?>>Top Commands</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_FTP &quot;-&quot; groupby:mime_type"			<?php echo $h2; ?>>Top MIME Types</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_FTP &quot;-&quot; groupby:arg"				<?php echo $h2; ?>>Top arg</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_CONN service=&quot;ftp-data&quot;"				<?php echo $h2; ?>>FTP Data</a><br />
 </span><br />
 
 <!-- 'Host Logs' ELSA Queries -->

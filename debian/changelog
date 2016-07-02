@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion58) trusty; urgency=medium
+
+  * securityonion-web-page: add FTP Data query to FTP category #952 
+
+ -- Doug Burks <doug.burks@gmail.com>  Sat, 02 Jul 2016 11:58:45 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion57) trusty; urgency=medium
 
   * update wording for Squert 
