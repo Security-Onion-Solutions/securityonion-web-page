@@ -1,0 +1,42 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ securityonion-web-page (20141015-0ubuntu0securityonion62) trusty; urgency=medium
+ .
+   * merge pull request from Josh Brower for autoruns queries
+Author: Doug Burks <doug.burks@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- securityonion-web-page-20141015.orig/elsa/menu.php
++++ securityonion-web-page-20141015/elsa/menu.php
+@@ -177,6 +177,14 @@ function showhide(tspan, tri) {
+ 	<a href="<?php echo $h1; ?>class=&quot;WINDOWS_PROCESS&quot; &quot;new process&quot; groupby:image"
+ 													<?php echo $h2; ?>>Windows Processes</a><br />
+ 	<a href="<?php echo $h1; ?>class=SSH_LOGIN port groupby:user"					<?php echo $h2; ?>>SSH Logins</a><br />
++	<a href="<?php echo $h1; ?>class=&quot;Autoruns&quot; category=&quot;Drivers&quot; groupby:path -system32 -syswow64"
++                                                                                    <?php echo $h2; ?>>Autoruns (Drivers)</a><br />
++	<a href="<?php echo $h1; ?>class=&quot;Autoruns&quot; category=&quot;Hijacks&quot; groupby:path"
++                                                                                    <?php echo $h2; ?>>Autoruns (Hijacks)</a><br />
++	<a href="<?php echo $h1; ?>class=&quot;Autoruns&quot; category=&quot;Tasks&quot; groupby:path"
++                                                                                    <?php echo $h2; ?>>Autoruns (Tasks)</a><br />																					
++	<a href="<?php echo $h1; ?>class=&quot;Autoruns&quot; category=&quot;Logon&quot; groupby:path +users"
++                                                                                    <?php echo $h2; ?>>Autoruns (Logon)</a><br />
+ </span><br />
+ 
+ <!-- 'HTTP' ELSA Queries -->

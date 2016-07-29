@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion62) trusty; urgency=medium
+
+  * merge pull request from Josh Brower for autoruns queries 
+
+ -- Doug Burks <doug.burks@gmail.com>  Fri, 29 Jul 2016 17:23:54 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion61) trusty; urgency=medium
 
   * securityonion-web-page: add queries for dnp3 and modbus #970 
