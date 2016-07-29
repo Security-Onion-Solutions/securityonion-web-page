@@ -97,6 +97,18 @@ function showhide(tspan, tri) {
 	<a href="<?php echo $h1; ?>class=BRO_DHCP &quot;68&quot; groupby:dstip"				<?php echo $h2; ?>>DHCP Servers</a><br />
 </span><br />
 
+<!-- 'DNP3' ELSA Queries -->
+<?php $descr = "DNP3 traffic seen by Bro"; ?>
+<a href="javascript:showhide('dnp3','tri_dnp3')"><img src="tri_c.gif" id="tri_dnp3" width="14" height="10" border="0" alt=""></a>
+<a href="javascript:showhide('dnp3','tri_dnp3')" title="<?php echo $descr ?>" class="navlnk">DNP3</a><br />
+<span id="dnp3" style="display: none">
+	<a href="<?php echo $h1; ?>class=BRO_DNP3 groupby:srcip"					<?php echo $h2; ?>>Top SRC IPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_DNP3 groupby:dstip"					<?php echo $h2; ?>>Top DST IPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_DNP3 groupby:dstport"					<?php echo $h2; ?>>Top DST Ports</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_DNP3 groupby:fc_request"					<?php echo $h2; ?>>Top Requests</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_DNP3 groupby:fc_reply"					<?php echo $h2; ?>>Top Replies</a><br />
+</span><br />
+
 <!-- 'DNS' ELSA Queries -->
 <?php $descr = "DNS transactions seen by Bro"; ?>
 <a href="javascript:showhide('dns','tri_dns')"><img src="tri_c.gif" id="tri_dns" width="14" height="10" border="0" alt=""></a>
@@ -222,6 +234,18 @@ function showhide(tspan, tri) {
 	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:request_type"		<?php echo $h2; ?>>Top Request Types</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:client"			<?php echo $h2; ?>>Top Clients</a><br />
 	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:service"			<?php echo $h2; ?>>Top Services</a><br />
+</span><br />
+
+<!-- 'Modbus' ELSA Queries -->
+<?php $descr = "Modbus traffic seen by Bro"; ?>
+<a href="javascript:showhide('modbus','tri_modbus')"><img src="tri_c.gif" id="tri_modbus" width="14" height="10" border="0" alt=""></a>
+<a href="javascript:showhide('modbus','tri_modbus')" title="<?php echo $descr ?>" class="navlnk">Modbus</a><br />
+<span id="modbus" style="display: none">
+	<a href="<?php echo $h1; ?>class=BRO_MODBUS groupby:srcip"					<?php echo $h2; ?>>Top SRC IPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_MODBUS groupby:dstip"					<?php echo $h2; ?>>Top DST IPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_MODBUS groupby:dstport"					<?php echo $h2; ?>>Top DST Ports</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_MODBUS groupby:func"					<?php echo $h2; ?>>Top Functions</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_MODBUS groupby:exception"					<?php echo $h2; ?>>Top Exceptions</a><br />
 </span><br />
 
 <!-- 'MySQL' ELSA Queries -->
