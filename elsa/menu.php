@@ -177,6 +177,14 @@ function showhide(tspan, tri) {
 	<a href="<?php echo $h1; ?>class=&quot;WINDOWS_PROCESS&quot; &quot;new process&quot; groupby:image"
 													<?php echo $h2; ?>>Windows Processes</a><br />
 	<a href="<?php echo $h1; ?>class=SSH_LOGIN port groupby:user"					<?php echo $h2; ?>>SSH Logins</a><br />
+	<a href="<?php echo $h1; ?>class=&quot;Autoruns&quot; category=&quot;Drivers&quot; groupby:path -system32 -syswow64"
+                                                                                    <?php echo $h2; ?>>Autoruns (Drivers)</a><br />
+	<a href="<?php echo $h1; ?>class=&quot;Autoruns&quot; category=&quot;Hijacks&quot; groupby:path"
+                                                                                    <?php echo $h2; ?>>Autoruns (Hijacks)</a><br />
+	<a href="<?php echo $h1; ?>class=&quot;Autoruns&quot; category=&quot;Tasks&quot; groupby:path"
+                                                                                    <?php echo $h2; ?>>Autoruns (Tasks)</a><br />																					
+	<a href="<?php echo $h1; ?>class=&quot;Autoruns&quot; category=&quot;Logon&quot; groupby:path +users"
+                                                                                    <?php echo $h2; ?>>Autoruns (Logon)</a><br />
 </span><br />
 
 <!-- 'HTTP' ELSA Queries -->
