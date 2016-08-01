@@ -1,0 +1,364 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ securityonion-web-page (20141015-0ubuntu0securityonion64) trusty; urgency=medium
+ .
+   * Issue 964: securityonion-web-page: add "bottom" queries for long tail analysis
+Author: Doug Burks <doug.burks@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- securityonion-web-page-20141015.orig/elsa/menu.php
++++ securityonion-web-page-20141015/elsa/menu.php
+@@ -50,13 +50,13 @@ function showhide(tspan, tri) {
+ 	@media all and (min-width: 0px) and (max-width: 230px) {
+ 		.tab {
+ 			font-size:12px;
+-			margin:0px;
++			margin-left:0px;
+ 		}
+ 	}
+ 
+ 	@media all and (min-width: 231px) {
+ 		.tab {
+-			margin:25px;
++			margin-left:25px;
+ 		}
+ 	}
+ </style>
+@@ -67,24 +67,25 @@ function showhide(tspan, tri) {
+ 	/* Define href variables */
+ 	$h1 = "/elsa-query/?query_string=";
+ 	$h2 = " class=\"tab\" target=\"dynamic\" onclick=\"turnBackBold (this);\"";
++	$h3 = " target=\"dynamic\" onclick=\"turnBackBold (this);\"";
+ ?>
+ 
+-<a href="http://www.securityonion.net" target="_blank"><img STYLE="border: none;" src="so-logo.jpeg" alt="Security Onion Website"></img></a><br /><br />
++<a href="https://securityonion.net" target="_blank"><img STYLE="border: none;" src="so-logo.jpeg" alt="Security Onion Website"></img></a><br /><br />
+ 
+ <!-- 'Connections' ELSA Queries -->
+ <?php $descr = "Network connections seen by Bro (session data)"; ?>
+ <a href="javascript:showhide('conn','tri_conn')"><img src="tri_c.gif" id="tri_conn" width="14" height="10" border="0" alt=""></a>
+ <a href="javascript:showhide('conn','tri_conn')" title="<?php echo $descr ?>" class="navlnk">Connections</a><br />
+ <span id="conn" style="display: none">
+-	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:srcip"			<?php echo $h2; ?>>Top SRC IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:dstip"			<?php echo $h2; ?>>Top DST IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:dstport"			<?php echo $h2; ?>>Top DST Ports</a><br />
++	<?php $label="Originators"; $query="class=BRO_CONN &quot;-&quot; groupby:srcip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Responders"; $query="class=BRO_CONN &quot;-&quot; groupby:dstip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Responder Port"; $query="class=BRO_CONN &quot;-&quot; groupby:dstport";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Responder Country"; $query="class=BRO_CONN &quot;-&quot; groupby:resp_country_code";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:service"			<?php echo $h2; ?>>Top Services</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_CONN +BRO_CONN.dstport=53 groupby:service"			<?php echo $h2; ?>>Port 53 groupby Service</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_CONN +BRO_CONN.dstport=80 groupby:service"			<?php echo $h2; ?>>Port 80 groupby Service</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_CONN +BRO_CONN.dstport=443 groupby:service"		<?php echo $h2; ?>>Port 443 groupby Service</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:proto"				<?php echo $h2; ?>>Groupby Protocol</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:resp_country_code"		<?php echo $h2; ?>>Groupby Resp Country</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_CONN &quot;-&quot; groupby:node"				<?php echo $h2; ?>>Groupby Node</a><br />
+ </span><br />
+ 
+@@ -102,11 +103,11 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('dnp3','tri_dnp3')"><img src="tri_c.gif" id="tri_dnp3" width="14" height="10" border="0" alt=""></a>
+ <a href="javascript:showhide('dnp3','tri_dnp3')" title="<?php echo $descr ?>" class="navlnk">DNP3</a><br />
+ <span id="dnp3" style="display: none">
+-	<a href="<?php echo $h1; ?>class=BRO_DNP3 groupby:srcip"					<?php echo $h2; ?>>Top SRC IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_DNP3 groupby:dstip"					<?php echo $h2; ?>>Top DST IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_DNP3 groupby:dstport"					<?php echo $h2; ?>>Top DST Ports</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_DNP3 groupby:fc_request"					<?php echo $h2; ?>>Top Requests</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_DNP3 groupby:fc_reply"					<?php echo $h2; ?>>Top Replies</a><br />
++	<?php $label="SRC IPs"; $query="class=BRO_DNP3 groupby:srcip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST IPs"; $query="class=BRO_DNP3 groupby:dstip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST Ports"; $query="class=BRO_DNP3 groupby:dstport";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Requests"; $query="class=BRO_DNP3 groupby:fc_request";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Replies"; $query="class=BRO_DNP3 groupby:fc_reply";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
+ </span><br />
+ 
+ <!-- 'DNS' ELSA Queries -->
+@@ -114,14 +115,14 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('dns','tri_dns')"><img src="tri_c.gif" id="tri_dns" width="14" height="10" border="0" alt=""></a>
+ <a href="javascript:showhide('dns','tri_dns')" title="<?php echo $descr ?>" class="navlnk">DNS</a><br />
+ <span id="dns" style="display: none">
+-	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:srcip"			<?php echo $h2; ?>>Top SRC IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:dstip"			<?php echo $h2; ?>>Top DST IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:hostname"		<?php echo $h2; ?>>Top Requests</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:answer"			<?php echo $h2; ?>>Top Responses</a><br />
++	<?php $label="Clients"; $query="class=BRO_DNS dstport=&quot;53&quot; groupby:srcip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Servers"; $query="class=BRO_DNS dstport=&quot;53&quot; groupby:dstip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Requests"; $query="class=BRO_DNS dstport=&quot;53&quot; groupby:hostname";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Responses"; $query="class=BRO_DNS dstport=&quot;53&quot; groupby:answer";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="nxdomain"; $query="class=BRO_DNS nxdomain groupby:hostname";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:query_class"		<?php echo $h2; ?>>Top Query Class</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:query_type"		<?php echo $h2; ?>>Top Query Type</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_DNS dstport=&quot;53&quot; groupby:return_code"		<?php echo $h2; ?>>Top Return Code</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_DNS nxdomain groupby:hostname"				<?php echo $h2; ?>>Top nxdomain</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_DNS proto=&quot;tcp&quot; &quot;axfr&quot; OR &quot;ixfr&quot; groupby:srcip"
+ 													<?php echo $h2; ?>>Zone Transfers</a><br />
+ </span><br />
+@@ -140,10 +141,10 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('firewall','tri_firewall')"><img src="tri_c.gif" id="tri_files" width="14" height="10" border="0" alt=""></a>
+ <a href="javascript:showhide('firewall','tri_firewall')" title="<?php echo $descr ?>" class="navlnk">Firewall</a><br />
+ <span id="firewall" style="display: none">
+-	<a href="<?php echo $h1; ?>class=FIREWALL_CONNECTION_END groupby:srcip"				<?php echo $h2; ?>>Top SRC IPs Allowed</a><br />
+-	<a href="<?php echo $h1; ?>class=FIREWALL_CONNECTION_END groupby:dstip"				<?php echo $h2; ?>>Top DST IPs Allowed</a><br />
+-	<a href="<?php echo $h1; ?>class=FIREWALL_ACCESS_DENY groupby:srcip"				<?php echo $h2; ?>>Top SRC IPs Denied</a><br />
+-	<a href="<?php echo $h1; ?>class=FIREWALL_ACCESS_DENY groupby:dstip"				<?php echo $h2; ?>>Top DST IPs Denied</a><br />
++	<?php $label="SRC IPs allowed"; $query="class=FIREWALL_CONNECTION_END groupby:srcip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST IPs allowed"; $query="class=FIREWALL_CONNECTION_END groupby:dstip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="SRC IPs denied"; $query="class=FIREWALL_CONNECTION_END groupby:srcip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST IPs denied"; $query="class=FIREWALL_CONNECTION_END groupby:dstip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
+ </span><br />
+ 
+ <!-- 'FTP' ELSA Queries -->
+@@ -151,12 +152,12 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('ftp','tri_ftp')"><img src="tri_c.gif" id="tri_ftp" width="14" height="10" border="0" alt=""></a>
+ <a href="javascript:showhide('ftp','tri_ftp')" title="<?php echo $descr ?>" class="navlnk">FTP</a><br />
+ <span id="ftp" style="display: none">
+-	<a href="<?php echo $h1; ?>class=BRO_FTP &quot;-&quot; groupby:srcip"				<?php echo $h2; ?>>Top SRC IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_FTP &quot;-&quot; groupby:dstip"				<?php echo $h2; ?>>Top DST IPs</a><br />
++	<?php $label="Clients"; $query="class=BRO_FTP &quot;-&quot; groupby:srcip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Servers"; $query="class=BRO_FTP &quot;-&quot; groupby:dstip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="File Types"; $query="class=BRO_FTP &quot;-&quot; groupby:mime_type";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="File Names"; $query="class=BRO_FTP &quot;-&quot; groupby:arg";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_FTP &quot;-&quot; groupby:dstport"				<?php echo $h2; ?>>Top DST Ports</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_FTP &quot;-&quot; groupby:command"				<?php echo $h2; ?>>Top Commands</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_FTP &quot;-&quot; groupby:mime_type"			<?php echo $h2; ?>>Top MIME Types</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_FTP &quot;-&quot; groupby:arg"				<?php echo $h2; ?>>Top arg</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_CONN service=&quot;ftp-data&quot;"				<?php echo $h2; ?>>FTP Data</a><br />
+ </span><br />
+ 
+@@ -174,17 +175,13 @@ function showhide(tspan, tri) {
+ 	<a href="<?php echo $h1; ?>class=none -program=ossec_archive -program=ossec groupby:program"	<?php echo $h2; ?>>Syslog-NG (Program)</a><br />
+ 	<a href="<?php echo $h1; ?>class=none -program=ossec_archive -program=ossec groupby:host"	<?php echo $h2; ?>>Syslog-NG (Host)</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_SYSLOG udp or tcp"						<?php echo $h2; ?>>Syslog Detected by Bro</a><br />
+-	<a href="<?php echo $h1; ?>class=&quot;WINDOWS_PROCESS&quot; &quot;new process&quot; groupby:image"
+-													<?php echo $h2; ?>>Windows Processes</a><br />
+-	<a href="<?php echo $h1; ?>class=SSH_LOGIN port groupby:user"					<?php echo $h2; ?>>SSH Logins</a><br />
+-	<a href="<?php echo $h1; ?>class=&quot;Autoruns&quot; category=&quot;Drivers&quot; groupby:path -system32 -syswow64"
+-                                                                                    <?php echo $h2; ?>>Autoruns (Drivers)</a><br />
+-	<a href="<?php echo $h1; ?>class=&quot;Autoruns&quot; category=&quot;Hijacks&quot; groupby:path"
+-                                                                                    <?php echo $h2; ?>>Autoruns (Hijacks)</a><br />
+-	<a href="<?php echo $h1; ?>class=&quot;Autoruns&quot; category=&quot;Tasks&quot; groupby:path"
+-                                                                                    <?php echo $h2; ?>>Autoruns (Tasks)</a><br />																					
+-	<a href="<?php echo $h1; ?>class=&quot;Autoruns&quot; category=&quot;Logon&quot; groupby:path +users"
+-                                                                                    <?php echo $h2; ?>>Autoruns (Logon)</a><br />
++	<?php $label="Windows Processes"; $query="class=&quot;WINDOWS_PROCESS&quot; &quot;new process&quot; groupby:image";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="SSH Logins"; $query="class=SSH_LOGIN port groupby:user";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<a class="tab">Autoruns<br>
++	<?php $label="&nbsp;|--Drivers"; $query="class=&quot;Autoruns&quot; category=&quot;Drivers&quot; -system32 -syswow64 groupby:path";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="&nbsp;|--Hijacks"; $query="class=&quot;Autoruns&quot; category=&quot;Hijacks&quot; groupby:path";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="&nbsp;|--Tasks"; $query="class=&quot;Autoruns&quot; category=&quot;Tasks&quot; groupby:path";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="&nbsp;|--Logon"; $query="class=&quot;Autoruns&quot; category=&quot;Logon&quot; +users groupby:path";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
+ </span><br />
+ 
+ <!-- 'HTTP' ELSA Queries -->
+@@ -192,19 +189,19 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('http','tri_http')"><img src="tri_c.gif" id="tri_http" width="14" height="10" border="0" alt=""></a>
+ <a href="javascript:showhide('http','tri_http')" title="<?php echo $descr ?>" class="navlnk">HTTP</a><br />
+ <span id="http" style="display: none">
+-	<a href="<?php echo $h1; ?>class=BRO_HTTP &quot;-&quot; groupby:srcip"				<?php echo $h2; ?>>Top SRC IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_HTTP &quot;-&quot; groupby:dstip"				<?php echo $h2; ?>>Top DST IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_HTTP &quot;-&quot; groupby:dstport"			<?php echo $h2; ?>>Top DST Ports</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_HTTP &quot;-&quot; groupby:mime_type"			<?php echo $h2; ?>>Top MIME Types</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_HTTP &quot;-&quot; groupby:user_agent"			<?php echo $h2; ?>>Top User Agents</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_HTTP &quot;-&quot; groupby:site"				<?php echo $h2; ?>>Top Sites</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=x-dosexec groupby:site"		<?php echo $h2; ?>>Sites hosting EXEs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=vnd.ms-cab-compressed groupby:site"<?php echo $h2; ?>>Sites hosting CABs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=java-archive groupby:site"		<?php echo $h2; ?>>Sites hosting JARs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=x-rar groupby:site"		<?php echo $h2; ?>>Sites hosting RARs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=x-shockwave-flash groupby:site"	<?php echo $h2; ?>>Sites hosting SWFs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_HTTP BRO_HTTP.mime_type=zip groupby:site"			<?php echo $h2; ?>>Sites hosting ZIPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_HTTP &quot;HTTP::URI_SQLI&quot; &quot;URI_SQLI&quot; groupby:site"	<?php echo $h2; ?>>Potential SQL Injection</a><br />
++	<?php $label="Client IPs"; $query="class=BRO_HTTP &quot;-&quot; groupby:srcip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Server IPs"; $query="class=BRO_HTTP &quot;-&quot; groupby:dstip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Server Ports"; $query="class=BRO_HTTP &quot;-&quot; groupby:dstport";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="File Types"; $query="class=BRO_HTTP &quot;-&quot; groupby:mime_type";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="User Agents"; $query="class=BRO_HTTP &quot;-&quot; groupby:user_agent";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Sites"; $query="class=BRO_HTTP &quot;-&quot; groupby:site";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Sites hosting EXEs"; $query="class=BRO_HTTP BRO_HTTP.mime_type=x-dosexec groupby:site";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Sites hosting CABs"; $query="class=BRO_HTTP BRO_HTTP.mime_type=vnd.ms-cab-compressed groupby:site";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Sites hosting JARs"; $query="class=BRO_HTTP BRO_HTTP.mime_type=java-archive groupby:site";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Sites hosting RARs"; $query="class=BRO_HTTP BRO_HTTP.mime_type=x-rar groupby:site";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Sites hosting SWFs"; $query="class=BRO_HTTP BRO_HTTP.mime_type=x-shockwave-flash groupby:site";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Sites hosting ZIPs"; $query="class=BRO_HTTP BRO_HTTP.mime_type=zip groupby:site";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Potential SQL Injection"; $query="class=BRO_HTTP &quot;HTTP::URI_SQLI&quot; &quot;URI_SQLI&quot; groupby:site";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
+ </span><br />
+ 
+ <!-- 'Intel' ELSA Queries -->
+@@ -212,12 +209,12 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('intel','tri_intel')"><img src="tri_c.gif" id="tri_intel" width="14" height="10" border="0" alt=""></a>
+ <a href="javascript:showhide('intel','tri_intel')" title="<?php echo $descr ?>" class="navlnk">Intel</a><br />
+ <span id="intel" style="display: none">
+-	<a href="<?php echo $h1; ?>class=BRO_INTEL &quot;intel&quot; groupby:srcip"			<?php echo $h2; ?>>Top SRC IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_INTEL &quot;intel&quot; groupby:dstip"			<?php echo $h2; ?>>Top DST IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_INTEL &quot;intel&quot; groupby:dstport"			<?php echo $h2; ?>>Top DST Ports</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_INTEL &quot;intel&quot; groupby:indicator"			<?php echo $h2; ?>>Top Indicators</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_INTEL &quot;intel&quot; groupby:indicator_type"		<?php echo $h2; ?>>Top Indicator Types</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_INTEL &quot;intel&quot; groupby:sources"			<?php echo $h2; ?>>Top Sources</a><br />
++	<?php $label="SRC IPs"; $query="class=BRO_INTEL &quot;intel&quot; groupby:srcip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST IPs"; $query="class=BRO_INTEL &quot;intel&quot; groupby:dstip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST Ports"; $query="class=BRO_INTEL &quot;intel&quot; groupby:dstport";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Indicators"; $query="class=BRO_INTEL &quot;intel&quot; groupby:indicator";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Indicator Types"; $query="class=BRO_INTEL &quot;intel&quot; groupby:indicator_type";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Sources"; $query="class=BRO_INTEL &quot;intel&quot; groupby:sources";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
+ </span><br />
+ 
+ <!-- 'IRC' ELSA Queries -->
+@@ -225,10 +222,10 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('irc','tri_irc')"><img src="tri_c.gif" id="tri_irc" width="14" height="10" border="0" alt=""></a>
+ <a href="javascript:showhide('irc','tri_irc')" title="<?php echo $descr ?>" class="navlnk">IRC</a><br />
+ <span id="irc" style="display: none">
+-	<a href="<?php echo $h1; ?>class=BRO_IRC &quot;-&quot; groupby:srcip"				<?php echo $h2; ?>>Top SRC IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_IRC &quot;-&quot; groupby:dstip"				<?php echo $h2; ?>>Top DST IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_IRC &quot;-&quot; groupby:dstport"				<?php echo $h2; ?>>Top DST Ports</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_IRC &quot;-&quot; groupby:mime_type"			<?php echo $h2; ?>>Top MIME Types</a><br />
++	<?php $label="SRC IPs"; $query="class=BRO_IRC &quot;-&quot; groupby:srcip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST IPs"; $query="class=BRO_IRC &quot;-&quot; groupby:dstip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST Ports"; $query="class=BRO_IRC &quot;-&quot; groupby:dstport";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="File Types"; $query="class=BRO_IRC &quot;-&quot; groupby:mime_type";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
+ </span><br />
+ 
+ <!-- 'Kerberos' ELSA Queries -->
+@@ -236,12 +233,12 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('kerberos','tri_kerberos')"><img src="tri_c.gif" id="tri_kerberos" width="14" height="10" border="0" alt=""></a>
+ <a href="javascript:showhide('kerberos','tri_kerberos')" title="<?php echo $descr ?>" class="navlnk">Kerberos</a><br />
+ <span id="kerberos" style="display: none">
+-	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:srcip"			<?php echo $h2; ?>>Top SRC IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:dstip"			<?php echo $h2; ?>>Top DST IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:dstport"			<?php echo $h2; ?>>Top DST Ports</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:request_type"		<?php echo $h2; ?>>Top Request Types</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:client"			<?php echo $h2; ?>>Top Clients</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_KERBEROS &quot;-&quot; groupby:service"			<?php echo $h2; ?>>Top Services</a><br />
++	<?php $label="SRC IPs"; $query="class=BRO_KERBEROS &quot;-&quot; groupby:srcip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST IPs"; $query="class=BRO_KERBEROS &quot;-&quot; groupby:dstip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST Ports"; $query="class=BRO_KERBEROS &quot;-&quot; groupby:dstport";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Request Types"; $query="class=BRO_KERBEROS &quot;-&quot; groupby:request_type";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Clients"; $query="class=BRO_KERBEROS &quot;-&quot; groupby:client";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Services"; $query="class=BRO_KERBEROS &quot;-&quot; groupby:service";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
+ </span><br />
+ 
+ <!-- 'Modbus' ELSA Queries -->
+@@ -249,11 +246,11 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('modbus','tri_modbus')"><img src="tri_c.gif" id="tri_modbus" width="14" height="10" border="0" alt=""></a>
+ <a href="javascript:showhide('modbus','tri_modbus')" title="<?php echo $descr ?>" class="navlnk">Modbus</a><br />
+ <span id="modbus" style="display: none">
+-	<a href="<?php echo $h1; ?>class=BRO_MODBUS groupby:srcip"					<?php echo $h2; ?>>Top SRC IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_MODBUS groupby:dstip"					<?php echo $h2; ?>>Top DST IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_MODBUS groupby:dstport"					<?php echo $h2; ?>>Top DST Ports</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_MODBUS groupby:func"					<?php echo $h2; ?>>Top Functions</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_MODBUS groupby:exception"					<?php echo $h2; ?>>Top Exceptions</a><br />
++	<?php $label="SRC IPs"; $query="class=BRO_MODBUS groupby:srcip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST IPs"; $query="class=BRO_MODBUS groupby:dstip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST Ports"; $query="class=BRO_MODBUS groupby:dstport";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Functions"; $query="class=BRO_MODBUS groupby:func";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Exceptions"; $query="class=BRO_MODBUS groupby:exception";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
+ </span><br />
+ 
+ <!-- 'MySQL' ELSA Queries -->
+@@ -261,11 +258,11 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('mysql','tri_mysql')"><img src="tri_c.gif" id="tri_mysql" width="14" height="10" border="0" alt=""></a>
+ <a href="javascript:showhide('mysql','tri_mysql')" title="<?php echo $descr ?>" class="navlnk">MySQL</a><br />
+ <span id="mysql" style="display: none">
+-	<a href="<?php echo $h1; ?>class=BRO_MYSQL &quot;-&quot; groupby:srcip"				<?php echo $h2; ?>>Top SRC IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_MYSQL &quot;-&quot; groupby:dstip"				<?php echo $h2; ?>>Top DST IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_MYSQL &quot;-&quot; groupby:dstport"			<?php echo $h2; ?>>Top DST Ports</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_MYSQL &quot;-&quot; groupby:cmd"				<?php echo $h2; ?>>Top Commands</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_MYSQL &quot;-&quot; groupby:arg"				<?php echo $h2; ?>>Top Arguments</a><br />
++	<?php $label="SRC IPs"; $query="class=BRO_MYSQL &quot;-&quot; groupby:srcip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST IPs"; $query="class=BRO_MYSQL &quot;-&quot; groupby:dstip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST Ports"; $query="class=BRO_MYSQL &quot;-&quot; groupby:dstport";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Commands"; $query="class=BRO_MYSQL &quot;-&quot; groupby:cmd";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Arguments"; $query="class=BRO_MYSQL &quot;-&quot; groupby:arg";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
+ </span><br />
+ 
+ <!-- 'Notice' ELSA Queries -->
+@@ -273,9 +270,9 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('notice','tri_notice')"><img src="tri_c.gif" id="tri_notice" width="14" height="10" border="0" alt=""></a>
+ <a href="javascript:showhide('notice','tri_notice')" title="<?php echo $descr ?>" class="navlnk">Notice</a><br />
+ <span id="notice" style="display: none">
+-	<a href="<?php echo $h1; ?>class=BRO_NOTICE &quot;-&quot; groupby:srcip"			<?php echo $h2; ?>>Top SRC IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_NOTICE &quot;-&quot; groupby:dstip"			<?php echo $h2; ?>>Top DST IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_NOTICE &quot;-&quot; groupby:notice_type"			<?php echo $h2; ?>>Top Notice Types</a><br />
++	<?php $label="SRC IPs"; $query="class=BRO_NOTICE &quot;-&quot; groupby:srcip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST IPs"; $query="class=BRO_NOTICE &quot;-&quot; groupby:dstip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Notice Types"; $query="class=BRO_NOTICE &quot;-&quot; groupby:notice_type";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3;?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_NOTICE &quot;ShellShock::Exploit&quot;"			<?php echo $h2; ?>>ShellShock Exploits</a><br />
+ 	<a href="<?php echo $h1; ?>class=BRO_NOTICE &quot;ShellShock::Scanner&quot;"			<?php echo $h2; ?>>ShellShock Scanners</a><br />
+ </span><br />
+@@ -374,9 +371,9 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('snsu','tri_snsu')"><img src="tri_c.gif" id="tri_snsu" width="14" height="10" border="0" alt=""></a>
+ <a href="javascript:showhide('snsu','tri_snsu')" title="<?php echo $descr ?>" class="navlnk">Snort/Suricata</a><br />
+ <span id="snsu" style="display: none">
+-	<a href="<?php echo $h1; ?>class=SNORT &quot;-&quot; groupby:srcip"				<?php echo $h2; ?>>Top SRC IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=SNORT &quot;-&quot; groupby:dstip"				<?php echo $h2; ?>>Top DST IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=SNORT &quot;-&quot; groupby:sig_msg"				<?php echo $h2; ?>>Top NIDS Alerts</a><br />
++	<?php $label="SRC IPs"; $query="class=SNORT &quot;-&quot; groupby:srcip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST IPs"; $query="class=SNORT &quot;-&quot; groupby:dstip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="NIDS alerts"; $query="class=SNORT &quot;-&quot; groupby:sig_msg";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
+ </span><br />
+ 
+ <!-- 'Software' ELSA Queries -->
+@@ -404,16 +401,16 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('ssl','tri_ssl')"><img src="tri_c.gif" id="tri_ssl" width="14" height="10" border="0" alt=""></a>
+ <a href="javascript:showhide('ssl','tri_ssl')" title="<?php echo $descr ?>" class="navlnk">SSL</a><br />
+ <span id="ssl" style="display: none">
+-	<a href="<?php echo $h1; ?>class=BRO_SSL &quot;-&quot; groupby:srcip"				<?php echo $h2; ?>>Top SRC IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_SSL &quot;-&quot; groupby:dstip"				<?php echo $h2; ?>>Top DST IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_SSL &quot;-&quot; groupby:dstport"				<?php echo $h2; ?>>Top DST Ports</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_SSL &quot;-&quot; groupby:hostname"			<?php echo $h2; ?>>Top Hostnames</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_SSL &quot;-&quot; groupby:subject"				<?php echo $h2; ?>>Top Subjects</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_SSL &quot;sslv3&quot; groupby:srcip"			<?php echo $h2; ?>>Top SSLv3 SRC IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_SSL &quot;sslv3&quot; groupby:dstip"			<?php echo $h2; ?>>Top SSLv3 DST IPs</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_SSL &quot;sslv3&quot; groupby:hostname"			<?php echo $h2; ?>>Top SSLv3 Hostnames</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_SSL &quot;-&quot; groupby:ssl_version"			<?php echo $h2; ?>>Top SSL Versions</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_SSL &quot;-&quot; groupby:ssl_cipher"			<?php echo $h2; ?>>Top SSL Ciphers</a><br />
++	<?php $label="SRC IPs"; $query="class=BRO_SSL &quot;-&quot; groupby:srcip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST IPs"; $query="class=BRO_SSL &quot;-&quot; groupby:dstip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="DST Ports"; $query="class=BRO_SSL &quot;-&quot; groupby:dstport";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Hostnames"; $query="class=BRO_SSL &quot;-&quot; groupby:hostname";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Subjects"; $query="class=BRO_SSL &quot;-&quot; groupby:subject";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="SSL Ciphers"; $query="class=BRO_SSL &quot;-&quot; groupby:ssl_cipher";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="SSL Versions"; $query="class=BRO_SSL &quot;-&quot; groupby:ssl_version";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="SSLv3 SRC IPs"; $query="class=BRO_SSL &quot;sslv3&quot; groupby:srcip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="SSLv3 DST IPs"; $query="class=BRO_SSL &quot;sslv3&quot; groupby:dstip";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="SSLv3 Hostnames"; $query="class=BRO_SSL &quot;sslv3&quot; groupby:hostname";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
+ </span><br />
+ 
+ <!-- 'Tunnels' ELSA Queries -->
+@@ -439,14 +436,14 @@ function showhide(tspan, tri) {
+ <a href="javascript:showhide('509','tri_509')"><img src="tri_c.gif" id="tri_509" width="14" height="10" border="0" alt=""></a>
+ <a href="javascript:showhide('509','tri_509')" title="<?php echo $descr ?>" class="navlnk">X.509</a><br />
+ <span id="509" style="display: none">
+-	<a href="<?php echo $h1; ?>class=BRO_X509 &quot;-&quot; groupby:cert_version"			<?php echo $h2; ?>>Version</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_X509 &quot;-&quot; groupby:cert_key_length"		<?php echo $h2; ?>>Key Length</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_X509 &quot;-&quot; groupby:cert_serial"			<?php echo $h2; ?>>Serial</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_X509 &quot;-&quot; groupby:cert_subject"			<?php echo $h2; ?>>Subject</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_X509 &quot;-&quot; groupby:cert_issuer"			<?php echo $h2; ?>>Issuer</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_X509 &quot;-&quot; groupby:cert_key_alg"			<?php echo $h2; ?>>Key Algorithm</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_X509 &quot;-&quot; groupby:cert_sig_alg"			<?php echo $h2; ?>>Sig Algorithm</a><br />
+-	<a href="<?php echo $h1; ?>class=BRO_X509 &quot;-&quot; groupby:cert_key_type"			<?php echo $h2; ?>>Key Type</a><br />
++	<?php $label="Version"; $query="class=BRO_X509 &quot;-&quot; groupby:cert_version";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Key Length"; $query="class=BRO_X509 &quot;-&quot; groupby:cert_key_length";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Serial"; $query="class=BRO_X509 &quot;-&quot; groupby:cert_serial";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Subject"; $query="class=BRO_X509 &quot;-&quot; groupby:cert_subject";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Issuer"; $query="class=BRO_X509 &quot;-&quot; groupby:cert_issuer";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Key Algorithm"; $query="class=BRO_X509 &quot;-&quot; groupby:cert_key_alg";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Sig Algorithm"; $query="class=BRO_X509 &quot;-&quot; groupby:cert_sig_alg";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
++	<?php $label="Key Type"; $query="class=BRO_X509 &quot;-&quot; groupby:cert_key_type";?> <a class="tab"><?php echo $label;?> - <a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a><br />
+ </span><br />
+ 
+ <!-- 'Local' ELSA Queries -->
