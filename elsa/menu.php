@@ -47,14 +47,17 @@ function showhide(tspan, tri) {
 		background-color:#A3C3E0;
 	}
 
-	@media all and (min-width: 0px) and (max-width: 230px) {
+	@media all and (min-width: 0px) and (max-width: 280px) {
 		.tab {
 			font-size:12px;
 			margin-left:0px;
 		}
+		.font {
+			font-size:12px;
+		}
 	}
 
-	@media all and (min-width: 231px) {
+	@media all and (min-width: 281px) {
 		.tab {
 			margin-left:25px;
 		}
@@ -67,7 +70,7 @@ function showhide(tspan, tri) {
 	/* Define href variables */
 	$h1 = "/elsa-query/?query_string=";
 	$h2 = " class=\"tab\" target=\"dynamic\" onclick=\"turnBackBold (this);\"";
-	$h3 = " target=\"dynamic\" onclick=\"turnBackBold (this);\"";
+	$h3 = " class=\"font\" target=\"dynamic\" onclick=\"turnBackBold (this);\"";
 ?>
 
 <a href="https://securityonion.net" target="_blank"><img STYLE="border: none;" src="so-logo.jpeg" alt="Security Onion Website"></img></a><br /><br />

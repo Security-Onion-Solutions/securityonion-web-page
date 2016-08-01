@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion65) trusty; urgency=medium
+
+  * fix layout of ELSA index.php and menu.php
+
+ -- Doug Burks <doug.burks@gmail.com>  Mon, 01 Aug 2016 16:50:26 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion64) trusty; urgency=medium
 
   * Issue 964: securityonion-web-page: add "bottom" queries for long tail analysis 

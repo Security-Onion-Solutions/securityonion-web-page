@@ -46,3 +46,4 @@ securityonion-web-page:-add-queries-for-dnp3-and-modbus-#970
 merge-pull-request-from-Josh-Brower-for-autoruns-queries
 Issue-973:-securityonion-web-page:-Apache-ServerName-localhost
 Issue-964:-securityonion-web-page:-add-"bottom"-queries-for-long-tail-analysis
+fix-layout-of-ELSA-index.php-and-menu.php
