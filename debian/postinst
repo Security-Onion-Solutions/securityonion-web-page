@@ -92,8 +92,14 @@ case "$1" in
 	# Enable Apache proxy modules
 	a2enmod proxy proxy_http || echo "Error enabling Apache proxy modules."
 
+	# Enable Apache headers modules
+	a2enmod headers || echo "Error enabling Apache headers module."
+
 	# Enable securityonion site
 	a2ensite securityonion || echo "Error enabling securityonion site in Apache."
+
+	# Restart Apache
+	apache2ctl restart || echo "Error restarting Apache."
 
     ;;
 

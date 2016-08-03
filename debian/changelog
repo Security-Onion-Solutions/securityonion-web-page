@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion66) trusty; urgency=medium
+
+  * Issue 976: securityonion-web-page: additional protections in securityonion.conf 
+
+ -- Doug Burks <doug.burks@gmail.com>  Wed, 03 Aug 2016 15:18:22 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion65) trusty; urgency=medium
 
   * fix layout of ELSA index.php and menu.php
