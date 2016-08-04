@@ -48,3 +48,4 @@ Issue-973:-securityonion-web-page:-Apache-ServerName-localhost
 Issue-964:-securityonion-web-page:-add-"bottom"-queries-for-long-tail-analysis
 fix-layout-of-ELSA-index.php-and-menu.php
 Issue-976:-securityonion-web-page:-additional-protections-in-securityonion.conf
+add-httpoxy-mitigation-to-securityonion.conf
