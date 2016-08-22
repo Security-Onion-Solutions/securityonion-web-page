@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion68) trusty; urgency=medium
+
+  * securityonion-web-page: add HTTP top status code #984 
+
+ -- Doug Burks <doug.burks@gmail.com>  Mon, 22 Aug 2016 13:03:42 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion67) trusty; urgency=medium
 
   * add httpoxy mitigation to securityonion.conf 
