@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion69) trusty; urgency=medium
+
+  * Issue 1001: securityonion-web-page: move Top/Bottom links to beginning of line 
+
+ -- Doug Burks <doug.burks@gmail.com>  Tue, 27 Sep 2016 16:45:14 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion68) trusty; urgency=medium
 
   * securityonion-web-page: add HTTP top status code #984 
