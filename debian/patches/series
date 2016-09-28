@@ -51,3 +51,4 @@ Issue-976:-securityonion-web-page:-additional-protections-in-securityonion.conf
 add-httpoxy-mitigation-to-securityonion.conf
 securityonion-web-page:-add-HTTP-top-status-code-#984
 Issue-1001:-securityonion-web-page:-move-TopBottom-links-to-beginning-of-line
+Issue-1002:-securityonion-web-page:-fix-ELSA-FIREWALL_ACCESS_DENY-queries

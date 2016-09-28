@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion70) trusty; urgency=medium
+
+  * Issue 1002: securityonion-web-page: fix ELSA FIREWALL_ACCESS_DENY queries 
+
+ -- Doug Burks <doug.burks@gmail.com>  Wed, 28 Sep 2016 06:29:01 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion69) trusty; urgency=medium
 
   * Issue 1001: securityonion-web-page: move Top/Bottom links to beginning of line 

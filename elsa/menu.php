@@ -146,8 +146,8 @@ function showhide(tspan, tri) {
 <span id="firewall" style="display: none">
 	<?php $label="SRC IPs allowed"; $query="class=FIREWALL_CONNECTION_END groupby:srcip";?> <a class="tab"><a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a> <?php echo $label;?><br />
 	<?php $label="DST IPs allowed"; $query="class=FIREWALL_CONNECTION_END groupby:dstip";?> <a class="tab"><a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a> <?php echo $label;?><br />
-	<?php $label="SRC IPs denied"; $query="class=FIREWALL_CONNECTION_END groupby:srcip";?> <a class="tab"><a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a> <?php echo $label;?><br />
-	<?php $label="DST IPs denied"; $query="class=FIREWALL_CONNECTION_END groupby:dstip";?> <a class="tab"><a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a> <?php echo $label;?><br />
+	<?php $label="SRC IPs denied"; $query="class=FIREWALL_ACCESS_DENY groupby:srcip";?> <a class="tab"><a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a> <?php echo $label;?><br />
+	<?php $label="DST IPs denied"; $query="class=FIREWALL_ACCESS_DENY groupby:dstip";?> <a class="tab"><a href="<?php echo $h1,$query;?>"<?php echo $h3; ?>>Top</a> / <a href="<?php echo $h1,$query; ?> orderby_dir:asc" <?php echo $h3; ?>>Bottom</a> <?php echo $label;?><br />
 </span><br />
 
 <!-- 'FTP' ELSA Queries -->
