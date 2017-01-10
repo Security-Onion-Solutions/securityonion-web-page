@@ -325,6 +325,24 @@ function showhide(tspan, tri) {
 	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:encryption_level"				<?php echo $h2; ?>>Encryption Level</a><br />
 </span><br />
 
+<!-- 'RFB' ELSA Queries -->
+<?php $descr = "RFB traffic seen by Bro"; ?>
+<a href="javascript:showhide('rfb','tri_rfb')"><img src="tri_c.gif" id="tri_rfb" width="14" height="10" border="0" alt=""></a>
+<a href="javascript:showhide('rfb','tri_rfb')" title="<?php echo $descr ?>" class="navlnk">RFB</a><br />
+<span id="rfb" style="display: none">
+	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:srcip"						<?php echo $h2; ?>>Top SRC IPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:dstip"						<?php echo $h2; ?>>Top DST IPs</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:dstport"					<?php echo $h2; ?>>Top DST Ports</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:width"						<?php echo $h2; ?>>Width</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:height"					<?php echo $h2; ?>>Height</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:client_major_version"				<?php echo $h2; ?>>Client Major Version</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:client_minor_version"				<?php echo $h2; ?>>Client Minor Version</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:server_major_version"				<?php echo $h2; ?>>Server Major Version</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:server_minor_version"				<?php echo $h2; ?>>Server Minor Version</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:authentication_method"				<?php echo $h2; ?>>Authentication Method</a><br />
+	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:desktop_name"					<?php echo $h2; ?>>Desktop Name</a><br />
+</span><br />
+
 <!-- 'SIP' ELSA Queries -->
 <?php $descr = "SIP traffic seen by Bro"; ?>
 <a href="javascript:showhide('sip','tri_sip')"><img src="tri_c.gif" id="tri_sip" width="14" height="10" border="0" alt=""></a>

@@ -1,0 +1,52 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ securityonion-web-page (20141015-0ubuntu0securityonion72) trusty; urgency=medium
+ .
+   * Issue 1037: securityonion-web-page: add ELSA queries for Bro rfb.log
+Author: Doug Burks <doug.burks@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- securityonion-web-page-20141015.orig/elsa/menu.php
++++ securityonion-web-page-20141015/elsa/menu.php
+@@ -325,6 +325,24 @@ function showhide(tspan, tri) {
+ 	<a href="<?php echo $h1; ?>class=BRO_RDP groupby:encryption_level"				<?php echo $h2; ?>>Encryption Level</a><br />
+ </span><br />
+ 
++<!-- 'RFB' ELSA Queries -->
++<?php $descr = "RFB traffic seen by Bro"; ?>
++<a href="javascript:showhide('rfb','tri_rfb')"><img src="tri_c.gif" id="tri_rfb" width="14" height="10" border="0" alt=""></a>
++<a href="javascript:showhide('rfb','tri_rfb')" title="<?php echo $descr ?>" class="navlnk">RFB</a><br />
++<span id="rfb" style="display: none">
++	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:srcip"						<?php echo $h2; ?>>Top SRC IPs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:dstip"						<?php echo $h2; ?>>Top DST IPs</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:dstport"					<?php echo $h2; ?>>Top DST Ports</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:width"						<?php echo $h2; ?>>Width</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:height"					<?php echo $h2; ?>>Height</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:client_major_version"				<?php echo $h2; ?>>Client Major Version</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:client_minor_version"				<?php echo $h2; ?>>Client Minor Version</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:server_major_version"				<?php echo $h2; ?>>Server Major Version</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:server_minor_version"				<?php echo $h2; ?>>Server Minor Version</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:authentication_method"				<?php echo $h2; ?>>Authentication Method</a><br />
++	<a href="<?php echo $h1; ?>class=BRO_RFB groupby:desktop_name"					<?php echo $h2; ?>>Desktop Name</a><br />
++</span><br />
++
+ <!-- 'SIP' ELSA Queries -->
+ <?php $descr = "SIP traffic seen by Bro"; ?>
+ <a href="javascript:showhide('sip','tri_sip')"><img src="tri_c.gif" id="tri_sip" width="14" height="10" border="0" alt=""></a>
