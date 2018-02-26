@@ -6,35 +6,47 @@
 <center> 
 <br> 
 <b> 
-<a href="https://www.securityonion.net"><img STYLE="border: none;" src="securityonion_logo.jpg" alt="Security Onion"></img></a><br>
-<a href="https://www.securityonion.net">https://www.securityonion.net</a><br> 
-<a href="https://www.securityonionsolutions.com">https://www.securityonionsolutions.com</a><br> 
+<a href="https://securityonion.net"><img STYLE="border: none;" src="securityonion_logo.jpg" alt="Security Onion"></img></a><br>
+<a href="https://securityonion.net">https://securityonion.net</a><br> 
+<a href="https://securityonionsolutions.com">https://securityonionsolutions.com</a><br> 
 </b> 
 </center>
 <br> 
 <b>What is Security Onion?</b><br>
-Security Onion is a Linux distro for intrusion detection, network security monitoring, and log management. It's based on Ubuntu and contains Snort, Suricata, Bro, OSSEC, Sguil, Squert, ELSA, NetworkMiner, and many other security tools. The easy-to-use Setup wizard allows you to build an army of distributed sensors for your enterprise in minutes!<br>
+Security Onion is a Linux distro for intrusion detection, network security monitoring, and log management. It's based on Ubuntu and contains Snort, Suricata, Bro, OSSEC, Sguil, Squert, NetworkMiner, the Elastic Stack, and many other security tools. The easy-to-use Setup wizard allows you to build an army of distributed nodes for your enterprise in minutes!<br>
 <br>
 <b>How do I install and configure Security Onion?</b><br>
 Please follow the <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki/Installation">Installation guides</a> on our <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki">Wiki</a>.<br>
 <br>
-<b>How do I access logs from this Security Onion installation?</b><br>
-Links to quickly access your local Squert and ELSA instances:<br>
-* <a href="/squert/">Squert</a>: View and categorize NIDS/HIDS alerts<br>
-* <a href="/elsa/">ELSA</a>: Search logs (IDS, Bro, and syslog)<br>
+<b>Tools</b><br>
+* <a href="/cyberchef/cyberchef.htm">CyberChef</a>: The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis<br>
+<?php if (file_exists("/etc/nsm/servertab")): ?>
+	* <a href="/squert/">Squert</a>: View and categorize NIDS/HIDS alerts<br>
+	<?php if (file_exists("/etc/nsm/securityonion.conf")): ?>
+		<?php $array = parse_ini_string(file_get_contents("/etc/nsm/securityonion.conf")); ?>
+		<?php if ( array_key_exists('KIBANA_ENABLED', $array) && $array['KIBANA_ENABLED'] == "yes" ): ?>
+			* <a href="/app/kibana">Kibana</a>: Search logs (IDS, Bro, and syslog) stored in Elasticsearch<br>
+		<?php elseif ( array_key_exists('ELSA', $array) && $array['ELSA'] == 1 ): ?>
+			* <a href="/elsa/">ELSA</a>: Search logs (IDS, Bro, and syslog)<br>
+		<?php endif; ?>
+	<?php endif; ?>
+<?php else: ?>
+(More tools will be available here after you run Setup.)<br>
+<?php endif; ?>
 <br>
+
 <b>How do I learn more about Security Onion?</b><br>
 Links to useful Security Onion information:<br>
 * <a href="http://blog.securityonion.net">Blog</a>: Get the latest news and updates</a><br>
-* <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki">Wiki</a>: Table of Contents<br>
-* <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki/Installation">Installation</a>: Installation guides<br>
-* <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki/Tools">Tools</a>: List of included security tools<br>
-* <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki/MailingLists">Mailing Lists</a>: Join the list(s) to get help and help others<br>
-* <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki/Roadmap">Roadmap</a>: Preview future updates</a><br>
+* <a href="https://securityonion.net/wiki">Wiki</a>: Table of Contents<br>
+* <a href="https://securityonion.net/wiki/Installation">Installation</a>: Installation guides<br>
+* <a href="https://securityonion.net/wiki/Tools">Tools</a>: List of included security tools<br>
+* <a href="https://securityonion.net/wiki/MailingLists">Mailing Lists</a>: Join the list(s) to get help and help others<br>
+* <a href="https://securityonion.net/wiki/Roadmap">Roadmap</a>: Preview future updates</a><br>
 <br> 
 <b>Commercial Support and Training</b><br>
 Need training or commercial support?<br>
-<a href="https://www.securityonionsolutions.com">https://www.securityonionsolutions.com</a><br> 
+<a href="https://securityonionsolutions.com">https://securityonionsolutions.com</a><br> 
 <br> 
 <b>Disclaimer of Warranty<br>
 <small>THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM .AS IS. WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.</small><br>
