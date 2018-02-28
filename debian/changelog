@@ -1,3 +1,15 @@
+securityonion-web-page (20141015-0ubuntu0securityonion74) trusty; urgency=medium
+
+  * Issue 1215: CyberChef 7.7.6 
+
+ -- Doug Burks <doug.burks@gmail.com>  Wed, 28 Feb 2018 13:35:21 -0500
+
+securityonion-web-page (20141015-0ubuntu0securityonion73) trusty; urgency=medium
+
+  * add cyberchef 
+
+ -- Doug Burks <doug.burks@gmail.com>  Mon, 26 Feb 2018 15:44:35 -0500
+
 securityonion-web-page (20141015-0ubuntu0securityonion72) trusty; urgency=medium
 
   * Issue 1037: securityonion-web-page: add ELSA queries for Bro rfb.log 
