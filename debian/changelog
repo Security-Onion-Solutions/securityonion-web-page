@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion75) trusty; urgency=medium
+
+  * CyberChef 7.7.7 
+
+ -- Doug Burks <doug.burks@gmail.com>  Thu, 01 Mar 2018 15:10:06 -0500
+
 securityonion-web-page (20141015-0ubuntu0securityonion74) trusty; urgency=medium
 
   * Issue 1215: CyberChef 7.7.6 
