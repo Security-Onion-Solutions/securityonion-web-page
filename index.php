@@ -22,14 +22,7 @@ Please follow the <a href="https://github.com/Security-Onion-Solutions/security-
 * <a href="/cyberchef/cyberchef.htm">CyberChef</a>: The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis<br>
 <?php if (file_exists("/etc/nsm/servertab")): ?>
 	* <a href="/squert/">Squert</a>: View and categorize NIDS/HIDS alerts<br>
-	<?php if (file_exists("/etc/nsm/securityonion.conf")): ?>
-		<?php $array = parse_ini_string(file_get_contents("/etc/nsm/securityonion.conf")); ?>
-		<?php if ( array_key_exists('KIBANA_ENABLED', $array) && $array['KIBANA_ENABLED'] == "yes" ): ?>
-			* <a href="/app/kibana">Kibana</a>: Search logs (IDS, Bro, and syslog) stored in Elasticsearch<br>
-		<?php elseif ( array_key_exists('ELSA', $array) && $array['ELSA'] == 1 ): ?>
-			* <a href="/elsa/">ELSA</a>: Search logs (IDS, Bro, and syslog)<br>
-		<?php endif; ?>
-	<?php endif; ?>
+	* <a href="/app/kibana">Kibana</a>: Search logs (IDS, Bro, and syslog) stored in Elasticsearch<br>
 <?php else: ?>
 (More tools will be available here after you run Setup.)<br>
 <?php endif; ?>
@@ -37,7 +30,7 @@ Please follow the <a href="https://github.com/Security-Onion-Solutions/security-
 
 <b>How do I learn more about Security Onion?</b><br>
 Links to useful Security Onion information:<br>
-* <a href="http://blog.securityonion.net">Blog</a>: Get the latest news and updates</a><br>
+* <a href="https://blog.securityonion.net">Blog</a>: Get the latest news and updates</a><br>
 * <a href="https://securityonion.net/wiki">Wiki</a>: Table of Contents<br>
 * <a href="https://securityonion.net/wiki/Installation">Installation</a>: Installation guides<br>
 * <a href="https://securityonion.net/wiki/Tools">Tools</a>: List of included security tools<br>

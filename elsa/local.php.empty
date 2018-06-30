@@ -1,8 +1,0 @@
-To include your own query links here, edit:<br>
-<i>/var/www/so/elsa/local.php</i><br>
-<br>
-The query links above can be used as a starting point and are stored in:<br>
-<i>/var/www/so/elsa/menu.php</i><br>
-<br>
-Here's a sample query link to get you started:<br>
-<a href="/elsa-query/?query_string=class=BRO_CONN &quot;-&quot; groupby:resp_country_code" target="dynamic" onclick="turnBackBold (this);">Conn Groupby Country</a><br>
