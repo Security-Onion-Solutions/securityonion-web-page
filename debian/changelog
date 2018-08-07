@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion82) xenial; urgency=medium
+
+  * securityonion-web-page: CyberChef 8.0.0 #1290 
+
+ -- Doug Burks <doug.burks@gmail.com>  Tue, 07 Aug 2018 13:02:49 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion81) xenial; urgency=medium
 
   * add libapache2-mod-authnz-external dependency 
