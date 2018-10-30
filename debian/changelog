@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion86) xenial; urgency=medium
+
+  * revert to CyberChef 8.8.1 
+
+ -- Doug Burks <doug.burks@gmail.com>  Tue, 30 Oct 2018 17:10:51 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion85) xenial; urgency=medium
 
   * CyberChef 8.8.5 #1357 
