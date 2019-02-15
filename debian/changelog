@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion90) xenial; urgency=medium
+
+  * securityonion-web-page: change wiki to docs Security-Onion-Solutions/security-onion#1451 
+
+ -- Doug Burks <doug.burks@gmail.com>  Fri, 15 Feb 2019 13:46:12 -0500
+
 securityonion-web-page (20141015-0ubuntu0securityonion89) xenial; urgency=medium
 
   * CyberChef 8.23.4 Security-Onion-Solutions/security-onion#1439 

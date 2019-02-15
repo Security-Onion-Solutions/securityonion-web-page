@@ -16,7 +16,7 @@
 Security Onion is a Linux distro for intrusion detection, network security monitoring, and log management. It's based on Ubuntu and contains Snort, Suricata, Bro, OSSEC, Sguil, Squert, NetworkMiner, the Elastic Stack, and many other security tools. The easy-to-use Setup wizard allows you to build an army of distributed nodes for your enterprise in minutes!<br>
 <br>
 <b>How do I install and configure Security Onion?</b><br>
-Please follow the <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki/Installation">Installation guides</a> on our <a href="https://github.com/Security-Onion-Solutions/security-onion/wiki">Wiki</a>.<br>
+Please follow the <a href="https://securityonion.net/docs/Installation">Installation guides</a> on our <a href="https://securityonion.net/docs">Documentation</a>.<br>
 <br>
 <b>Tools</b><br>
 * <a href="/cyberchef/cyberchef.htm">CyberChef</a>: The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis<br>
@@ -31,10 +31,10 @@ Please follow the <a href="https://github.com/Security-Onion-Solutions/security-
 <b>How do I learn more about Security Onion?</b><br>
 Links to useful Security Onion information:<br>
 * <a href="https://blog.securityonion.net">Blog</a>: Get the latest news and updates</a><br>
-* <a href="https://securityonion.net/wiki">Wiki</a>: Table of Contents<br>
-* <a href="https://securityonion.net/wiki/Installation">Installation</a>: Installation guides<br>
-* <a href="https://securityonion.net/wiki/Tools">Tools</a>: List of included security tools<br>
-* <a href="https://securityonion.net/wiki/MailingLists">Mailing Lists</a>: Join the list(s) to get help and help others<br>
+* <a href="https://securityonion.net/docs">Wiki</a>: Table of Contents<br>
+* <a href="https://securityonion.net/docs/Installation">Installation</a>: Installation guides<br>
+* <a href="https://securityonion.net/docs/Tools">Tools</a>: List of included security tools<br>
+* <a href="https://securityonion.net/docs/MailingLists">Mailing Lists</a>: Join the list(s) to get help and help others<br>
 * <a href="https://securityonion.net/wiki/Roadmap">Roadmap</a>: Preview future updates</a><br>
 <br> 
 <b>Commercial Support and Training</b><br>
