@@ -31,11 +31,10 @@ Please follow the <a href="https://securityonion.net/docs/Installation">Installa
 <b>How do I learn more about Security Onion?</b><br>
 Links to useful Security Onion information:<br>
 * <a href="https://blog.securityonion.net">Blog</a>: Get the latest news and updates</a><br>
-* <a href="https://securityonion.net/docs">Wiki</a>: Table of Contents<br>
+* <a href="https://securityonion.net/docs">Documentation</a>: Table of Contents<br>
 * <a href="https://securityonion.net/docs/Installation">Installation</a>: Installation guides<br>
 * <a href="https://securityonion.net/docs/Tools">Tools</a>: List of included security tools<br>
-* <a href="https://securityonion.net/docs/MailingLists">Mailing Lists</a>: Join the list(s) to get help and help others<br>
-* <a href="https://securityonion.net/wiki/Roadmap">Roadmap</a>: Preview future updates</a><br>
+* <a href="https://securityonion.net/docs/MailingLists">Mailing Lists</a>: Join the mailing list to get help and help others<br>
 <br> 
 <b>Commercial Support and Training</b><br>
 Need training or commercial support?<br>
