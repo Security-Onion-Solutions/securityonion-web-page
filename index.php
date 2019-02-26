@@ -18,6 +18,9 @@ Security Onion is a Linux distro for intrusion detection, network security monit
 <b>How do I install and configure Security Onion?</b><br>
 Please follow the <a href="https://securityonion.net/docs/Installation">Installation guides</a> on our <a href="https://securityonion.net/docs">Documentation</a>.<br>
 <br>
+<b>Need a cheat sheet?</b><br>
+<a href="Security-Onion-Cheat-Sheet.pdf">Cheat Sheet</a><br>
+<br>
 <b>Tools</b><br>
 * <a href="/cyberchef/cyberchef.htm">CyberChef</a>: The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis<br>
 <?php if (file_exists("/etc/nsm/servertab")): ?>
