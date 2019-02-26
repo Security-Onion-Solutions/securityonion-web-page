@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion93) xenial; urgency=medium
+
+  * securityonion-web-page: add Security Onion documentation Security-Onion-Solutions/security-onion#1446 
+
+ -- Doug Burks <doug.burks@gmail.com>  Tue, 26 Feb 2019 12:44:42 -0500
+
 securityonion-web-page (20141015-0ubuntu0securityonion92) xenial; urgency=medium
 
   * securityonion-web-page: add Security Onion cheat sheet PDF Security-Onion-Solutions/security-onion#571 

@@ -1,5 +1,6 @@
 css var/www/so
 cyberchef var/www/so
+docs var/www/so
 fonts var/www/so
 index.php var/www/so
 js var/www/so
@@ -7,3 +8,4 @@ login.html var/www/so
 login-inline.html var/www/so
 securityonion_logo.jpg var/www/so
 sites-available etc/apache2
+Security-Onion-Cheat-Sheet.pdf var/www/so

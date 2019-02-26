@@ -13,10 +13,15 @@
 </center>
 <br> 
 <b>What is Security Onion?</b><br>
-Security Onion is a Linux distro for intrusion detection, network security monitoring, and log management. It's based on Ubuntu and contains Snort, Suricata, Bro, OSSEC, Sguil, Squert, NetworkMiner, the Elastic Stack, and many other security tools. The easy-to-use Setup wizard allows you to build an army of distributed nodes for your enterprise in minutes!<br>
+Security Onion is a Linux distro for intrusion detection, enterprise security monitoring, and log management. It's based on Ubuntu and contains Snort, Suricata, Bro, OSSEC, Sguil, Squert, NetworkMiner, the Elastic Stack, and many other security tools. The easy-to-use Setup wizard allows you to build an army of distributed nodes for your enterprise in minutes!<br>
+<br>
+<b>Where do I find documentation?</b><br>
+If you have Internet access, please use the <a href="https://securityonion.net/docs">online documentation</a>.<br>
+If you have don't have Internet access, you can access the <a href="/docs">offline documentation</a>.<br>
+(The <a href="https://securityonion.net/docs">online documentation</a> is updated more frequently than the <a href="/docs">offline documentation</a>.)<br>
 <br>
 <b>How do I install and configure Security Onion?</b><br>
-Please follow the <a href="https://securityonion.net/docs/Installation">Installation guides</a> on our <a href="https://securityonion.net/docs">Documentation</a>.<br>
+Please follow the Installation guides in the documentation (see above).<br>
 <br>
 <b>Need a cheat sheet?</b><br>
 <a href="Security-Onion-Cheat-Sheet.pdf">Cheat Sheet</a><br>
@@ -30,17 +35,8 @@ Please follow the <a href="https://securityonion.net/docs/Installation">Installa
 (More tools will be available here after you run Setup.)<br>
 <?php endif; ?>
 <br>
-
-<b>How do I learn more about Security Onion?</b><br>
-Links to useful Security Onion information:<br>
-* <a href="https://blog.securityonion.net">Blog</a>: Get the latest news and updates</a><br>
-* <a href="https://securityonion.net/docs">Documentation</a>: Table of Contents<br>
-* <a href="https://securityonion.net/docs/Installation">Installation</a>: Installation guides<br>
-* <a href="https://securityonion.net/docs/Tools">Tools</a>: List of included security tools<br>
-* <a href="https://securityonion.net/docs/MailingLists">Mailing Lists</a>: Join the mailing list to get help and help others<br>
-<br> 
-<b>Commercial Support and Training</b><br>
-Need training or commercial support?<br>
+<b>Security Onion Solutions</b><br>
+Interested in training, professional services, or hardware appliances?<br>
 <a href="https://securityonionsolutions.com">https://securityonionsolutions.com</a><br> 
 <br> 
 <b>Disclaimer of Warranty<br>
