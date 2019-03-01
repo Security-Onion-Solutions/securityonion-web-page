@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion94) xenial; urgency=medium
+
+  * update cheat sheet 
+
+ -- Doug Burks <doug.burks@gmail.com>  Thu, 28 Feb 2019 19:34:43 -0500
+
 securityonion-web-page (20141015-0ubuntu0securityonion93) xenial; urgency=medium
 
   * securityonion-web-page: add Security Onion documentation Security-Onion-Solutions/security-onion#1446 
