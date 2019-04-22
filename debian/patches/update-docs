@@ -1,0 +1,407 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ securityonion-web-page (20141015-0ubuntu0securityonion98) xenial; urgency=medium
+ .
+   * update docs
+Author: Doug Burks <doug.burks@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- securityonion-web-page-20141015.orig/docs/.buildinfo
++++ securityonion-web-page-20141015/docs/.buildinfo
+@@ -1,4 +1,4 @@
+ # Sphinx build info version 1
+ # This file hashes the configuration used when building these files. When it is not found, a full rebuild will be done.
+-config: 77ff877435b7b4ff8869a031ee8aa33c
++config: d887a7cfdc1763db0ba16d8edbd724b5
+ tags: 0957a7f5604f7fa265ade309e7b795c2
+--- securityonion-web-page-20141015.orig/docs/index.html
++++ securityonion-web-page-20141015/docs/index.html
+@@ -750,7 +750,7 @@ READTHEDOCS_DATA['page'] = 'index'
+ </div>
+ <div class="line-block">
+ <div class="line">Dirt Cheap and Versatile:</div>
+-<div class="line"><a class="reference external" href="http://www.roc-noc.com/mikrotik/routerboard/RB260GS.html">http://www.roc-noc.com/mikrotik/routerboard/RB260GS.html</a></div>
++<div class="line"><a class="reference external" href="https://mikrotik.com/product/RB260GS">https://mikrotik.com/product/RB260GS</a></div>
+ </div>
+ <div class="line-block">
+ <div class="line">Netgear GS105E (requires Windows app for config):</div>
+@@ -781,6 +781,7 @@ Fabric</a></li>
+ <li><a class="reference external" href="https://www.garlandtechnology.com/products">Garland Technologies
+ Taps</a></li>
+ <li><a class="reference external" href="https://www.apcon.com/products">APCON</a></li>
++<li><a class="reference external" href="https://www.profitap.com">Profitap</a></li>
+ </ul>
+ </div>
+ <div class="section" id="further-reading">
+@@ -1146,7 +1147,7 @@ try pressing the “Esc” key to see th
+ </li>
+ <li><p class="first">Verify that you have Internet connectivity. If necessary, configure your <a class="reference external" href="Proxy">proxy</a> settings.</p>
+ </li>
+-<li><p class="first">If you installed from the Security Onion 16.04 ISO image, run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">soup</span></code>. If you get any errors relating to MySQL, please see the <a class="reference external" href="MySQL-Upgrade-Errors">MySQL-Upgrade-Errors</a> section. Reboot if prompted. Skip to the Setup section below.</p>
++<li><p class="first">If you installed from the Security Onion 16.04 ISO image, run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">soup</span></code> and reboot if prompted, then skip to the Setup section below (if you get any errors relating to MySQL, please see the <a class="reference external" href="MySQL-Upgrade-Errors">MySQL-Upgrade-Errors</a> section). Otherwise, if you’re installing on Ubuntu, continue to the next step.</p>
+ </li>
+ <li><p class="first">Install all Ubuntu updates and reboot:</p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">apt</span> <span class="n">dist</span><span class="o">-</span><span class="n">upgrade</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">reboot</span>
+@@ -1471,23 +1472,33 @@ have on your quarterly numbers.</div></b
+ </div>
+ <div class="section" id="plugins">
+ <h4>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h4>
++<p>Please note that we do not officially support installing plugins.  Do so at your own risk!</p>
+ <p>To add a plugin to Kibana, you can expose the plugins directory to the host filesystem and then copy your plugins to that directory. For example, to load the <a class="reference external" href="https://github.com/dlumbrer/kbn_network">kbn_network</a> plugin you can do something like the following.</p>
+-<p>Create a directory in the host filesystem to store plugins:</p>
++<p>Create a new directory in the host filesystem called <code class="docutils literal notranslate"><span class="pre">/nsm/kibana/plugins</span></code> to store plugins:</p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">kibana</span><span class="o">/</span><span class="n">plugins</span>
+ </pre></div>
+ </div>
+-<p>Download plugin to that directory:</p>
+-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="o">-</span><span class="n">qO</span><span class="o">-</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">dlumbrer</span><span class="o">/</span><span class="n">kbn_network</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="mf">6.0</span><span class="o">.</span><span class="n">X</span><span class="o">-</span><span class="mi">2</span><span class="o">/</span><span class="n">network_vis</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tar</span> <span class="n">xvJ</span> <span class="o">-</span><span class="n">C</span> <span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">kibana</span><span class="o">/</span><span class="n">plugins</span>
++<p>Download your desired plugin and decompress it to <code class="docutils literal notranslate"><span class="pre">/nsm/kibana/plugins</span></code>.  For example:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="o">-</span><span class="n">qO</span><span class="o">-</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">dlumbrer</span><span class="o">/</span><span class="n">kbn_network</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="mf">6.5</span><span class="o">.</span><span class="n">X</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">network_vis</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mf">5.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tar</span> <span class="n">zxv</span> <span class="o">-</span><span class="n">C</span> <span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">kibana</span><span class="o">/</span><span class="n">plugins</span>
+ </pre></div>
+ </div>
+-<p>Modify Kibana options to mount that directory into the container:</p>
+-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;s|KIBANA_OPTIONS=&quot;&quot;|KIBANA_OPTIONS=&quot;--volume /nsm/kibana/plugins:/usr/share/kibana/plugins:ro&quot;|g&#39;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">securityonion</span><span class="o">.</span><span class="n">conf</span>
++<p>Kibana now requires <code class="docutils literal notranslate"><span class="pre">jquery.flot.log</span></code> when re-optimizing, so let’s create that:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">touch</span> <span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">kibana</span><span class="o">/</span><span class="n">jquery</span><span class="o">.</span><span class="n">flot</span><span class="o">.</span><span class="n">log</span>
++</pre></div>
++</div>
++<p>Modify <code class="docutils literal notranslate"><span class="pre">KIBANA_OPTIONS</span></code> in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/securityonion.conf</span></code> to mount <code class="docutils literal notranslate"><span class="pre">/nsm/kibana/plugins</span></code> directory and <code class="docutils literal notranslate"><span class="pre">jquery.flot.log</span></code> into the container:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;s|^KIBANA_OPTIONS.*$|KIBANA_OPTIONS=&quot;--volume /nsm/kibana/plugins:/usr/share/kibana/plugins:ro --volume /nsm/kibana/jquery.flot.log:/usr/share/kibana/src/ui/public/flot-charts/jquery.flot.log&quot;|g&#39;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">securityonion</span><span class="o">.</span><span class="n">conf</span>
+ </pre></div>
+ </div>
+ <p>Restart Kibana:</p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">kibana</span><span class="o">-</span><span class="n">restart</span>
+ </pre></div>
+ </div>
++<p>Monitor Kibana log file for errors:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">kibana</span><span class="o">/</span><span class="n">kibana</span><span class="o">.</span><span class="n">log</span>
++</pre></div>
++</div>
++<p>Kibana may take a few minutes to re-optimize.  Once that’s complete, you should be able to log into Kibana and test your new plugin.</p>
+ </div>
+ </div>
+ <span id="document-capme"></span><div class="section" id="capme">
+@@ -1651,12 +1662,7 @@ views will prompt questions that otherwi
+ </div>
+ <div class="section" id="prepared-statements">
+ <h4>Prepared Statements<a class="headerlink" href="#prepared-statements" title="Permalink to this headline">¶</a></h4>
+-<div class="line-block">
+-<div class="line">Squert uses prepared statements:</div>
+-<div class="line"><a class="reference external" href="https://blog.securityonion.net/2018/01/security-advisory-for-squert.html">https://blog.securityonion.net/2018/01/security-advisory-for-squert.html</a></div>
+-<div class="line"><br /></div>
+-<div class="line">If you start seeing <code class="docutils literal notranslate"><span class="pre">Prepared</span> <span class="pre">statement</span> <span class="pre">needs</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">re-prepared</span></code> in <code class="docutils literal notranslate"><span class="pre">/var/log/apache2/error.log</span></code>, please see the <a class="reference external" href="MySQLTuning#table_definition_cache">MySQLTuning#table_definition_cache</a> section.</div>
+-</div>
++<p>Squert uses prepared statements.  If you start seeing <code class="docutils literal notranslate"><span class="pre">Prepared</span> <span class="pre">statement</span> <span class="pre">needs</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">re-prepared</span></code> in <code class="docutils literal notranslate"><span class="pre">/var/log/apache2/error.log</span></code>, please see the <a class="reference external" href="MySQLTuning#table_definition_cache">MySQLTuning#table_definition_cache</a> section.</p>
+ </div>
+ </div>
+ <span id="document-sguil"></span><div class="section" id="sguil">
+@@ -2474,13 +2480,6 @@ the expected and uncover the unexpected.
+ <h4>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h4>
+ <div class="section" id="shards">
+ <h5>Shards<a class="headerlink" href="#shards" title="Permalink to this headline">¶</a></h5>
+-<p>From
+-<a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/_basic_concepts.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/_basic_concepts.html</a>:</p>
+-<blockquote>
+-<div>Each Elasticsearch shard is a Lucene index. There is a maximum
+-number of documents you can have in a single Lucene index. As of
+-LUCENE-5843, the limit is 2,147,483,519 (= Integer.MAX_VALUE - 128)
+-documents.</div></blockquote>
+ <p>Here are a few tips from
+ <a class="reference external" href="https://www.elastic.co/blog/how-many-shards-should-i-have-in-my-elasticsearch-cluster">https://www.elastic.co/blog/how-many-shards-should-i-have-in-my-elasticsearch-cluster</a>:</p>
+ <blockquote>
+@@ -2503,11 +2502,57 @@ you can keep it the better. This will ge
+ stay in good health.</p>
+ </div></blockquote>
+ <p>To see your existing shards:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">9200</span><span class="o">/</span><span class="n">_cat</span><span class="o">/</span><span class="n">indices</span>
++</pre></div>
++</div>
++<p>The number of shards will be shown in the fifth column.</p>
++<p>If you want to view the detail for each of those shards:</p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">9200</span><span class="o">/</span><span class="n">_cat</span><span class="o">/</span><span class="n">shards</span>
+ </pre></div>
+ </div>
+-<p>To modify your number of shards, you can change <code class="docutils literal notranslate"><span class="pre">number_of_shards</span></code> in <code class="docutils literal notranslate"><span class="pre">/etc/logstash/*-template.json</span></code> (first copy this file to <code class="docutils literal notranslate"><span class="pre">/etc/logstash/custom</span></code>, edit the file, then restart Logstash).</p>
+-<p>Keep in mind, old indices will retain previous shard settings, and the above settings will only be applied to newly created indices.</p>
++<p>Given the sizing tips above, if any of your indices are averaging more than 50GB per shard, then you should probably increase the shard count until you get below that recommended maximum of 50GB per shard.</p>
++<p>The number of shards for an index is defined in the template file for that index.  By default, there are three template files in <code class="docutils literal notranslate"><span class="pre">/etc/logstash/</span></code>:</p>
++<ul class="simple">
++<li><code class="docutils literal notranslate"><span class="pre">beats-template.json</span></code> applies to <code class="docutils literal notranslate"><span class="pre">logstash-beats</span></code> indices</li>
++<li><code class="docutils literal notranslate"><span class="pre">logstash-ossec-template.json</span></code> applies to <code class="docutils literal notranslate"><span class="pre">logstash-ossec</span></code> indices</li>
++<li><code class="docutils literal notranslate"><span class="pre">logstash-template.json</span></code> applies to <code class="docutils literal notranslate"><span class="pre">logstash-ids</span></code>, <code class="docutils literal notranslate"><span class="pre">logstash-firewall</span></code>, <code class="docutils literal notranslate"><span class="pre">logstash-syslog</span></code>, <code class="docutils literal notranslate"><span class="pre">logstash-bro</span></code>, <code class="docutils literal notranslate"><span class="pre">logstash-import</span></code>, and <code class="docutils literal notranslate"><span class="pre">logstash-beats</span></code>.</li>
++</ul>
++<p>Depending on which index you want to increase shards for, you have a few options.</p>
++<p>If you want to increase shards for <code class="docutils literal notranslate"><span class="pre">logstash-beats</span></code> or <code class="docutils literal notranslate"><span class="pre">logstash-ossec</span></code>:</p>
++<ul>
++<li><p class="first">First, copy the template to <code class="docutils literal notranslate"><span class="pre">/etc/logstash/custom/</span></code>.  For example:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">cp</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">logstash</span><span class="o">/</span><span class="n">logstash</span><span class="o">-</span><span class="n">ossec</span><span class="o">-</span><span class="n">template</span><span class="o">.</span><span class="n">json</span> <span class="n">to</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">logstash</span><span class="o">/</span><span class="n">custom</span><span class="o">/</span>
++</pre></div>
++</div>
++</li>
++<li><p class="first">Then, update your new template in <code class="docutils literal notranslate"><span class="pre">/etc/logstash/custom/</span></code>.</p>
++</li>
++<li><p class="first">Finally, restart Logstash to push the new template to Elasticsearch:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">logstash</span><span class="o">-</span><span class="n">restart</span>
++</pre></div>
++</div>
++</li>
++</ul>
++<p>If you want to increase shards for all indices defined in <code class="docutils literal notranslate"><span class="pre">logstash-template.json</span></code>, then you can follow a process similar to what was shown above.  However, if you want to increase shard count for only one index type (example: bro), you can update the template as follows:</p>
++<ul>
++<li><p class="first">First, copy <code class="docutils literal notranslate"><span class="pre">/etc/logstash/logstash-template.json</span></code> and give it a name based on the index (example: <code class="docutils literal notranslate"><span class="pre">logstash-bro-template.json</span></code>).</p>
++</li>
++<li><p class="first">Then, update your new template, changing the <code class="docutils literal notranslate"><span class="pre">index_patterns</span></code> line to only apply to the index you care about, increasing the value of the <code class="docutils literal notranslate"><span class="pre">order</span></code> field from <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code>, and setting your <code class="docutils literal notranslate"><span class="pre">number_of_shards</span></code>.</p>
++</li>
++<li><p class="first">Next, we need to tell Logstash to use this new template, so update the proper output file in <code class="docutils literal notranslate"><span class="pre">/etc/logstash/conf.d/</span></code> and update the template value.</p>
++</li>
++<li><p class="first">Then, we need to configure the Logstash container to be able to access the template by updating <code class="docutils literal notranslate"><span class="pre">LOGSTASH_OPTIONS</span></code> in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/securityonion.conf</span></code> similar to the following:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LOGSTASH_OPTIONS</span><span class="o">=</span><span class="s2">&quot;--volume /etc/logstash/logstash-bro-template.json:/logstash-bro-template.json:ro&quot;</span>
++</pre></div>
++</div>
++</li>
++<li><p class="first">Finally, restart Logstash to push the new template to Elasticsearch:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">logstash</span><span class="o">-</span><span class="n">restart</span>
++</pre></div>
++</div>
++</li>
++</ul>
++<p>Please keep in mind that old indices will retain previous shard settings and the above settings will only be applied to newly created indices.</p>
+ </div>
+ <div class="section" id="files">
+ <h5>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h5>
+@@ -2685,7 +2730,7 @@ for more details.</p>
+ </pre></div>
+ </div>
+ <p>If mappings defined in the template are different than in existing indices, you will receive mapping conflicts in Kibana.</p>
+-<p>To avoid this, either remove the existing indices, wiping all data, or <a class="reference external" href="Re‐Indexing">re-index</a>.</p>
++<p>To avoid this, either remove the existing indices, wiping all data, or <a class="reference external" href="re‐indexing.html">re-index</a>.</p>
+ </div>
+ <div class="section" id="logging">
+ <h5>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h5>
+@@ -2761,7 +2806,7 @@ Logstash uses whichever criteria is reac
+ </div>
+ <div class="section" id="data-fields">
+ <h4>Data Fields<a class="headerlink" href="#data-fields" title="Permalink to this headline">¶</a></h4>
+-<p>Logstash process Bro logs, syslog, IDS alerts, etc., formatting said data into many different data fields, as described on the <a class="reference external" href="Data-Fields">Data Fields</a> page.</p>
++<p>Logstash process Bro logs, syslog, IDS alerts, etc., formatting said data into many different data fields, as described in the <a class="reference external" href="Data-Fields">Data Fields</a> section.</p>
+ </div>
+ <div class="section" id="log">
+ <h4>Log<a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h4>
+@@ -2857,6 +2902,11 @@ you.</p>
+ <h5>so-elastalert-create<a class="headerlink" href="#so-elastalert-create" title="Permalink to this headline">¶</a></h5>
+ <p><code class="docutils literal notranslate"><span class="pre">so-elastalert-create</span></code> is a tool created by <a class="reference external" href="https://github.com/bryant-treacle/so-elastalert-create">Bryant Treacle</a> that can be used to help ease the pain of ensuring correct syntax and creating Elastalert rules from scratch. It will walk you through various questions, and eventually output an Elastalert rule file that you can deploy in your environment to start alerting quickly and easily.</p>
+ </div>
++<div class="section" id="so-elastalert-test">
++<h5>so-elastalert-test<a class="headerlink" href="#so-elastalert-test" title="Permalink to this headline">¶</a></h5>
++<p><code class="docutils literal notranslate"><span class="pre">so-elastalert-test</span></code> is a wrapper script originally written by Bryant Treacle for ElastAlert’s <code class="docutils literal notranslate"><span class="pre">elastalert-test-rule</span></code> tool.  The script allows you to test an ElastAlert rule and get results immediately. Simply run <code class="docutils literal notranslate"><span class="pre">so-elastalert-test</span></code>, and follow the prompt(s).</p>
++<p>Please note, all options available to <code class="docutils literal notranslate"><span class="pre">elastalert-test-rule</span></code> are not yet included with <code class="docutils literal notranslate"><span class="pre">so-elastalert-test</span></code>.</p>
++</div>
+ <div class="section" id="defaults">
+ <h5>Defaults<a class="headerlink" href="#defaults" title="Permalink to this headline">¶</a></h5>
+ <p>With Security Onion’s example rules, Elastalert is configured by default to only count the number of hits for a particular match, and will not return the actual log entry for which an alert was generated.</p>
+@@ -2888,7 +2938,7 @@ you.</p>
+ <span id="document-curator"></span><div class="section" id="curator">
+ <h3>Curator<a class="headerlink" href="#curator" title="Permalink to this headline">¶</a></h3>
+ <p>From:
+-<a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/client/curator/5.1/about.html#about">https://www.elastic.co/guide/en/elasticsearch/client/curator/5.1/about.html#about</a></p>
++<a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/client/curator/current/about.html#about">https://www.elastic.co/guide/en/elasticsearch/client/curator/current/about.html#about</a></p>
+ <blockquote>
+ <div><p>Elasticsearch Curator helps you curate, or manage, your
+ Elasticsearch indices and snapshots by:</p>
+@@ -2980,32 +3030,41 @@ with <code class="docutils literal notra
+ <h4>Kibana<a class="headerlink" href="#kibana" title="Permalink to this headline">¶</a></h4>
+ <p>You can find FreqServer data on the Frequency Analysis dashboard.</p>
+ </div>
+-<div class="section" id="dns-frequency-analysis">
+-<h4>DNS Frequency Analysis<a class="headerlink" href="#dns-frequency-analysis" title="Permalink to this headline">¶</a></h4>
+-<div class="line-block">
+-<div class="line"><img alt="freq1-dns" src="https://user-images.githubusercontent.com/1659467/30856300-e60be17a-a285-11e7-87fc-acc27665cd7e.PNG" /></div>
+-<div class="line"><img alt="freq2-dns" src="https://user-images.githubusercontent.com/1659467/30856292-e5d0b186-a285-11e7-875e-7e55c4684507.PNG" /></div>
+-</div>
++<div class="section" id="dns-highest-registered-domain-frequency-analysis">
++<h4>DNS Highest Registered Domain Frequency Analysis<a class="headerlink" href="#dns-highest-registered-domain-frequency-analysis" title="Permalink to this headline">¶</a></h4>
++<p><img alt="freq1-dns" src="https://user-images.githubusercontent.com/1659467/30856300-e60be17a-a285-11e7-87fc-acc27665cd7e.PNG" /></p>
++</div>
++<div class="section" id="dns-parent-domain-frequency-analysis">
++<h4>DNS Parent Domain Frequency Analysis<a class="headerlink" href="#dns-parent-domain-frequency-analysis" title="Permalink to this headline">¶</a></h4>
++<p><img alt="freq2-dns" src="https://user-images.githubusercontent.com/1659467/30856292-e5d0b186-a285-11e7-875e-7e55c4684507.PNG" /></p>
+ </div>
+ <div class="section" id="http-frequency-analysis">
+ <h4>HTTP Frequency Analysis<a class="headerlink" href="#http-frequency-analysis" title="Permalink to this headline">¶</a></h4>
+ <p><img alt="freq3-http" src="https://user-images.githubusercontent.com/1659467/30856293-e5d0d47c-a285-11e7-8c91-af45cab8276e.PNG" /></p>
+ </div>
+-<div class="section" id="ssl-frequency-analysis">
+-<h4>SSL Frequency Analysis<a class="headerlink" href="#ssl-frequency-analysis" title="Permalink to this headline">¶</a></h4>
+-<div class="line-block">
+-<div class="line"><img alt="freq4-ssl" src="https://user-images.githubusercontent.com/1659467/30856295-e5d1014a-a285-11e7-9dd4-19a2844dc824.PNG" /></div>
+-<div class="line"><img alt="freq5-ssl" src="https://user-images.githubusercontent.com/1659467/30856296-e5d1f320-a285-11e7-8892-86f6a0f599f1.PNG" /></div>
+-<div class="line"><img alt="freq6-ssl" src="https://user-images.githubusercontent.com/1659467/30856294-e5d0dd0a-a285-11e7-8186-179e52c49383.PNG" /></div>
+-</div>
+-</div>
+-<div class="section" id="x-509-frequency-analysis">
+-<h4>X.509 Frequency Analysis<a class="headerlink" href="#x-509-frequency-analysis" title="Permalink to this headline">¶</a></h4>
+-<div class="line-block">
+-<div class="line"><img alt="freq7-x509" src="https://user-images.githubusercontent.com/1659467/30856297-e5e2bbc4-a285-11e7-9cc4-87781d3d7768.PNG" /></div>
+-<div class="line"><img alt="freq8-x509" src="https://user-images.githubusercontent.com/1659467/30856299-e5e41500-a285-11e7-937b-dda97690c386.PNG" /></div>
+-<div class="line"><img alt="freq9-x509" src="https://user-images.githubusercontent.com/1659467/30856298-e5e2f9f4-a285-11e7-9c95-b24f44199701.PNG" /></div>
+-</div>
++<div class="section" id="ssl-certificate-common-name-frequency-analysis">
++<h4>SSL Certificate Common Name Frequency Analysis<a class="headerlink" href="#ssl-certificate-common-name-frequency-analysis" title="Permalink to this headline">¶</a></h4>
++<p><img alt="freq4-ssl" src="https://user-images.githubusercontent.com/1659467/30856295-e5d1014a-a285-11e7-9dd4-19a2844dc824.PNG" /></p>
++</div>
++<div class="section" id="ssl-certificate-server-name-frequency-analysis">
++<h4>SSL Certificate Server Name Frequency Analysis<a class="headerlink" href="#ssl-certificate-server-name-frequency-analysis" title="Permalink to this headline">¶</a></h4>
++<p><img alt="freq5-ssl" src="https://user-images.githubusercontent.com/1659467/30856296-e5d1f320-a285-11e7-8892-86f6a0f599f1.PNG" /></p>
++</div>
++<div class="section" id="ssl-certificate-issuer-name-frequency-analysis">
++<h4>SSL Certificate Issuer Name Frequency Analysis<a class="headerlink" href="#ssl-certificate-issuer-name-frequency-analysis" title="Permalink to this headline">¶</a></h4>
++<p><img alt="freq6-ssl" src="https://user-images.githubusercontent.com/1659467/30856294-e5d0dd0a-a285-11e7-8186-179e52c49383.PNG" /></p>
++</div>
++<div class="section" id="x-509-certificate-common-name-frequency-analysis">
++<h4>X.509 Certificate Common Name Frequency Analysis<a class="headerlink" href="#x-509-certificate-common-name-frequency-analysis" title="Permalink to this headline">¶</a></h4>
++<p><img alt="freq7-x509" src="https://user-images.githubusercontent.com/1659467/30856297-e5e2bbc4-a285-11e7-9cc4-87781d3d7768.PNG" /></p>
++</div>
++<div class="section" id="x-509-certificate-issuer-organization-frequency-analysis">
++<h4>X.509 Certificate Issuer Organization Frequency Analysis<a class="headerlink" href="#x-509-certificate-issuer-organization-frequency-analysis" title="Permalink to this headline">¶</a></h4>
++<p><img alt="freq8-x509" src="https://user-images.githubusercontent.com/1659467/30856299-e5e41500-a285-11e7-937b-dda97690c386.PNG" /></p>
++</div>
++<div class="section" id="x-509-certificate-issuer-frequency-analysis">
++<h4>X.509 Certificate Issuer Frequency Analysis<a class="headerlink" href="#x-509-certificate-issuer-frequency-analysis" title="Permalink to this headline">¶</a></h4>
++<p><img alt="freq9-x509" src="https://user-images.githubusercontent.com/1659467/30856298-e5e2f9f4-a285-11e7-9c95-b24f44199701.PNG" /></p>
+ </div>
+ </div>
+ <span id="document-domainstats"></span><div class="section" id="domainstats">
+@@ -4507,7 +4566,7 @@ iface eth1 inet manual
+ <span class="n">sudo</span> <span class="n">soup</span>
+ </pre></div>
+ </div>
+-<p><strong>*For older versions of Security Onion on the Elastic Stack, if the above did not work, you may want to try the following:*</strong></p>
++<p><strong>For older versions of Security Onion on the Elastic Stack, if the above did not work, you may want to try the following:</strong></p>
+ <p>Modify <code class="docutils literal notranslate"><span class="pre">/etc/default/docker</span></code> and add the appropriate proxy information, like so:</p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">http_proxy</span><span class="o">=</span><span class="s2">&quot;http://server:port/&quot;</span>
+ <span class="n">export</span> <span class="n">https_proxy</span><span class="o">=</span><span class="s2">&quot;https://server:port/&quot;</span>
+@@ -4913,7 +4972,7 @@ and no tags simultaneously. Bro 2.0 shou
+ </div>
+ <span id="document-rules"></span><div class="section" id="managing-rules">
+ <h3>Managing Rules<a class="headerlink" href="#managing-rules" title="Permalink to this headline">¶</a></h3>
+-<p>Rulesets are chosen during setup and are specified in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/pulledpork/pulledpork.conf</span></code>. If you change the the configuration in <code class="docutils literal notranslate"><span class="pre">pulledpork.conf</span></code>, then you will need to run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code>.  If in a server/sensor deployment, run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code> on the master first, then the sensor (or simply wait up to 15 minutes for it to be replicated).</p>
++<p>Rulesets are chosen during setup and are specified in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/pulledpork/pulledpork.conf</span></code>. If you change the configuration in <code class="docutils literal notranslate"><span class="pre">pulledpork.conf</span></code>, then you will need to run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code>.  If in a server/sensor deployment, run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code> on the master first, then the sensor (or simply wait up to 15 minutes for it to be replicated).</p>
+ <p>Security Onion offers the following choices for rulesets to be used by Snort/Suricata.</p>
+ <div class="section" id="et-open">
+ <h4>ET Open<a class="headerlink" href="#et-open" title="Permalink to this headline">¶</a></h4>
+@@ -5497,7 +5556,7 @@ we edit the disablesid.conf file and add
+ </div>
+ <div class="section" id="autocategorize-events">
+ <h4>Autocategorize events<a class="headerlink" href="#autocategorize-events" title="Permalink to this headline">¶</a></h4>
+-<p>The sguild server can be set to autocategorize events as it processes them. This is a great way to have sguil process the events for us as it sees them, saving us from any laborious categorization. Our current Sguil packages have an AutoCat builder in the Sguil client and in the Squert web interface.</p>
++<p>The sguild server can be set to autocategorize events as it processes them. This is a great way to have sguil process the events for us as it sees them, saving us from any laborious categorization. In the Sguil console, you can create an autocat by right-clicking the event status or by clicking File -&gt; Autocat.  In Squert, you can click the Autocat icon in the upper right corner.</p>
+ </div>
+ <div class="section" id="why-is-pulledpork-ignoring-disabled-rules-in-downloaded-rules">
+ <h4>Why is pulledpork ignoring disabled rules in downloaded.rules<a class="headerlink" href="#why-is-pulledpork-ignoring-disabled-rules-in-downloaded-rules" title="Permalink to this headline">¶</a></h4>
+@@ -6018,6 +6077,10 @@ the options to the equivalent netsniff-n
+ <p><a class="reference external" href="https://help.ubuntu.com/community/OpenVPN">https://help.ubuntu.com/community/OpenVPN</a></p>
+ <p><a class="reference external" href="https://help.ubuntu.com/lts/serverguide/openvpn.html">https://help.ubuntu.com/lts/serverguide/openvpn.html</a></p>
+ </div>
++<div class="section" id="install-packages">
++<h4>Install Packages<a class="headerlink" href="#install-packages" title="Permalink to this headline">¶</a></h4>
++<p>If you are installing from Ubuntu 16.04, make sure you install our packages before continuing with this procedure.  For more information, please see the <a class="reference external" href="getting-started">Getting Started</a> section.</p>
++</div>
+ <div class="section" id="security-onion-sensor">
+ <h4>Security Onion Sensor<a class="headerlink" href="#security-onion-sensor" title="Permalink to this headline">¶</a></h4>
+ <p>We start with our Security Onion sensor.</p>
+@@ -7136,7 +7199,7 @@ because that is the recommended/required
+ <li>Something similar can happen on a daily basis under certain conditions. If there is a discrepancy between the OS timezone and the Sguil UTC settings, then Sguil will be unable to pull transcripts for events in a window of time around midnight coinciding with the timezone’s offset from UTC.</li>
+ </ul>
+ <p>Additionally, UTC comes in quite handy when you have sensors in different time zones and/or are trying to correlate events with other systems or teams.</p>
+-<p>Kibana by default will render timestamps in the timezone of your local browser (more info below) and Squert allows you to set your timezone.</p>
++<p>Kibana by default will render timestamps in the timezone of your local browser and Squert allows you to set your timezone.</p>
+ <div class="section" id="how-do-i-change-the-timezone-for-ubuntu">
+ <h4>How do I change the timezone for Ubuntu?<a class="headerlink" href="#how-do-i-change-the-timezone-for-ubuntu" title="Permalink to this headline">¶</a></h4>
+ <p>When you run our Setup wizard, it should automatically set your OS timezone to UTC. If you’ve already run Setup and then manually changed your timezone to non-UTC and would like to switch back to UTC, you can execute <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">dpkg-reconfigure</span> <span class="pre">tzdata</span></code>. Scroll to the bottom of the Continents list and select <code class="docutils literal notranslate"><span class="pre">None</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">above</span></code>. In the second list, select <code class="docutils literal notranslate"><span class="pre">UTC</span></code>.
+@@ -8926,18 +8989,23 @@ Elasticsearch:</p>
+ <p><code class="docutils literal notranslate"><span class="pre">ps</span> <span class="pre">aux</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">autossh</span></code></p>
+ <p>If you see something like the following, you’ll need to kill it and run
+ <code class="docutils literal notranslate"><span class="pre">so-autossh-start</span></code> again:</p>
+-<p><code class="docutils literal notranslate"><span class="pre">4356</span>&#160; <span class="pre">0.0</span>&#160; <span class="pre">0.0</span>&#160;&#160; <span class="pre">4356</span>&#160;&#160;&#160; <span class="pre">92</span> <span class="pre">?</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">Ss</span>&#160;&#160; <span class="pre">18:26</span>&#160;&#160; <span class="pre">0:00</span> <span class="pre">/usr/lib/autossh/autossh</span> <span class="pre">-M</span> <span class="pre">0</span>&#160;&#160;&#160; <span class="pre">-q</span> <span class="pre">-N</span> <span class="pre">-o</span> <span class="pre">ServerAliveInterval</span> <span class="pre">60</span> <span class="pre">-o</span> <span class="pre">ServerAliveCountMax</span> <span class="pre">3</span> <span class="pre">-i</span> <span class="pre">/root/.ssh/securityonion</span> <span class="pre">-L</span> <span class="pre">3306:127.0.0.1:3306</span> <span class="pre">-R</span> <span class="pre">50000:localhost:3154</span> <span class="pre">sensor&#64;192.168.1.3</span></code></p>
+-<div class="line-block">
+-<div class="line"><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">kill</span> <span class="pre">-9</span> <span class="pre">4356</span></code></div>
+-<div class="line"><code class="docutils literal notranslate"><span class="pre">ps</span> <span class="pre">aux</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">autossh</span></code> (verify no process)</div>
+-<div class="line"><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">so-autossh-start</span></code></div>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>4356  0.0  0.0   4356    92 ?        Ss   18:26   0:00 /usr/lib/autossh/autossh -M 0    -q -N -o ServerAliveInterval 60 -o ServerAliveCountMax 3 -i /root/.ssh/securityonion -L 3306:127.0.0.1:3306 -R 50000:localhost:3154 sensor@192.168.1.3
++
++sudo kill -9 4356
++ps aux | grep autossh (verify no process)
++sudo so-autossh-start
++</pre></div>
+ </div>
+ <p>Checking again with <code class="docutils literal notranslate"><span class="pre">ps</span> <span class="pre">aux</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">autossh</span></code>, we see the correct
+ connection information:</p>
+-<p><code class="docutils literal notranslate"><span class="pre">17707</span>&#160; <span class="pre">0.0</span>&#160; <span class="pre">0.0</span>&#160;&#160; <span class="pre">4356</span>&#160;&#160;&#160; <span class="pre">92</span> <span class="pre">?</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">Ss</span>&#160;&#160; <span class="pre">18:50</span>&#160;&#160; <span class="pre">0:00</span> <span class="pre">/usr/lib/autossh/autossh</span> <span class="pre">-M</span> <span class="pre">0</span>&#160;&#160;&#160; <span class="pre">-q</span> <span class="pre">-N</span> <span class="pre">-o</span> <span class="pre">ServerAliveInterval</span> <span class="pre">60</span> <span class="pre">-o</span> <span class="pre">ServerAliveCountMax</span> <span class="pre">3</span> <span class="pre">-i</span> <span class="pre">/root/.ssh/securityonion</span> <span class="pre">-R</span> <span class="pre">172.18.0.1:50000:localhost:9300</span> <span class="pre">sensor&#64;192.168.1.3</span></code></p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>17707  0.0  0.0   4356    92 ?        Ss   18:50   0:00 /usr/lib/autossh/autossh -M 0    -q -N -o ServerAliveInterval 60 -o ServerAliveCountMax 3 -i /root/.ssh/securityonion -R 172.18.0.1:50000:localhost:9300 sensor@192.168.1.3
++</pre></div>
++</div>
+ <p>Next we’ll want to check to make sure <code class="docutils literal notranslate"><span class="pre">$REVERSE_PORT</span></code> was correctly
+-set in /root/.ssh/securityonion_ssh.conf:</p>
+-<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">cat</span> <span class="pre">/root/.ssh/securityonion_ssh.conf</span></code></p>
++set in <code class="docutils literal notranslate"><span class="pre">/root/.ssh/securityonion_ssh.conf</span></code>:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">cat</span> <span class="o">/</span><span class="n">root</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">securityonion_ssh</span><span class="o">.</span><span class="n">conf</span>
++</pre></div>
++</div>
+ <p>We should get something like the following:</p>
+ <p><code class="docutils literal notranslate"><span class="pre">SSH_USERNAME=sensor</span> <span class="pre">SERVERNAME=192.168.1.3</span> <span class="pre">REVERSE_PORT=50000</span></code></p>
+ <p>Next, we’ll manually add transport settings to
+@@ -8948,7 +9016,7 @@ transport.publish_host: 172.18.0.1
+ transport.publish_port: $REVERSE_PORT.
+ </pre></div>
+ </div>
+-<p><strong>``transport.publish_host`` should ALWAYS be set to ``172.18.0.1``</strong></p>
++<p><code class="docutils literal notranslate"><span class="pre">transport.publish_host</span></code> should ALWAYS be set to <code class="docutils literal notranslate"><span class="pre">172.18.0.1</span></code></p>
+ <p>Restart Elasticsearch:</p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">restart</span> <span class="n">so</span><span class="o">-</span><span class="n">elasticsearch</span>
+ </pre></div>
+@@ -8992,7 +9060,9 @@ node name and $REVERSE_PORT you’d like
+ </div>
+ <p>Next, we can do the following from within Kibana Dev Tools to check our
+ configuration:</p>
+-<p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">_cluster/settings</span></code></p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="n">_cluster</span><span class="o">/</span><span class="n">settings</span>
++</pre></div>
++</div>
+ <p>If everything worked, then you should see the new sensor listed in the
+ output.</p>
+ <p>Last, check the Kibana Overview Dashboard or Discover and search for
+@@ -9430,7 +9500,7 @@ configuration to boot into text mode:</p
+         &copy; Copyright 2019
+       
+         <span class="commit">
+-          Revision <code>ed20ba77</code>.
++          Revision <code>5c62b547</code>.
+         </span>
+       
+ 
+@@ -9466,7 +9536,7 @@ configuration to boot into text mode:</p
+         
+           <dd><a href="//readthedocs.org/projects/securityonion/downloads/pdf/latest/">pdf</a></dd>
+         
+-          <dd><a href="//readthedocs.org/projects/securityonion/downloads/htmlzip/latest/">htmlzip</a></dd>
++          <dd><a href="//readthedocs.org/projects/securityonion/downloads/htmlzip/latest/">html</a></dd>
+         
+           <dd><a href="//readthedocs.org/projects/securityonion/downloads/epub/latest/">epub</a></dd>
+         

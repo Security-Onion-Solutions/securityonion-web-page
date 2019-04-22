@@ -1,3 +1,27 @@
+securityonion-web-page (20141015-0ubuntu0securityonion98) xenial; urgency=medium
+
+  * update docs 
+
+ -- Doug Burks <doug.burks@gmail.com>  Mon, 22 Apr 2019 14:43:48 -0400
+
+securityonion-web-page (20141015-0ubuntu0securityonion97) xenial; urgency=medium
+
+  * update cyberchef and cheat sheet 
+
+ -- Doug Burks <doug.burks@gmail.com>  Mon, 22 Apr 2019 14:32:56 -0400
+
+securityonion-web-page (20141015-0ubuntu0securityonion96) xenial; urgency=medium
+
+  * update docs to 16.04.6.1 
+
+ -- Doug Burks <doug.burks@gmail.com>  Mon, 25 Mar 2019 10:03:30 -0400
+
+securityonion-web-page (20141015-0ubuntu0securityonion95) xenial; urgency=medium
+
+  * update docs and cyberchef 
+
+ -- Doug Burks <doug.burks@gmail.com>  Fri, 22 Mar 2019 15:37:46 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion94) xenial; urgency=medium
 
   * update cheat sheet 

@@ -1,0 +1,145 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ securityonion-web-page (20141015-0ubuntu0securityonion96) xenial; urgency=medium
+ .
+   * update docs to 16.04.6.1
+Author: Doug Burks <doug.burks@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- securityonion-web-page-20141015.orig/docs/.buildinfo
++++ securityonion-web-page-20141015/docs/.buildinfo
+@@ -1,4 +1,4 @@
+ # Sphinx build info version 1
+ # This file hashes the configuration used when building these files. When it is not found, a full rebuild will be done.
+-config: 556fb2e58a099b30cc21e92e8ddf72f7
++config: 77ff877435b7b4ff8869a031ee8aa33c
+ tags: 0957a7f5604f7fa265ade309e7b795c2
+--- securityonion-web-page-20141015.orig/docs/_static/documentation_options.js
++++ securityonion-web-page-20141015/docs/_static/documentation_options.js
+@@ -1,6 +1,6 @@
+ var DOCUMENTATION_OPTIONS = {
+     URL_ROOT: document.getElementById("documentation_options").getAttribute('data-url_root'),
+-    VERSION: '16.04.5.6',
++    VERSION: '16.04.6.1',
+     LANGUAGE: 'en',
+     COLLAPSE_INDEX: false,
+     FILE_SUFFIX: '.html',
+--- securityonion-web-page-20141015.orig/docs/index.html
++++ securityonion-web-page-20141015/docs/index.html
+@@ -8,7 +8,7 @@
+   
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+-  <title>Security Onion 16.04.5.6 documentation</title>
++  <title>Security Onion 16.04.6.1 documentation</title>
+   
+ 
+   
+@@ -317,7 +317,7 @@ READTHEDOCS_DATA['page'] = 'index'
+     
+       <li><a href="index.html#document-index">Docs</a> &raquo;</li>
+         
+-      <li>Security Onion 16.04.5.6 documentation</li>
++      <li>Security Onion 16.04.6.1 documentation</li>
+     
+     
+       <li class="wy-breadcrumbs-aside">
+@@ -2342,10 +2342,6 @@ Onion:</div>
+ point:</div>
+ <div class="line"><a class="reference external" href="https://github.com/SwiftOnSecurity/sysmon-config">https://github.com/SwiftOnSecurity/sysmon-config</a></div>
+ </div>
+-<div class="line-block">
+-<div class="line">You may also want to read this article for additional explanation:</div>
+-<div class="line"><a class="reference external" href="https://medium.com/&#64;lennartkoopmann/explaining-and-adapting-tays-sysmon-configuration-27d9719a89a8#.bgzhylmn8">https://medium.com/&#64;lennartkoopmann/explaining-and-adapting-tays-sysmon-configuration-27d9719a89a8#.bgzhylmn8</a></div>
+-</div>
+ </div>
+ <div class="section" id="downloads">
+ <h4>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h4>
+@@ -2360,8 +2356,9 @@ point:</div>
+ </div>
+ <div class="section" id="more-information">
+ <h4>More Information<a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h4>
++<p>For more information about sysmon, please see <a class="reference external" href="https://technet.microsoft.com/en-us/sysinternals/sysmon">https://technet.microsoft.com/en-us/sysinternals/sysmon</a>.</p>
+ <div class="line-block">
+-<div class="line">How to Go from Responding to Hunting with Sysinternals Sysmon:</div>
++<div class="line">Also see “How to Go from Responding to Hunting with Sysinternals Sysmon”:</div>
+ <div class="line"><a class="reference external" href="https://onedrive.live.com/view.aspx?resid=D026B4699190F1E6!2843&amp;ithint=file%2cpptx">https://onedrive.live.com/view.aspx?resid=D026B4699190F1E6!2843&amp;ithint=file%2cpptx</a></div>
+ </div>
+ </div>
+@@ -2381,9 +2378,9 @@ browser helper objects, Winlogon notific
+ and much more. Autoruns goes way beyond other autostart utilities.</div></blockquote>
+ <div class="section" id="integration">
+ <h4>Integration<a class="headerlink" href="#integration" title="Permalink to this headline">¶</a></h4>
+-<div class="section" id="ossec">
+-<h5>OSSEC<a class="headerlink" href="#ossec" title="Permalink to this headline">¶</a></h5>
+-<p>Currently, our Autoruns dashboard in Kibana works only with Autoruns logs shipped via OSSEC. If you are trying to ship Autoruns logs via Winlogbeat, you can create a custom dashboard and visualizations that reference the <code class="docutils literal notranslate"><span class="pre">logstash-beats-*</span></code> indices, or view Autoruns logs via the <code class="docutils literal notranslate"><span class="pre">Beats</span></code> dashboard.</p>
++<div class="section" id="wazuh">
++<h5>Wazuh<a class="headerlink" href="#wazuh" title="Permalink to this headline">¶</a></h5>
++<p>Currently, our Autoruns dashboard in Kibana works only with Autoruns logs shipped via Wazuh. If you are trying to ship Autoruns logs via Winlogbeat, you can create a custom dashboard and visualizations that reference the <code class="docutils literal notranslate"><span class="pre">logstash-beats-*</span></code> indices, or view Autoruns logs via the <code class="docutils literal notranslate"><span class="pre">Beats</span></code> dashboard.</p>
+ </div>
+ <div class="section" id="pertinax">
+ <h5>Pertinax<a class="headerlink" href="#pertinax" title="Permalink to this headline">¶</a></h5>
+@@ -2416,11 +2413,9 @@ and much more. Autoruns goes way beyond
+ </div>
+ <span id="document-syslog"></span><div class="section" id="syslog">
+ <h3>Syslog<a class="headerlink" href="#syslog" title="Permalink to this headline">¶</a></h3>
+-<p>From <a class="reference external" href="https://syslog-ng.org">https://syslog-ng.org</a>:</p>
++<p>From <a class="reference external" href="https://www.syslog-ng.com/products/open-source-log-management/">https://www.syslog-ng.com/products/open-source-log-management/</a>:</p>
+ <blockquote>
+-<div>syslog-ng allows you to flexibly collect, parse, classify, and
+-correlate logs from across your infrastructure and store or route
+-them to log analysis tools.</div></blockquote>
++<div>With syslog-ng, you can collect logs from any source, process them in real time and deliver them to a wide variety of destinations. syslog-ng allows you to flexibly collect, parse, classify, rewrite and correlate logs from across your infrastructure and store or route them to log analysis tools.</div></blockquote>
+ <div class="section" id="usage">
+ <h4>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h4>
+ <p>Security Onion uses syslog-ng as its primary syslog collector and to send logs to <a class="reference external" href="Logstash">Logstash</a> where they are parsed and augmented before being written to <a class="reference external" href="Elasticsearch">Elasticsearch</a>.</p>
+@@ -2433,14 +2428,17 @@ them to log analysis tools.</div></block
+ <h4>Forwarding<a class="headerlink" href="#forwarding" title="Permalink to this headline">¶</a></h4>
+ <p>You can configure syslog-ng to <a class="reference external" href="syslog-output">forward</a> Bro / Wazuh / IDS logs to external systems.</p>
+ </div>
++<div class="section" id="collection">
++<h4>Collection<a class="headerlink" href="#collection" title="Permalink to this headline">¶</a></h4>
++<p>syslog-ng listens on port 514 (TCP and UDP) for incoming syslog from other devices.  You may need to run <a class="reference external" href="so-allow">so-allow</a> to allow traffic from the IP address of your syslog sender.</p>
++</div>
++<div class="section" id="analysis">
++<h4>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h4>
++<p>If you’d like to analyze logs collected from other devices, another option is to configure Wazuh to receive syslog directly on a port other than the syslog-ng port of 514.  For more information, please see <a class="reference external" href="http://ossec-docs.readthedocs.org/en/latest/syntax/head_ossec_config.remote.html">http://ossec-docs.readthedocs.org/en/latest/syntax/head_ossec_config.remote.html</a>.</p>
++</div>
+ <div class="section" id="more-information">
+ <h4>More Information<a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h4>
+-<p>For more information about syslog-ng, please see <a class="reference external" href="https://syslog-ng.org/">https://syslog-ng.org/</a>.</p>
+-<div class="line-block">
+-<div class="line">syslog-ng listens on port 514 (TCP and UDP) for incoming syslog from other devices (you may need to run <a class="reference external" href="so-allow">so-allow</a> to allow traffic from the IP address of your syslog sender). This gives you basic log collection. If you’d like those logs collected from other devices to be analyzed, another option is to configure Wazuh to receive syslog directly on a port other than the syslog-ng port of 514.  For more information, please see:</div>
+-<div class="line"><a class="reference external" href="http://ossec-docs.readthedocs.org/en/latest/syntax/head_ossec_config.remote.html">http://ossec-docs.readthedocs.org/en/latest/syntax/head_ossec_config.remote.html</a></div>
+-<div class="line"><a class="reference external" href="http://www.ossec.net/ossec-docs/OSSEC-book-ch3.pdf">http://www.ossec.net/ossec-docs/OSSEC-book-ch3.pdf</a></div>
+-</div>
++<p>For more information about syslog-ng, please see <a class="reference external" href="https://www.syslog-ng.com/products/open-source-log-management/">https://www.syslog-ng.com/products/open-source-log-management/</a>.</p>
+ </div>
+ </div>
+ </div>
+@@ -9432,7 +9430,7 @@ configuration to boot into text mode:</p
+         &copy; Copyright 2019
+       
+         <span class="commit">
+-          Revision <code>4c96eb90</code>.
++          Revision <code>ed20ba77</code>.
+         </span>
+       
+ 
