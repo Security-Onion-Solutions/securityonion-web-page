@@ -1,0 +1,637 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ securityonion-web-page (20141015-0ubuntu0securityonion100) xenial; urgency=medium
+ .
+   * update docs
+Author: Doug Burks <doug.burks@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- securityonion-web-page-20141015.orig/docs/.buildinfo
++++ securityonion-web-page-20141015/docs/.buildinfo
+@@ -1,4 +1,4 @@
+ # Sphinx build info version 1
+ # This file hashes the configuration used when building these files. When it is not found, a full rebuild will be done.
+-config: d887a7cfdc1763db0ba16d8edbd724b5
++config: 019c983cb2a20ddb96c4f7935b878962
+ tags: 0957a7f5604f7fa265ade309e7b795c2
+--- securityonion-web-page-20141015.orig/docs/index.html
++++ securityonion-web-page-20141015/docs/index.html
+@@ -184,6 +184,7 @@ READTHEDOCS_DATA['page'] = 'index'
+ <li class="toctree-l1"><a class="reference internal" href="index.html#document-updating">Updating</a><ul>
+ <li class="toctree-l2"><a class="reference internal" href="index.html#document-upgrade">Updating</a></li>
+ <li class="toctree-l2"><a class="reference internal" href="index.html#document-mysql-upgrade-errors">MySQL Upgrade Errors</a></li>
++<li class="toctree-l2"><a class="reference internal" href="index.html#document-apt-cacher-ng">apt-cacher-ng</a></li>
+ <li class="toctree-l2"><a class="reference internal" href="index.html#document-eol">End Of Life</a></li>
+ </ul>
+ </li>
+@@ -445,17 +446,17 @@ READTHEDOCS_DATA['page'] = 'index'
+ <div class="toctree-wrapper compound">
+ <span id="document-use-cases"></span><div class="section" id="use-cases">
+ <h3>Use Cases<a class="headerlink" href="#use-cases" title="Permalink to this headline">¶</a></h3>
+-<p>Security Onion is designed for many different use cases! When you run Setup, it will ask you if you want <code class="docutils literal notranslate"><span class="pre">Evaluation</span> <span class="pre">Mode</span></code> or <code class="docutils literal notranslate"><span class="pre">Production</span> <span class="pre">Mode</span></code>.  Each of these modes presents different options that may be applicable to different use cases.  Here are just a few examples.</p>
++<p>Security Onion is designed for many different use cases! Here are just a few examples.</p>
++<div class="section" id="pcap-forensics">
++<h4>Pcap Forensics<a class="headerlink" href="#pcap-forensics" title="Permalink to this headline">¶</a></h4>
++<p>One of the easiest ways to get started with Security Onion is using it to forensically analyze one or more pcap files. Just install Security Onion and then run <a class="reference external" href="so-import-pcap">so-import-pcap</a> on one or more of the pcap files in <code class="docutils literal notranslate"><span class="pre">/opt/samples/</span></code>.</p>
++</div>
+ <div class="section" id="classroom">
+ <h4>Classroom<a class="headerlink" href="#classroom" title="Permalink to this headline">¶</a></h4>
+ <p><code class="docutils literal notranslate"><span class="pre">Evaluation</span> <span class="pre">Mode</span></code> is ideal for classroom or small lab environments.</p>
+ <p>Install Security Onion. Run Setup and configure network interfaces. Reboot, run Setup again, and then choose <code class="docutils literal notranslate"><span class="pre">Evaluation</span> <span class="pre">Mode</span></code>.</p>
+ <p>For more information, please see the <a class="reference external" href="QuickISOImage">Quick Evaluation</a> section.</p>
+ </div>
+-<div class="section" id="pcap-forensics">
+-<h4>Pcap Forensics<a class="headerlink" href="#pcap-forensics" title="Permalink to this headline">¶</a></h4>
+-<p>Need to review a pcap with original timestamps preserved? Install Security Onion in <code class="docutils literal notranslate"><span class="pre">Evaluation</span> <span class="pre">Mode</span></code> as described above and then run <a class="reference external" href="so-import-pcap">so-import-pcap</a>.</p>
+-</div>
+ <div class="section" id="production-server-standalone">
+ <h4>Production Server - Standalone<a class="headerlink" href="#production-server-standalone" title="Permalink to this headline">¶</a></h4>
+ <p>Install Security Onion. Run Setup and configure network interfaces.  Reboot, run Setup again, choose <code class="docutils literal notranslate"><span class="pre">Production</span> <span class="pre">Mode</span></code>, choose <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Deployment</span></code>, and enable network sensor services.</p>
+@@ -2293,7 +2294,7 @@ from kernel space to user space and vice
+ <p>Please note! It is important to ensure that you download the agent that matches the version of your Wazuh server. For example, if your Wazuh server is version 3.8.2, then you will want to deploy Wazuh agent version 3.8.2.</p>
+ <div class="line-block">
+ <div class="line">Once you’ve installed the Wazuh agent on the host(s) to be monitored, then perform the steps defined here:</div>
+-<div class="line"><a class="reference external" href="http://ossec-docs.readthedocs.org/en/latest/manual/agent/agent-management.html#managing-agents">http://ossec-docs.readthedocs.org/en/latest/manual/agent/agent-management.html#managing-agents</a></div>
++<div class="line"><a class="reference external" href="https://documentation.wazuh.com/current/user-manual/agents/registering-agents/register-agent-manual.html">https://documentation.wazuh.com/current/user-manual/agents/registering-agents/register-agent-manual.html</a></div>
+ </div>
+ <p>You may need to run <a class="reference external" href="so-allow">so-allow</a> to allow traffic from the IP address of your Wazuh agent(s).</p>
+ </div>
+@@ -2307,6 +2308,10 @@ from kernel space to user space and vice
+ <div class="line">If you would like to automate the deployment of Wazuh agents, the Wazuh server includes <code class="docutils literal notranslate"><span class="pre">ossec-authd</span></code>:</div>
+ <div class="line"><a class="reference external" href="https://documentation.wazuh.com/3.8/user-manual/reference/daemons/ossec-authd.html">https://documentation.wazuh.com/3.8/user-manual/reference/daemons/ossec-authd.html</a></div>
+ </div>
++<div class="line-block">
++<div class="line">When using <code class="docutils literal notranslate"><span class="pre">ossec-authd</span></code>, be sure to add a firewall exception for agents to access port <code class="docutils literal notranslate"><span class="pre">1515/tcp</span></code> on the Wazuh manager node:</div>
++<div class="line"><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">ufw</span> <span class="pre">allow</span> <span class="pre">proto</span> <span class="pre">tcp</span> <span class="pre">from</span> <span class="pre">agent_ip</span> <span class="pre">to</span> <span class="pre">any</span> <span class="pre">port</span> <span class="pre">1515</span></code></div>
++</div>
+ </div>
+ <div class="section" id="downloads">
+ <h4>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h4>
+@@ -3347,6 +3352,8 @@ Security Onion on the Elastic Stack.</p>
+ <code class="docutils literal notranslate"><span class="pre">logstash-*</span></code> indices</div>
+ <div class="line"><code class="docutils literal notranslate"><span class="pre">beats-template.json</span></code> - mapping information for logs going into
+ <code class="docutils literal notranslate"><span class="pre">logstash-beats-*</span></code> indices.</div>
++<div class="line"><code class="docutils literal notranslate"><span class="pre">logstash-ossec-template.json</span></code> - mapping information for logs going into
++<code class="docutils literal notranslate"><span class="pre">logstash-ossec-*</span></code> indices.</div>
+ </div>
+ </div>
+ </div>
+@@ -4437,6 +4444,14 @@ can be ignored as Security Onion 16.04 u
+ </div>
+ </div>
+ </div>
++<span id="document-apt-cacher-ng"></span><div class="section" id="apt-cacher-ng">
++<h3>apt-cacher-ng<a class="headerlink" href="#apt-cacher-ng" title="Permalink to this headline">¶</a></h3>
++<p>If you have multiple Security Onion boxes in your environment and want to cache the package updates to save time and bandwidth, you can use apt-cacher-ng as a caching proxy.</p>
++<p>For more information, please see:</p>
++<p><a class="reference external" href="https://www.unix-ag.uni-kl.de/~bloch/acng/">https://www.unix-ag.uni-kl.de/~bloch/acng/</a></p>
++<p><a class="reference external" href="https://wiki.debian.org/AptCacherNg">https://wiki.debian.org/AptCacherNg</a></p>
++<p><a class="reference external" href="https://help.ubuntu.com/community/Apt-Cacher-Server">https://help.ubuntu.com/community/Apt-Cacher-Server</a></p>
++</div>
+ <span id="document-eol"></span><div class="section" id="end-of-life">
+ <h3>End Of Life<a class="headerlink" href="#end-of-life" title="Permalink to this headline">¶</a></h3>
+ <p>This page lists End Of Life (EOL) dates for older versions of Security
+@@ -4462,7 +4477,7 @@ Onion and older components.</p>
+ <div class="toctree-wrapper compound">
+ <span id="document-network-configuration"></span><div class="section" id="network-configuration">
+ <h3>Network Configuration<a class="headerlink" href="#network-configuration" title="Permalink to this headline">¶</a></h3>
+-<p>All of this configuration will happen automatically if you choose <code class="docutils literal notranslate"><span class="pre">Yes,</span> <span class="pre">configure</span> <span class="pre">/etc/network/interfaces</span></code> in the Setup wizard.  If for some reason you need to configure <cite>/etc/network/interfaces</cite> manually, you can do the following.</p>
++<p>All of this configuration will happen automatically if you choose <code class="docutils literal notranslate"><span class="pre">Yes,</span> <span class="pre">configure</span> <span class="pre">/etc/network/interfaces</span></code> in the Setup wizard.  If for some reason you need to configure <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code> manually, you can do the following.</p>
+ <p>NOTE! You may lose network connectivity during this process! Have a backup plan if attempting over SSH!</p>
+ <p>Stop Network Manager:</p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">network</span><span class="o">-</span><span class="n">manager</span> <span class="n">stop</span>
+@@ -4479,7 +4494,7 @@ Onion and older components.</p>
+ </div>
+ <div class="section" id="sniffing-interface-s">
+ <h4>Sniffing interface(s)<a class="headerlink" href="#sniffing-interface-s" title="Permalink to this headline">¶</a></h4>
+-<p>You’ll want one or more interfaces dedicated to sniffing (no IP address). NIC offloading functions such as <code class="docutils literal notranslate"><span class="pre">tso</span></code>, <code class="docutils literal notranslate"><span class="pre">gso</span></code>, and <code class="docutils literal notranslate"><span class="pre">gro</span></code> should be disabled to ensure that Snort/Suricata get an accurate view of the traffic (see <a class="reference external" href="https://blog.securityonion.net/2011/10/when-is-full-packet-capture-not-full.html">https://blog.securityonion.net/2011/10/when-is-full-packet-capture-not-full.html</a>).</p>
++<p>You’ll want one or more interfaces dedicated to sniffing (no IP address). NIC offloading functions such as <code class="docutils literal notranslate"><span class="pre">tso</span></code>, <code class="docutils literal notranslate"><span class="pre">gso</span></code>, and <code class="docutils literal notranslate"><span class="pre">gro</span></code> should be disabled to ensure that Snort/Suricata/Bro get an accurate view of the traffic (see <a class="reference external" href="https://blog.securityonion.net/2011/10/when-is-full-packet-capture-not-full.html">https://blog.securityonion.net/2011/10/when-is-full-packet-capture-not-full.html</a>).</p>
+ </div>
+ <div class="section" id="sample-etc-network-interfaces">
+ <h4>Sample /etc/network/interfaces<a class="headerlink" href="#sample-etc-network-interfaces" title="Permalink to this headline">¶</a></h4>
+@@ -4500,7 +4515,6 @@ iface eth0 inet static
+   netmask 255.255.255.0
+   network 192.168.1.0
+   broadcast 192.168.1.255
+-  # If running Security Onion 14.04, you&#39;ll need to configure DNS here
+   dns-nameservers 192.168.1.1 192.168.1.2
+ 
+ # AND one or more of the following
+@@ -4513,16 +4527,14 @@ iface eth1 inet manual
+   down ip link set $IFACE promisc off
+   down ifconfig $IFACE down
+   post-up for i in rx tx sg tso ufo gso gro lro; do ethtool -K $IFACE $i off; done
+-  # If running Security Onion 14.04, you should also disable IPv6 as follows:
+   post-up echo 1 &gt; /proc/sys/net/ipv6/conf/$IFACE/disable_ipv6
+-</pre></div>
+-</div>
+-<p>You may also want to set the RX buffer size in the post-up command like this:</p>
+-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>post-up ethtool -G $IFACE rx 4096; for i in rx tx sg tso ufo gso gro lro; do ethtool -K $IFACE $i off; done
+-</pre></div>
+-</div>
+-<p>Note that 4096 is just an example and your NIC may have a different maximum rx size. To determine the maximum rx setting for your NIC:</p>
+-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ethtool</span> <span class="o">-</span><span class="n">g</span> <span class="n">ethX</span>
++  # You probably don&#39;t need to enable or edit the following setting,
++  # but it is included for completeness.
++  # Note that 4096 is just an example and your NIC may have a different maximum rx size.
++  # To determine the maximum rx setting for your NIC: ethtool -g ethX
++  # Also note that increasing beyond the default may result in inconsistent traffic:
++  # https://taosecurity.blogspot.com/2019/04/troubleshooting-nsm-virtualization.html
++  # post-up ethtool -G $IFACE rx 4096
+ </pre></div>
+ </div>
+ <div class="line-block">
+@@ -4643,9 +4655,9 @@ you may need to pass the <code class="do
+ <p>Please note that the Sguil client has its own email configuration (separate from the Sguil server) which can be modified in
+ <code class="docutils literal notranslate"><span class="pre">/etc/sguil/sguil.conf</span></code>.</p>
+ </div>
+-<div class="section" id="overview">
+-<h4>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h4>
+-<p>This page describes how to configure email for alerting and reporting. Applications such as Sguil and Wazuh have their own mail configuration and don’t rely on a mail server in the OS itself. However, you may still want to install a mail server in the OS so that you can get daily emails from the sostat script and from Bro.</p>
++<div class="section" id="manual-configuration">
++<h4>Manual Configuration<a class="headerlink" href="#manual-configuration" title="Permalink to this headline">¶</a></h4>
++<p>If you don’t want to run <code class="docutils literal notranslate"><span class="pre">so-email</span></code> as described above, you can configure email manually as described in the following sections. Applications such as Sguil and Wazuh have their own mail configuration and don’t rely on a mail server in the OS itself. However, you may still want to install a mail server in the OS so that you can get daily emails from the sostat script and from Bro.</p>
+ </div>
+ <div class="section" id="operating-system">
+ <h4>Operating System<a class="headerlink" href="#operating-system" title="Permalink to this headline">¶</a></h4>
+@@ -4758,21 +4770,24 @@ a different area of your network, you ne
+ <h4>Update the actual IP address of the management interface<a class="headerlink" href="#update-the-actual-ip-address-of-the-management-interface" title="Permalink to this headline">¶</a></h4>
+ <p>To update the actual IP address of the management interface, you have
+ two options:</p>
+-<ul class="simple">
+-<li>manually update <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code>OR</li>
+-<li>re-run the <code class="docutils literal notranslate"><span class="pre">FIRST</span></code> phase of Setup (select “Yes, configure
+-/etc/network/interfaces)</li>
++<ul>
++<li><p class="first">manually update <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code></p>
++<p>OR</p>
++</li>
++<li><p class="first">re-run the <code class="docutils literal notranslate"><span class="pre">FIRST</span></code> phase of Setup (select <code class="docutils literal notranslate"><span class="pre">Yes,</span> <span class="pre">configure</span> <span class="pre">/etc/network/interfaces</span></code>)</p>
++</li>
+ </ul>
+ </div>
+ <div class="section" id="update-nsm-config-files-to-reflect-the-new-ip-address">
+ <h4>Update NSM config files to reflect the new IP address<a class="headerlink" href="#update-nsm-config-files-to-reflect-the-new-ip-address" title="Permalink to this headline">¶</a></h4>
+ <p>To update NSM config files to reflect the new IP address, you have two
+ options:</p>
+-<ul class="simple">
+-<li>re-run the <code class="docutils literal notranslate"><span class="pre">SECOND</span></code> phase of Setup on all server/sensors
+-<code class="docutils literal notranslate"><span class="pre">(wiping</span> <span class="pre">all</span> <span class="pre">data</span> <span class="pre">and</span> <span class="pre">config)</span></code>
+-OR</li>
+-<li>manually update the IP address as shown below</li>
++<ul>
++<li><p class="first">re-run the <code class="docutils literal notranslate"><span class="pre">SECOND</span></code> phase of Setup on all server/sensors <strong>(wiping all data and config)</strong></p>
++<p>OR</p>
++</li>
++<li><p class="first">manually update the IP address as shown below</p>
++</li>
+ </ul>
+ </div>
+ <div class="section" id="files-to-update-when-changing-the-ip-address">
+@@ -4924,9 +4939,15 @@ want to apply a BPF to NIDS (Snort/Suric
+ </div>
+ <div class="section" id="bpf-examples">
+ <h5>BPF Examples<a class="headerlink" href="#bpf-examples" title="Permalink to this headline">¶</a></h5>
+-<p>From Phillip Wang:</p>
+-<p>Just to contribute, and for others to reference, here are some examples
+-of what I’ve got working</p>
++<p>Exclude traffic to/from a host:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!(host xxx.xxx.xxx.xxx)
++</pre></div>
++</div>
++<p>Exclude traffic from a source host to a destination port:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!(src host xxx.xxx.xxx.xxx &amp;&amp; dst port 161)
++</pre></div>
++</div>
++<p>Combine multiple BPFs together using <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>, but note that the last entry has no final <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>:</p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#Nothing from src host to dst port
+ !(src host xxx.xxx.xxx.xxx &amp;&amp; dst port 161) &amp;&amp;
+ 
+@@ -4972,8 +4993,26 @@ and no tags simultaneously. Bro 2.0 shou
+ </div>
+ <span id="document-rules"></span><div class="section" id="managing-rules">
+ <h3>Managing Rules<a class="headerlink" href="#managing-rules" title="Permalink to this headline">¶</a></h3>
+-<p>Rulesets are chosen during setup and are specified in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/pulledpork/pulledpork.conf</span></code>. If you change the configuration in <code class="docutils literal notranslate"><span class="pre">pulledpork.conf</span></code>, then you will need to run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code>.  If in a server/sensor deployment, run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code> on the master first, then the sensor (or simply wait up to 15 minutes for it to be replicated).</p>
++<p>NIDS rulesets are chosen during setup and are specified in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/pulledpork/pulledpork.conf</span></code>. If you change any of the configuration in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/pulledpork/</span></code>, then you will need to update your rules as shown in the following section.</p>
++<div class="section" id="updating-rules">
++<h4>Updating Rules<a class="headerlink" href="#updating-rules" title="Permalink to this headline">¶</a></h4>
++<p>To update your rules, run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code> on your master server:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">rule</span><span class="o">-</span><span class="n">update</span>
++</pre></div>
++</div>
++<p>If you have a distributed deployment with salt enabled and you run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code> on your master server, then those new rules will automatically replicate from the master to your sensors within 15 minutes.  If you don’t want to wait 15 minutes, you can force the sensors to update immediately by running the following command on your master server:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">salt</span> <span class="s1">&#39;*&#39;</span> <span class="n">state</span><span class="o">.</span><span class="n">highstate</span>
++</pre></div>
++</div>
++<p>If you have a distributed deployment with salt disabled and you run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code> on your master server, then those new rules will replicate from the master to your sensors during the daily cron job.  If you don’t want to wait for that daily cron job, you can force an immediate update on the sensor by logging into the sensor and running:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">rule</span><span class="o">-</span><span class="n">update</span>
++</pre></div>
++</div>
++</div>
++<div class="section" id="rulesets">
++<h4>Rulesets<a class="headerlink" href="#rulesets" title="Permalink to this headline">¶</a></h4>
+ <p>Security Onion offers the following choices for rulesets to be used by Snort/Suricata.</p>
++</div>
+ <div class="section" id="et-open">
+ <h4>ET Open<a class="headerlink" href="#et-open" title="Permalink to this headline">¶</a></h4>
+ <ul class="simple">
+@@ -5042,35 +5081,26 @@ and no tags simultaneously. Bro 2.0 shou
+ <span id="document-local-rules"></span><div class="section" id="adding-local-rules">
+ <h3>Adding Local Rules<a class="headerlink" href="#adding-local-rules" title="Permalink to this headline">¶</a></h3>
+ <p>Adding local rules in Security Onion is a rather straightforward process. However, generating custom traffic to test the alert can sometimes be a challenge. Here, we will show you how to add the local rule and then use the python library scapy to trigger the alert.</p>
+-<div class="section" id="ips-policy">
+-<h4>IPS Policy<a class="headerlink" href="#ips-policy" title="Permalink to this headline">¶</a></h4>
+-<p>Please note if you are using a ruleset that enables an IPS policy in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/pulledpork/pulledpork.conf</span></code>, your local rules will be disabled. To enabled them, either revert the policy by remarking the <code class="docutils literal notranslate"><span class="pre">ips_policy</span></code> line (and run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code>), or add the policy type to the rules in local.rules.</p>
+-<p>For example, if <code class="docutils literal notranslate"><span class="pre">ips_policy</span></code> was set to <code class="docutils literal notranslate"><span class="pre">security</span></code>, you would add the following to each rule:</p>
+-<p><code class="docutils literal notranslate"><span class="pre">metadata:policy</span> <span class="pre">security-ips</span></code></p>
+-<p>The whole rule would then look something like:</p>
+-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>alert tcp any any -&gt; $HOME_NET 7789 (msg: &quot;Vote for Security Onion Toolsmith Tool of 2011!&quot;; reference: url,http://holisticinfosec.blogspot.com/2011/12/choose-2011-toolsmith-tool-of-year.html; content: &quot;toolsmith&quot;; flow:to_server; nocase; sid:9000547; metadata:policy security-ips; rev:1)
+-</pre></div>
+-</div>
+-<p>These policy types can be found in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/rules/downloaded.rules</span></code>.</p>
+-</div>
+-<div class="section" id="steps">
+-<h4>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h4>
+ <ul>
+ <li><p class="first">Open <code class="docutils literal notranslate"><span class="pre">/etc/nsm/rules/local.rules</span></code> using your favorite text editor.  If this is a distributed deployment, edit local.rules on your master server and it will replicate to your sensors.</p>
+ </li>
+-<li><p class="first">Let’s add a simple rule that will alert on the detection of a string in a tcp session.</p>
++<li><p class="first">Let’s add a simple rule that will alert on the detection of a string in a tcp session:</p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>alert tcp any any -&gt; $HOME_NET 7789 (msg: &quot;Vote for Security Onion Toolsmith Tool of 2011!&quot;; reference: url,http://holisticinfosec.blogspot.com/2011/12/choose-2011-toolsmith-tool-of-year.html; content: &quot;toolsmith&quot;; flow:to_server; nocase; sid:9000547; rev:1)
+ </pre></div>
+ </div>
+ </li>
+-<li><p class="first">Run rule-update (this will merge local.rules into downloaded.rules, update <code class="docutils literal notranslate"><span class="pre">sid-msg.map</span></code>, and restart snort/suricata and barnyard):</p>
++<li><p class="first">Run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code> (this will merge <code class="docutils literal notranslate"><span class="pre">local.rules</span></code> into <code class="docutils literal notranslate"><span class="pre">downloaded.rules</span></code>, update <code class="docutils literal notranslate"><span class="pre">sid-msg.map</span></code>, and restart processes as necessary):</p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">rule</span><span class="o">-</span><span class="n">update</span>
+ </pre></div>
+ </div>
+ </li>
+-<li><p class="first">If you built the rule correctly, then snort should be back up and running.</p>
++<li><p class="first">If you built the rule correctly, then Snort/Suricata should be back up and running.</p>
+ </li>
+-<li><p class="first">Generate some traffic to trigger the alert. To generate traffic we are going to use the python library scapy to craft packets with specific information to ensure we trigger the alert with the information we want.</p>
++</ul>
++<div class="section" id="testing-local-rules">
++<h4>Testing Local Rules<a class="headerlink" href="#testing-local-rules" title="Permalink to this headline">¶</a></h4>
++<ul>
++<li><p class="first">Generate some traffic to trigger the alert. To generate traffic we are going to use the python library <code class="docutils literal notranslate"><span class="pre">scapy</span></code> to craft packets with specific information to ensure we trigger the alert with the information we want:</p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">scapy</span>
+ </pre></div>
+ </div>
+@@ -5099,9 +5129,9 @@ and no tags simultaneously. Bro 2.0 shou
+ </pre></div>
+ </div>
+ </li>
+-<li><p class="first">Check Sguil for the corresponding alert.</p>
++<li><p class="first">Check Sguil/Squert/Kibana for the corresponding alert.</p>
+ </li>
+-<li><p class="first">You can see that we have an alert with the IP addresses we specified and the TCP ports we specified. If you right click on the <strong>Alert ID</strong> column you can select “Transcript” and verify the payload we sent.</p>
++<li><p class="first">You can see that we have an alert with the IP addresses we specified and the TCP ports we specified. If you pivot from that alert to the corresponding pcap you can verify the payload we sent.</p>
+ </li>
+ <li><p class="first">You can learn more about snort and writing snort signatures from the <a class="reference external" href="http://manual.snort.org/node26.html">Snort Manual</a>.</p>
+ </li>
+@@ -5109,6 +5139,17 @@ and no tags simultaneously. Bro 2.0 shou
+ </li>
+ </ul>
+ </div>
++<div class="section" id="ips-policy">
++<h4>IPS Policy<a class="headerlink" href="#ips-policy" title="Permalink to this headline">¶</a></h4>
++<p>Please note if you are using a ruleset that enables an IPS policy in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/pulledpork/pulledpork.conf</span></code>, your local rules will be disabled. To enabled them, either revert the policy by remarking the <code class="docutils literal notranslate"><span class="pre">ips_policy</span></code> line (and run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code>), or add the policy type to the rules in local.rules.</p>
++<p>For example, if <code class="docutils literal notranslate"><span class="pre">ips_policy</span></code> was set to <code class="docutils literal notranslate"><span class="pre">security</span></code>, you would add the following to each rule:</p>
++<p><code class="docutils literal notranslate"><span class="pre">metadata:policy</span> <span class="pre">security-ips</span></code></p>
++<p>The whole rule would then look something like:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>alert tcp any any -&gt; $HOME_NET 7789 (msg: &quot;Vote for Security Onion Toolsmith Tool of 2011!&quot;; reference: url,http://holisticinfosec.blogspot.com/2011/12/choose-2011-toolsmith-tool-of-year.html; content: &quot;toolsmith&quot;; flow:to_server; nocase; sid:9000547; metadata:policy security-ips; rev:1)
++</pre></div>
++</div>
++<p>These policy types can be found in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/rules/downloaded.rules</span></code>.</p>
++</div>
+ <div class="section" id="misp">
+ <h4>MISP<a class="headerlink" href="#misp" title="Permalink to this headline">¶</a></h4>
+ <p>If you would like to pull in NIDS rules from a MISP instance, please see the <a class="reference external" href="MISP">MISP Rules</a> section.</p>
+@@ -5135,53 +5176,42 @@ make sure it is working as expected.</p>
+ <ol class="arabic">
+ <li><p class="first">The easiest way to test might be simply accessing <code class="docutils literal notranslate"><span class="pre">testmyids.com</span></code>
+ from a machine who’s traffic is being monitored:</p>
+-<p><code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">testmyids.com</span></code></p>
+-<div class="line-block">
+-<div class="line">We should see a corresponding alert
+-(<code class="docutils literal notranslate"><span class="pre">GPL</span> <span class="pre">ATTACK_RESPONSE</span> <span class="pre">id</span> <span class="pre">check</span> <span class="pre">returned</span> <span class="pre">root</span></code>) pop up in Sguil if
+-everything is</div>
+-<div class="line">configured correctly. If you do not see this alert, try checking to
+-see if the rule is enabled in</div>
+-<div class="line"><code class="docutils literal notranslate"><span class="pre">/etc/nsm/rules/downloaded.rules</span></code>. If it is not enabled, try
+-enabling it via <code class="docutils literal notranslate"><span class="pre">/etc/nsm/pulledpork/enablesid.conf</span></code> and</div>
+-<div class="line">run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code> (if this is a distributed deployment, update
+-the master first, run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code>, then push the</div>
+-<div class="line">changes out to the other sensor(s)).</div>
+-</div>
+-</li>
+-<li><p class="first">If running a test or evaluation version of Security Onion, consider
+-replaying some of the example PCAP files present in
+-<code class="docutils literal notranslate"><span class="pre">/opt/examples/</span></code>:</p>
+-<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">tcpreplay</span> <span class="pre">-i</span> <span class="pre">ens34</span> <span class="pre">-M10</span> <span class="pre">/opt/samples/*.pcap</span></code></p>
+-<p>Hits for various signatures should appear in Sguil.</p>
+-</li>
+-<li><p class="first">If in a production environment where you might not want to replay the
+-example PCAPs, another way to test would be to use Scapy to craft a
+-test PCAP file, in conjunction with a custom Snort rule added to
+-<code class="docutils literal notranslate"><span class="pre">/etc/nsm/rules/local.rules</span></code>:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">testmyids</span><span class="o">.</span><span class="n">com</span>
++</pre></div>
++</div>
++<p>We should see a corresponding alert (<code class="docutils literal notranslate"><span class="pre">GPL</span> <span class="pre">ATTACK_RESPONSE</span> <span class="pre">id</span> <span class="pre">check</span> <span class="pre">returned</span> <span class="pre">root</span></code>) pop up in Sguil if everything is configured correctly. If you do not see this alert, try checking to see if the rule is enabled in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/rules/downloaded.rules</span></code>. If it is not enabled, try enabling it via <code class="docutils literal notranslate"><span class="pre">/etc/nsm/pulledpork/enablesid.conf</span></code> and run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code> (if this is a distributed deployment, update the master first, run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code>, then push the changes out to the other sensor(s)).</p>
++</li>
++<li><p class="first">If running a test or evaluation version of Security Onion, consider replaying some of the example PCAP files present in
++<code class="docutils literal notranslate"><span class="pre">/opt/samples/</span></code>:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">test</span>
++</pre></div>
++</div>
++<p>Alerts for various signatures should appear in Sguil.</p>
++</li>
++<li><p class="first">If in a production environment where you might not want to replay the example PCAPs, another way to test would be to use Scapy to craft a test PCAP file, in conjunction with a custom Snort rule added to <code class="docutils literal notranslate"><span class="pre">/etc/nsm/rules/local.rules</span></code>:</p>
+ </li>
+ </ol>
+-<ul class="simple">
+-<li><strong>Snort Rule</strong></li>
+-</ul>
++<ul>
++<li><p class="first"><strong>Snort Rule</strong></p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alert</span> <span class="n">tcp</span> <span class="nb">any</span> <span class="nb">any</span> <span class="o">-&gt;</span> <span class="nb">any</span> <span class="nb">any</span> <span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="s2">&quot;Security Onion - testing&quot;</span><span class="p">;</span> <span class="n">content</span><span class="p">:</span> <span class="s2">&quot;SecurityOnion&quot;</span><span class="p">;</span> <span class="n">nocase</span><span class="p">;</span> <span class="n">sid</span><span class="p">:</span><span class="mi">1234567</span><span class="p">;)</span>
+ </pre></div>
+ </div>
+-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(Run ``sudo rule-update`` after adding)
++<p>Now update your ruleset:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">rule</span><span class="o">-</span><span class="n">update</span>
+ </pre></div>
+ </div>
+-<ul>
++</li>
+ <li><p class="first"><strong>Scapy</strong></p>
+-<div class="line-block">
+-<div class="line"><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">scapy</span></code></div>
+-<div class="line"><code class="docutils literal notranslate"><span class="pre">pkt</span> <span class="pre">=</span> <span class="pre">Ether()/IP(dst=&quot;192.168.1.30&quot;)/TCP()/&quot;SecurityOnion&quot;</span></code>
+-(Press ENTER)</div>
+-<div class="line"><code class="docutils literal notranslate"><span class="pre">wrpcap(&quot;so-testing.pcap&quot;,</span> <span class="pre">pkt)</span></code> (Press ENTER)</div>
+-<div class="line"><code class="docutils literal notranslate"><span class="pre">CTRL+D</span></code></div>
+-<div class="line"><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">tcpreplay</span> <span class="pre">-i</span> <span class="pre">ens34</span> <span class="pre">-M10</span> <span class="pre">so-testing.pcap</span></code></div>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">scapy</span>
++<span class="n">pkt</span> <span class="o">=</span> <span class="n">Ether</span><span class="p">()</span><span class="o">/</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">&quot;192.168.1.30&quot;</span><span class="p">)</span><span class="o">/</span><span class="n">TCP</span><span class="p">()</span><span class="o">/</span><span class="s2">&quot;SecurityOnion&quot;</span>
++<span class="n">wrpcap</span><span class="p">(</span><span class="s2">&quot;so-testing.pcap&quot;</span><span class="p">,</span> <span class="n">pkt</span><span class="p">)</span>
++</pre></div>
++</div>
++<p>Press <code class="docutils literal notranslate"><span class="pre">CTRL+D</span></code> to exit scapy.  Then use tcpreplay to replay the pcap to your sniffing interface:</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">tcpreplay</span> <span class="o">-</span><span class="n">i</span> <span class="n">ens34</span> <span class="o">-</span><span class="n">M10</span> <span class="n">so</span><span class="o">-</span><span class="n">testing</span><span class="o">.</span><span class="n">pcap</span>
++</pre></div>
+ </div>
+-<p>If everything went as planned, an alert should pop up in Sguil with
+-the message <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Onion</span> <span class="pre">-</span> <span class="pre">testing</span></code></p>
++<p>If everything went as planned, an alert should pop up in Sguil with the message <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Onion</span> <span class="pre">-</span> <span class="pre">testing</span></code>.</p>
+ </li>
+ </ul>
+ </div>
+@@ -5221,15 +5251,12 @@ caution. Issuing SELECT queries should n
+ your database, but if you attempt to UPDATE while the various NSM
+ framework tools are also accessing the database it has the potential to
+ introduce corruption.</p>
+-<div class="line-block">
+-<div class="line">You can enter the mysql shell or issue mysql one-liner’s from the
+-command line.</div>
+-<div class="line">To enter the mysql shell, issue the following command</div>
+-</div>
++<p>You can enter the mysql shell or issue mysql one-liner’s from the command line.</p>
++<p>To enter the mysql shell, issue the following command:</p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mysql</span> <span class="o">--</span><span class="n">defaults</span><span class="o">-</span><span class="n">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">debian</span><span class="o">.</span><span class="n">cnf</span> <span class="o">-</span><span class="n">Dsecurityonion_db</span>
+ </pre></div>
+ </div>
+-<p>To issue commandline one-liners use the following template</p>
++<p>To issue commandline one-liners use the following template:</p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mysql</span> <span class="o">--</span><span class="n">defaults</span><span class="o">-</span><span class="n">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">debian</span><span class="o">.</span><span class="n">cnf</span> <span class="o">-</span><span class="n">Dsecurityonion_db</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;QUERY&quot;</span>
+ </pre></div>
+ </div>
+@@ -5330,58 +5357,37 @@ rules in each:</p>
+ <h4>Recovering from too many alerts<a class="headerlink" href="#recovering-from-too-many-alerts" title="Permalink to this headline">¶</a></h4>
+ <p>Sometimes we may get flooded with a barrage of alerts that make it difficult or not possible to categorize within Sguil or Squert. When this happens, we can perform mass categorization of alerts using MySQL on the master server, where sguild (the Sguil server) runs. The steps below outline an example of this:</p>
+ <ul>
+-<li><div class="first line-block">
+-<div class="line">Stop the Sguil server:</div>
+-</div>
+-</li>
+-</ul>
++<li><p class="first">Stop the Sguil server:</p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">sguild</span><span class="o">-</span><span class="n">stop</span>
+ </pre></div>
+ </div>
+-<ul>
+-<li><div class="first line-block">
+-<div class="line">List the top twenty signatures (descending) pertaining to
+-uncategorized alerts (with a status of <code class="docutils literal notranslate"><span class="pre">0</span></code>):</div>
+-</div>
+ </li>
+-</ul>
++<li><p class="first">List the top twenty signatures (descending) pertaining to uncategorized alerts (with a status of <code class="docutils literal notranslate"><span class="pre">0</span></code>):</p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mysql</span> <span class="o">--</span><span class="n">defaults</span><span class="o">-</span><span class="n">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">debian</span><span class="o">.</span><span class="n">cnf</span> <span class="o">-</span><span class="n">Dsecurityonion_db</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;SELECT COUNT(signature)as count, signature FROM event WHERE status=0 GROUP BY signature ORDER BY count DESC LIMIT 20;&#39;</span>
+ </pre></div>
+ </div>
+-<ul>
+-<li><div class="first line-block">
+-<div class="line">Update any records (to have a status value of <code class="docutils literal notranslate"><span class="pre">1</span></code>) with a
+-signature that contains the text <code class="docutils literal notranslate"><span class="pre">ET</span> <span class="pre">INFO</span></code>:</div>
+-</div>
+ </li>
+-</ul>
++<li><p class="first">Update any records (to have a status value of <code class="docutils literal notranslate"><span class="pre">1</span></code>) with a signature that contains the text <code class="docutils literal notranslate"><span class="pre">ET</span> <span class="pre">INFO</span></code>:</p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mysql</span> <span class="o">--</span><span class="n">defaults</span><span class="o">-</span><span class="n">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">debian</span><span class="o">.</span><span class="n">cnf</span> <span class="o">-</span><span class="n">Dsecurityonion_db</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;UPDATE event SET status=1, last_modified=&#39;2018-06-27 01:00:00&#39;, last_uid=&#39;sguil&#39; WHERE event.status=&#39;0&#39; and event.signature LIKE &#39;</span><span class="si">%E</span><span class="s2">T INFO%&#39;;&quot;</span>
+ </pre></div>
+ </div>
+-<ul>
+-<li><div class="first line-block">
+-<div class="line">Check again to see if our alerts have been categorized as
+-<code class="docutils literal notranslate"><span class="pre">acknowledged</span></code> ( these should no longer be visible in the
+-output):</div>
+-</div>
+ </li>
+-</ul>
++<li><dl class="first docutils">
++<dt>Check again to see if our alerts have been categorized as <code class="docutils literal notranslate"><span class="pre">acknowledged</span></code> ( these should no longer be visible in the</dt>
++<dd><p class="first last">output):</p>
++</dd>
++</dl>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mysql</span> <span class="o">--</span><span class="n">defaults</span><span class="o">-</span><span class="n">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">debian</span><span class="o">.</span><span class="n">cnf</span> <span class="o">-</span><span class="n">Dsecurityonion_db</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;SELECT COUNT(signature)as count, signature FROM event WHERE status=0 GROUP BY signature ORDER BY count DESC LIMIT 20;&#39;</span>
+ </pre></div>
+ </div>
+-<ul>
+-<li><div class="first line-block">
+-<div class="line">Bring the Sguil server back up:</div>
+-</div>
+ </li>
+-</ul>
++<li><p class="first">Bring the Sguil server back up:</p>
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">sguild</span><span class="o">-</span><span class="n">start</span>
+ </pre></div>
+ </div>
+-<div class="line-block">
+-<div class="line">Adapted from:</div>
+-<div class="line"><a class="reference external" href="https://taosecurity.blogspot.com/2013/02/recovering-from-suricata-gone-wild.html">https://taosecurity.blogspot.com/2013/02/recovering-from-suricata-gone-wild.html</a></div>
+-</div>
++</li>
++</ul>
++<p>Adapted from <a class="reference external" href="https://taosecurity.blogspot.com/2013/02/recovering-from-suricata-gone-wild.html">https://taosecurity.blogspot.com/2013/02/recovering-from-suricata-gone-wild.html</a>.</p>
+ </div>
+ <div class="section" id="so-what-s-next">
+ <h4>So what’s next?<a class="headerlink" href="#so-what-s-next" title="Permalink to this headline">¶</a></h4>
+@@ -5393,7 +5399,7 @@ output):</div>
+ <div class="section" id="disable-the-sid">
+ <h4>Disable the sid<a class="headerlink" href="#disable-the-sid" title="Permalink to this headline">¶</a></h4>
+ <p>Security Onion uses <a class="reference external" href="https://github.com/shirkdog/pulledpork">PulledPork</a> to download new signatures every night and process them against a set list of user generated configurations.</p>
+-<p>In a Server/Slave Security Onion environment, you only need to change the configuration file on the server and the rule-update script will sync with the signatures from the Server.</p>
++<p>In a distributed Security Onion environment, you only need to change the configuration file on the server and the rule-update script will sync with the signatures from the Server.</p>
+ <p>As mentioned before, take care in disabling signatures as it can be likely that a more appropriate response is warranted.</p>
+ <ul>
+ <li><p class="first">Edit the disablesid.conf configuration file:</p>
+@@ -5410,18 +5416,7 @@ not listed, it is assumed to be “1”.
+ </pre></div>
+ </div>
+ </li>
+-<li><p class="first">Run the rule update on the master server:</p>
+-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">rule</span><span class="o">-</span><span class="n">update</span>
+-</pre></div>
+-</div>
+-</li>
+-<li><p class="first">If you’re running salt on your distributed deployment, then the
+-ruleset will replicate to your sensors automatically within 15
+-minutes. If you’re not running salt, then you can run rule-update on
+-the slave machines:</p>
+-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">rule</span><span class="o">-</span><span class="n">update</span>
+-</pre></div>
+-</div>
++<li><p class="first">Update rules as shown in the <a class="reference external" href="https://securityonion.readthedocs.io/en/latest/rules.html#updating-rules">Updating Rules</a> section.</p>
+ </li>
+ </ul>
+ </div>
+@@ -5434,14 +5429,16 @@ rule category (found in the header above
+ <p>For example, if we wanted to disable the entire ET-emerging-misc
+ category, we could do so by putting the following in
+ <code class="docutils literal notranslate"><span class="pre">/etc/nsm/pulledpork/disablesid.conf</span></code>:</p>
+-<p><code class="docutils literal notranslate"><span class="pre">ET-emerging-misc</span></code></p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ET</span><span class="o">-</span><span class="n">emerging</span><span class="o">-</span><span class="n">misc</span>
++</pre></div>
++</div>
+ <p>If we wanted to disable all rules with <code class="docutils literal notranslate"><span class="pre">ET</span> <span class="pre">MISC</span></code> in the rule
+ description, we could put the following in
+ <code class="docutils literal notranslate"><span class="pre">/etc/nsm/pulledpork/disablesid.conf</span></code>:</p>
+-<p><code class="docutils literal notranslate"><span class="pre">pcre:ET</span> <span class="pre">MISC</span></code></p>
+-<p>Of course, after making changes to the file, if we want our changes to
+-take effect immediately, we will need to run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code> on the
+-master server, and then on all remaining sensors.</p>
++<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pcre</span><span class="p">:</span><span class="n">ET</span> <span class="n">MISC</span>
++</pre></div>
++</div>
++<p>After making changes to the file, update your rules as shown in the <a class="reference external" href="https://securityonion.readthedocs.io/en/latest/rules.html#updating-rules">Updating Rules</a> section.</p>
+ </div>
+ <div class="section" id="modifysid-conf">
+ <h4>modifysid.conf<a class="headerlink" href="#modifysid-conf" title="Permalink to this headline">¶</a></h4>
+@@ -5452,10 +5449,7 @@ won’t repeat them here. Edit the modif
+ <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">vi</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">pulledpork</span><span class="o">/</span><span class="n">modifysid</span><span class="o">.</span><span class="n">conf</span>
+ </pre></div>
+ </div>
+-<p>Then run rule-update:</p>
+-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">rule</span><span class="o">-</span><span class="n">update</span>
+-</pre></div>
+-</div>
++<p>Update rules as shown in the <a class="reference external" href="https://securityonion.readthedocs.io/en/latest/rules.html#updating-rules">Updating Rules</a> section.</p>
+ </div>
+ <div class="section" id="rewrite-the-signature">
+ <h4>Rewrite the signature<a class="headerlink" href="#rewrite-the-signature" title="Permalink to this headline">¶</a></h4>
+@@ -5508,10 +5502,7 @@ we edit the disablesid.conf file and add
+ </pre></div>
+ </div>
+ </li>
+-<li><p class="first">Run a rule update:</p>
+-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">rule</span><span class="o">-</span><span class="n">update</span>
+-</pre></div>
+-</div>
++<li><p class="first">Update rules as shown in the <a class="reference external" href="https://securityonion.readthedocs.io/en/latest/rules.html#updating-rules">Updating Rules</a> section.</p>
+ </li>
+ </ul>
+ </div>
+@@ -7628,8 +7619,7 @@ find better tools for existing capabilit
+ <div class="line"><strong>sensor box</strong></div>
+ <div class="line">Definition: A machine having one or more sensors that transmit to a
+ central server. Does not run server processes. Pulls ruleset from
+-server box. (In some contexts, I refer to this a slave pulling rules
+-from the master.)</div>
++server box.</div>
+ <div class="line">Example: A machine named <code class="docutils literal notranslate"><span class="pre">sensor1</span></code> having sensors <code class="docutils literal notranslate"><span class="pre">sensor1-eth0</span></code>
+ and <code class="docutils literal notranslate"><span class="pre">sensor1-eth1</span></code>.</div>
+ <div class="line"><br /></div>
+@@ -7783,12 +7773,8 @@ OR</li>
+ </div>
+ <div class="section" id="why-does-soup-tell-me-i-need-a-secure-boot-key">
+ <h5>Why does soup tell me I need a Secure Boot key?<a class="headerlink" href="#why-does-soup-tell-me-i-need-a-secure-boot-key" title="Permalink to this headline">¶</a></h5>
+-<p>Please see the <a class="reference external" href="Secure-Boot">Secure Boot</a> section.
+-|
+-|
+-| <a class="reference external" href="#top">back to top</a>
+-|
+-|</p>
++<p>Please see the <a class="reference external" href="Secure-Boot">Secure Boot</a> section.</p>
++<p><a class="reference external" href="#top">back to top</a></p>
+ </div>
+ </div>
+ <div class="section" id="ids-engines">
+@@ -7835,12 +7821,8 @@ OR</li>
+ </div>
+ <div class="section" id="why-do-apt-get-and-the-update-manager-show-tcl8-5-as-held-back">
+ <h5>Why do apt-get and the Update Manager show <code class="docutils literal notranslate"><span class="pre">tcl8.5</span> <span class="pre">as</span> <span class="pre">held</span> <span class="pre">back</span></code>?<a class="headerlink" href="#why-do-apt-get-and-the-update-manager-show-tcl8-5-as-held-back" title="Permalink to this headline">¶</a></h5>
+-<p>Please see the  <a class="reference external" href="tcl">tcl</a> section.
+-|
+-|
+-| <a class="reference external" href="#top">back to top</a>
+-|
+-|</p>
++<p>Please see the  <a class="reference external" href="tcl">tcl</a> section.</p>
++<p><a class="reference external" href="#top">back to top</a></p>
+ </div>
+ </div>
+ <div class="section" id="tuning">
+@@ -7943,12 +7925,7 @@ OR</p>
+ <p>To keep <code class="docutils literal notranslate"><span class="pre">Uncategorized</span> <span class="pre">Events</span></code> from getting too high, you should log into Sguil/Squert on a daily/weekly basis and categorize events.</p>
+ </li>
+ </ul>
+-<div class="line-block">
+-<div class="line"><br /></div>
+-<div class="line"><a class="reference external" href="#top">back to top</a></div>
+-<div class="line"><br /></div>
+-<div class="line"><br /></div>
+-</div>
++<p><a class="reference external" href="#top">back to top</a></p>
+ </div>
+ </div>
+ <div class="section" id="miscellaneous">
+@@ -9500,7 +9477,7 @@ configuration to boot into text mode:</p
+         &copy; Copyright 2019
+       
+         <span class="commit">
+-          Revision <code>5c62b547</code>.
++          Revision <code>ea73d71f</code>.
+         </span>
+       
+ 
