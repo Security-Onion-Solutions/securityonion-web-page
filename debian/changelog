@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion101) xenial; urgency=medium
+
+  * securityonion-web-page: only restart apache if it was already running #1520 
+
+ -- Doug Burks <doug.burks@gmail.com>  Mon, 13 May 2019 07:34:19 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion100) xenial; urgency=medium
 
   * update docs 
