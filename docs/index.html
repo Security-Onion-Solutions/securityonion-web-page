@@ -37,27 +37,6 @@
     <link rel="author" title="About these documents" href="index.html#document-about" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
-
-<!-- RTD Extra Head -->
-
-<!-- 
-Always link to the latest version, as canonical.
-http://docs.readthedocs.org/en/latest/canonical.html
--->
-<link rel="canonical" href="https://securityonion.readthedocs.io/en/latest/" />
-
-<link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
-
-<script type="text/javascript" src="_static/readthedocs-data.js"></script>
-
-<!-- Add page-specific data, which must exist in the page js, not global -->
-<script type="text/javascript">
-READTHEDOCS_DATA['page'] = 'index'
-</script>
-
-<script type="text/javascript" src="https://assets.readthedocs.org/static/javascript/readthedocs-analytics.js"></script>
-
-<!-- end RTD <extrahead> -->
 </head>
 
 <body class="wy-body-for-nav">
@@ -179,6 +158,8 @@ READTHEDOCS_DATA['page'] = 'index'
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-bro-fields">Bro Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-elastalert-fields">Elastalert Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-re‐indexing">Re-Indexing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-elastic-features">Elastic Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-elastic-auth">Elastic Auth</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="index.html#document-updating">Updating</a><ul>
@@ -186,6 +167,13 @@ READTHEDOCS_DATA['page'] = 'index'
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-mysql-upgrade-errors">MySQL Upgrade Errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-apt-cacher-ng">apt-cacher-ng</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-eol">End Of Life</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-accounts">Accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-passwords">Passwords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-adding-accounts">Adding Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-listing-accounts">Listing Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-disabling-accounts">Disabling Accounts</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="index.html#document-customizing">Customizing for Your Environment</a><ul>
@@ -240,6 +228,7 @@ READTHEDOCS_DATA['page'] = 'index'
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-jq">jq</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-setup">Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-so-allow">so-allow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-so-elasticsearch-query">so-elasticsearch-query</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-so-import-pcap">so-import-pcap</a></li>
 </ul>
 </li>
@@ -247,7 +236,6 @@ READTHEDOCS_DATA['page'] = 'index'
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-faq">FAQ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-directory">Directory Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-tools">Tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#document-passwords">Passwords</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-support">Support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-mailing-lists">Mailing Lists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-help-wanted">Help Wanted</a></li>
@@ -360,9 +348,10 @@ READTHEDOCS_DATA['page'] = 'index'
 <div class="section" id="formats">
 <h4>Formats<a class="headerlink" href="#formats" title="Permalink to this headline">¶</a></h4>
 <p>This documentation is published online at <a class="reference external" href="https://securityonion.net/docs">https://securityonion.net/docs</a>.  If you are viewing an offline version of this documentation but have Internet access, you might want to switch to the online version at <a class="reference external" href="https://securityonion.net/docs">https://securityonion.net/docs</a> to see the latest version.</p>
+<p>This documentation is also available in PDF format at <a class="reference external" href="https://readthedocs.org/projects/securityonion/downloads/pdf/latest/">https://readthedocs.org/projects/securityonion/downloads/pdf/latest/</a>.</p>
 <div class="line-block">
-<div class="line">This documentation is also available in PDF format:</div>
-<div class="line"><a class="reference external" href="https://readthedocs.org/projects/securityonion/downloads/pdf/latest/">https://readthedocs.org/projects/securityonion/downloads/pdf/latest/</a></div>
+<div class="line">Many folks have asked for a printed version of this documentation and it’s now available for purchase!  Whether you work on airgapped networks or simply want a portable reference that doesn’t require an Internet connection or batteries, this is what you’ve been asking for.  Thanks to Richard Bejtlich for writing the inspiring foreword!  Proceeds go to the Rural Technology Fund!</div>
+<div class="line"><a class="reference external" href="https://www.amazon.com/dp/179779762X">https://www.amazon.com/dp/179779762X</a></div>
 </div>
 </div>
 <div class="section" id="authors">
@@ -449,12 +438,22 @@ READTHEDOCS_DATA['page'] = 'index'
 <p>Security Onion is designed for many different use cases! Here are just a few examples.</p>
 <div class="section" id="pcap-forensics">
 <h4>Pcap Forensics<a class="headerlink" href="#pcap-forensics" title="Permalink to this headline">¶</a></h4>
-<p>One of the easiest ways to get started with Security Onion is using it to forensically analyze one or more pcap files. Just install Security Onion and then run <a class="reference external" href="so-import-pcap">so-import-pcap</a> on one or more of the pcap files in <code class="docutils literal notranslate"><span class="pre">/opt/samples/</span></code>.</p>
+<p>One of the easiest ways to get started with Security Onion is using it to forensically analyze one or more pcap files. Just install Security Onion and then run <a class="reference external" href="so-import-pcap">so-import-pcap</a> on one or more of the pcap files in <code class="docutils literal notranslate"><span class="pre">/opt/samples/</span></code>.  For example, to import the <code class="docutils literal notranslate"><span class="pre">2019</span></code> pcaps in <code class="docutils literal notranslate"><span class="pre">/opt/samples/mta/</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">import</span><span class="o">-</span><span class="n">pcap</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">samples</span><span class="o">/</span><span class="n">mta</span><span class="o">/</span><span class="mi">2019</span><span class="o">*</span>
+</pre></div>
 </div>
-<div class="section" id="classroom">
-<h4>Classroom<a class="headerlink" href="#classroom" title="Permalink to this headline">¶</a></h4>
+<p>For more information, please see the <a class="reference external" href="so-import-pcap">so-import-pcap</a> section.</p>
+</div>
+<div class="section" id="evaluation">
+<h4>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">Evaluation</span> <span class="pre">Mode</span></code> is ideal for classroom or small lab environments.</p>
 <p>Install Security Onion. Run Setup and configure network interfaces. Reboot, run Setup again, and then choose <code class="docutils literal notranslate"><span class="pre">Evaluation</span> <span class="pre">Mode</span></code>.</p>
+<p>For more information, please see the <a class="reference external" href="QuickISOImage">Quick Evaluation</a> section.</p>
+</div>
+<div class="section" id="minimal-evaluation">
+<h4>Minimal Evaluation<a class="headerlink" href="#minimal-evaluation" title="Permalink to this headline">¶</a></h4>
+<p>If you have have a classroom or small lab environment with minimal RAM, you might want to try Minimal Evaluation mode using <code class="docutils literal notranslate"><span class="pre">sosetup-minimal</span></code>.  This mode gives you the bare minimum log parsing for IDS alerts and Bro logs in JSON format.  It therefore requires less RAM than traditional Evaluation Mode.</p>
+<p>Install Security Onion. Run <code class="docutils literal notranslate"><span class="pre">sosetup-minimal</span></code> and configure network interfaces. Reboot, run <code class="docutils literal notranslate"><span class="pre">sosetup-minimal</span></code> again, and then choose <code class="docutils literal notranslate"><span class="pre">Evaluation</span> <span class="pre">Mode</span></code>.</p>
 <p>For more information, please see the <a class="reference external" href="QuickISOImage">Quick Evaluation</a> section.</p>
 </div>
 <div class="section" id="production-server-standalone">
@@ -623,9 +622,9 @@ READTHEDOCS_DATA['page'] = 'index'
 </div>
 <span id="document-hardware"></span><div class="section" id="hardware-requirements">
 <h3>Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="bit-vs-64-bit">
-<h4>32-bit vs 64-bit<a class="headerlink" href="#bit-vs-64-bit" title="Permalink to this headline">¶</a></h4>
-<p>Security Onion only supports 64-bit hardware.</p>
+<div class="section" id="architecture">
+<h4>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h4>
+<p>Security Onion only supports x86-64 architecture (standard Intel/AMD 64-bit processors).  Sorry, we do not support ARM or other processors!</p>
 </div>
 <div class="section" id="uefi">
 <h4>UEFI<a class="headerlink" href="#uefi" title="Permalink to this headline">¶</a></h4>
@@ -1034,8 +1033,8 @@ try pressing the “Esc” key to see the current status.</p>
 <li>Once the live desktop appears, double-click the <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">SecurityOnion</span></code> icon.</li>
 <li>Follow the prompts in the installer. If prompted with an <code class="docutils literal notranslate"><span class="pre">encrypt</span> <span class="pre">home</span> <span class="pre">folder</span></code> or <code class="docutils literal notranslate"><span class="pre">encrypt</span> <span class="pre">partition</span></code> option, <strong>DO NOT</strong> enable this feature. If asked about automatic updates, <strong>DO NOT</strong> enable automatic updates.</li>
 <li>Once the installer completes, rebooot into your new installation and login using the username and password you specified during installation.</li>
-<li>Double-click the Setup icon. The Setup wizard will walk you through configuring <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code> and will then reboot.</li>
-<li>After rebooting, log back in and start the Setup wizard again. It will detect that you have already configured <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code> and will walk you through the rest of the configuration. When prompted for <code class="docutils literal notranslate"><span class="pre">Evaluation</span> <span class="pre">Mode</span></code> or <code class="docutils literal notranslate"><span class="pre">Production</span> <span class="pre">Mode</span></code>, choose <code class="docutils literal notranslate"><span class="pre">Evaluation</span> <span class="pre">Mode</span></code>.</li>
+<li>Double-click the Setup icon to run normal Setup.  Alternatively, you can run minimal Setup by opening a terminal (Ctrl-Alt-T) and then typing <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">sosetup-minimal</span></code> and pressing Enter. The Setup wizard will walk you through configuring <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code> and will then reboot.</li>
+<li>After rebooting, log back in and start Setup the same way you did previously (either double-clicking the icon or running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">sosetup-minimal</span></code>). It will detect that you have already configured <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code> and will walk you through the rest of the configuration. When prompted for <code class="docutils literal notranslate"><span class="pre">Evaluation</span> <span class="pre">Mode</span></code> or <code class="docutils literal notranslate"><span class="pre">Production</span> <span class="pre">Mode</span></code>, choose <code class="docutils literal notranslate"><span class="pre">Evaluation</span> <span class="pre">Mode</span></code>.</li>
 <li>Once you’ve completed the Setup wizard, use the Desktop icons to login to <a class="reference external" href="Sguil">Sguil</a>, <a class="reference external" href="Squert">Squert</a>, or <a class="reference external" href="Kibana">Kibana</a>.</li>
 <li>Finally, review the <a class="reference external" href="PostInstallation">Post Installation</a> page.</li>
 </ol>
@@ -1056,7 +1055,7 @@ try pressing the “Esc” key to see the current status.</p>
 </li>
 <li><p class="first">Verify that you have Internet connectivity. If necessary, configure your <a class="reference external" href="Proxy">proxy</a> settings.</p>
 </li>
-<li><p class="first">Log back in (using <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span></code> if you’re installing on Ubuntu Server or a headless distro).</p>
+<li><p class="first">Log back in.</p>
 </li>
 <li><p class="first">Configure <code class="docutils literal notranslate"><span class="pre">MySQL</span></code> not to prompt for root password (Setup will generate a random password later):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;debconf debconf/frontend select noninteractive&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">debconf</span><span class="o">-</span><span class="nb">set</span><span class="o">-</span><span class="n">selections</span>
@@ -1093,7 +1092,7 @@ try pressing the “Esc” key to see the current status.</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Run the Setup wizard (if you’re using Ubuntu Server with no GUI and are doing this over SSH, you will need to forward X for this to work):</p>
+<li><p class="first">Run the Setup wizard (you can replace <code class="docutils literal notranslate"><span class="pre">sosetup</span></code> with <code class="docutils literal notranslate"><span class="pre">sosetup-minimal</span></code> if you prefer the minimal configuration):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sosetup</span>
 </pre></div>
 </div>
@@ -1199,7 +1198,7 @@ try pressing the “Esc” key to see the current status.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sosetup</span>
 </pre></div>
 </div>
-<p>Otherwise, if you are remote and logged in over ssh, you can run CLI-only Setup using <code class="docutils literal notranslate"><span class="pre">sosetup.conf</span></code>. For more information, please see <code class="docutils literal notranslate"><span class="pre">/usr/share/securityonion/sosetup.conf</span></code>.</p>
+<p>Alternatively, you can run <code class="docutils literal notranslate"><span class="pre">sosetup-minimal</span></code> if you prefer the minimal configuration or you can automate Setup using <code class="docutils literal notranslate"><span class="pre">sosetup.conf</span></code>. For more information, please see <code class="docutils literal notranslate"><span class="pre">/usr/share/securityonion/sosetup.conf</span></code>.</p>
 </li>
 <li><p class="first">The Setup wizard will walk you through configuring <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code> and will then reboot.</p>
 </li>
@@ -1220,7 +1219,7 @@ try pressing the “Esc” key to see the current status.</p>
 </li>
 <li><p class="first">When ready to reboot, click <code class="docutils literal notranslate"><span class="pre">Yes,</span> <span class="pre">reboot!</span></code>.</p>
 </li>
-<li><p class="first">After rebooting, log back in and start the Setup wizard again (GUI if local, <code class="docutils literal notranslate"><span class="pre">sosetup.conf</span></code> CLI if remote). It will detect that you have already configured <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code> and will walk you through the rest of the configuration.</p>
+<li><p class="first">After rebooting, log back in and start the Setup wizard again the same as you did before. It will detect that you have already configured <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code> and will walk you through the rest of the configuration.</p>
 </li>
 <li><p class="first">Select <code class="docutils literal notranslate"><span class="pre">Production</span> <span class="pre">Mode</span></code>.</p>
 </li>
@@ -1663,7 +1662,7 @@ views will prompt questions that otherwise may not have been asked.</div></block
 </div>
 <div class="section" id="prepared-statements">
 <h4>Prepared Statements<a class="headerlink" href="#prepared-statements" title="Permalink to this headline">¶</a></h4>
-<p>Squert uses prepared statements.  If you start seeing <code class="docutils literal notranslate"><span class="pre">Prepared</span> <span class="pre">statement</span> <span class="pre">needs</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">re-prepared</span></code> in <code class="docutils literal notranslate"><span class="pre">/var/log/apache2/error.log</span></code>, please see the <a class="reference external" href="MySQLTuning#table_definition_cache">MySQLTuning#table_definition_cache</a> section.</p>
+<p>Squert uses prepared statements.  If you start seeing <code class="docutils literal notranslate"><span class="pre">Prepared</span> <span class="pre">statement</span> <span class="pre">needs</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">re-prepared</span></code> in <code class="docutils literal notranslate"><span class="pre">/var/log/apache2/error.log</span></code>, please see the <a class="reference external" href="MySQLTuning#table-definition-cache">MySQLTuning#table-definition-cache</a> section.</p>
 </div>
 </div>
 <span id="document-sguil"></span><div class="section" id="sguil">
@@ -2195,6 +2194,15 @@ from kernel space to user space and vice versa.</div></blockquote>
 <span id="document-beats"></span><div class="section" id="beats">
 <h3>Beats<a class="headerlink" href="#beats" title="Permalink to this headline">¶</a></h3>
 <p>We can use Elastic Beats to facilitate the shipping of endpoint logs to Security Onion’s Elastic Stack. Currently, testing has only been performed with Filebeat (multiple log types) and Winlogbeat (Windows Event logs).</p>
+<div class="section" id="download">
+<h4>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h4>
+<p>To download a Beat, choose the correct version from the Past Releases page:</p>
+<p><a class="reference external" href="https://www.elastic.co/downloads/past-releases">https://www.elastic.co/downloads/past-releases</a></p>
+<p>PLEASE NOTE: Choosing a Beat version that is greater than the Elastic version is not supported and may not work as expected.</p>
+<p>To check your current version of Elastic, navigate to the Management section in Kibana.  The version should be displayed on the screen.</p>
+<p>Alternatively, run the following command from your master server:</p>
+<p><code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">localhost:9200</span></code></p>
+</div>
 <div class="section" id="installation">
 <h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
 <p>To install a Beat, follow the instructions provided for the respective Beat, with the exception of loading the index template, as Security Onion uses its own template file to manage Beats fields.</p>
@@ -2294,7 +2302,7 @@ from kernel space to user space and vice versa.</div></blockquote>
 <p>Please note! It is important to ensure that you download the agent that matches the version of your Wazuh server. For example, if your Wazuh server is version 3.8.2, then you will want to deploy Wazuh agent version 3.8.2.</p>
 <div class="line-block">
 <div class="line">Once you’ve installed the Wazuh agent on the host(s) to be monitored, then perform the steps defined here:</div>
-<div class="line"><a class="reference external" href="https://documentation.wazuh.com/current/user-manual/agents/registering-agents/register-agent-manual.html">https://documentation.wazuh.com/current/user-manual/agents/registering-agents/register-agent-manual.html</a></div>
+<div class="line"><a class="reference external" href="https://documentation.wazuh.com/3.8/user-manual/agents/command-line/register.html#command-line-register">https://documentation.wazuh.com/3.8/user-manual/agents/command-line/register.html#command-line-register</a></div>
 </div>
 <p>You may need to run <a class="reference external" href="so-allow">so-allow</a> to allow traffic from the IP address of your Wazuh agent(s).</p>
 </div>
@@ -2831,6 +2839,19 @@ Logstash uses whichever criteria is reached &gt;first.</div></blockquote>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="logstash-minimal">
+<h4>LOGSTASH_MINIMAL<a class="headerlink" href="#logstash-minimal" title="Permalink to this headline">¶</a></h4>
+<p>We now have a <code class="docutils literal notranslate"><span class="pre">LOGSTASH_MINIMAL</span></code> mode which will offload log parsing to Elasticsearch ingest node.  This allows Logstash to run in only 200MB RAM and start instantly.  Please note that the Elasticsearch ingest node parsing currently only supports standard IDS alerts and Bro logs in JSON format.</p>
+<p>To enable on a new installation, simply run through Setup using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sosetup</span><span class="o">-</span><span class="n">minimal</span>
+</pre></div>
+</div>
+<p>To enable on an existing installation, add the following to <code class="docutils literal notranslate"><span class="pre">/etc/nsm/securityonion.conf</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LOGSTASH_MINIMAL</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+</pre></div>
+</div>
+<p>You should then be able to decrease your Logstash heap size in <code class="docutils literal notranslate"><span class="pre">/etc/logstash/jvm.options</span></code> and restart Logstash.</p>
 </div>
 </div>
 <span id="document-elastalert"></span><div class="section" id="elastalert">
@@ -3422,6 +3443,11 @@ on the right.</p>
 <span class="n">REJ</span> <span class="s2">&quot;Connection attempt rejected&quot;</span>
 <span class="n">RSTO</span> <span class="s2">&quot;Connection established, originator aborted (sent a RST)&quot;</span>
 <span class="n">RSTR</span> <span class="s2">&quot;Established, responder aborted&quot;</span>
+<span class="n">RSTOS0</span> <span class="s2">&quot;Originator sent a SYN followed by a RST, we never saw a SYN-ACK from the responder&quot;</span>
+<span class="n">RSTRH</span> <span class="s2">&quot;Responder sent a SYN ACK followed by a RST, we never saw a SYN from the (purported) originator&quot;</span>
+<span class="n">SH</span> <span class="s2">&quot;Originator sent a SYN followed by a FIN, we never saw a SYN ACK from the responder (hence the connection was &#39;half&#39; open)&quot;</span>
+<span class="n">SHR</span> <span class="s2">&quot;Responder sent a SYN ACK followed by a FIN, we never saw a SYN from the originator&quot;</span>
+<span class="n">OTH</span> <span class="s2">&quot;No SYN seen, just midstream traffic (a &#39;partial connection&#39; that was not later closed)&quot;</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -3912,8 +3938,8 @@ on the right.</p>
 <div class="line">status_code</div>
 <div class="line">status_msg</div>
 <div class="line">warning</div>
-<div class="line">request_body_len</div>
-<div class="line">response_body_len</div>
+<div class="line">request_body_len =&gt; request_body_length</div>
+<div class="line">response_body_len =&gt; response_body_length</div>
 <div class="line">content_type</div>
 </div>
 </div>
@@ -4273,6 +4299,77 @@ Elastalert.</p>
 <p>The script should then progress to re-index the matching indices, and inform you when it has completed.</p>
 <p>Please note, abnormal execution of this script may result in data loss– there are <strong>NO GUARANTEES</strong> this process will work perfectly for you.</p>
 </div>
+<span id="document-elastic-features"></span><div class="section" id="elastic-features">
+<h3>Elastic Features<a class="headerlink" href="#elastic-features" title="Permalink to this headline">¶</a></h3>
+<p>Many folks have asked if they could switch from the open source version of the Elastic Stack to the Features version licensed under the Elastic license.  Starting with our Elastic 6.8.2 release, we have a script called <code class="docutils literal notranslate"><span class="pre">so-elastic-features</span></code> that will walk you through this.  If you want to do this manually, you can do the following:</p>
+<ul class="simple">
+<li>First, please review the Elastic Features license:</li>
+</ul>
+<p><a class="reference external" href="https://github.com/elastic/elasticsearch/blob/6.7/licenses/ELASTIC-LICENSE.txt">https://github.com/elastic/elasticsearch/blob/6.7/licenses/ELASTIC-LICENSE.txt</a></p>
+<ul>
+<li><p class="first">Next, you should make sure that all updates have been installed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">soup</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If soup prompts to reboot, please do so.</p>
+</li>
+<li><p class="first">Verify that everything is working properly before continuing.</p>
+</li>
+<li><p class="first">Edit <code class="docutils literal notranslate"><span class="pre">/etc/nsm/elasticdownload.conf</span></code> using your favorite text editor and change <code class="docutils literal notranslate"><span class="pre">DOCKERHUB</span></code> from <code class="docutils literal notranslate"><span class="pre">securityonionsolutions</span></code> to <code class="docutils literal notranslate"><span class="pre">securityonionsolutionselas</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DOCKERHUB</span><span class="o">=</span><span class="s2">&quot;securityonionsolutionselas&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run soup again to download the new Docker images for Elastic Features:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">soup</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Once soup has downloaded the new Docker images, it should restart your Docker containers.</p>
+</li>
+<li><p class="first">Kibana should now have some new features on the left side.</p>
+</li>
+</ul>
+<div class="section" id="screenshots">
+<h4>Screenshots<a class="headerlink" href="#screenshots" title="Permalink to this headline">¶</a></h4>
+<a class="reference external image-reference" href="https://1.bp.blogspot.com/-aOuXFcoXA4c/XO1dUjcqKvI/AAAAAAAAFoc/seV68i3iQqUf6WVybNjNEknCqkmTehz8wCLcBGAs/s1600/soup.PNG"><img alt="_images/soup.PNG" src="_images/soup.PNG" /></a>
+<a class="reference external image-reference" href="https://1.bp.blogspot.com/-7pUYxEBgnKo/XO1dYt11uoI/AAAAAAAAFog/3vEhERc5v0cwHl7K57CLzcnge46pfAznQCLcBGAs/s1600/kibana.PNG"><img alt="_images/kibana.PNG" src="_images/kibana.PNG" /></a>
+</div>
+<div class="section" id="q-a">
+<h4>Q&amp;A<a class="headerlink" href="#q-a" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Is Elastic Features open source?</li>
+</ul>
+<p>No, it is not open source.  It is licensed under the Elastic license:
+<a class="reference external" href="https://github.com/elastic/elasticsearch/blob/6.7/licenses/ELASTIC-LICENSE.txt">https://github.com/elastic/elasticsearch/blob/6.7/licenses/ELASTIC-LICENSE.txt</a></p>
+<ul class="simple">
+<li>What does this mean for Security Onion licensing?</li>
+</ul>
+<p>Security Onion continues to be free and open source and will continue to default to the open source version of the Elastic Stack.  If you choose to switch to Elastic Features (not open source), you may do so using the instructions above.</p>
+<ul class="simple">
+<li>If I switch to Elastic Features, is this a trial license?</li>
+</ul>
+<p>If you switch to Elastic Features, you can remain on the BASIC license for free forever or you can choose to upgrade to a paid subscription. For more information about Elastic Features subscription levels, please see:
+<a class="reference external" href="https://www.elastic.co/subscriptions">https://www.elastic.co/subscriptions</a></p>
+</div>
+</div>
+<span id="document-elastic-auth"></span><div class="section" id="elastic-auth">
+<h3>Elastic Auth<a class="headerlink" href="#elastic-auth" title="Permalink to this headline">¶</a></h3>
+<p>Starting in Elastic 6.8.0, Elastic authentication is included for free in Elastic Features.  This allows you to assign different privileges to different users in Kibana.</p>
+<p>To enable, simply run <code class="docutils literal notranslate"><span class="pre">so-elastic-auth</span></code> and follow the prompts.  <code class="docutils literal notranslate"><span class="pre">so-elastic-auth</span></code> will do the following:</p>
+<ul class="simple">
+<li>walk you through switching to Elastic Features if necessary</li>
+<li>enable authentication in Elasticsearch, Logstash, Kibana, Curator, and ElastAlert</li>
+<li>find any existing user accounts in your Sguil database and create corresponding accounts in Elasticsearch with read-only privilege by default</li>
+</ul>
+<p>Once you’ve completed <code class="docutils literal notranslate"><span class="pre">so-elastic-auth</span></code>, you should then:</p>
+<ul class="simple">
+<li>log into Kibana using the <code class="docutils literal notranslate"><span class="pre">elastic</span></code> super-user account</li>
+<li>set any other account privileges as necessary</li>
+<li>distribute the temporary passwords generated by <code class="docutils literal notranslate"><span class="pre">so-elastic-auth</span></code> to your users and have them reset their passwords</li>
+</ul>
+</div>
 </div>
 </div>
 <span id="document-updating"></span><div class="section" id="updating">
@@ -4311,16 +4408,25 @@ Elastalert.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="elastic">
+<h4>Elastic<a class="headerlink" href="#elastic" title="Permalink to this headline">¶</a></h4>
+<p>If <code class="docutils literal notranslate"><span class="pre">soup</span></code> upgrades the Elastic stack, it should automatically reload your Kibana dashboards.  If for some reason this fails and Kibana is not showing any dashboards, then simply run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">elastic</span><span class="o">-</span><span class="n">configure</span><span class="o">-</span><span class="n">kibana</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="wazuh">
 <h4>Wazuh<a class="headerlink" href="#wazuh" title="Permalink to this headline">¶</a></h4>
-<p>Wazuh package upgrades will back up your <code class="docutils literal notranslate"><span class="pre">ossec.conf</span></code> and put the new <code class="docutils literal notranslate"><span class="pre">ossec.conf</span></code> in place.  You’ll then need to do the following:</p>
+<p>Wazuh package upgrades will back up <code class="docutils literal notranslate"><span class="pre">/var/ossec/etc/ossec.conf</span></code> and put the new <code class="docutils literal notranslate"><span class="pre">ossec.conf</span></code> in place.  You’ll then need to do the following:</p>
 <ul>
-<li><p class="first">re-apply any other local customizations to your <code class="docutils literal notranslate"><span class="pre">ossec.conf</span></code> file</p>
+<li><p class="first">re-apply any other local customizations to <code class="docutils literal notranslate"><span class="pre">/var/ossec/etc/ossec.conf</span></code></p>
 </li>
 <li><p class="first">restart Wazuh as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">ossec</span><span class="o">-</span><span class="n">restart</span>
 </pre></div>
 </div>
+</li>
+<li><p class="first">update any existing OSSEC/Wazuh agents to the Wazuh agent version matching your Wazuh server version</p>
 </li>
 </ul>
 </div>
@@ -4350,6 +4456,10 @@ Elastalert.</p>
 <h4>Using salt and soup to update your entire deployment<a class="headerlink" href="#using-salt-and-soup-to-update-your-entire-deployment" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference external" href="Salt#using-salt-to-install-updates-across-your-entire-deployment">salt and
 soup</a></p>
+</div>
+<div class="section" id="content-inspection">
+<h4>Content Inspection<a class="headerlink" href="#content-inspection" title="Permalink to this headline">¶</a></h4>
+<p>If your Security Onion box(es) go through a firewall, proxy, or other network security device that does content inspection, you may need to add an exception for <code class="docutils literal notranslate"><span class="pre">ppa.launchpad.net</span></code>.</p>
 </div>
 <div class="section" id="standard-ubuntu-package-management-tools">
 <h4>Standard Ubuntu package management tools<a class="headerlink" href="#standard-ubuntu-package-management-tools" title="Permalink to this headline">¶</a></h4>
@@ -4467,6 +4577,125 @@ Onion and older components.</p>
 <div class="line-block">
 <div class="line">Xplico reached EOL on June 5, 2018:</div>
 <div class="line"><a class="reference external" href="https://blog.securityonion.net/2017/12/6-month-eol-notice-for-security-onion.html">https://blog.securityonion.net/2017/12/6-month-eol-notice-for-security-onion.html</a></div>
+</div>
+</div>
+</div>
+</div>
+<span id="document-accounts"></span><div class="section" id="accounts">
+<h2>Accounts<a class="headerlink" href="#accounts" title="Permalink to this headline">¶</a></h2>
+<p>In Security Onion, there are two main types of accounts:</p>
+<blockquote>
+<div><ul class="simple">
+<li>operating system (OS) accounts</li>
+<li>application accounts used when authenticating to Sguil, Squert, or Kibana</li>
+</ul>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+<span id="document-passwords"></span><div class="section" id="passwords">
+<h3>Passwords<a class="headerlink" href="#passwords" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="os-user-account">
+<h4>OS user account<a class="headerlink" href="#os-user-account" title="Permalink to this headline">¶</a></h4>
+<p>When you first install Security Onion, you go through the standard Ubuntu installer and create a user account for yourself.  If you need to change your user password, you can use the <code class="docutils literal notranslate"><span class="pre">passwd</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">passwd</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="os-root-account">
+<h4>OS root account<a class="headerlink" href="#os-root-account" title="Permalink to this headline">¶</a></h4>
+<p>Like other Ubuntu-based distributions, there is no root password. Your default user account has been given sudo permissions. Graphical utilities requesting administrative access should prompt for password; enter your user password. Command-line utilities that require administrative access can be prefixed with <code class="docutils literal notranslate"><span class="pre">sudo</span></code>. For example, the <code class="docutils literal notranslate"><span class="pre">so-status</span></code> command requires administrative access so you can run it with <code class="docutils literal notranslate"><span class="pre">sudo</span></code> as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">status</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sguil">
+<h4>Sguil<a class="headerlink" href="#sguil" title="Permalink to this headline">¶</a></h4>
+<p>Log into Sguil using the username and password you created in the Setup wizard.</p>
+<p>You can change passwords using the Sguil client (<code class="docutils literal notranslate"><span class="pre">File</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">Change</span> <span class="pre">Password</span></code>) or as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">passwd</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="squert">
+<h4>Squert<a class="headerlink" href="#squert" title="Permalink to this headline">¶</a></h4>
+<p>When you access Squert, you are prompted to login using Apache Single Sign On (SSO). This SSO authenticates against the Sguil user database, so you should be able to login to Squert using the same username and password you use to login to Sguil.</p>
+</div>
+<div class="section" id="kibana">
+<h4>Kibana<a class="headerlink" href="#kibana" title="Permalink to this headline">¶</a></h4>
+<p>When you access Kibana, you are prompted to login using Apache Single Sign On (SSO). This SSO authenticates against the Sguil user database, so you should be able to login to Kibana using the same username and password you use to login to Sguil.</p>
+<p>If you’ve enabled Elastic authentication, you can manage user accounts in Kibana under Management –&gt; Users.</p>
+</div>
+<div class="section" id="mysql">
+<h4>MySQL<a class="headerlink" href="#mysql" title="Permalink to this headline">¶</a></h4>
+<p>The MySQL root password is randomized. MySQL only allows connections from localhost. If you need to look at the database manually, you can do so like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mysql</span> <span class="o">--</span><span class="n">defaults</span><span class="o">-</span><span class="n">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">debian</span><span class="o">.</span><span class="n">cnf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<span id="document-adding-accounts"></span><div class="section" id="adding-accounts">
+<h3>Adding Accounts<a class="headerlink" href="#adding-accounts" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="os">
+<h4>OS<a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h4>
+<p>If you need to add a new OS user account, you can use the <code class="docutils literal notranslate"><span class="pre">adduser</span></code> command.  For example, to add a new account called <code class="docutils literal notranslate"><span class="pre">tom</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">adduser</span> <span class="n">tom</span>
+</pre></div>
+</div>
+<p>For more information, please see <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">adduser</span></code>.</p>
+</div>
+<div class="section" id="sso">
+<h4>SSO<a class="headerlink" href="#sso" title="Permalink to this headline">¶</a></h4>
+<p>If you need to add a new SSO (Sguil/Squert/Kibana) account, you can use the <code class="docutils literal notranslate"><span class="pre">so-user-add</span></code> command (please note that SSO usernames must be alphanumeric):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">add</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="elastic">
+<h4>Elastic<a class="headerlink" href="#elastic" title="Permalink to this headline">¶</a></h4>
+<p>If you’ve enabled Elastic authentication, you can manage Elastic user accounts in Kibana under Management –&gt; Users.</p>
+</div>
+</div>
+<span id="document-listing-accounts"></span><div class="section" id="listing-accounts">
+<h3>Listing Accounts<a class="headerlink" href="#listing-accounts" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="os">
+<h4>OS<a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h4>
+<p>OS user accounts are stored in <code class="docutils literal notranslate"><span class="pre">/etc/passwd</span></code>.  You can get a list of all OS accounts using the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cut</span> <span class="o">-</span><span class="n">d</span><span class="p">:</span> <span class="o">-</span><span class="n">f1</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">passwd</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sso">
+<h4>SSO<a class="headerlink" href="#sso" title="Permalink to this headline">¶</a></h4>
+<p>To list all SSO (Sguil/Squert/Kibana) accounts, you can use the <code class="docutils literal notranslate"><span class="pre">so-user-list</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="nb">list</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="elastic">
+<h4>Elastic<a class="headerlink" href="#elastic" title="Permalink to this headline">¶</a></h4>
+<p>If you’ve enabled Elastic authentication, you can manage Elastic user accounts in Kibana under Management –&gt; Users.</p>
+</div>
+</div>
+<span id="document-disabling-accounts"></span><div class="section" id="disabling-accounts">
+<h3>Disabling Accounts<a class="headerlink" href="#disabling-accounts" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="os">
+<h4>OS<a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h4>
+<p>If you need to disable an OS user account, you can expire the account using <code class="docutils literal notranslate"><span class="pre">usermod</span> <span class="pre">--expiredate</span> <span class="pre">1</span></code>.  For example, to disable the account for user <code class="docutils literal notranslate"><span class="pre">tom</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">usermod</span> <span class="o">--</span><span class="n">expiredate</span> <span class="mi">1</span> <span class="n">tom</span>
+</pre></div>
+</div>
+<p>For more information, please see <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">passwd</span></code> and <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">usermod</span></code>.</p>
+</div>
+<div class="section" id="sso">
+<h4>SSO<a class="headerlink" href="#sso" title="Permalink to this headline">¶</a></h4>
+<p>If you need to disable a SSO (Sguil/Squert/Kibana) account, you can use the <code class="docutils literal notranslate"><span class="pre">so-user-disable</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">disable</span>
+</pre></div>
+</div>
+<p>If you later need to re-enable this SSO account, you can use the <code class="docutils literal notranslate"><span class="pre">so-user-passwd</span></code> command to reset the password which will automatically re-enable the account.</p>
+</div>
+<div class="section" id="elastic">
+<h4>Elastic<a class="headerlink" href="#elastic" title="Permalink to this headline">¶</a></h4>
+<p>If you’ve enabled Elastic authentication, you can manage Elastic user accounts in Kibana under Management –&gt; Users.</p>
 </div>
 </div>
 </div>
@@ -4877,8 +5106,8 @@ Project and from ntp.ubuntu.com. From <code class="docutils literal notranslate"
 <h4>IDS Alerts<a class="headerlink" href="#ids-alerts" title="Permalink to this headline">¶</a></h4>
 <p>Anybody can join the NTP Pool Project and provide NTP service.
 Occasionally, somebody provides NTP service from a residential DHCP
-address that at some point in time may have also been used for TOR. This
-results in IDS alerts for TOR nodes where the port is 123 (NTP). This is
+address that at some point in time may have also been used for Tor. This
+results in IDS alerts for Tor nodes where the port is 123 (NTP). This is
 another good reason to modify the NTP configuration to pull time updates
 from your preferred NTP provider.</p>
 </div>
@@ -5811,11 +6040,11 @@ alert tcp $HOME_NET any -&gt; $EXTERNAL_NET !1433 (msg:&quot;ET TROJAN Bancos.DV
 <li>you’re running prepared statements</li>
 </ul>
 <p>Check mysql <code class="docutils literal notranslate"><span class="pre">table_definition</span> <span class="pre">cache</span></code> (defaults to <code class="docutils literal notranslate"><span class="pre">400</span></code>):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">uroot</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;show global variables like &#39;table_definition_cache&#39;&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mysql</span> <span class="o">--</span><span class="n">defaults</span><span class="o">-</span><span class="n">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">debian</span><span class="o">.</span><span class="n">cnf</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;show global variables like &#39;table_definition_cache&#39;&quot;</span>
 </pre></div>
 </div>
 <p>Check current <code class="docutils literal notranslate"><span class="pre">open_table_definitions</span></code> (probably maxed out at <code class="docutils literal notranslate"><span class="pre">table_definition_cache</span></code>):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">uroot</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;show global status like &#39;open_table_definitions&#39;&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mysql</span> <span class="o">--</span><span class="n">defaults</span><span class="o">-</span><span class="n">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">debian</span><span class="o">.</span><span class="n">cnf</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;show global status like &#39;open_table_definitions&#39;&quot;</span>
 </pre></div>
 </div>
 <p>Check number of <code class="docutils literal notranslate"><span class="pre">.frm</span></code> files:</p>
@@ -6032,14 +6261,14 @@ something like the following:</div>
 </div>
 <span id="document-cloud-client"></span><div class="section" id="cloud-client">
 <h3>Cloud Client<a class="headerlink" href="#cloud-client" title="Permalink to this headline">¶</a></h3>
-<p>Many folks ask how they can use Security Onion to monitor and defend
-their cloud environments. Most cloud environments don’t provide anything
-like a tap or span port, but we can use daemonlogger or netsniff-ng as a
-virtual tap. This virtual tap will copy all traffic from our production
-cloud box to an OpenVPN bridge that transports the traffic to our
-Security Onion sensor where it is then analyzed.</p>
+<p><strong>Please Note!</strong></p>
+<p>This cloud client idea was developed before cloud providers offered virtual taps.  If you are able to use your cloud provider’s virtual tap, please do so instead of using this cloud client workaround.  For example:</p>
+<p><a class="reference external" href="https://aws.amazon.com/blogs/aws/new-vpc-traffic-mirroring/">https://aws.amazon.com/blogs/aws/new-vpc-traffic-mirroring/</a></p>
+<p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-tap-overview">https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-tap-overview</a></p>
 <p><strong>Warning! This cloud client is considered experimental! USE AT YOUR OWN RISK!</strong></p>
-<p>This guide was originally written for Security Onion 12.04 and has been updated for Security Onion 14.04, but hasn’t been heavily tested yet.</p>
+<p>If your cloud provider doesn’t already offer a virtual tap, you can use daemonlogger or netsniff-ng as a virtual tap. This virtual tap will copy all traffic from our production cloud box to an OpenVPN bridge that transports the traffic to our
+Security Onion sensor where it is then analyzed.</p>
+<p>This guide was originally written for Security Onion 12.04 and was updated for Security Onion 14.04, but hasn’t been updated or tested on 16.04.</p>
 <div class="section" id="traffic-flow-and-nic-offloading-functions">
 <h4>Traffic Flow and NIC offloading functions<a class="headerlink" href="#traffic-flow-and-nic-offloading-functions" title="Permalink to this headline">¶</a></h4>
 <p>The cloud client uses <code class="docutils literal notranslate"><span class="pre">daemonlogger</span></code> or <code class="docutils literal notranslate"><span class="pre">netsniff-ng</span></code> to copy all
@@ -6555,15 +6784,10 @@ non-production system!</p>
 </div>
 </li>
 <li><p class="first">Stop all services:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">nsm</span> <span class="n">stop</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">stop</span>
 <span class="n">sudo</span> <span class="n">service</span> <span class="n">syslog</span><span class="o">-</span><span class="n">ng</span> <span class="n">stop</span>
-<span class="n">sudo</span> <span class="n">service</span> <span class="n">apache2</span> <span class="n">stop</span>
-<span class="n">sudo</span> <span class="n">service</span> <span class="n">mysql</span> <span class="n">stop</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">Check for any ELSA perl processes which may need to be killed manually:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="n">aux</span> <span class="o">|</span><span class="n">grep</span> <span class="n">perl</span>
+<span class="n">sudo</span> <span class="n">service</span> <span class="n">apache2</span> <span class="n">stop</span> <span class="p">(</span><span class="k">if</span> <span class="n">master</span> <span class="n">server</span> <span class="ow">or</span> <span class="n">standalone</span><span class="p">)</span>
+<span class="n">sudo</span> <span class="n">service</span> <span class="n">mysql</span> <span class="n">stop</span> <span class="p">(</span><span class="k">if</span> <span class="n">master</span> <span class="n">server</span> <span class="ow">or</span> <span class="n">standalone</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
@@ -6616,10 +6840,10 @@ non-production system!</p>
 </div>
 </li>
 <li><p class="first">Start all services:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">mysql</span> <span class="n">start</span>
-<span class="n">sudo</span> <span class="n">service</span> <span class="n">apache2</span> <span class="n">start</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">mysql</span> <span class="n">start</span> <span class="p">(</span><span class="k">if</span> <span class="n">master</span> <span class="n">server</span> <span class="ow">or</span> <span class="n">standalone</span><span class="p">)</span>
+<span class="n">sudo</span> <span class="n">service</span> <span class="n">apache2</span> <span class="n">start</span> <span class="p">(</span><span class="k">if</span> <span class="n">master</span> <span class="n">server</span> <span class="ow">or</span> <span class="n">standalone</span><span class="p">)</span>
 <span class="n">sudo</span> <span class="n">service</span> <span class="n">syslog</span><span class="o">-</span><span class="n">ng</span> <span class="n">start</span>
-<span class="n">sudo</span> <span class="n">service</span> <span class="n">nsm</span> <span class="n">start</span>
+<span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">start</span>
 </pre></div>
 </div>
 </li>
@@ -6645,7 +6869,7 @@ non-production system!</p>
 <h4>Method 3: Make /nsm a symlink to the new logging location<a class="headerlink" href="#method-3-make-nsm-a-symlink-to-the-new-logging-location" title="Permalink to this headline">¶</a></h4>
 <p>If you do this, you’ll need to do something like the following to avoid AppArmor issues:</p>
 <p>Stop all services:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">nsm</span> <span class="n">stop</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">stop</span>
 </pre></div>
 </div>
 <p>Copy existing data from <code class="docutils literal notranslate"><span class="pre">/nsm</span></code> to new mount point:</p>
@@ -6685,9 +6909,8 @@ non-production system!</p>
 <h4>Moving the MySQL Databases<a class="headerlink" href="#moving-the-mysql-databases" title="Permalink to this headline">¶</a></h4>
 <p>In this section, we’ll cover how to move the MySQL databases containing all of your important alert and event data to another place.  This section assumes we’ll be moving the databases to <code class="docutils literal notranslate"><span class="pre">/nsm</span></code>, though, any other location will do.</p>
 <p>The MySQL databases are stored under <code class="docutils literal notranslate"><span class="pre">/var/lib/mysql</span></code>. We will need to move this folder and its sub-contents to the destination location. First, we must stop all processes that may be writing or using the databases.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">nsm</span> <span class="n">stop</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">stop</span>
 <span class="n">sudo</span> <span class="n">service</span> <span class="n">mysql</span> <span class="n">stop</span>
-<span class="n">sudo</span> <span class="n">service</span> <span class="n">sphinxsearch</span> <span class="n">stop</span>
 </pre></div>
 </div>
 <p>Now, we need to make sure all other nsm-related processes are stopped. To double-check, run <code class="docutils literal notranslate"><span class="pre">lsof</span></code> on the nsm mount point to list any processes that have open file descriptors. Kill everything, or nearly everything, that comes up in the list.</p>
@@ -6734,8 +6957,7 @@ non-production system!</p>
 <p>Finally, start all the processes back up:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">apparmor</span> <span class="n">start</span>
 <span class="n">sudo</span> <span class="n">service</span> <span class="n">mysql</span> <span class="n">start</span>
-<span class="n">sudo</span> <span class="n">service</span> <span class="n">sphinxsearch</span> <span class="n">start</span>
-<span class="n">sudo</span> <span class="n">service</span> <span class="n">nsm</span> <span class="n">start</span>
+<span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">start</span>
 </pre></div>
 </div>
 </div>
@@ -7313,6 +7535,17 @@ because that is the recommended/required setting for Sguil:</div>
 <span id="document-setup"></span><div class="section" id="setup">
 <h3>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
 <p>After installing Security Onion, double-click the <code class="docutils literal notranslate"><span class="pre">Setup</span></code> icon on the desktop (or run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">sosetup</span></code> from a terminal) to configure your system.  In most cases, you’ll run Setup to do network configuration, reboot, and then run Setup again for service configuration.</p>
+<div class="section" id="sosetup-minimal">
+<h4>sosetup-minimal<a class="headerlink" href="#sosetup-minimal" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">sosetup-minimal</span></code> configures Security Onion to run using minimal resources.  It will run Setup and then do the following:</p>
+<ul class="simple">
+<li>stop and disable elastalert</li>
+<li>stop and disable freqserver</li>
+<li>stop and disable domainstats</li>
+<li>set Elasticsearch to a 400MB heap size</li>
+<li>set Logstash to <code class="docutils literal notranslate"><span class="pre">LOGSTASH_MINIMAL</span></code> mode and set a 200MB heap size</li>
+</ul>
+</div>
 <div class="section" id="automating-setup">
 <h4>Automating Setup<a class="headerlink" href="#automating-setup" title="Permalink to this headline">¶</a></h4>
 <p>You can automate the Setup process using <code class="docutils literal notranslate"><span class="pre">sosetup.conf</span></code>.</p>
@@ -7385,6 +7618,13 @@ Please enter your selection (a - analyst, c - apt-cacher-ng client, l - syslog, 
 <p>If you choose the <code class="docutils literal notranslate"><span class="pre">analyst</span></code> option, <code class="docutils literal notranslate"><span class="pre">so-allow</span></code> will also add the <code class="docutils literal notranslate"><span class="pre">analyst</span></code> IP address to the Wazuh Whitelist.  This will prevent Wazuh Active Response from blocking the <code class="docutils literal notranslate"><span class="pre">analyst</span></code> IP address.</p>
 </div>
 </div>
+<span id="document-so-elasticsearch-query"></span><div class="section" id="so-elasticsearch-query">
+<h3>so-elasticsearch-query<a class="headerlink" href="#so-elasticsearch-query" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">so-elasticsearch-query</span></code> allows you to easily query Elasticsearch.  For example, to see all Elasticsearch indices:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">elasticsearch</span><span class="o">-</span><span class="n">query</span> <span class="n">_cat</span><span class="o">/</span><span class="n">indices</span>
+</pre></div>
+</div>
+</div>
 <span id="document-so-import-pcap"></span><div class="section" id="so-import-pcap">
 <h3>so-import-pcap<a class="headerlink" href="#so-import-pcap" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">so-import-pcap</span></code> is a quick and dirty EXPERIMENTAL script that will import one or more pcaps into Security Onion and preserve original timestamps.</p>
@@ -7415,19 +7655,19 @@ Please enter your selection (a - analyst, c - apt-cacher-ng client, l - syslog, 
 </ul>
 <div class="section" id="usage">
 <h4>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h4>
-<p>Please supply at least one pcap file.</p>
+<p>Please supply the full path to at least one pcap file.</p>
 <p>For example, to import a single pcap named <code class="docutils literal notranslate"><span class="pre">import.pcap</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">so</span><span class="o">-</span><span class="n">import</span><span class="o">-</span><span class="n">pcap</span> <span class="n">import</span><span class="o">.</span><span class="n">pcap</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">import</span><span class="o">-</span><span class="n">pcap</span> <span class="o">/</span><span class="n">full</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">import</span><span class="o">.</span><span class="n">pcap</span>
 </pre></div>
 </div>
 <p>To import multiple pcaps:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">so</span><span class="o">-</span><span class="n">import</span><span class="o">-</span><span class="n">pcap</span> <span class="n">import1</span><span class="o">.</span><span class="n">pcap</span> <span class="n">import2</span><span class="o">.</span><span class="n">pcap</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">import</span><span class="o">-</span><span class="n">pcap</span> <span class="o">/</span><span class="n">full</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">import1</span><span class="o">.</span><span class="n">pcap</span> <span class="o">/</span><span class="n">full</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">import2</span><span class="o">.</span><span class="n">pcap</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="example">
 <h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
-<p>For a detailed walk-through with screenshots, please see <a class="reference external" href="https://taosecurity.blogspot.com/2018/02/importing-pcap-into-security-onion.html">https://taosecurity.blogspot.com/2018/02/importing-pcap-into-security-onion.html</a>.</p>
+<p>For a detailed walk-through with screenshots, please see <a class="reference external" href="https://blog.securityonion.net/2019/06/analyze-pcaps-in-3-simple-steps-using.html">https://blog.securityonion.net/2019/06/analyze-pcaps-in-3-simple-steps-using.html</a>.</p>
 </div>
 <div class="section" id="warning">
 <h4>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h4>
@@ -7997,6 +8237,10 @@ OR</p>
 <div class="section" id="how-do-i-perform-x-in-ubuntu">
 <h5>How do I perform “X” in Ubuntu?<a class="headerlink" href="#how-do-i-perform-x-in-ubuntu" title="Permalink to this headline">¶</a></h5>
 <p>Security Onion is based on Ubuntu, but we don’t provide community support for the Ubuntu OS itself. If you have questions about Ubuntu, you should check the Ubuntu website, forums, and Google.</p>
+</div>
+<div class="section" id="can-i-connect-security-onion-to-active-directory">
+<h5>Can I connect Security Onion to Active Directory?<a class="headerlink" href="#can-i-connect-security-onion-to-active-directory" title="Permalink to this headline">¶</a></h5>
+<p>We understand the appeal of Active Directory integration, but we typically recommend against joining any security infrastructure (including Security Onion) to Active Directory. The reason is that when you get an adversary inside your network, one of their first goals is going to be gaining access to Active Directory. If they get access to Active Directory, then they get access to everything connected to Active Directory. For that reason, we recommend that all security infrastructure (including Security Onion) be totally separate from Active Directory.</p>
 <p><a class="reference external" href="#top">back to top</a></p>
 </div>
 </div>
@@ -8175,47 +8419,6 @@ for their contribution to our community!</div>
 <div class="line">Wireshark</div>
 <div class="line"><a class="reference external" href="http://www.wireshark.org/">http://www.wireshark.org/</a></div>
 <div class="line">“Wireshark is a GUI network protocol analyzer. It lets you interactively browse packet data from a live network or from a previously saved capture file. Wireshark’s native capture file format is libpcap format, which is also the format used by tcpdump and various other tools.”</div>
-</div>
-</div>
-<span id="document-passwords"></span><div class="section" id="passwords">
-<h3>Passwords<a class="headerlink" href="#passwords" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="os-root-account">
-<h4>OS root account<a class="headerlink" href="#os-root-account" title="Permalink to this headline">¶</a></h4>
-<p>Like other Ubuntu-based distributions, there is no root password. Your default user account has been given sudo permissions. Graphical utilities requesting administrative access should prompt for password; enter your user password. Command-line utilities that require administrative access can be prefixed with <code class="docutils literal notranslate"><span class="pre">sudo</span></code>. For example, to add an OS user account:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">adduser</span> <span class="n">mynewuseraccount</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="sguil">
-<h4>Sguil<a class="headerlink" href="#sguil" title="Permalink to this headline">¶</a></h4>
-<p>Log into Sguil using the username and password you created in the Setup wizard.</p>
-<p>You can add accounts as follows (please note that Sguil usernames must be alphanumeric):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">add</span>
-</pre></div>
-</div>
-<p>You can change passwords using the Sguil client (<code class="docutils literal notranslate"><span class="pre">File</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">Change</span> <span class="pre">Password</span></code>) or as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">passwd</span>
-</pre></div>
-</div>
-<p>You can disable accounts as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">disable</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="squert">
-<h4>Squert<a class="headerlink" href="#squert" title="Permalink to this headline">¶</a></h4>
-<p>Squert authenticates against the Sguil user database, so you should be able to login to Squert using the same username and password you use to login to Sguil.</p>
-</div>
-<div class="section" id="kibana">
-<h4>Kibana<a class="headerlink" href="#kibana" title="Permalink to this headline">¶</a></h4>
-<p>When you access Kibana, you are prompted to login using Apache Single Sign On (SSO). This SSO authenticates against the Sguil user database, so you should be able to login to Kibana using the same username and password you use to login to Sguil.</p>
-</div>
-<div class="section" id="mysql">
-<h4>MySQL<a class="headerlink" href="#mysql" title="Permalink to this headline">¶</a></h4>
-<p>The MySQL root password is randomized. MySQL only allows connections from localhost. If you need to look at the database manually, you can do so like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mysql</span> <span class="o">--</span><span class="n">defaults</span><span class="o">-</span><span class="n">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">debian</span><span class="o">.</span><span class="n">cnf</span>
-</pre></div>
-</div>
 </div>
 </div>
 <span id="document-support"></span><div class="section" id="support">
@@ -9477,7 +9680,7 @@ configuration to boot into text mode:</p>
         &copy; Copyright 2019
       
         <span class="commit">
-          Revision <code>ea73d71f</code>.
+          Revision <code>30d9f2ea</code>.
         </span>
       
 
