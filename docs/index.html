@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Security Onion 16.04.6.2 documentation</title>
+  <title>Security Onion 16.04.6.3 documentation</title>
   
 
   
@@ -306,7 +306,7 @@
     
       <li><a href="index.html#document-index">Docs</a> &raquo;</li>
         
-      <li>Security Onion 16.04.6.2 documentation</li>
+      <li>Security Onion 16.04.6.3 documentation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -351,7 +351,7 @@
 <p>This documentation is also available in PDF format at <a class="reference external" href="https://readthedocs.org/projects/securityonion/downloads/pdf/latest/">https://readthedocs.org/projects/securityonion/downloads/pdf/latest/</a>.</p>
 <div class="line-block">
 <div class="line">Many folks have asked for a printed version of this documentation and it’s now available for purchase!  Whether you work on airgapped networks or simply want a portable reference that doesn’t require an Internet connection or batteries, this is what you’ve been asking for.  Thanks to Richard Bejtlich for writing the inspiring foreword!  Proceeds go to the Rural Technology Fund!</div>
-<div class="line"><a class="reference external" href="https://www.amazon.com/dp/179779762X">https://www.amazon.com/dp/179779762X</a></div>
+<div class="line"><a class="reference external" href="https://securityonion.net/book">https://securityonion.net/book</a></div>
 </div>
 </div>
 <div class="section" id="authors">
@@ -1924,7 +1924,7 @@ powerful Lua scripting support for detection of complex threats.</div></blockquo
 </div>
 <span id="document-bro"></span><div class="section" id="bro">
 <h3>Bro<a class="headerlink" href="#bro" title="Permalink to this headline">¶</a></h3>
-<p>From <a class="reference external" href="https://www.zeek.org/">https://www.zeek.org/</a>:</p>
+<p>Bro is in the process of renaming to Zeek.  From <a class="reference external" href="https://www.zeek.org/">https://www.zeek.org/</a>:</p>
 <blockquote>
 <div>Zeek is a powerful network analysis framework that is much different from the typical IDS you may know. (Zeek is the new name for the long-established Bro system. Note that parts of the system retain the “Bro” name, and it also often appears in the documentation and distributions.)</div></blockquote>
 <div class="section" id="logs">
@@ -2109,16 +2109,9 @@ information.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="top-for-bro">
-<h4>Top for Bro<a class="headerlink" href="#top-for-bro" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li>To view “top-like” information for Bro logs, consider using BroTop.</li>
-<li>“Brotop lets you stream your bro logs to the browser for easy
-debugging and a real-time glimpse into whats being processed”.</li>
-<li>Written in Go, BroTop is a dependency-free binary that can be
-downloaded and run immediately, auto-detecting Bro log paths.</li>
-<li>For more information about BroTop, please see <a class="reference external" href="https://github.com/criticalstack/brotop">https://github.com/criticalstack/brotop</a>.</li>
-</ul>
+<div class="section" id="import">
+<h4>Import<a class="headerlink" href="#import" title="Permalink to this headline">¶</a></h4>
+<p>You can import Bro logs into Elasticsearch by dropping them into <code class="docutils literal notranslate"><span class="pre">/nsm/import/bro/</span></code>.  Logstash monitors that directory as defined in <code class="docutils literal notranslate"><span class="pre">0007_input_import.conf</span></code>.</p>
 </div>
 <div class="section" id="nsm-bro-spool-tmp">
 <h4>/nsm/bro/spool/tmp<a class="headerlink" href="#nsm-bro-spool-tmp" title="Permalink to this headline">¶</a></h4>
@@ -2297,12 +2290,12 @@ from kernel space to user space and vice versa.</div></blockquote>
 <h4>Adding Agents<a class="headerlink" href="#adding-agents" title="Permalink to this headline">¶</a></h4>
 <div class="line-block">
 <div class="line">The Wazuh agent is cross platform and you can download agents for Windows/Unix/Linux/FreeBSD from the Wazuh website:</div>
-<div class="line"><a class="reference external" href="https://documentation.wazuh.com/3.8/installation-guide/packages-list/index.html">https://documentation.wazuh.com/3.8/installation-guide/packages-list/index.html</a></div>
+<div class="line"><a class="reference external" href="https://documentation.wazuh.com/3.9/installation-guide/packages-list/index.html">https://documentation.wazuh.com/3.9/installation-guide/packages-list/index.html</a></div>
 </div>
-<p>Please note! It is important to ensure that you download the agent that matches the version of your Wazuh server. For example, if your Wazuh server is version 3.8.2, then you will want to deploy Wazuh agent version 3.8.2.</p>
+<p>Please note! It is important to ensure that you download the agent that matches the version of your Wazuh server. For example, if your Wazuh server is version 3.9.5, then you will want to deploy Wazuh agent version 3.9.5.</p>
 <div class="line-block">
 <div class="line">Once you’ve installed the Wazuh agent on the host(s) to be monitored, then perform the steps defined here:</div>
-<div class="line"><a class="reference external" href="https://documentation.wazuh.com/3.8/user-manual/agents/command-line/register.html#command-line-register">https://documentation.wazuh.com/3.8/user-manual/agents/command-line/register.html#command-line-register</a></div>
+<div class="line"><a class="reference external" href="https://documentation.wazuh.com/current/user-manual/registering/cli/using-command-line-linux.html">https://documentation.wazuh.com/current/user-manual/registering/cli/using-command-line-linux.html</a></div>
 </div>
 <p>You may need to run <a class="reference external" href="so-allow">so-allow</a> to allow traffic from the IP address of your Wazuh agent(s).</p>
 </div>
@@ -2314,23 +2307,16 @@ from kernel space to user space and vice versa.</div></blockquote>
 <h4>Automated Deployment<a class="headerlink" href="#automated-deployment" title="Permalink to this headline">¶</a></h4>
 <div class="line-block">
 <div class="line">If you would like to automate the deployment of Wazuh agents, the Wazuh server includes <code class="docutils literal notranslate"><span class="pre">ossec-authd</span></code>:</div>
-<div class="line"><a class="reference external" href="https://documentation.wazuh.com/3.8/user-manual/reference/daemons/ossec-authd.html">https://documentation.wazuh.com/3.8/user-manual/reference/daemons/ossec-authd.html</a></div>
+<div class="line"><a class="reference external" href="https://documentation.wazuh.com/3.9/user-manual/reference/daemons/ossec-authd.html">https://documentation.wazuh.com/3.9/user-manual/reference/daemons/ossec-authd.html</a></div>
 </div>
 <div class="line-block">
 <div class="line">When using <code class="docutils literal notranslate"><span class="pre">ossec-authd</span></code>, be sure to add a firewall exception for agents to access port <code class="docutils literal notranslate"><span class="pre">1515/tcp</span></code> on the Wazuh manager node:</div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">ufw</span> <span class="pre">allow</span> <span class="pre">proto</span> <span class="pre">tcp</span> <span class="pre">from</span> <span class="pre">agent_ip</span> <span class="pre">to</span> <span class="pre">any</span> <span class="pre">port</span> <span class="pre">1515</span></code></div>
 </div>
 </div>
-<div class="section" id="downloads">
-<h4>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h4>
-<div class="line-block">
-<div class="line">You can download Wazuh agents here:</div>
-<div class="line"><a class="reference external" href="https://documentation.wazuh.com/3.8/installation-guide/packages-list/index.html">https://documentation.wazuh.com/3.8/installation-guide/packages-list/index.html</a></div>
-</div>
-</div>
 <div class="section" id="more-information">
 <h4>More Information<a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h4>
-<p>For more information about Wazuh, please see <a class="reference external" href="https://documentation.wazuh.com/3.8/">https://documentation.wazuh.com/3.8/</a>.</p>
+<p>For more information about Wazuh, please see <a class="reference external" href="https://documentation.wazuh.com/3.9/">https://documentation.wazuh.com/3.9/</a>.</p>
 </div>
 </div>
 <span id="document-sysmon"></span><div class="section" id="sysmon">
@@ -2446,6 +2432,10 @@ and much more. Autoruns goes way beyond other autostart utilities.</div></blockq
 <div class="section" id="forwarding">
 <h4>Forwarding<a class="headerlink" href="#forwarding" title="Permalink to this headline">¶</a></h4>
 <p>You can configure syslog-ng to <a class="reference external" href="syslog-output">forward</a> Bro / Wazuh / IDS logs to external systems.</p>
+</div>
+<div class="section" id="monitoring">
+<h4>Monitoring<a class="headerlink" href="#monitoring" title="Permalink to this headline">¶</a></h4>
+<p>Regardless of whether syslog-ng is sending to the Elastic stack or some other external system, you should check to see that syslog-ng is not dropping logs.  sostat now has a syslog-ng section that shows stats and it will also check for any dropped logs.</p>
 </div>
 <div class="section" id="collection">
 <h4>Collection<a class="headerlink" href="#collection" title="Permalink to this headline">¶</a></h4>
@@ -2684,6 +2674,12 @@ that ingests data from a multitude of sources simultaneously,
 transforms it, and then sends it to your favorite “stash”.</div></blockquote>
 <div class="section" id="configuration">
 <h4>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h4>
+<p>Here are a few of the settings which you may need to tune in <code class="docutils literal notranslate"><span class="pre">/etc/logstash/logstash.yml</span></code>.</p>
+<div class="section" id="pipeline-batch-size">
+<h5>pipeline.batch.size<a class="headerlink" href="#pipeline-batch-size" title="Permalink to this headline">¶</a></h5>
+<blockquote>
+<div>The maximum number of events an individual worker thread will collect from inputs before attempting to execute its filters and outputs. Larger batch sizes are generally more efficient, but come at the cost of increased memory overhead.</div></blockquote>
+</div>
 <div class="section" id="pipeline-workers">
 <h5>pipeline.workers<a class="headerlink" href="#pipeline-workers" title="Permalink to this headline">¶</a></h5>
 <blockquote>
@@ -2691,8 +2687,7 @@ transforms it, and then sends it to your favorite “stash”.</div></blockquote
 output stages of the pipeline. If you find that events are backing
 up, or that the CPU is not saturated, consider increasing this
 number to better utilize machine processing power.</div></blockquote>
-<p><a class="reference external" href="https://www.elastic.co/guide/en/logstash/current/logstash-settings-file.html">https://www.elastic.co/guide/en/logstash/current/logstash-settings-file.html</a></p>
-<p>This setting can be adjusted in <code class="docutils literal notranslate"><span class="pre">/etc/logstash/logstash.yml</span></code>.</p>
+<p>For more information, please see <a class="reference external" href="https://www.elastic.co/guide/en/logstash/current/logstash-settings-file.html">https://www.elastic.co/guide/en/logstash/current/logstash-settings-file.html</a>.</p>
 </div>
 <div class="section" id="logstash-heap">
 <h5>Logstash Heap<a class="headerlink" href="#logstash-heap" title="Permalink to this headline">¶</a></h5>
@@ -2842,16 +2837,19 @@ Logstash uses whichever criteria is reached &gt;first.</div></blockquote>
 </div>
 <div class="section" id="logstash-minimal">
 <h4>LOGSTASH_MINIMAL<a class="headerlink" href="#logstash-minimal" title="Permalink to this headline">¶</a></h4>
-<p>We now have a <code class="docutils literal notranslate"><span class="pre">LOGSTASH_MINIMAL</span></code> mode which will offload log parsing to Elasticsearch ingest node.  This allows Logstash to run in only 200MB RAM and start instantly.  Please note that the Elasticsearch ingest node parsing currently only supports standard IDS alerts and Bro logs in JSON format.</p>
+<p>We now have a <code class="docutils literal notranslate"><span class="pre">LOGSTASH_MINIMAL</span></code> mode which will offload log parsing to Elasticsearch ingest node.  This allows Logstash to run in as little as 200MB RAM and start instantly.  Please note that the Elasticsearch ingest node parsing currently only supports standard IDS alerts and Bro logs in JSON format.</p>
 <p>To enable on a new installation, simply run through Setup using:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sosetup</span><span class="o">-</span><span class="n">minimal</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sosetup</span><span class="o">-</span><span class="n">minimal</span>
 </pre></div>
 </div>
-<p>To enable on an existing installation, add the following to <code class="docutils literal notranslate"><span class="pre">/etc/nsm/securityonion.conf</span></code>:</p>
+<p>If you’ve already run through Setup, you can enable <code class="docutils literal notranslate"><span class="pre">LOGSTASH_MINIMAL</span></code> on an existing installation by adding the following to <code class="docutils literal notranslate"><span class="pre">/etc/nsm/securityonion.conf</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LOGSTASH_MINIMAL</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
 </pre></div>
 </div>
-<p>You should then be able to decrease your Logstash heap size in <code class="docutils literal notranslate"><span class="pre">/etc/logstash/jvm.options</span></code> and restart Logstash.</p>
+<p>You can then optionally decrease your Logstash heap size in <code class="docutils literal notranslate"><span class="pre">/etc/logstash/jvm.options</span></code> and restart Logstash:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">logstash</span><span class="o">-</span><span class="n">restart</span>
+</pre></div>
+</div>
 </div>
 </div>
 <span id="document-elastalert"></span><div class="section" id="elastalert">
@@ -3323,32 +3321,36 @@ most of the redundant image fetch traffic on your local network.</div></blockquo
 store, used as a database, cache and message broker. It supports
 data structures such as strings, hashes, lists, sets, sorted sets
 with range queries, bitmaps, hyperloglogs and geospatial indexes
-with radius queries. Redis has built-in replication, Lua scripting,
-LRU eviction, transactions and different levels of on-disk
-persistence, and provides high availability via Redis Sentinel and
-automatic partitioning with Redis Cluster.</div></blockquote>
+with radius queries.</div></blockquote>
 <p>During setup, you can choose to extend your master server storage using
 separate storage nodes. When you choose this option, Logstash on the
-master server outputs to redis. Storage nodes then consume from redis.</p>
+master server outputs to Redis. Storage nodes then consume from Redis.</p>
 <img alt="https://user-images.githubusercontent.com/16829864/37215984-91a348d4-2387-11e8-8c08-2e270b8fd986.png" src="https://user-images.githubusercontent.com/16829864/37215984-91a348d4-2387-11e8-8c08-2e270b8fd986.png" />
 <div class="section" id="queue">
 <h4>Queue<a class="headerlink" href="#queue" title="Permalink to this headline">¶</a></h4>
-<p>To see how many logs are in the redis queue:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">redis</span><span class="o">-</span><span class="n">cli</span> <span class="n">LLEN</span> <span class="n">logstash</span><span class="p">:</span><span class="n">redis</span>
+<p>To see how many logs are in the Redis queue:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">redis</span><span class="o">-</span><span class="n">count</span>
 </pre></div>
 </div>
 <p>If the queue is backed up and doesn’t seem to be draining, try stopping
 Logstash on the master server:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">stop</span> <span class="n">so</span><span class="o">-</span><span class="n">logstash</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">logstash</span><span class="o">-</span><span class="n">stop</span>
 </pre></div>
 </div>
 <p>Then monitor the queue to see if it drains:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">watch</span> <span class="s1">&#39;redis-cli llen logstash:redis&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">watch</span> <span class="s1">&#39;sudo so-redis-count&#39;</span>
 </pre></div>
 </div>
 <p>If the Redis queue looks okay, but you are still having issues with logs
 getting indexed into Elasticsearch, you will want to check the Logstash
 statistics on the storage node(s).</p>
+</div>
+<div class="section" id="tuning">
+<h4>Tuning<a class="headerlink" href="#tuning" title="Permalink to this headline">¶</a></h4>
+<p>We configure Redis to use 10% of your total system memory.  If you have sufficient RAM available, you might want to increase the <code class="docutils literal notranslate"><span class="pre">maxmemory</span></code> setting in <code class="docutils literal notranslate"><span class="pre">/etc/redis/redis.conf</span></code>.</p>
+<p>Logstash on the master server is configured to send to Redis via <code class="docutils literal notranslate"><span class="pre">/etc/logstash/conf.d.redis.output/9999_output_redis.conf</span></code>.  For best performance, you’ll want to ensure that <code class="docutils literal notranslate"><span class="pre">batch</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code> and then tune the <code class="docutils literal notranslate"><span class="pre">batch_events</span></code> variable to find the sweet spot for your deployment.  For more information about logstash’s output plugin for Redis, please see <a class="reference external" href="https://www.elastic.co/guide/en/logstash/current/plugins-outputs-redis.html">https://www.elastic.co/guide/en/logstash/current/plugins-outputs-redis.html</a>.</p>
+<p>Logstash on storage nodes pulls from Redis via <code class="docutils literal notranslate"><span class="pre">/etc/logstash/conf.d/0900_input_redis.conf</span></code>.  For best performance, you’ll want to tune <code class="docutils literal notranslate"><span class="pre">batch_count</span></code> and <code class="docutils literal notranslate"><span class="pre">threads</span></code> to find the sweet spot for your deployment.  For more information about logstash’s input plugin for Redis, please see <a class="reference external" href="https://www.elastic.co/guide/en/logstash/current/plugins-inputs-redis.html">https://www.elastic.co/guide/en/logstash/current/plugins-inputs-redis.html</a>.</p>
+<p>If you try the above tuning suggestions but redis continues to back up, you might want to consider the new <a class="reference external" href="logstash#logstash-minimal">LOGSTASH_MINIMAL</a> option for increased pipeline performance.</p>
 </div>
 </div>
 <span id="document-data-fields"></span><div class="section" id="data-fields">
@@ -4301,7 +4303,7 @@ Elastalert.</p>
 </div>
 <span id="document-elastic-features"></span><div class="section" id="elastic-features">
 <h3>Elastic Features<a class="headerlink" href="#elastic-features" title="Permalink to this headline">¶</a></h3>
-<p>Many folks have asked if they could switch from the open source version of the Elastic Stack to the Features version licensed under the Elastic license.  Starting with our Elastic 6.8.2 release, we have a script called <code class="docutils literal notranslate"><span class="pre">so-elastic-features</span></code> that will walk you through this.  If you want to do this manually, you can do the following:</p>
+<p>Many folks have asked if they could switch from the open source version of the Elastic Stack to the Features version licensed under the Elastic license (formerly known as X-Pack).  Starting with our Elastic 6.8.2 release, we have a script called <code class="docutils literal notranslate"><span class="pre">so-elastic-features</span></code> that will walk you through this.  If you want to do this manually, you can do the following:</p>
 <ul class="simple">
 <li>First, please review the Elastic Features license:</li>
 </ul>
@@ -4357,7 +4359,7 @@ Elastalert.</p>
 <span id="document-elastic-auth"></span><div class="section" id="elastic-auth">
 <h3>Elastic Auth<a class="headerlink" href="#elastic-auth" title="Permalink to this headline">¶</a></h3>
 <p>Starting in Elastic 6.8.0, Elastic authentication is included for free in Elastic Features.  This allows you to assign different privileges to different users in Kibana.</p>
-<p>To enable, simply run <code class="docutils literal notranslate"><span class="pre">so-elastic-auth</span></code> and follow the prompts.  <code class="docutils literal notranslate"><span class="pre">so-elastic-auth</span></code> will do the following:</p>
+<p>To enable, simply run <code class="docutils literal notranslate"><span class="pre">so-elastic-auth</span></code> on your master server only (or standalone) and follow the prompts.  <code class="docutils literal notranslate"><span class="pre">so-elastic-auth</span></code> will do the following:</p>
 <ul class="simple">
 <li>walk you through switching to Elastic Features if necessary</li>
 <li>enable authentication in Elasticsearch, Logstash, Kibana, Curator, and ElastAlert</li>
@@ -4369,6 +4371,7 @@ Elastalert.</p>
 <li>set any other account privileges as necessary</li>
 <li>distribute the temporary passwords generated by <code class="docutils literal notranslate"><span class="pre">so-elastic-auth</span></code> to your users and have them reset their passwords</li>
 </ul>
+<p>Please note that you will continue to authenticate to Sguil, Squert, and CapMe with your traditional Sguil/Squert/CapMe account.</p>
 </div>
 </div>
 </div>
@@ -5976,6 +5979,10 @@ alert tcp $HOME_NET any -&gt; $EXTERNAL_NET !1433 (msg:&quot;ET TROJAN Bancos.DV
 <div class="line"><a class="reference external" href="https://lonesysadmin.net/2013/12/22/better-linux-disk-caching-performance-vm-dirty_ratio/">https://lonesysadmin.net/2013/12/22/better-linux-disk-caching-performance-vm-dirty_ratio/</a></div>
 </div>
 </div>
+<div class="section" id="elastic">
+<h4>Elastic<a class="headerlink" href="#elastic" title="Permalink to this headline">¶</a></h4>
+<p>You will want to make sure that each part of the pipeline is operating at maximum efficiency.  Depending on your configuration, this may include <a class="reference external" href="syslog">syslog-ng</a>, <a class="reference external" href="logstash">Logstash</a>, <a class="reference external" href="redis">Redis</a>, and <a class="reference external" href="elasticsearch">Elasticsearch</a>.  For really high volume logs, you may want to consider the <a class="reference external" href="logstash#logstash-minimal">LOGSTASH_MINIMAL</a> option.</p>
+</div>
 <div class="section" id="other">
 <h4>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h4>
 <div class="line-block">
@@ -6265,6 +6272,9 @@ something like the following:</div>
 <p>This cloud client idea was developed before cloud providers offered virtual taps.  If you are able to use your cloud provider’s virtual tap, please do so instead of using this cloud client workaround.  For example:</p>
 <p><a class="reference external" href="https://aws.amazon.com/blogs/aws/new-vpc-traffic-mirroring/">https://aws.amazon.com/blogs/aws/new-vpc-traffic-mirroring/</a></p>
 <p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-tap-overview">https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-tap-overview</a></p>
+<p>AWS Virtual Taps use VXLAN encoding and we now have a version of Suricata that supports decoding that VXLAN traffic:
+<a class="reference external" href="https://blog.securityonion.net/2019/09/suricata-415-now-available-for-security.html">https://blog.securityonion.net/2019/09/suricata-415-now-available-for-security.html</a></p>
+<p>Zeek 3.0 includes native support for VXLAN traffic as well and that is coming soon.</p>
 <p><strong>Warning! This cloud client is considered experimental! USE AT YOUR OWN RISK!</strong></p>
 <p>If your cloud provider doesn’t already offer a virtual tap, you can use daemonlogger or netsniff-ng as a virtual tap. This virtual tap will copy all traffic from our production cloud box to an OpenVPN bridge that transports the traffic to our
 Security Onion sensor where it is then analyzed.</p>
@@ -7606,6 +7616,10 @@ https://securityonion.net/docs/Firewall
 Please enter your selection (a - analyst, c - apt-cacher-ng client, l - syslog, o - ossec, or s - Security Onion sensor, etc.):
 </pre></div>
 </div>
+<div class="section" id="wazuh-whitelist">
+<h4>Wazuh Whitelist<a class="headerlink" href="#wazuh-whitelist" title="Permalink to this headline">¶</a></h4>
+<p>If you choose the <code class="docutils literal notranslate"><span class="pre">analyst</span></code> option, <code class="docutils literal notranslate"><span class="pre">so-allow</span></code> will also add the <code class="docutils literal notranslate"><span class="pre">analyst</span></code> IP address to the Wazuh Whitelist.  This will prevent Wazuh Active Response from blocking the <code class="docutils literal notranslate"><span class="pre">analyst</span></code> IP address.</p>
+</div>
 <div class="section" id="so-allow-view">
 <h4>so-allow-view<a class="headerlink" href="#so-allow-view" title="Permalink to this headline">¶</a></h4>
 <p>To view existing rules granted through the use of <code class="docutils literal notranslate"><span class="pre">so-allow</span></code>, use the following command:</p>
@@ -7613,9 +7627,9 @@ Please enter your selection (a - analyst, c - apt-cacher-ng client, l - syslog, 
 </pre></div>
 </div>
 </div>
-<div class="section" id="wazuh-whitelist">
-<h4>Wazuh Whitelist<a class="headerlink" href="#wazuh-whitelist" title="Permalink to this headline">¶</a></h4>
-<p>If you choose the <code class="docutils literal notranslate"><span class="pre">analyst</span></code> option, <code class="docutils literal notranslate"><span class="pre">so-allow</span></code> will also add the <code class="docutils literal notranslate"><span class="pre">analyst</span></code> IP address to the Wazuh Whitelist.  This will prevent Wazuh Active Response from blocking the <code class="docutils literal notranslate"><span class="pre">analyst</span></code> IP address.</p>
+<div class="section" id="so-disallow">
+<h4>so-disallow<a class="headerlink" href="#so-disallow" title="Permalink to this headline">¶</a></h4>
+<p>If you’ve added an IP address via <code class="docutils literal notranslate"><span class="pre">so-allow</span></code> and later need to remove it, you can use <code class="docutils literal notranslate"><span class="pre">so-disallow</span></code>.</p>
 </div>
 </div>
 <span id="document-so-elasticsearch-query"></span><div class="section" id="so-elasticsearch-query">
@@ -8365,7 +8379,7 @@ for their contribution to our community!</div>
 <div class="line">“Squert is a web application that is used to query and view event data stored in a Sguil database (typically IDS alert data). Squert is a visual tool that attempts to provide additional context to events through the use of metadata, time series representations and weighted and logically grouped result sets. The hope is that these views will prompt questions that otherwise may not have been asked.”</div>
 <div class="line"><br /></div>
 <div class="line">ssldump</div>
-<div class="line"><a class="reference external" href="http://www.rtfm.com/ssldump/">http://www.rtfm.com/ssldump/</a></div>
+<div class="line"><a class="reference external" href="https://linux.die.net/man/1/ssldump">https://linux.die.net/man/1/ssldump</a></div>
 <div class="line">“ssldump is an SSLv3/TLS network protocol analyzer. It identifies TCP connections on the chosen network interface and attempts to interpret them as SSLv3/TLS traffic. When it identifies SSLv3/TLS traffic, it decodes the records and displays them in a textual form to stdout. If provided with the appropriate keying material, it will also decrypt the connections and display the application data traffic.”</div>
 <div class="line"><br /></div>
 <div class="line">sslsniff</div>
@@ -8556,7 +8570,7 @@ list:</p>
 </div>
 <div class="section" id="installation">
 <h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
-<p>In order to do begin, we will need to make sure we satisfy a few prerequisites:</p>
+<p>In order to begin, we will need to make sure we satisfy a few prerequisites:</p>
 <div class="line-block">
 <div class="line"><strong>Alienvault OTX API key</strong> - can be obtained for free at:
 <a class="reference external" href="https://otx.alienvault.com">https://otx.alienvault.com</a></div>
@@ -8908,19 +8922,16 @@ hosts</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">bash</span> <span class="o">./</span><span class="n">install</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>Start MongoDB:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">mongod</span> <span class="n">start</span>
-</pre></div>
 </div>
+<div class="section" id="configuration">
+<h4>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h4>
+<p>You must set your own values for <code class="docutils literal notranslate"><span class="pre">InternalSubnets</span></code> in <code class="docutils literal notranslate"><span class="pre">/etc/rita/config.yaml</span></code> before importing
+data into RITA. See <a class="reference external" href="https://github.com/activecm/rita#configuration-file">https://github.com/activecm/rita#configuration-file</a> for more information.</p>
 </div>
 <div class="section" id="usage">
 <h4>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h4>
 <p>You can then import logs with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rita</span> <span class="kn">import</span> <span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">bro</span><span class="o">/</span><span class="n">logs</span> <span class="n">dataset1</span>
-</pre></div>
-</div>
-<p>Then have RITA analyze the imported data:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rita</span> <span class="n">analyze</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rita</span> <span class="kn">import</span> <span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">bro</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">04</span> <span class="n">dataset1</span>
 </pre></div>
 </div>
 <p>To see the most visited URLs:</p>
@@ -8943,11 +8954,6 @@ hosts</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rita</span> <span class="o">--</span><span class="n">help</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="configuration">
-<h4>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h4>
-<p>If you don’t want to specify your the path for your Bro logs, you’ll want to change the value for <code class="docutils literal notranslate"><span class="pre">ImportDirectory</span></code> in
-<code class="docutils literal notranslate"><span class="pre">/etc/rita/config.yaml</span></code> to <code class="docutils literal notranslate"><span class="pre">/nsm/bro/logs</span></code>.</p>
 <div class="line-block">
 <div class="line">For additional information, see:</div>
 <div class="line"><a class="reference external" href="https://github.com/activecm/rita">https://github.com/activecm/rita</a></div>
@@ -9680,7 +9686,7 @@ configuration to boot into text mode:</p>
         &copy; Copyright 2019
       
         <span class="commit">
-          Revision <code>e509d2fb</code>.
+          Revision <code>dca3bae7</code>.
         </span>
       
 
