@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Security Onion 16.04.6.3 documentation</title>
+  <title>Security Onion 16.04.6.4 documentation</title>
   
 
   
@@ -131,7 +131,7 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-nids">NIDS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-snort">Snort</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-suricata">Suricata</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#document-bro">Bro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-zeek">Zeek</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-netsniff-ng">netsniff-ng</a></li>
 </ul>
 </li>
@@ -155,7 +155,7 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-redis">Redis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-data-fields">Data Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-alert-data-fields">Alert Data Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#document-bro-fields">Bro Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-zeek-fields">Zeek Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-elastalert-fields">Elastalert Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-re‐indexing">Re-Indexing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-elastic-features">Elastic Features</a></li>
@@ -306,7 +306,7 @@
     
       <li><a href="index.html#document-index">Docs</a> &raquo;</li>
         
-      <li>Security Onion 16.04.6.3 documentation</li>
+      <li>Security Onion 16.04.6.4 documentation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -334,7 +334,7 @@
 <h2>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="security-onion">
 <h3>Security Onion<a class="headerlink" href="#security-onion" title="Permalink to this headline">¶</a></h3>
-<p>Security Onion is a free and open source Linux distribution for intrusion detection, enterprise security monitoring, and log management. It includes Elasticsearch, Logstash, Kibana, Snort, Suricata, Bro, Wazuh, Sguil, Squert, CyberChef, NetworkMiner, and many other security tools. The easy-to-use Setup wizard allows you to build an army of distributed sensors for your enterprise in minutes!</p>
+<p>Security Onion is a free and open source Linux distribution for intrusion detection, enterprise security monitoring, and log management. It includes Elasticsearch, Logstash, Kibana, Snort, Suricata, Zeek, Wazuh, Sguil, Squert, CyberChef, NetworkMiner, and many other security tools. The easy-to-use Setup wizard allows you to build an army of distributed sensors for your enterprise in minutes!</p>
 <p>For more information about Security Onion not contained in this Documentation, please see our community site at <a class="reference external" href="https://securityonion.net">https://securityonion.net</a>.</p>
 </div>
 <div class="section" id="security-onion-solutions-llc">
@@ -402,7 +402,7 @@
 <p>NIDS:</p>
 <ul class="simple">
 <li>Rule-driven NIDS. For rule-driven network intrusion detection, Security Onion offers the choice of <a class="reference external" href="Snort">Snort</a> or <a class="reference external" href="Suricata">Suricata</a>. Rule-based systems look at network traffic for fingerprints and identifiers that match known malicious, anomalous or otherwise suspicious traffic. You might say that they’re akin to antivirus signatures for the network, but they’re a bit deeper and more flexible than that.</li>
-<li>Analysis-driven NIDS. For analysis-driven network intrusion detection, Security Onion offers <a class="reference external" href="Bro">Bro</a> (Zeek).  Unlike rule-based systems that look for needles in the haystack of data, Bro says, “Here’s all your data and this is what I’ve seen. Do with it what you will and here’s a framework so you can.” Bro monitors network activity and logs any connections, DNS requests, detected network services and software, SSL certificates, and HTTP, FTP, IRC SMTP, SSH, SSL, and Syslog activity that it sees, providing a real depth and visibility into the context of data and events on your network. Additionally, Bro includes analyzers for many common protocols and by default has the capacity to check MD5 sums for HTTP file downloads against Team Cymru’s Malware Hash Registry project. Beyond logging activity and traffic analyzers, the Bro framework provides a very extensible way to analyze network data in real time. The input framework allows you to feed data into Bro, which can be scripted, for example, to read a comma delimited file of C-level employee usernames and correlate that against other activity, such as when they download an executable file from the Internet. The file analysis framework provides protocol independent file analysis, allowing you to capture files as they pass through your network and automatically pass them to a sandbox or a file share for antivirus scanning. The flexibility of Bro makes it an incredibly powerful ally in your defense.</li>
+<li>Analysis-driven NIDS. For analysis-driven network intrusion detection, Security Onion offers <a class="reference external" href="Zeek">Zeek</a> (Zeek).  Unlike rule-based systems that look for needles in the haystack of data, Zeek says, “Here’s all your data and this is what I’ve seen. Do with it what you will and here’s a framework so you can.” Zeek monitors network activity and logs any connections, DNS requests, detected network services and software, SSL certificates, and HTTP, FTP, IRC, SMTP, SSH, SSL, and Syslog activity that it sees, providing a real depth and visibility into the context of data and events on your network. Additionally, Zeek includes analyzers for many common protocols and by default has the capacity to check MD5 sums for HTTP file downloads against Team Cymru’s Malware Hash Registry project. Beyond logging activity and traffic analyzers, the Zeek framework provides a very extensible way to analyze network data in real time. The input framework allows you to feed data into Zeek, which can be scripted, for example, to read a comma delimited file of C-level employee usernames and correlate that against other activity, such as when they download an executable file from the Internet. The file analysis framework provides protocol independent file analysis, allowing you to capture files as they pass through your network and automatically pass them to a sandbox or a file share for antivirus scanning. The flexibility of Zeek makes it an incredibly powerful ally in your defense.</li>
 </ul>
 <p>HIDS:</p>
 <ul class="simple">
@@ -412,11 +412,11 @@
 </div>
 <div class="section" id="analysis-tools">
 <h3>Analysis Tools<a class="headerlink" href="#analysis-tools" title="Permalink to this headline">¶</a></h3>
-<p>With full packet capture, IDS logs and Bro data, there is a daunting amount of data available at the analyst’s fingertips. Fortunately, Security Onion integrates the following tools to help make sense of this data:</p>
+<p>With full packet capture, IDS logs and Zeek data, there is a daunting amount of data available at the analyst’s fingertips. Fortunately, Security Onion integrates the following tools to help make sense of this data:</p>
 <ul class="simple">
 <li><a class="reference external" href="Sguil">Sguil</a>, created by Bamm Visscher, is “The Analyst Console for Network Security Monitoring.” It is the analyst’s right hand, providing visibility into the event data being collected and the context to validate the detection. Sguil provides a single GUI in which to view Snort, Suricata, and Wazuh alerts. More importantly, Sguil allows you to pivot directly from an alert into a packet capture (via <a class="reference external" href="wireshark">Wireshark</a> or <a class="reference external" href="networkminer">NetworkMiner</a>) or a transcript of the full session that triggered the alert. So, instead of seeing only an individual packet associated with an alert and being left with the unanswerable question, “What now?” or “What happened next?,” you can view all of the associated traffic and actually answer that question. Sguil differs from other alert interfaces in that it allows collaboration among analysts by allowing alerts to be commented on and escalated to more senior analysts who can take action on the alerts.</li>
 <li><a class="reference external" href="Squert">Squert</a>, originally developed by Paul Halliday, is a web application interface to the Sguil database. Although it is neither meant to be a real-time (or near real-time) interface nor a replacement for Sguil, it allows querying of the Sguil database and provides several visualization options for the data such as “time series representations, weighted and logically grouped result sets” and geo-IP mapping.  Squert can pivot to full packet capture via <a class="reference external" href="CapMe">CapMe</a>.</li>
-<li><a class="reference external" href="Kibana">Kibana</a>, created by the team at Elastic, allows us to quickly analyze and pivot between all of the different data types generated by Security Onion through a “single pane of glass”.  This includes not only NIDS/HIDS alerts, but also Bro logs and system logs collected via syslog or other agent transport.  Kibana can pivot to full packet capture via <a class="reference external" href="CapMe">CapMe</a>.</li>
+<li><a class="reference external" href="Kibana">Kibana</a>, created by the team at Elastic, allows us to quickly analyze and pivot between all of the different data types generated by Security Onion through a “single pane of glass”.  This includes not only NIDS/HIDS alerts, but also Zeek logs and system logs collected via syslog or other agent transport.  Kibana can pivot to full packet capture via <a class="reference external" href="CapMe">CapMe</a>.</li>
 <li><a class="reference external" href="CapMe">CapMe</a>, originally developed by Paul Halliday, allows you to view PCAP transcripts and download full PCAP files.  Squert and Kibana are pre-configured to pivot to CapMe to retrieve full packet capture.</li>
 </ul>
 </div>
@@ -426,7 +426,7 @@
 </div>
 <div class="section" id="conclusion">
 <h3>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h3>
-<p>So we have full packet capture, <a class="reference external" href="Snort">Snort</a> or <a class="reference external" href="Suricata">Suricata</a> rule-driven intrusion detection, <a class="reference external" href="Bro">Bro</a> event-driven intrusion detection and <a class="reference external" href="Wazuh">Wazuh</a> host-based intrusion detection, all running out of the box once you run Security Onion setup. These disparate systems with various dependencies and complexities all run seamlessly together and would otherwise take hours, days or weeks to assemble and integrate on their own. What was once a seemingly impossible task is now as easy as answering a few questions.</p>
+<p>So we have full packet capture, <a class="reference external" href="Snort">Snort</a> or <a class="reference external" href="Suricata">Suricata</a> rule-driven intrusion detection, <a class="reference external" href="Zeek">Zeek</a> event-driven intrusion detection and <a class="reference external" href="Wazuh">Wazuh</a> host-based intrusion detection, all running out of the box once you run Security Onion setup. These disparate systems with various dependencies and complexities all run seamlessly together and would otherwise take hours, days or weeks to assemble and integrate on their own. What was once a seemingly impossible task is now as easy as answering a few questions.</p>
 </div>
 </div>
 <span id="document-getting-started"></span><div class="section" id="getting-started">
@@ -452,7 +452,7 @@
 </div>
 <div class="section" id="minimal-evaluation">
 <h4>Minimal Evaluation<a class="headerlink" href="#minimal-evaluation" title="Permalink to this headline">¶</a></h4>
-<p>If you have have a classroom or small lab environment with minimal RAM, you might want to try Minimal Evaluation mode using <code class="docutils literal notranslate"><span class="pre">sosetup-minimal</span></code>.  This mode gives you the bare minimum log parsing for IDS alerts and Bro logs in JSON format.  It therefore requires less RAM than traditional Evaluation Mode.</p>
+<p>If you have have a classroom or small lab environment with minimal RAM, you might want to try Minimal Evaluation mode using <code class="docutils literal notranslate"><span class="pre">sosetup-minimal</span></code>.  This mode gives you the bare minimum log parsing for IDS alerts and Zeek logs in JSON format.  It therefore requires less RAM than traditional Evaluation Mode.</p>
 <p>Install Security Onion. Run <code class="docutils literal notranslate"><span class="pre">sosetup-minimal</span></code> and configure network interfaces. Reboot, run <code class="docutils literal notranslate"><span class="pre">sosetup-minimal</span></code> again, and then choose <code class="docutils literal notranslate"><span class="pre">Evaluation</span> <span class="pre">Mode</span></code>.</p>
 <p>For more information, please see the <a class="reference external" href="QuickISOImage">Quick Evaluation</a> section.</p>
 </div>
@@ -586,7 +586,7 @@
 <p>When using a <code class="docutils literal notranslate"><span class="pre">forward</span> <span class="pre">node</span></code>, Elastic Stack components are not installed. Syslog-NG forwards all logs to Logstash on the master server via an autossh tunnel, where they are stored in Elasticsearch on the master server, or forwarded to storage node’s Elasticsearch instance (if the master server has been configured to use a storage node). From there, the data can be queried through the use of cross-cluster search.</p>
 <p>Forward Nodes run the following components (Production Mode w/ Best Practices):</p>
 <ul class="simple">
-<li>Bro</li>
+<li>Zeek</li>
 <li>Snort/Suricata</li>
 <li>Netsniff-NG</li>
 <li>OSSEC</li>
@@ -600,7 +600,7 @@
 <li>Elasticsearch</li>
 <li>Logstash</li>
 <li>Curator</li>
-<li>Bro</li>
+<li>Zeek</li>
 <li>Snort/Suricata</li>
 <li>Netsniff-NG</li>
 <li>OSSEC</li>
@@ -649,7 +649,7 @@
 <p>In a standalone deployment, the master server components and the sensor components all run on a single box, therefore, your hardware requirements will reflect that. This deployment type is recommended for evaluation purposes, POCs (proof-of-concept) and small to medium size single sensor deployments. Although you can deploy Security Onion in this manner, it is recommended that you separate the backend components and sensor components.</p>
 <ul class="simple">
 <li>CPU: Used to parse incoming events, index incoming events, search metatadata, capture PCAP, analyze packets, and run the frontend components. As data and event consumption increases, a greater amount of CPU will be required.</li>
-<li>RAM: Used for Logstash, Elasticsearch, disk cache for Lucene, Snort/Suricata, Bro, Sguil, etc. The amount of available RAM will directly impact search speeds and reliability, as well as ability to process and capture traffic.</li>
+<li>RAM: Used for Logstash, Elasticsearch, disk cache for Lucene, Snort/Suricata, Zeek, Sguil, etc. The amount of available RAM will directly impact search speeds and reliability, as well as ability to process and capture traffic.</li>
 <li>Disk: Used for storage of indexed metadata. A larger amount of storage allows for a longer retention period. It is typically recommended to retain no more than 30 days of hot ES indices.</li>
 </ul>
 <p>Please refer to our <a class="reference external" href="Elastic-Architecture">Architecture Page</a> for detailed deployment scenarios.</p>
@@ -713,7 +713,7 @@
 </div>
 <div class="section" id="cpu">
 <h5>CPU<a class="headerlink" href="#cpu" title="Permalink to this headline">¶</a></h5>
-<p>Snort, Suricata, and Bro are very CPU intensive. The more traffic you are monitoring, the more CPU cores you’ll need. A very rough ballpark estimate would be 200Mbps per Snort instance, Suricata worker, or Bro worker. So if you have a fully saturated 1Gbps link and are running Snort and Bro, then you’ll want at least 5 Snort instances and 5 Bro workers, which means you’ll need at least 10 CPU cores for Snort and Bro with additional CPU cores for netsniff-ng and/or other services.</p>
+<p>Snort, Suricata, and Zeek are very CPU intensive. The more traffic you are monitoring, the more CPU cores you’ll need. A very rough ballpark estimate would be 200Mbps per Snort instance, Suricata worker, or Zeek worker. So if you have a fully saturated 1Gbps link and are running Snort and Zeek, then you’ll want at least 5 Snort instances and 5 Zeek workers, which means you’ll need at least 10 CPU cores for Snort and Zeek with additional CPU cores for netsniff-ng and/or other services.</p>
 </div>
 <div class="section" id="ram">
 <h5>RAM<a class="headerlink" href="#ram" title="Permalink to this headline">¶</a></h5>
@@ -725,7 +725,7 @@
 <li>the amount of packet loss that is “acceptable” to your organization</li>
 </ul>
 <p>For best performance, over provision RAM so that you can fully disable swap.</p>
-<p>The following RAM estimates are a rough guideline and assume that you’re going to be running Snort/Suricata, Bro, and netsniff-ng (full packet capture) and want to minimize/eliminate packet loss. Your mileage may vary!</p>
+<p>The following RAM estimates are a rough guideline and assume that you’re going to be running Snort/Suricata, Zeek, and netsniff-ng (full packet capture) and want to minimize/eliminate packet loss. Your mileage may vary!</p>
 <p>If you just want to quickly evaluate Security Onion in a VM, the bare minimum amount of RAM needed is 8GB. More is obviously better!</p>
 <p>If you’re deploying Security Onion in production on a small network (50Mbps or less), you should plan on 8GB RAM or more. Again, more is obviously better!</p>
 <p>If you’re deploying Security Onion in production to a medium network (50Mbps - 500Mbps), you should plan on 16GB - 128GB RAM or more.</p>
@@ -1013,9 +1013,9 @@ try pressing the “Esc” key to see the current status.</p>
 </li>
 <li><p class="first">Setup now defaults to enabling the Elastic Stack. We recommend a BARE MINIMUM of 4 CPU cores and 8GB RAM.</p>
 </li>
-<li><p class="first">When choosing Evaluation Mode, the following services are enabled by default: <a class="reference external" href="Snort">Snort</a>, <a class="reference external" href="Bro">Bro</a>, <a class="reference external" href="netsniff-ng">netsniff-ng</a>, pcap_agent, snort_agent, barnyard2.</p>
+<li><p class="first">When choosing Evaluation Mode, the following services are enabled by default: <a class="reference external" href="Snort">Snort</a>, <a class="reference external" href="Zeek">Zeek</a>, <a class="reference external" href="netsniff-ng">netsniff-ng</a>, pcap_agent, snort_agent, barnyard2.</p>
 </li>
-<li><p class="first">When choosing Production Mode, you then have the option of Best Practices or Custom. Best Practices asks a smaller number of questions and chooses the services that most folks want (<a class="reference external" href="Snort">Snort</a> or <a class="reference external" href="Suricata">Suricata</a>, <a class="reference external" href="Bro">Bro</a>, <a class="reference external" href="netsniff-ng">netsniff-ng</a>, pcap_agent, snort_agent, barnyard2, <a class="reference external" href="salt">salt</a>). Custom gives you more control over your system but requires more in-depth knowledge about services and their functions.</p>
+<li><p class="first">When choosing Production Mode, you then have the option of Best Practices or Custom. Best Practices asks a smaller number of questions and chooses the services that most folks want (<a class="reference external" href="Snort">Snort</a> or <a class="reference external" href="Suricata">Suricata</a>, <a class="reference external" href="Zeek">Zeek</a>, <a class="reference external" href="netsniff-ng">netsniff-ng</a>, pcap_agent, snort_agent, barnyard2, <a class="reference external" href="salt">salt</a>). Custom gives you more control over your system but requires more in-depth knowledge about services and their functions.</p>
 </li>
 <li><p class="first">Once you’ve completed both phases of Setup, you should see new icons on your Desktop.</p>
 </li>
@@ -1252,7 +1252,7 @@ try pressing the “Esc” key to see the current status.</p>
 <li>Modify the selected sniffing interfaces if necessary – otherwise, continue.</li>
 <li>Modify <code class="docutils literal notranslate"><span class="pre">HOME_NET</span></code> as desired.</li>
 <li>Select <code class="docutils literal notranslate"><span class="pre">Yes</span></code> to proceed with your changes.</li>
-<li><em>Please note: If you chose to use one or more storage nodes with your master server, you will be able to receive IDS alerts and pull PCAPs from the forward node once setup completes, however, you will not be able to review other logs (i.e. Bro logs in Kibana) from the node until a storage node has been configured for the master server and Logstash on the storage node has initialized.</em></li>
+<li><em>Please note: If you chose to use one or more storage nodes with your master server, you will be able to receive IDS alerts and pull PCAPs from the forward node once setup completes, however, you will not be able to review other logs (i.e. Zeek logs in Kibana) from the node until a storage node has been configured for the master server and Logstash on the storage node has initialized.</em></li>
 </ul>
 </li>
 <li>Heavy Node<ul>
@@ -1315,7 +1315,7 @@ try pressing the “Esc” key to see the current status.</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">If you have problems with Snort/Suricata/Bro/PF-RING and have UEFI Secure Boot enabled, please see the <a class="reference external" href="Secure-Boot">Secure Boot</a> section.</p>
+<li><p class="first">If you have problems with Snort/Suricata/Zeek/PF-RING and have UEFI Secure Boot enabled, please see the <a class="reference external" href="Secure-Boot">Secure Boot</a> section.</p>
 </li>
 <li><p class="first">Log into <a class="reference external" href="Sguil">Sguil</a>, <a class="reference external" href="Squert">Squert</a>, and <a class="reference external" href="Kibana">Kibana</a> and verify that you have events in the interfaces.  If you don’t have any IDS alerts, you can try to generate one by typing the following at a terminal (only works if you have Internet access):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">testmyids</span><span class="o">.</span><span class="n">com</span>
@@ -1356,7 +1356,7 @@ try pressing the “Esc” key to see the current status.</p>
 </li>
 <li><p class="first">On the server running the Sguil database, set the <code class="docutils literal notranslate"><span class="pre">DAYSTOKEEP</span></code> variable in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/securityonion.conf</span></code> to however many days you want to keep in your archive. The default is 30, but you may need to adjust it based on your organization’s detection/response policy and your available disk space.</p>
 </li>
-<li><p class="first">If you’re monitoring IP address ranges other than private RFC1918 address space (192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12), you may need to update your sensor configuration with the correct IP ranges. Modern versions of Setup should automatically ask you for <code class="docutils literal notranslate"><span class="pre">HOME_NET</span></code> and configure these for you, but if you need to update it later, you would do the following. Sensor configuration files can be found in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/$HOSTNAME-$INTERFACE/</span></code>. Modify either <code class="docutils literal notranslate"><span class="pre">snort.conf</span></code> or <code class="docutils literal notranslate"><span class="pre">suricata.yaml</span></code> (depending on which IDS engine you chose during <code class="docutils literal notranslate"><span class="pre">sosetup</span></code>) and update the <code class="docutils literal notranslate"><span class="pre">HOME_NET</span></code> variable. You may also want to consider updating the <code class="docutils literal notranslate"><span class="pre">EXTERNAL_NET</span></code> variable. Then update Bro’s network configuration in <code class="docutils literal notranslate"><span class="pre">/opt/bro/etc/networks.cfg</span></code>. Finally, restart the sensor processes:</p>
+<li><p class="first">If you’re monitoring IP address ranges other than private RFC1918 address space (192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12), you may need to update your sensor configuration with the correct IP ranges. Modern versions of Setup should automatically ask you for <code class="docutils literal notranslate"><span class="pre">HOME_NET</span></code> and configure these for you, but if you need to update it later, you would do the following. Sensor configuration files can be found in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/$HOSTNAME-$INTERFACE/</span></code>. Modify either <code class="docutils literal notranslate"><span class="pre">snort.conf</span></code> or <code class="docutils literal notranslate"><span class="pre">suricata.yaml</span></code> (depending on which IDS engine you chose during <code class="docutils literal notranslate"><span class="pre">sosetup</span></code>) and update the <code class="docutils literal notranslate"><span class="pre">HOME_NET</span></code> variable. You may also want to consider updating the <code class="docutils literal notranslate"><span class="pre">EXTERNAL_NET</span></code> variable. Then update Zeek’s network configuration in <code class="docutils literal notranslate"><span class="pre">/opt/bro/etc/networks.cfg</span></code>. Finally, restart the sensor processes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">sensor</span><span class="o">-</span><span class="n">restart</span>
 </pre></div>
 </div>
@@ -1389,7 +1389,7 @@ try pressing the “Esc” key to see the current status.</p>
 <div class="line">Modern Linux kernels prevent the loading of unsigned third party modules (like <a class="reference external" href="PF-RING">PF-RING</a>) if UEFI Secure Boot is enabled. An example of this can be found here:</div>
 <div class="line"><a class="reference external" href="https://groups.google.com/d/msg/security-onion/r64yl58KGJ4/uRedkKTBCAAJ">https://groups.google.com/d/msg/security-onion/r64yl58KGJ4/uRedkKTBCAAJ</a></div>
 <div class="line"><br /></div>
-<div class="line">To avoid issues like this, modern versions of our Setup wizard now default to <a class="reference external" href="AF-PACKET">AF-PACKET</a> instead of <a class="reference external" href="PF-RING">PF-RING</a> for both <a class="reference external" href="Bro">Bro</a> and <a class="reference external" href="Suricata">Suricata</a>:</div>
+<div class="line">To avoid issues like this, modern versions of our Setup wizard now default to <a class="reference external" href="AF-PACKET">AF-PACKET</a> instead of <a class="reference external" href="PF-RING">PF-RING</a> for both <a class="reference external" href="Zeek">Zeek</a> and <a class="reference external" href="Suricata">Suricata</a>:</div>
 <div class="line"><a class="reference external" href="https://blog.securityonion.net/2019/02/new-setup-and-nsm-packages-now.html">https://blog.securityonion.net/2019/02/new-setup-and-nsm-packages-now.html</a></div>
 <div class="line"><br /></div>
 <div class="line">However, if you choose <a class="reference external" href="Snort">Snort</a> as your NIDS engine, it will fall back to <a class="reference external" href="PF-RING">PF-RING</a> (at least until Snort 3.0 is released). If you have problems with <a class="reference external" href="Snort">Snort</a> / <a class="reference external" href="PF-RING">PF-RING</a> and Secure Boot, then you can either switch from <a class="reference external" href="Snort">Snort</a> to <a class="reference external" href="Suricata">Suricata</a> OR if you need to keep Snort you can disable Secure Boot:</div>
@@ -1506,7 +1506,7 @@ have on your quarterly numbers.</div></blockquote>
 <p>CapME is a web interface that allows you to:</p>
 <ul class="simple">
 <li>view a pcap transcript rendered with tcpflow</li>
-<li>view a pcap transcript rendered with <a class="reference external" href="Bro">Bro</a> (especially helpful for dealing with gzip encoding)</li>
+<li>view a pcap transcript rendered with <a class="reference external" href="Zeek">Zeek</a> (especially helpful for dealing with gzip encoding)</li>
 <li>download a pcap</li>
 </ul>
 <div class="section" id="screenshot">
@@ -1644,7 +1644,7 @@ views will prompt questions that otherwise may not have been asked.</div></block
 </div>
 <div class="section" id="pivoting-to-kibana">
 <h4>Pivoting to Kibana<a class="headerlink" href="#pivoting-to-kibana" title="Permalink to this headline">¶</a></h4>
-<p>Squert can pivot to <a class="reference external" href="Kibana">Kibana</a> to query Bro logs, Wazuh logs, syslog, etc. To do this, click an IP address, port, or signature, and then click <code class="docutils literal notranslate"><span class="pre">Kibana</span></code>.</p>
+<p>Squert can pivot to <a class="reference external" href="Kibana">Kibana</a> to query Zeek logs, Wazuh logs, syslog, etc. To do this, click an IP address, port, or signature, and then click <code class="docutils literal notranslate"><span class="pre">Kibana</span></code>.</p>
 </div>
 <div class="section" id="adding-your-own-pivots">
 <h4>Adding your own pivots<a class="headerlink" href="#adding-your-own-pivots" title="Permalink to this headline">¶</a></h4>
@@ -1922,29 +1922,29 @@ powerful Lua scripting support for detection of complex threats.</div></blockquo
 <p>For more information about Suricata, please see <a class="reference external" href="https://suricata-ids.org">https://suricata-ids.org</a>.</p>
 </div>
 </div>
-<span id="document-bro"></span><div class="section" id="bro">
-<h3>Bro<a class="headerlink" href="#bro" title="Permalink to this headline">¶</a></h3>
-<p>Bro is in the process of renaming to Zeek.  From <a class="reference external" href="https://www.zeek.org/">https://www.zeek.org/</a>:</p>
+<span id="document-zeek"></span><div class="section" id="zeek">
+<h3>Zeek<a class="headerlink" href="#zeek" title="Permalink to this headline">¶</a></h3>
+<p>Zeek is formerly known as Bro.  From <a class="reference external" href="https://www.zeek.org/">https://www.zeek.org/</a>:</p>
 <blockquote>
 <div>Zeek is a powerful network analysis framework that is much different from the typical IDS you may know. (Zeek is the new name for the long-established Bro system. Note that parts of the system retain the “Bro” name, and it also often appears in the documentation and distributions.)</div></blockquote>
 <div class="section" id="logs">
 <h4>Logs<a class="headerlink" href="#logs" title="Permalink to this headline">¶</a></h4>
-<p>Bro logs are stored in <code class="docutils literal notranslate"><span class="pre">/nsm/bro/logs</span></code>. They are consumed by <a class="reference external" href="syslog">syslog-ng</a>, parsed and augmented by <a class="reference external" href="Logstash">Logstash</a>, stored in <a class="reference external" href="Elasticsearch">Elasticsearch</a>, and viewable in <a class="reference external" href="Kibana">Kibana</a>.</p>
+<p>Zeek logs are stored in <code class="docutils literal notranslate"><span class="pre">/nsm/bro/logs</span></code>. They are consumed by <a class="reference external" href="syslog">syslog-ng</a>, parsed and augmented by <a class="reference external" href="Logstash">Logstash</a>, stored in <a class="reference external" href="Elasticsearch">Elasticsearch</a>, and viewable in <a class="reference external" href="Kibana">Kibana</a>.</p>
 <div class="section" id="json">
 <h5>JSON<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h5>
-<p>By default, we configure Bro to output in JSON for higher performance and better parsing. We recommend that most folks leave Bro configured for JSON output.  If you need to parse those JSON logs from the command line, you can use <a class="reference external" href="jq">jq</a>.</p>
+<p>By default, we configure Zeek to output in JSON for higher performance and better parsing. We recommend that most folks leave Zeek configured for JSON output.  If you need to parse those JSON logs from the command line, you can use <a class="reference external" href="jq">jq</a>.</p>
 </div>
 <div class="section" id="tsv">
 <h5>TSV<a class="headerlink" href="#tsv" title="Permalink to this headline">¶</a></h5>
-<p>If you really need the traditional Bro TSV (Tab Separated Values) format, you can disable JSON:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;s|@load json-logs|#@load json-logs|g&#39;</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">bro</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">bro</span><span class="o">/</span><span class="n">site</span><span class="o">/</span><span class="n">local</span><span class="o">.</span><span class="n">bro</span>
+<p>If you really need the traditional Zeek TSV (Tab Separated Values) format, you can disable JSON:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="o">--</span><span class="n">follow</span><span class="o">-</span><span class="n">symlinks</span> <span class="s1">&#39;s|@load json-logs|#@load json-logs|g&#39;</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">bro</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">bro</span><span class="o">/</span><span class="n">site</span><span class="o">/</span><span class="n">local</span><span class="o">.</span><span class="n">bro</span>
 </pre></div>
 </div>
-<p>and then restart Bro:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">bro</span><span class="o">-</span><span class="n">restart</span>
+<p>and then restart Zeek:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">zeek</span><span class="o">-</span><span class="n">restart</span>
 </pre></div>
 </div>
-<p>Bro monitors your network traffic and creates logs, such as:</p>
+<p>Zeek monitors your network traffic and creates logs, such as:</p>
 </div>
 <div class="section" id="conn-log">
 <h5>conn.log<a class="headerlink" href="#conn-log" title="Permalink to this headline">¶</a></h5>
@@ -1952,15 +1952,15 @@ powerful Lua scripting support for detection of complex threats.</div></blockquo
 <li>TCP/UDP/ICMP connections</li>
 <li>For more information, see:</li>
 </ul>
-<p><a class="reference external" href="https://docs.zeek.org/en/latest/scripts/base/protocols/conn/main.bro.html#type-Conn::Info">https://docs.zeek.org/en/latest/scripts/base/protocols/conn/main.bro.html#type-Conn::Info</a></p>
+<p><a class="reference external" href="https://docs.zeek.org/en/latest/scripts/base/protocols/conn/main.zeek.html#type-Conn::Info">https://docs.zeek.org/en/latest/scripts/base/protocols/conn/main.zeek.html#type-Conn::Info</a></p>
 </div>
 <div class="section" id="dns-log">
 <h5>dns.log<a class="headerlink" href="#dns-log" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li>DNS activity</li>
-<li>For more information ,see:</li>
+<li>For more information, see:</li>
 </ul>
-<p><a class="reference external" href="https://docs.zeek.org/en/latest/scripts/base/protocols/dns/main.bro.html#type-DNS::Info">https://docs.zeek.org/en/latest/scripts/base/protocols/dns/main.bro.html#type-DNS::Info</a></p>
+<p><a class="reference external" href="https://docs.zeek.org/en/latest/scripts/base/protocols/dns/main.zeek.html#type-DNS::Info">https://docs.zeek.org/en/latest/scripts/base/protocols/dns/main.zeek.html#type-DNS::Info</a></p>
 </div>
 <div class="section" id="ftp-log">
 <h5>ftp.log<a class="headerlink" href="#ftp-log" title="Permalink to this headline">¶</a></h5>
@@ -1968,7 +1968,7 @@ powerful Lua scripting support for detection of complex threats.</div></blockquo
 <li>FTP activity</li>
 <li>For more information, see:</li>
 </ul>
-<p><a class="reference external" href="https://docs.zeek.org/en/latest/scripts/base/protocols/ftp/info.bro.html#type-FTP::Info">https://docs.zeek.org/en/latest/scripts/base/protocols/ftp/info.bro.html#type-FTP::Info</a></p>
+<p><a class="reference external" href="https://docs.zeek.org/en/latest/scripts/base/protocols/ftp/info.zeek.html#type-FTP::Info">https://docs.zeek.org/en/latest/scripts/base/protocols/ftp/info.zeek.html#type-FTP::Info</a></p>
 </div>
 <div class="section" id="http-log">
 <h5>http.log<a class="headerlink" href="#http-log" title="Permalink to this headline">¶</a></h5>
@@ -1976,7 +1976,7 @@ powerful Lua scripting support for detection of complex threats.</div></blockquo
 <li>HTTP requests and replies</li>
 <li>For more information, see:</li>
 </ul>
-<p><a class="reference external" href="https://docs.zeek.org/en/latest/scripts/base/protocols/http/main.bro.html#type-HTTP::Info">https://docs.zeek.org/en/latest/scripts/base/protocols/http/main.bro.html#type-HTTP::Info</a></p>
+<p><a class="reference external" href="https://docs.zeek.org/en/latest/scripts/base/protocols/http/main.zeek.html#type-HTTP::Info">https://docs.zeek.org/en/latest/scripts/base/protocols/http/main.zeek.html#type-HTTP::Info</a></p>
 </div>
 <div class="section" id="ssl-log">
 <h5>ssl.log<a class="headerlink" href="#ssl-log" title="Permalink to this headline">¶</a></h5>
@@ -1984,34 +1984,34 @@ powerful Lua scripting support for detection of complex threats.</div></blockquo
 <li>SSL/TLS handshake info</li>
 <li>For more information, see:</li>
 </ul>
-<p><a class="reference external" href="https://docs.zeek.org/en/latest/scripts/base/protocols/ssl/main.bro.html#type-SSL::Info">https://docs.zeek.org/en/latest/scripts/base/protocols/ssl/main.bro.html#type-SSL::Info</a></p>
+<p><a class="reference external" href="https://docs.zeek.org/en/latest/scripts/base/protocols/ssl/main.zeek.html#type-SSL::Info">https://docs.zeek.org/en/latest/scripts/base/protocols/ssl/main.zeek.html#type-SSL::Info</a></p>
 </div>
 <div class="section" id="notice-log">
 <h5>notice.log<a class="headerlink" href="#notice-log" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
-<li>Bro notices</li>
+<li>Zeek notices</li>
 <li>For more information, see:</li>
 </ul>
-<p><a class="reference external" href="https://docs.zeek.org/en/latest/scripts/base/frameworks/notice/main.bro.html#type-Notice::Info">https://docs.zeek.org/en/latest/scripts/base/frameworks/notice/main.bro.html#type-Notice::Info</a></p>
+<p><a class="reference external" href="https://docs.zeek.org/en/latest/scripts/base/frameworks/notice/main.zeek.html#type-Notice::Info">https://docs.zeek.org/en/latest/scripts/base/frameworks/notice/main.zeek.html#type-Notice::Info</a></p>
 <div class="line-block">
 <div class="line">…and others, which can be researched here:</div>
 <div class="line"><a class="reference external" href="https://docs.zeek.org/en/latest/script-reference/log-files.html">https://docs.zeek.org/en/latest/script-reference/log-files.html</a></div>
 </div>
-<p>As you can see, Bro log data can provide a wealth of information to the analyst, all easily accessible through <a class="reference external" href="Kibana">Kibana</a>.</p>
+<p>As you can see, Zeek log data can provide a wealth of information to the analyst, all easily accessible through <a class="reference external" href="Kibana">Kibana</a>.</p>
 </div>
 </div>
 <div class="section" id="email">
 <h4>Email<a class="headerlink" href="#email" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">/opt/bro/etc/broctl.cfg</span></code></p>
 <ul class="simple">
-<li>To configure email notifications, please see the <a class="reference external" href="email#bro">email</a> section.</li>
+<li>To configure email notifications, please see the <a class="reference external" href="email#zeek">email</a> section.</li>
 </ul>
 </div>
 <div class="section" id="syslog">
 <h4>Syslog<a class="headerlink" href="#syslog" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">/etc/syslog-ng/syslog-ng.conf</span></code></p>
 <ul class="simple">
-<li>To forward Bro logs to an external syslog collector, please see the <a class="reference external" href="syslog-output">syslog-output</a> section.</li>
+<li>To forward Zeek logs to an external syslog collector, please see the <a class="reference external" href="syslog-output">syslog-output</a> section.</li>
 </ul>
 </div>
 <div class="section" id="intel">
@@ -2021,13 +2021,13 @@ powerful Lua scripting support for detection of complex threats.</div></blockquo
 <ul class="simple">
 <li>When editing <code class="docutils literal notranslate"><span class="pre">/opt/bro/share/intel/intel.dat</span></code>, ensure there are no leading/trailing spaces or lines, and that only (single) tabs are used as field delimiters.</li>
 <li>If you experience an error, or do not notice <code class="docutils literal notranslate"><span class="pre">/nsm/bro/logs/current/intel.log</span></code> being generated, try having a look in <code class="docutils literal notranslate"><span class="pre">/nsm/bro/logs/current/reporter.log</span></code> for clues.</li>
-<li>You may also want to restart Bro after making changes, by running the following command:
-<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">so-bro-restart</span></code>.</li>
+<li>You may also want to restart Zeek after making changes, by running the following command:
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">so-zeek-restart</span></code>.</li>
 </ul>
 </li>
 <li><p class="first">For more information, please see:</p>
 <div class="line-block">
-<div class="line"><a class="reference external" href="https://www.bro.org/sphinx-git/frameworks/intel.html">https://www.bro.org/sphinx-git/frameworks/intel.html</a></div>
+<div class="line"><a class="reference external" href="https://docs.zeek.org/en/latest/frameworks/intel.html">https://docs.zeek.org/en/latest/frameworks/intel.html</a></div>
 <div class="line"><a class="reference external" href="http://blog.bro.org/2014/01/intelligence-data-and-bro_4980.html">http://blog.bro.org/2014/01/intelligence-data-and-bro_4980.html</a></div>
 <div class="line"><a class="reference external" href="https://github.com/weslambert/securityonion-misp">https://github.com/weslambert/securityonion-misp</a></div>
 </div>
@@ -2036,10 +2036,10 @@ powerful Lua scripting support for detection of complex threats.</div></blockquo
 </li>
 </ul>
 </div>
-<div class="section" id="bro-n">
-<h4>Bro * n<a class="headerlink" href="#bro-n" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="workers">
+<h4>Workers<a class="headerlink" href="#workers" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">/opt/bro/etc/node.cfg</span></code></p>
-<p>We compile Bro to support both <a class="reference external" href="PF-RING">PF-RING</a> and <a class="reference external" href="AF-PACKET">AF-PACKET</a> so that you can spin up multiple Bro workers to handle more traffic.  Modern versions of Setup now default to <a class="reference external" href="AF-PACKET">AF-PACKET</a>.</p>
+<p>We compile Zeek to support both <a class="reference external" href="PF-RING">PF-RING</a> and <a class="reference external" href="AF-PACKET">AF-PACKET</a> so that you can spin up multiple Zeek workers to handle more traffic.  Modern versions of Setup now default to <a class="reference external" href="AF-PACKET">AF-PACKET</a>.</p>
 <p>If you are monitoring high traffic levels, you may need to use the <code class="docutils literal notranslate"><span class="pre">pin_cpus</span></code> setting.  For more information, please see <a class="reference external" href="https://docs.zeek.org/en/stable/configuration/#using-pf-ring">https://docs.zeek.org/en/stable/configuration/#using-pf-ring</a>.</p>
 </div>
 <div class="section" id="custom-scripts">
@@ -2067,8 +2067,8 @@ new scripts in <code class="docutils literal notranslate"><span class="pre">/opt
 adding <code class="docutils literal notranslate"><span class="pre">&#64;load</span> <span class="pre">custom-scripts</span></code> at the bottom of the file and saving
 the file.</p>
 </li>
-<li><p class="first">Restart Bro.
-<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">so-bro-restart</span></code></p>
+<li><p class="first">Restart Zeek.
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">so-zeek-restart</span></code></p>
 </li>
 <li><p class="first">Check <code class="docutils literal notranslate"><span class="pre">/nsm/bro/logs/current/loaded_scripts.log</span></code> to see if your
 custom script(s) has/have been loaded.</p>
@@ -2077,7 +2077,7 @@ custom script(s) has/have been loaded.</p>
 script(s) is/are not working as desired.</p>
 </li>
 </ul>
-<p>To check and see if a Bro script has fired a Notice, go to Kibana and check our <code class="docutils literal notranslate"><span class="pre">Bro</span> <span class="pre">Notices</span></code> dashboard. Alternatively, you can check for entries in <code class="docutils literal notranslate"><span class="pre">/nsm/bro/logs/current/notice.log</span></code>.</p>
+<p>To check and see if a Zeek script has fired a Notice, go to Kibana and check our <code class="docutils literal notranslate"><span class="pre">Zeek</span> <span class="pre">Notices</span></code> dashboard. Alternatively, you can check for entries in <code class="docutils literal notranslate"><span class="pre">/nsm/bro/logs/current/notice.log</span></code>.</p>
 <p><strong>PLEASE NOTE</strong>: In a distributed deployment, all custom scripts created
 under <code class="docutils literal notranslate"><span class="pre">/opt/bro/share/bro/policy/</span></code> on a master server will be
 replicated to sensors via Salt, however, they will not be enabled, as
@@ -2099,7 +2099,7 @@ information.</p>
 </div>
 <p>Then test, using:</p>
 <p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">salt</span> <span class="pre">&quot;SENSOR&quot;</span> <span class="pre">state.highstate</span></code></p>
-<p>You can then have Bro automatically restart upon a detected change in <code class="docutils literal notranslate"><span class="pre">local.bro</span></code> from the master by modifying <code class="docutils literal notranslate"><span class="pre">init.sls</span></code> similar to the following:</p>
+<p>You can then have Zeek automatically restart upon a detected change in <code class="docutils literal notranslate"><span class="pre">local.bro</span></code> from the master by modifying <code class="docutils literal notranslate"><span class="pre">init.sls</span></code> similar to the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">restart</span><span class="o">-</span><span class="n">bro</span>
 <span class="n">cmd</span><span class="o">.</span><span class="n">wait</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nsm_sensor_ps</span><span class="o">-</span><span class="n">restart</span> <span class="o">--</span><span class="n">only</span><span class="o">-</span><span class="n">bro</span>
@@ -2111,7 +2111,7 @@ information.</p>
 </div>
 <div class="section" id="import">
 <h4>Import<a class="headerlink" href="#import" title="Permalink to this headline">¶</a></h4>
-<p>You can import Bro logs into Elasticsearch by dropping them into <code class="docutils literal notranslate"><span class="pre">/nsm/import/bro/</span></code>.  Logstash monitors that directory as defined in <code class="docutils literal notranslate"><span class="pre">0007_input_import.conf</span></code>.</p>
+<p>You can import Zeek logs into Elasticsearch by dropping them into <code class="docutils literal notranslate"><span class="pre">/nsm/import/bro/</span></code>.  Logstash monitors that directory as defined in <code class="docutils literal notranslate"><span class="pre">0007_input_import.conf</span></code>.</p>
 </div>
 <div class="section" id="nsm-bro-spool-tmp">
 <h4>/nsm/bro/spool/tmp<a class="headerlink" href="#nsm-bro-spool-tmp" title="Permalink to this headline">¶</a></h4>
@@ -2123,7 +2123,7 @@ you can clean them up with:</p>
 </div>
 <div class="section" id="more-information">
 <h4>More Information<a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h4>
-<p>For more information about Bro, please see <a class="reference external" href="https://www.zeek.org/">https://www.zeek.org/</a>.</p>
+<p>For more information about Zeek, please see <a class="reference external" href="https://www.zeek.org/">https://www.zeek.org/</a>.</p>
 </div>
 </div>
 <span id="document-netsniff-ng"></span><div class="section" id="netsniff-ng">
@@ -2431,7 +2431,7 @@ and much more. Autoruns goes way beyond other autostart utilities.</div></blockq
 </div>
 <div class="section" id="forwarding">
 <h4>Forwarding<a class="headerlink" href="#forwarding" title="Permalink to this headline">¶</a></h4>
-<p>You can configure syslog-ng to <a class="reference external" href="syslog-output">forward</a> Bro / Wazuh / IDS logs to external systems.</p>
+<p>You can configure syslog-ng to <a class="reference external" href="syslog-output">forward</a> Zeek / Wazuh / IDS logs to external systems.</p>
 </div>
 <div class="section" id="monitoring">
 <h4>Monitoring<a class="headerlink" href="#monitoring" title="Permalink to this headline">¶</a></h4>
@@ -2814,7 +2814,7 @@ Logstash uses whichever criteria is reached &gt;first.</div></blockquote>
 </div>
 <div class="section" id="data-fields">
 <h4>Data Fields<a class="headerlink" href="#data-fields" title="Permalink to this headline">¶</a></h4>
-<p>Logstash process Bro logs, syslog, IDS alerts, etc., formatting said data into many different data fields, as described in the <a class="reference external" href="Data-Fields">Data Fields</a> section.</p>
+<p>Logstash process Zeek logs, syslog, IDS alerts, etc., formatting said data into many different data fields, as described in the <a class="reference external" href="Data-Fields">Data Fields</a> section.</p>
 </div>
 <div class="section" id="log">
 <h4>Log<a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h4>
@@ -2837,7 +2837,7 @@ Logstash uses whichever criteria is reached &gt;first.</div></blockquote>
 </div>
 <div class="section" id="logstash-minimal">
 <h4>LOGSTASH_MINIMAL<a class="headerlink" href="#logstash-minimal" title="Permalink to this headline">¶</a></h4>
-<p>We now have a <code class="docutils literal notranslate"><span class="pre">LOGSTASH_MINIMAL</span></code> mode which will offload log parsing to Elasticsearch ingest node.  This allows Logstash to run in as little as 200MB RAM and start instantly.  Please note that the Elasticsearch ingest node parsing currently only supports standard IDS alerts and Bro logs in JSON format.</p>
+<p>We now have a <code class="docutils literal notranslate"><span class="pre">LOGSTASH_MINIMAL</span></code> mode which will offload log parsing to Elasticsearch ingest node.  This allows Logstash to run in as little as 200MB RAM and start instantly.  Please note that the Elasticsearch ingest node parsing currently only supports standard IDS alerts and Zeek logs in JSON format.</p>
 <p>To enable on a new installation, simply run through Setup using:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sosetup</span><span class="o">-</span><span class="n">minimal</span>
 </pre></div>
@@ -3186,6 +3186,7 @@ Linux-on-mainframe apps.</div></blockquote>
 <p>To maintain a high level of stability, reliability, and support, our Elastic Docker images are based on the Docker images provided by Elastic.co. Their Docker images are built on CentOS 7:
 <a class="reference external" href="https://www.elastic.co/blog/docker-base-centos7">https://www.elastic.co/blog/docker-base-centos7</a></p>
 <p>To leverage a common core OS layer, all of our Docker images are then built on CentOS 7.</p>
+<p>Please note that in the current platform, only a few of the components are delivered via containers. The remaining components (including the configuration files for those containers) are delivered via Ubuntu packages.</p>
 </div>
 <div class="section" id="registry">
 <h4>Registry<a class="headerlink" href="#registry" title="Permalink to this headline">¶</a></h4>
@@ -3356,13 +3357,13 @@ statistics on the storage node(s).</p>
 <span id="document-data-fields"></span><div class="section" id="data-fields">
 <h3>Data Fields<a class="headerlink" href="#data-fields" title="Permalink to this headline">¶</a></h3>
 <p>This page references the various types of data fields utilized by
-Security Onion on the Elastic Stack.</p>
+the Elastic Stack in Security Onion.</p>
 <p>The various fields types are described below.</p>
 <div class="section" id="fields">
 <h4>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h4>
 <div class="line-block">
 <div class="line"><a class="reference external" href="Alert-Data-Fields">Alert Data</a></div>
-<div class="line"><a class="reference external" href="Bro-Fields">Bro</a></div>
+<div class="line"><a class="reference external" href="Bro-Fields">Zeek</a></div>
 <div class="line"><a class="reference external" href="Elastalert-Fields">Elastalert</a></div>
 </div>
 </div>
@@ -3408,14 +3409,14 @@ being processed by Logstash:</p>
 <div class="line">Signature_Info (<em>added through augmentation</em>)</div>
 </div>
 </div>
-<span id="document-bro-fields"></span><div class="section" id="bro-fields">
-<h3>Bro Fields<a class="headerlink" href="#bro-fields" title="Permalink to this headline">¶</a></h3>
-<p>The following lists field names as they are formatted in Bro logs, then
+<span id="document-zeek-fields"></span><div class="section" id="zeek-fields">
+<h3>Zeek Fields<a class="headerlink" href="#zeek-fields" title="Permalink to this headline">¶</a></h3>
+<p>The following lists field names as they are formatted in Zeek logs, then
 processed by Logstash and ingested into Elasticsearch.</p>
-<p>The original field name (from Bro) appears on the left, and if changed,
+<p>The original field name (from Zeek) appears on the left, and if changed,
 the updated name or formatting of the field (Elasticsearch) will appear
 on the right.</p>
-<p><strong>(Bro =&gt; Elastic)</strong></p>
+<p><strong>(Zeek =&gt; Elastic)</strong></p>
 <div class="section" id="conn-log">
 <h4>conn.log<a class="headerlink" href="#conn-log" title="Permalink to this headline">¶</a></h4>
 <div class="line-block">
@@ -4404,10 +4405,10 @@ Elastalert.</p>
 </li>
 </ul>
 </div>
-<div class="section" id="bro">
-<h4>Bro<a class="headerlink" href="#bro" title="Permalink to this headline">¶</a></h4>
-<p>Bro package upgrades will attempt to migrate your Bro config. You should double-check your config and see if there are any local customizations that you need to manually re-apply. Then restart Bro as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">bro</span><span class="o">-</span><span class="n">restart</span>
+<div class="section" id="zeek">
+<h4>Zeek<a class="headerlink" href="#zeek" title="Permalink to this headline">¶</a></h4>
+<p>Zeek package upgrades will attempt to migrate your Zeek config. You should double-check your config and see if there are any local customizations that you need to manually re-apply. Then restart Zeek as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">zeek</span><span class="o">-</span><span class="n">restart</span>
 </pre></div>
 </div>
 </div>
@@ -4417,6 +4418,7 @@ Elastalert.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">elastic</span><span class="o">-</span><span class="n">configure</span><span class="o">-</span><span class="n">kibana</span>
 </pre></div>
 </div>
+<p>If you’ve previously added any external Elastic components (such as filebeat, winlogbeat, etc.), be sure to upgrade them to match the version of your upgraded Elastic components.</p>
 </div>
 <div class="section" id="wazuh">
 <h4>Wazuh<a class="headerlink" href="#wazuh" title="Permalink to this headline">¶</a></h4>
@@ -4726,7 +4728,7 @@ Onion and older components.</p>
 </div>
 <div class="section" id="sniffing-interface-s">
 <h4>Sniffing interface(s)<a class="headerlink" href="#sniffing-interface-s" title="Permalink to this headline">¶</a></h4>
-<p>You’ll want one or more interfaces dedicated to sniffing (no IP address). NIC offloading functions such as <code class="docutils literal notranslate"><span class="pre">tso</span></code>, <code class="docutils literal notranslate"><span class="pre">gso</span></code>, and <code class="docutils literal notranslate"><span class="pre">gro</span></code> should be disabled to ensure that Snort/Suricata/Bro get an accurate view of the traffic (see <a class="reference external" href="https://blog.securityonion.net/2011/10/when-is-full-packet-capture-not-full.html">https://blog.securityonion.net/2011/10/when-is-full-packet-capture-not-full.html</a>).</p>
+<p>You’ll want one or more interfaces dedicated to sniffing (no IP address). NIC offloading functions such as <code class="docutils literal notranslate"><span class="pre">tso</span></code>, <code class="docutils literal notranslate"><span class="pre">gso</span></code>, and <code class="docutils literal notranslate"><span class="pre">gro</span></code> should be disabled to ensure that Snort/Suricata/Zeek get an accurate view of the traffic (see <a class="reference external" href="https://blog.securityonion.net/2011/10/when-is-full-packet-capture-not-full.html">https://blog.securityonion.net/2011/10/when-is-full-packet-capture-not-full.html</a>).</p>
 </div>
 <div class="section" id="sample-etc-network-interfaces">
 <h4>Sample /etc/network/interfaces<a class="headerlink" href="#sample-etc-network-interfaces" title="Permalink to this headline">¶</a></h4>
@@ -4785,6 +4787,10 @@ iface eth1 inet manual
 </pre></div>
 </div>
 <p>For more information on network configuration in Ubuntu, please see <a class="reference external" href="https://help.ubuntu.com/community/NetworkConfigurationCommandLine/Automatic">https://help.ubuntu.com/community/NetworkConfigurationCommandLine/Automatic</a>.</p>
+</div>
+<div class="section" id="wireless-interfaces">
+<h4>Wireless interfaces<a class="headerlink" href="#wireless-interfaces" title="Permalink to this headline">¶</a></h4>
+<p>Security Onion is designed to use wired interfaces.  We don’t recommend or support wireless interfaces.  If you absolutely must use a wireless interface for your management interface, you may be able to make it work by removing it from <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code> and restarting the network manager service.  For more information, please see <a class="reference external" href="https://groups.google.com/d/topic/security-onion/aC4psdszC58/discussion">https://groups.google.com/d/topic/security-onion/aC4psdszC58/discussion</a>.</p>
 </div>
 </div>
 <span id="document-proxy"></span><div class="section" id="proxy-configuration">
@@ -4889,7 +4895,7 @@ you may need to pass the <code class="docutils literal notranslate"><span class=
 </div>
 <div class="section" id="manual-configuration">
 <h4>Manual Configuration<a class="headerlink" href="#manual-configuration" title="Permalink to this headline">¶</a></h4>
-<p>If you don’t want to run <code class="docutils literal notranslate"><span class="pre">so-email</span></code> as described above, you can configure email manually as described in the following sections. Applications such as Sguil and Wazuh have their own mail configuration and don’t rely on a mail server in the OS itself. However, you may still want to install a mail server in the OS so that you can get daily emails from the sostat script and from Bro.</p>
+<p>If you don’t want to run <code class="docutils literal notranslate"><span class="pre">so-email</span></code> as described above, you can configure email manually as described in the following sections. Applications such as Sguil and Wazuh have their own mail configuration and don’t rely on a mail server in the OS itself. However, you may still want to install a mail server in the OS so that you can get daily emails from the sostat script and from Zeek.</p>
 </div>
 <div class="section" id="operating-system">
 <h4>Operating System<a class="headerlink" href="#operating-system" title="Permalink to this headline">¶</a></h4>
@@ -4957,22 +4963,22 @@ EMAIL=YourUsername@YourDomain.com\
 <p>You can specify the severity of an event for which Wazuh will send email alerts by specifying an appropriate value for <code class="docutils literal notranslate"><span class="pre">email_alert_level</span></code> in <code class="docutils literal notranslate"><span class="pre">/var/ossec/etc/ossec.conf</span></code>. If you notice <code class="docutils literal notranslate"><span class="pre">email_alert_level</span></code> is not being respected for a certain rule, it may be that the option is overridden by <code class="docutils literal notranslate"><span class="pre">&lt;options&gt;alert_by_email&lt;/options&gt;</span></code> being set for a rule. You can modify this behavior in <code class="docutils literal notranslate"><span class="pre">/var/ossec/rules/local.rules</span></code>.</p>
 <p>You can also find an explanation of the alert levels at <a class="reference external" href="http://ossec-docs.readthedocs.io/en/latest/manual/rules-decoders/rule-levels.html">http://ossec-docs.readthedocs.io/en/latest/manual/rules-decoders/rule-levels.html</a>.</p>
 </div>
-<div class="section" id="bro">
-<h4>Bro<a class="headerlink" href="#bro" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="zeek">
+<h4>Zeek<a class="headerlink" href="#zeek" title="Permalink to this headline">¶</a></h4>
 <p>Edit <code class="docutils literal notranslate"><span class="pre">/opt/bro/etc/broctl.cfg</span></code> and set the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MailTo</span> <span class="o">=</span> <span class="n">YourUsername</span><span class="nd">@YourDomain</span><span class="o">.</span><span class="n">com</span>
 <span class="n">sendmail</span> <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">sendmail</span>
 </pre></div>
 </div>
-<p>Then update and restart Bro:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">bro</span><span class="o">-</span><span class="n">restart</span>
+<p>Then update and restart Zeek:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">zeek</span><span class="o">-</span><span class="n">restart</span>
 </pre></div>
 </div>
-<p>You should then start receiving hourly connection summary emails. If you don’t want the connection summary emails, you can add the following to <code class="docutils literal notranslate"><span class="pre">broctl.cfg</span></code> and update and restart Bro as shown above:</p>
+<p>You should then start receiving hourly connection summary emails. If you don’t want the connection summary emails, you can add the following to <code class="docutils literal notranslate"><span class="pre">broctl.cfg</span></code> and update and restart Zeek as shown above:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tracesummary</span><span class="o">=</span>
 </pre></div>
 </div>
-<p>You may want to receive emails for Bro notices. To do that, add the following to <code class="docutils literal notranslate"><span class="pre">/opt/bro/share/bro/site/local.bro</span></code> and update/restart Bro as shown above:</p>
+<p>You may want to receive emails for Zeek notices. To do that, add the following to <code class="docutils literal notranslate"><span class="pre">/opt/bro/share/bro/site/local.bro</span></code> and update/restart Zeek as shown above:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>hook Notice::policy(n: Notice::Info)
 {
 add n$actions[Notice::ACTION\_ALARM];
@@ -4987,7 +4993,7 @@ add n$actions[Notice::ACTION\_ALARM];
 </div>
 <div class="section" id="lack-of-network-traffic">
 <h4>Lack of network traffic<a class="headerlink" href="#lack-of-network-traffic" title="Permalink to this headline">¶</a></h4>
-<p>If you configured Wazuh or Bro as shown above, they should automatically email you if your network sensors stop seeing traffic.</p>
+<p>If you configured Wazuh or Zeek as shown above, they should automatically email you if your network sensors stop seeing traffic.</p>
 </div>
 </div>
 <span id="document-ip"></span><div class="section" id="changing-ip-addresses">
@@ -5134,11 +5140,11 @@ from your preferred NTP provider.</p>
 <h5>Global bpf.conf<a class="headerlink" href="#global-bpf-conf" title="Permalink to this headline">¶</a></h5>
 <p>You can specify your BPF in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/rules/bpf.conf</span></code> on your master
 server and, by default, it will apply to
-Snort/Suricata/Bro/netsniff-ng/prads on all interfaces in your entire
+Snort/Suricata/Zeek/netsniff-ng/prads on all interfaces in your entire
 deployment. If you have separate sensors reporting to that master
 server, they will copy <code class="docutils literal notranslate"><span class="pre">/etc/nsm/rules/bpf.conf</span></code> as part of the daily
 rule-update cron job (or you can run it manually) which will also
-restart Snort/Suricata so that the BPF change will take effect. Bro
+restart Snort/Suricata so that the BPF change will take effect. Zeek
 automatically monitors <code class="docutils literal notranslate"><span class="pre">bpf.conf</span></code> for changes and will update itself
 as needed. Other services (such as prads and netsniff-ng) will need to
 be restarted manually for the change to take effect.</p>
@@ -5261,7 +5267,7 @@ and no tags simultaneously. Bro 2.0 should work fine at least.</p>
 <ul class="simple">
 <li>optimized for Suricata, but available for Snort as well</li>
 <li>rules retrievable as released</li>
-<li>license fee per sensor</li>
+<li>license fee per sensor (users are responsible for purchasing enough licenses for their entire deployment)</li>
 </ul>
 <div class="line-block">
 <div class="line">For more information, see:</div>
@@ -5301,7 +5307,7 @@ and no tags simultaneously. Bro 2.0 should work fine at least.</p>
 <li>optimized for Snort</li>
 <li>Snort SO (Shared Object) rules will only work with Snort</li>
 <li>rules retrievable as released</li>
-<li>license fee per sensor</li>
+<li>license fee per sensor (users are responsible for purchasing enough licenses for their entire deployment)</li>
 </ul>
 <div class="line-block">
 <div class="line">For more information, see:</div>
@@ -5390,7 +5396,7 @@ and no tags simultaneously. Bro 2.0 should work fine at least.</p>
 <span id="document-alerts"></span><div class="section" id="managing-alerts">
 <h3>Managing Alerts<a class="headerlink" href="#managing-alerts" title="Permalink to this headline">¶</a></h3>
 <p>Security Onion generates a lot of valuable information for you the
-second you plug it into a TAP or SPAN port. Between Bro logs, alert data
+second you plug it into a TAP or SPAN port. Between Zeek logs, alert data
 from Snort/Suricata, and full packet capture from netsniff-ng, you have,
 in a very short amount of time, enough information to begin making
 identifying areas of interest and making positive changes to your
@@ -5639,12 +5645,13 @@ rules in each:</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Append the signature you wish to disable in the format gid:sid. The
-generator ID is most likely going to be a “1” in most cases. You can
-check the generator ID by checking the exact signature. If a gid is
-not listed, it is assumed to be “1”.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Disable the GPL SNMP public access udp signature</span>
+<li><p class="first">Append the signature you wish to disable in the format gid:sid. gid is the generator ID and will usually be “1”. You can
+check the generator ID by checking the exact signature. If a gid is not listed, it is assumed to be “1”.  A common exception would be rules that start with “SURICATA” having a gid of “0” and Talos VRT Shared Object (compiled) rules having a gid of “3”.  Here are some examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Disable the &quot;GPL SNMP public access udp&quot; signature</span>
 <span class="mi">1</span><span class="p">:</span><span class="mi">2101411</span>
+
+<span class="c1"># Disable the &quot;SURICATA HTTP unable to match response to request&quot; signature</span>
+<span class="mi">0</span><span class="p">:</span><span class="mi">2221010</span>
 </pre></div>
 </div>
 </li>
@@ -5814,8 +5821,8 @@ alert tcp $HOME_NET any -&gt; $EXTERNAL_NET !1433 (msg:&quot;ET TROJAN Bancos.DV
 </div>
 <span id="document-pf-ring"></span><div class="section" id="pf-ring">
 <h3>PF-RING<a class="headerlink" href="#pf-ring" title="Permalink to this headline">¶</a></h3>
-<p>PF-RING acts as a flow-based load balancer to allow us to spin up multiple instances of Snort/Suricata/Bro to handle more traffic than a single instance.</p>
-<p>Starting in <code class="docutils literal notranslate"><span class="pre">securityonion-setup</span> <span class="pre">-</span> <span class="pre">20120912-0ubuntu0securityonion285</span></code>, running Setup will configure Suricata and Bro to use <a class="reference external" href="AF-PACKET">AF-PACKET</a> instead of PF-RING.</p>
+<p>PF-RING acts as a flow-based load balancer to allow us to spin up multiple instances of Snort/Suricata/Zeek to handle more traffic than a single instance.</p>
+<p>Starting in <code class="docutils literal notranslate"><span class="pre">securityonion-setup</span> <span class="pre">-</span> <span class="pre">20120912-0ubuntu0securityonion285</span></code>, running Setup will configure Suricata and Zeek to use <a class="reference external" href="AF-PACKET">AF-PACKET</a> instead of PF-RING.</p>
 <div class="section" id="tuning">
 <h4>Tuning<a class="headerlink" href="#tuning" title="Permalink to this headline">¶</a></h4>
 <p>If you want to change the number of PF-RING instances after running Setup, you can do the following.</p>
@@ -5840,19 +5847,19 @@ alert tcp $HOME_NET any -&gt; $EXTERNAL_NET !1433 (msg:&quot;ET TROJAN Bancos.DV
 <p>If running Snort, <code class="docutils literal notranslate"><span class="pre">so-sensor-start</span></code> automatically spawns <code class="docutils literal notranslate"><span class="pre">$IDS_LB_PROCS</span></code> instances of Snort (using PF-RING), barnyard2, and snort_agent.</p>
 <p>If running Suricata, <code class="docutils literal notranslate"><span class="pre">so-sensor-start</span></code> automatically copies <code class="docutils literal notranslate"><span class="pre">$IDS_LB_PROCS</span></code> into <code class="docutils literal notranslate"><span class="pre">suricata.yaml</span></code> and then Suricata spins up the PF-RING instances itself.</p>
 </div>
-<div class="section" id="bro">
-<h4>Bro<a class="headerlink" href="#bro" title="Permalink to this headline">¶</a></h4>
-<p>To change the number of PF-RING instances for Bro:</p>
+<div class="section" id="zeek">
+<h4>Zeek<a class="headerlink" href="#zeek" title="Permalink to this headline">¶</a></h4>
+<p>To change the number of PF-RING instances for Zeek:</p>
 <ul>
-<li><p class="first">Stop bro:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">bro</span><span class="o">-</span><span class="n">stop</span>
+<li><p class="first">Stop zeek:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">zeek</span><span class="o">-</span><span class="n">stop</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Edit <code class="docutils literal notranslate"><span class="pre">/opt/bro/etc/node.cfg</span></code> and change the <code class="docutils literal notranslate"><span class="pre">lb_procs</span></code> variable to the desired number of cores.</p>
 </li>
-<li><p class="first">Start bro:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">bro</span><span class="o">-</span><span class="n">start</span>
+<li><p class="first">Start zeek:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">zeek</span><span class="o">-</span><span class="n">start</span>
 </pre></div>
 </div>
 </li>
@@ -5879,7 +5886,7 @@ alert tcp $HOME_NET any -&gt; $EXTERNAL_NET !1433 (msg:&quot;ET TROJAN Bancos.DV
 </div>
 <span id="document-af-packet"></span><div class="section" id="af-packet">
 <h3>AF-PACKET<a class="headerlink" href="#af-packet" title="Permalink to this headline">¶</a></h3>
-<p>Modern versions of Setup will configure <a class="reference external" href="Suricata">Suricata</a> and <a class="reference external" href="Bro">Bro</a> to use AF-PACKET instead of <a class="reference external" href="PF-RING">PF-RING</a>. (<a class="reference external" href="Snort">Snort</a> will continue to use <a class="reference external" href="PF-RING">PF-RING</a> for load balancing until Snort 3.0 is released.)</p>
+<p>Modern versions of Setup will configure <a class="reference external" href="Suricata">Suricata</a> and <a class="reference external" href="Zeek">Zeek</a> to use AF-PACKET instead of <a class="reference external" href="PF-RING">PF-RING</a>. (<a class="reference external" href="Snort">Snort</a> will continue to use <a class="reference external" href="PF-RING">PF-RING</a> for load balancing until Snort 3.0 is released.)</p>
 <p>If you want to change the number of AF-PACKET workers after running Setup, you can do the following.</p>
 <div class="section" id="id1">
 <h4>Suricata<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
@@ -5902,18 +5909,18 @@ alert tcp $HOME_NET any -&gt; $EXTERNAL_NET !1433 (msg:&quot;ET TROJAN Bancos.DV
 </ul>
 </div>
 <div class="section" id="id3">
-<h4>Bro<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
-<p>To change the number of AF-PACKET workers for <a class="reference external" href="Bro">Bro</a>:</p>
+<h4>Zeek<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>To change the number of AF-PACKET workers for <a class="reference external" href="Zeek">Zeek</a>:</p>
 <ul>
-<li><p class="first">Stop Bro:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">bro</span><span class="o">-</span><span class="n">stop</span>
+<li><p class="first">Stop Zeek:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">zeek</span><span class="o">-</span><span class="n">stop</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Edit <code class="docutils literal notranslate"><span class="pre">/opt/bro/etc/node.cfg</span></code> and change the <code class="docutils literal notranslate"><span class="pre">lb_procs</span></code> variable to the desired number of cores.</p>
 </li>
-<li><p class="first">Start Bro:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">bro</span><span class="o">-</span><span class="n">start</span>
+<li><p class="first">Start Zeek:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">zeek</span><span class="o">-</span><span class="n">start</span>
 </pre></div>
 </div>
 </li>
@@ -5948,9 +5955,9 @@ alert tcp $HOME_NET any -&gt; $EXTERNAL_NET !1433 (msg:&quot;ET TROJAN Bancos.DV
 </div>
 <div class="section" id="cpu-affinity-pinning">
 <h4>CPU Affinity/Pinning<a class="headerlink" href="#cpu-affinity-pinning" title="Permalink to this headline">¶</a></h4>
-<p>For best performance, CPU intensive processes like Bro and Suricata should be pinned to specific CPUs.</p>
+<p>For best performance, CPU intensive processes like Zeek and Suricata should be pinned to specific CPUs.</p>
 <div class="line-block">
-<div class="line">For Bro, use the <code class="docutils literal notranslate"><span class="pre">pin_cpus</span></code> setting in <code class="docutils literal notranslate"><span class="pre">/opt/bro/etc/node.cfg</span></code>:</div>
+<div class="line">For Zeek, use the <code class="docutils literal notranslate"><span class="pre">pin_cpus</span></code> setting in <code class="docutils literal notranslate"><span class="pre">/opt/bro/etc/node.cfg</span></code>:</div>
 <div class="line"><a class="reference external" href="https://docs.zeek.org/en/stable/configuration/#using-pf-ring">https://docs.zeek.org/en/stable/configuration/#using-pf-ring</a></div>
 </div>
 <div class="line-block">
@@ -6147,7 +6154,7 @@ intervals, we can do the following:</p>
 <span id="document-disabling"></span><div class="section" id="disabling-processes">
 <h3>Disabling Processes<a class="headerlink" href="#disabling-processes" title="Permalink to this headline">¶</a></h3>
 <p>If you’ve already run Setup and want to disable a certain sensor service, you can simply stop the running service and then change the corresponding config value from <code class="docutils literal notranslate"><span class="pre">yes</span></code> to <code class="docutils literal notranslate"><span class="pre">no</span></code> to prevent it from restarting the next time the NSM scripts are run.</p>
-<p>For example, suppose you access Bro’s HTTP logs via Kibana, so you want to disable <code class="docutils literal notranslate"><span class="pre">http_agent</span></code> to prevent those HTTP logs from being duplicated into the <code class="docutils literal notranslate"><span class="pre">Sguil</span></code> database. You would first stop the running <code class="docutils literal notranslate"><span class="pre">http_agent</span></code> service:</p>
+<p>For example, suppose you access Zeek’s HTTP logs via Kibana, so you want to disable <code class="docutils literal notranslate"><span class="pre">http_agent</span></code> to prevent those HTTP logs from being duplicated into the <code class="docutils literal notranslate"><span class="pre">Sguil</span></code> database. You would first stop the running <code class="docutils literal notranslate"><span class="pre">http_agent</span></code> service:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nsm_sensor_ps</span><span class="o">-</span><span class="n">stop</span> <span class="o">--</span><span class="n">only</span><span class="o">-</span><span class="n">http</span><span class="o">-</span><span class="n">agent</span>
 </pre></div>
 </div>
@@ -6242,11 +6249,11 @@ something like the following:</div>
 <p><strong>The below sections assume that you already have these services installed, and provide advice on how to disable them in your deployment.</strong></p>
 <p>Most folks will want to disable the following services:</p>
 <ul class="simple">
-<li>prads (prads creates session data and asset data, already provided by Bro)</li>
+<li>prads (prads creates session data and asset data, already provided by Zeek)</li>
 <li>pads_agent (not needed if prads is disabled)</li>
 <li>sancp_agent (not needed if prads is disabled)</li>
-<li>argus (argus creates session data, which is already provided by Bro)</li>
-<li>http_agent (duplicates Bro http.log into Sguil database, which may cause performance issues)</li>
+<li>argus (argus creates session data, which is already provided by Zeek)</li>
+<li>http_agent (duplicates Zeek http.log into Sguil database, which may cause performance issues)</li>
 </ul>
 <p>To do so, stop the required service/s:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nsm_sensor_ps</span><span class="o">-</span><span class="n">stop</span> <span class="o">--</span><span class="n">only</span><span class="o">-</span><span class="n">prads</span>
@@ -6286,7 +6293,7 @@ packets from eth0 to tap0 (OpenVPN). OpenVPN transports the packets to
 the cloud sensor, where tap0 is a member of bridge br0. The standard
 Security Onion stack sniffs br0. NIC offloading functions must be
 disabled on all of these interfaces (eth0 and tap0 on cloud client, and
-tap0 and br0 on cloud sensor) to ensure that Snort, Bro, etc. all see
+tap0 and br0 on cloud sensor) to ensure that Snort, Zeek, etc. all see
 traffic as it appeared on the wire. This guide will walk you through
 disabling NIC offloading functions on eth0 and br0 via
 <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code> and tap0 via <code class="docutils literal notranslate"><span class="pre">/etc/openvpn/up.sh</span></code>.</p>
@@ -6567,7 +6574,7 @@ br0:</p>
 </pre></div>
 </div>
 <p>When you ran Setup phase 2 you configured Security Onion to monitor br0,
-so you should be getting IDS alerts and Bro logs.</p>
+so you should be getting IDS alerts and Zeek logs.</p>
 </div>
 <div class="section" id="hardening">
 <h4>Hardening<a class="headerlink" href="#hardening" title="Permalink to this headline">¶</a></h4>
@@ -6633,11 +6640,11 @@ limited user!</p>
 <h3>DNS Anomaly Detection<a class="headerlink" href="#dns-anomaly-detection" title="Permalink to this headline">¶</a></h3>
 <p>Dr. Johannes Ullrich of the SANS Internet Storm Center posted a great
 DNS Anomaly Detection script based on the query logs coming from his DNS
-server. We can do the same thing with Bro’s dns.log (where Bro captures
+server. We can do the same thing with Zeek’s dns.log (where Zeek captures
 all the DNS queries it sees on the network).</p>
 <p>Please note that this script is only intended for standalone machines
 and will not work properly on distributed deployments.</p>
-<p>This version of the script works on older installations using Bro TSV
+<p>This version of the script works on older installations using Zeek TSV
 output:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
@@ -6662,7 +6669,7 @@ echo &quot;====================================&quot;
 cat $SUSPECTS
 </pre></div>
 </div>
-<p>We’ve since changed Bro’s default output to json (for faster Logstash
+<p>We’ve since changed Zeek’s default output to json (for faster Logstash
 parsing), so <code class="docutils literal notranslate"><span class="pre">senatorhotchkiss</span></code> on our mailing list updated the
 script, replacing <code class="docutils literal notranslate"><span class="pre">bro-cut</span></code> with <code class="docutils literal notranslate"><span class="pre">jq</span></code> as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
@@ -6730,7 +6737,7 @@ particularly suspicious content, etc.</p>
 </li>
 <li><div class="first line-block">
 <div class="line">securityonion-sensor (about 135MB)</div>
-<div class="line">Snort, Suricata, Bro, netsniff-ng, Sguil agents, etc.</div>
+<div class="line">Snort, Suricata, Zeek, netsniff-ng, Sguil agents, etc.</div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">securityonion</span><span class="o">-</span><span class="n">sensor</span>
 </pre></div>
@@ -6983,7 +6990,7 @@ non-production system!</p>
 <li><a class="reference external" href="http://digitalcorpora.org/corpora/network-packet-dumps">http://digitalcorpora.org/corpora/network-packet-dumps</a></li>
 <li><a class="reference external" href="http://www.netresec.com/?page=PcapFiles">http://www.netresec.com/?page=PcapFiles</a></li>
 <li><a class="reference external" href="http://www.netresec.com/?page=MACCDC">http://www.netresec.com/?page=MACCDC</a></li>
-<li><a class="reference external" href="https://github.com/bro/bro/tree/master/testing/btest/Traces">https://github.com/bro/bro/tree/master/testing/btest/Traces</a></li>
+<li><a class="reference external" href="https://github.com/zeek/zeek/tree/master/testing/btest/Traces">https://github.com/zeek/zeek/tree/master/testing/btest/Traces</a></li>
 <li><a class="reference external" href="http://www.ll.mit.edu/mission/communications/cyber/CSTcorpora/ideval/data/">http://www.ll.mit.edu/mission/communications/cyber/CSTcorpora/ideval/data/</a></li>
 <li><a class="reference external" href="https://wiki.wireshark.org/SampleCaptures">https://wiki.wireshark.org/SampleCaptures</a></li>
 <li><a class="reference external" href="https://stratosphereips.org/category/dataset.html">https://stratosphereips.org/category/dataset.html</a></li>
@@ -7156,21 +7163,21 @@ the window (modifying <code class="docutils literal notranslate"><span class="pr
 </li>
 <li><p class="first">HIDS rules in /var/ossec/rules/local_rules.xml (Wazuh will automatically restart as necessary)</p>
 </li>
-<li><p class="first">Bro scripts in /opt/bro/share/bro/policy/</p>
+<li><p class="first">Zeek scripts in /opt/bro/share/bro/policy/</p>
 <ul>
-<li><p class="first">Bro does not restart automatically, but you can easily use salt on your master server to tell all your Bro instances to update and restart:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Force all Salt minions to update Bro scripts</span>
+<li><p class="first">Zeek does not restart automatically, but you can easily use salt on your master server to tell all your Zeek instances to update and restart:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Force all Salt minions to update Zeek scripts</span>
 <span class="n">sudo</span> <span class="n">salt</span> <span class="s1">&#39;*&#39;</span> <span class="n">state</span><span class="o">.</span><span class="n">highstate</span>
-<span class="c1"># Restart Bro</span>
-<span class="n">sudo</span> <span class="n">salt</span> <span class="s1">&#39;*&#39;</span> <span class="n">cmd</span><span class="o">.</span><span class="n">run</span> <span class="s1">&#39;so-bro-restart&#39;</span>
+<span class="c1"># Restart Zeek</span>
+<span class="n">sudo</span> <span class="n">salt</span> <span class="s1">&#39;*&#39;</span> <span class="n">cmd</span><span class="o">.</span><span class="n">run</span> <span class="s1">&#39;so-zeek-restart&#39;</span>
 </pre></div>
 </div>
 </li>
 </ul>
 </li>
-<li><p class="first">Bro intel in /opt/bro/share/bro/intel/</p>
+<li><p class="first">Zeek intel in /opt/bro/share/bro/intel/</p>
 <ul class="simple">
-<li>You’ll need to restart Bro as shown above if you add any intel files to the default intel.dat. After that initial Bro restart, Bro should be watching the intel files with the Input framework which should automatically notice if the files ever change (new intel is added). In many cases, you won’t need to restart Bro if you’re just adding intel to the existing intel file(s).</li>
+<li>You’ll need to restart Zeek as shown above if you add any intel files to the default intel.dat. After that initial Zeek restart, Zeek should be watching the intel files with the Input framework which should automatically notice if the files ever change (new intel is added). In many cases, you won’t need to restart Zeek if you’re just adding intel to the existing intel file(s).</li>
 </ul>
 </li>
 <li><p class="first">user accounts and sudoers in /opt/onionsalt/pillar/users/init.sls</p>
@@ -7379,9 +7386,9 @@ sudo service salt-minion restart
 <h4>Wazuh<a class="headerlink" href="#wazuh" title="Permalink to this headline">¶</a></h4>
 <p>Wazuh checks your sniffing interfaces every 10 minutes. If no packets have been received within that 10 minute window, then Wazuh will generate an alert. This alert can be found in Sguil, Squert, and Kibana. If you’d like Wazuh to email you, then configure it for email as shown in the <a class="reference external" href="Email">Email</a> section.</p>
 </div>
-<div class="section" id="bro">
-<h4>Bro<a class="headerlink" href="#bro" title="Permalink to this headline">¶</a></h4>
-<p>Bro will automatically email you when it stops seeing traffic on an interface. All you have to do is configure Bro per the <a class="reference external" href="Email">Email</a> section.</p>
+<div class="section" id="zeek">
+<h4>Zeek<a class="headerlink" href="#zeek" title="Permalink to this headline">¶</a></h4>
+<p>Zeek will automatically email you when it stops seeing traffic on an interface. All you have to do is configure Zeek per the <a class="reference external" href="Email">Email</a> section.</p>
 </div>
 </div>
 <span id="document-ssh"></span><div class="section" id="ssh">
@@ -7481,21 +7488,21 @@ because that is the recommended/required setting for Sguil:</div>
 <div class="section" id="sensor-services">
 <h3>Sensor services<a class="headerlink" href="#sensor-services" title="Permalink to this headline">¶</a></h3>
 <p>Sensor services are controlled with <code class="docutils literal notranslate"><span class="pre">so-sensor-*</span></code>.</p>
-<p>The following examples are for Bro, but you could substitute whatever sensor service you’re trying to control (nids, pcap, etc.).</p>
-<p>Check status of Bro:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">bro</span><span class="o">-</span><span class="n">status</span>
+<p>The following examples are for Zeek, but you could substitute whatever sensor service you’re trying to control (nids, pcap, etc.).</p>
+<p>Check status of Zeek:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">zeek</span><span class="o">-</span><span class="n">status</span>
 </pre></div>
 </div>
-<p>Start Bro:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">bro</span><span class="o">-</span><span class="n">start</span>
+<p>Start Zeek:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">zeek</span><span class="o">-</span><span class="n">start</span>
 </pre></div>
 </div>
-<p>Stop Bro:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">bro</span><span class="o">-</span><span class="n">stop</span>
+<p>Stop Zeek:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">zeek</span><span class="o">-</span><span class="n">stop</span>
 </pre></div>
 </div>
-<p>Restart Bro:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">bro</span><span class="o">-</span><span class="n">restart</span>
+<p>Restart Zeek:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">zeek</span><span class="o">-</span><span class="n">restart</span>
 </pre></div>
 </div>
 </div>
@@ -7531,7 +7538,7 @@ because that is the recommended/required setting for Sguil:</div>
 <div>jq is like sed for JSON data - you can use it to slice and filter and map and transform structured data with the same ease that sed, awk, grep and friends let you play with text.</div></blockquote>
 <div class="section" id="usage">
 <h4>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h4>
-<p>If you have <a class="reference external" href="Bro">Bro</a> configured to write logs in JSON format and you want to parse those logs from the command line, then you can use <code class="docutils literal notranslate"><span class="pre">jq</span></code>.  Here’s a basic example:</p>
+<p>If you have <a class="reference external" href="Zeek">Zeek</a> configured to write logs in JSON format and you want to parse those logs from the command line, then you can use <code class="docutils literal notranslate"><span class="pre">jq</span></code>.  Here’s a basic example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jq</span> <span class="s1">&#39;.&#39;</span> <span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">bro</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="n">conn</span><span class="o">.</span><span class="n">log</span>
 </pre></div>
 </div>
@@ -7645,12 +7652,12 @@ Please enter your selection (a - analyst, c - apt-cacher-ng client, l - syslog, 
 <p>It will do the following:</p>
 <ul class="simple">
 <li>stop and disable Curator to avoid closing old indices</li>
-<li>stop and disable all active sniffing processes (Bro, Snort, Suricata, and netsniff-ng)</li>
+<li>stop and disable all active sniffing processes (Zeek, Snort, Suricata, and netsniff-ng)</li>
 <li>stop and disable ossec_agent</li>
 <li>reconfigure and restart sguild, syslog-ng, and Logstash where necessary</li>
 <li>generate IDS alerts using Snort or Suricata</li>
-<li>generate Bro logs</li>
-<li>store IDS alerts and Bro logs with original timestamps</li>
+<li>generate Zeek logs</li>
+<li>store IDS alerts and Zeek logs with original timestamps</li>
 <li>split traffic into separate daily pcaps and store them where sguil’s pcap_agent can find them</li>
 </ul>
 <p>Requirements:</p>
@@ -7728,7 +7735,7 @@ errors or possible clues:</p>
 <li>barnyard2 <code class="docutils literal notranslate"><span class="pre">/var/log/nsm/</span> <span class="pre">{</span> <span class="pre">HOSTNAME-INTERFACE</span> <span class="pre">}/barnyard2.log</span></code></li>
 <li>netsniff-ng
 <code class="docutils literal notranslate"><span class="pre">/var/log/nsm/{</span> <span class="pre">HOSTNAME-INTERFACE</span> <span class="pre">}/netsniff-ng.log</span></code></li>
-<li>Bro <code class="docutils literal notranslate"><span class="pre">/nsm/bro/logs/current</span></code></li>
+<li>Zeek <code class="docutils literal notranslate"><span class="pre">/nsm/bro/logs/current</span></code></li>
 <li>snort_agent
 <code class="docutils literal notranslate"><span class="pre">/var/log/nsm/{</span> <span class="pre">HOSTNAME-INTERFACE</span> <span class="pre">}/snort_agent.log</span></code></li>
 <li>Elasticsearch <code class="docutils literal notranslate"><span class="pre">/var/log/elasticsearch/&lt;hostname&gt;.log</span></code></li>
@@ -7808,8 +7815,8 @@ following:</p>
 <h5>How do I install Security Onion updates?<a class="headerlink" href="#how-do-i-install-security-onion-updates" title="Permalink to this headline">¶</a></h5>
 <p>Please see the <a class="reference external" href="Upgrade">Upgrade Procedure</a> section.</p>
 </div>
-<div class="section" id="why-do-i-get-snort-suricata-bro-errors-after-upgrading-the-kernel-and-pfring-packages">
-<h5>Why do I get <code class="docutils literal notranslate"><span class="pre">Snort/Suricata/Bro</span></code> errors after upgrading the <code class="docutils literal notranslate"><span class="pre">kernel</span></code> and <code class="docutils literal notranslate"><span class="pre">pfring</span></code> packages?<a class="headerlink" href="#why-do-i-get-snort-suricata-bro-errors-after-upgrading-the-kernel-and-pfring-packages" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="why-do-i-get-snort-suricata-zeek-errors-after-upgrading-the-kernel-and-pfring-packages">
+<h5>Why do I get <code class="docutils literal notranslate"><span class="pre">Snort/Suricata/Zeek</span></code> errors after upgrading the <code class="docutils literal notranslate"><span class="pre">kernel</span></code> and <code class="docutils literal notranslate"><span class="pre">pfring</span></code> packages?<a class="headerlink" href="#why-do-i-get-snort-suricata-zeek-errors-after-upgrading-the-kernel-and-pfring-packages" title="Permalink to this headline">¶</a></h5>
 <p>Please see the <a class="reference external" href="Upgrade">Updating</a> section.</p>
 </div>
 <div class="section" id="what-do-i-need-to-do-if-i-m-behind-a-proxy">
@@ -7863,7 +7870,7 @@ a server only (no sensor processes).</div>
 <div class="line"><strong>sensor</strong></div>
 <div class="line">Definition: A set of processes listening on a network interface. The
 set of processes currently includes Snort/Suricata, netsniff-ng, and
-bro (although this is in constant flux as we add new capabilities and
+Zeek (although this is in constant flux as we add new capabilities and
 find better tools for existing capabilities).</div>
 <div class="line">Naming convention: <code class="docutils literal notranslate"><span class="pre">$HOSTNAME-$INTERFACE</span></code></div>
 <div class="line">Configuration files: <code class="docutils literal notranslate"><span class="pre">/etc/nsm/$HOSTNAME-$INTERFACE/</span></code></div>
@@ -8021,9 +8028,9 @@ OR</li>
 <li>upgrade the VM hardware level (may require upgrading to a new version of VMware)</li>
 </ul>
 </div>
-<div class="section" id="why-does-bro-log-failed-to-open-geoip-database-and-fell-back-to-geoip-country-database">
-<h5>Why does Bro log <code class="docutils literal notranslate"><span class="pre">Failed</span> <span class="pre">to</span> <span class="pre">open</span> <span class="pre">GeoIP</span> <span class="pre">database</span></code> and <code class="docutils literal notranslate"><span class="pre">Fell</span> <span class="pre">back</span> <span class="pre">to</span> <span class="pre">GeoIP</span> <span class="pre">Country</span> <span class="pre">database</span></code>?<a class="headerlink" href="#why-does-bro-log-failed-to-open-geoip-database-and-fell-back-to-geoip-country-database" title="Permalink to this headline">¶</a></h5>
-<p>The GeoIP CITY database is <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">free</span></code> and thus we cannot include it in the distro. Bro fails to find it and falls back to the GeoIP COUNTRY database (which is free). As long as you are seeing some country codes in your conn.log, then everything should be fine. If you really need the CITY database, see this thread for some options: <a class="reference external" href="https://groups.google.com/d/topic/security-onion-testing/gtc-8ZTuCi4/discussion">https://groups.google.com/d/topic/security-onion-testing/gtc-8ZTuCi4/discussion</a></p>
+<div class="section" id="why-does-zeek-log-failed-to-open-geoip-database-and-fell-back-to-geoip-country-database">
+<h5>Why does Zeek log <code class="docutils literal notranslate"><span class="pre">Failed</span> <span class="pre">to</span> <span class="pre">open</span> <span class="pre">GeoIP</span> <span class="pre">database</span></code> and <code class="docutils literal notranslate"><span class="pre">Fell</span> <span class="pre">back</span> <span class="pre">to</span> <span class="pre">GeoIP</span> <span class="pre">Country</span> <span class="pre">database</span></code>?<a class="headerlink" href="#why-does-zeek-log-failed-to-open-geoip-database-and-fell-back-to-geoip-country-database" title="Permalink to this headline">¶</a></h5>
+<p>The GeoIP CITY database is <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">free</span></code> and thus we cannot include it in the distro. Zeek fails to find it and falls back to the GeoIP COUNTRY database (which is free). As long as you are seeing some country codes in your conn.log, then everything should be fine. If you really need the CITY database, see this thread for some options: <a class="reference external" href="https://groups.google.com/d/topic/security-onion-testing/gtc-8ZTuCi4/discussion">https://groups.google.com/d/topic/security-onion-testing/gtc-8ZTuCi4/discussion</a></p>
 </div>
 <div class="section" id="why-does-soup-tell-me-i-need-a-secure-boot-key">
 <h5>Why does soup tell me I need a Secure Boot key?<a class="headerlink" href="#why-does-soup-tell-me-i-need-a-secure-boot-key" title="Permalink to this headline">¶</a></h5>
@@ -8089,8 +8096,8 @@ OR</li>
 <h5>How do I configure email for alerting and reporting?<a class="headerlink" href="#how-do-i-configure-email-for-alerting-and-reporting" title="Permalink to this headline">¶</a></h5>
 <p>Please see the <a class="reference external" href="Email">Email</a> section.</p>
 </div>
-<div class="section" id="how-do-i-configure-a-bpf-for-snort-suricata-bro-netsniff-ng-prads">
-<h5>How do I configure a <code class="docutils literal notranslate"><span class="pre">BPF</span></code> for <code class="docutils literal notranslate"><span class="pre">Snort/Suricata/Bro/netsniff-ng/prads</span></code>?<a class="headerlink" href="#how-do-i-configure-a-bpf-for-snort-suricata-bro-netsniff-ng-prads" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="how-do-i-configure-a-bpf-for-snort-suricata-zeek-netsniff-ng-prads">
+<h5>How do I configure a <code class="docutils literal notranslate"><span class="pre">BPF</span></code> for <code class="docutils literal notranslate"><span class="pre">Snort/Suricata/Zeek/netsniff-ng/prads</span></code>?<a class="headerlink" href="#how-do-i-configure-a-bpf-for-snort-suricata-zeek-netsniff-ng-prads" title="Permalink to this headline">¶</a></h5>
 <p>Please see the <a class="reference external" href="BPF">BPF</a> section.</p>
 </div>
 <div class="section" id="how-do-i-filter-traffic">
@@ -8266,12 +8273,12 @@ OR</p>
 </div>
 <div class="section" id="nsm">
 <h4>/nsm<a class="headerlink" href="#nsm" title="Permalink to this headline">¶</a></h4>
-<p>Backup, Bro, sensor (if configured as sensor), and server (if configured
+<p>Backup, Zeek, sensor (if configured as sensor), and server (if configured
 as server) data.</p>
 </div>
 <div class="section" id="nsm-bro">
 <h4>/nsm/bro<a class="headerlink" href="#nsm-bro" title="Permalink to this headline">¶</a></h4>
-<p>Bro IDS logs.</p>
+<p>Zeek IDS logs.</p>
 </div>
 <div class="section" id="nsm-elasticsearch">
 <h4>/nsm/elasticsearch<a class="headerlink" href="#nsm-elasticsearch" title="Permalink to this headline">¶</a></h4>
@@ -8296,9 +8303,9 @@ for their contribution to our community!</div>
 <div class="line"><a class="reference external" href="http://www.securixlive.com/barnyard2/">http://www.securixlive.com/barnyard2/</a></div>
 <div class="line">“Barnyard2 is an open source interpreter for Snort unified2 binary output files. Its primary use is allowing Snort to write to disk in an efficient manner and leaving the task of parsing binary data into various formats to a separate process that will not cause Snort to miss network traffic.”</div>
 <div class="line"><br /></div>
-<div class="line">Bro (Zeek)</div>
+<div class="line">Zeek (formerly known as Bro)</div>
 <div class="line"><a class="reference external" href="https://zeek.org/">https://zeek.org/</a></div>
-<div class="line">“Bro is a powerful network analysis framework that is much different from the typical IDS you may know.”</div>
+<div class="line">“Zeek is a powerful network analysis framework that is much different from the typical IDS you may know.”</div>
 <div class="line"><br /></div>
 <div class="line">chaosreader</div>
 <div class="line"><a class="reference external" href="http://chaosreader.sourceforge.net/">http://chaosreader.sourceforge.net/</a></div>
@@ -8563,7 +8570,7 @@ list:</p>
 <div class="toctree-wrapper compound">
 <span id="document-alienvault-otx"></span><div class="section" id="alienvault-otx">
 <h3>AlienVault-OTX<a class="headerlink" href="#alienvault-otx" title="Permalink to this headline">¶</a></h3>
-<p>We can easily pull in <a class="reference external" href="https://otx.alienvault.com">Alienvault OTX</a> pulses into Security Onion and have Bro utilize them for the <a class="reference external" href="https://www.bro.org/sphinx-git/frameworks/intel.html">Intel Framework</a> by leveraging <a class="reference external" href="https://github.com/hosom/bro-otx">Stephen Hosom</a>’s work with Alienvault OTX integration.</p>
+<p>We can easily pull in <a class="reference external" href="https://otx.alienvault.com">Alienvault OTX</a> pulses into Security Onion and have Zeek utilize them for the <a class="reference external" href="https://www.bro.org/sphinx-git/frameworks/intel.html">Intel Framework</a> by leveraging <a class="reference external" href="https://github.com/hosom/bro-otx">Stephen Hosom</a>’s work with Alienvault OTX integration.</p>
 <div class="section" id="warning">
 <h4>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h4>
 <p>Please keep in mind we do not officially support use of this script, so installation is at your own risk.</p>
@@ -8574,7 +8581,7 @@ list:</p>
 <div class="line-block">
 <div class="line"><strong>Alienvault OTX API key</strong> - can be obtained for free at:
 <a class="reference external" href="https://otx.alienvault.com">https://otx.alienvault.com</a></div>
-<div class="line"><strong>Security Onion standalone/sensor</strong> (running Bro)</div>
+<div class="line"><strong>Security Onion standalone/sensor</strong> (running Zeek)</div>
 <div class="line"><strong>External internet access</strong> - to retrieve updated pulses
 (<a class="reference external" href="https://otx.alienvault.com/api/v1/pulses/subscribed">https://otx.alienvault.com/api/v1/pulses/subscribed</a>)</div>
 </div>
@@ -8591,7 +8598,7 @@ list:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">google</span><span class="o">.</span><span class="n">com</span><span class="p">[</span><span class="n">literal</span> <span class="n">tab</span><span class="p">]</span><span class="n">Intel</span><span class="p">::</span><span class="n">DOMAIN</span><span class="p">[</span><span class="n">literal</span> <span class="n">tab</span><span class="p">]</span><span class="n">Test</span><span class="o">-</span><span class="n">Google</span><span class="o">-</span><span class="n">Intel</span><span class="p">[</span><span class="n">literal</span> <span class="n">tab</span><span class="p">]</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">google</span><span class="o">.</span><span class="n">com</span><span class="p">[</span><span class="n">literal</span> <span class="n">tab</span><span class="p">]</span><span class="n">T</span>
 </pre></div>
 </div>
-<p>As long as our syntax is correct, we should not need to restart Bro. We can check for errors in <code class="docutils literal notranslate"><span class="pre">/nsm/bro/logs/current/reporter.log</span></code>.</p>
+<p>As long as our syntax is correct, we should not need to restart Zeek. We can check for errors in <code class="docutils literal notranslate"><span class="pre">/nsm/bro/logs/current/reporter.log</span></code>.</p>
 <p>Let’s see if we can get an intel hit by doing the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">google</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
@@ -8600,7 +8607,7 @@ list:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="n">google</span> <span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">bro</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="n">intel</span><span class="o">.</span><span class="n">log</span>
 </pre></div>
 </div>
-<p>We should have received a Bro Notice as well, so lets check that:</p>
+<p>We should have received a Zeek Notice as well, so lets check that:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="n">google</span> <span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">bro</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="n">notice</span><span class="o">.</span><span class="n">log</span>
 </pre></div>
 </div>
@@ -8796,7 +8803,7 @@ hive_observable_data_mapping:
 <div class="section" id="warning">
 <h4>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h4>
 <p>Please keep in mind we do not officially support this integration, so installation is at your own risk.
-Additionally, the current version of MISP seems to have an issue with Bro Intel export, therefore, this particular functionailty may not work as intended ( depending on the version of MISP you are using).</p>
+Additionally, the current version of MISP seems to have an issue with Zeek Intel export, therefore, this particular functionality may not work as intended ( depending on the version of MISP you are using).</p>
 <p>See: <a class="reference external" href="https://github.com/MISP/MISP/issues/4050">https://github.com/MISP/MISP/issues/4050</a> for more details.</p>
 </div>
 <div class="section" id="installation">
@@ -8892,7 +8899,7 @@ Additionally, the current version of MISP seems to have an issue with Bro Intel 
 <p>From: <a class="reference external" href="https://github.com/activecm/rita">https://github.com/activecm/rita</a></p>
 <blockquote>
 <div><p>RITA is an open source framework for network traffic analysis.</p>
-<p>The framework ingests Bro Logs, and currently supports the following
+<p>The framework ingests Zeek Logs, and currently supports the following
 analysis features:</p>
 <div class="line-block">
 <div class="line">Beaconing: Search for signs of beaconing behavior in and out of
@@ -8908,8 +8915,8 @@ hosts</div>
 <div class="section" id="warning">
 <h4>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h4>
 <p>Please keep in mind we do not officially support RITA, so installation is at your own risk.</p>
-<p>Additionally, RITA currently only supports use of Bro logs in <code class="docutils literal notranslate"><span class="pre">TSV</span></code> format. If you are running the latest version of Security Onion, you will need to switch from <code class="docutils literal notranslate"><span class="pre">JSON</span></code> to <code class="docutils literal notranslate"><span class="pre">TSV</span></code> format by following the steps here:</p>
-<p><a class="reference external" href="Bro#tsv">Bro#tsv</a></p>
+<p>Additionally, RITA currently only supports use of Zeek logs in <code class="docutils literal notranslate"><span class="pre">TSV</span></code> format. If you are running the latest version of Security Onion, you will need to switch from <code class="docutils literal notranslate"><span class="pre">JSON</span></code> to <code class="docutils literal notranslate"><span class="pre">TSV</span></code> format by following the steps here:</p>
+<p><a class="reference external" href="Zeek#tsv">Zeek#tsv</a></p>
 </div>
 <div class="section" id="installation">
 <h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
@@ -8977,8 +8984,8 @@ data into RITA. See <a class="reference external" href="https://github.com/activ
 <span id="document-syslog-output"></span><div class="section" id="syslog-output">
 <h3>Syslog Output<a class="headerlink" href="#syslog-output" title="Permalink to this headline">¶</a></h3>
 <p>Please keep in mind that we don’t provide free support for third party systems, so this section will be just a brief introduction to how you would send syslog to external syslog collectors. If you need commercial support, please see <a class="reference external" href="https://www.securityonionsolutions.com">https://www.securityonionsolutions.com</a>.</p>
-<div class="section" id="how-do-i-send-bro-and-wazuh-logs-to-an-external-syslog-collector">
-<h4>How do I send Bro and Wazuh logs to an external syslog collector?<a class="headerlink" href="#how-do-i-send-bro-and-wazuh-logs-to-an-external-syslog-collector" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="how-do-i-send-zeek-and-wazuh-logs-to-an-external-syslog-collector">
+<h4>How do I send Zeek and Wazuh logs to an external syslog collector?<a class="headerlink" href="#how-do-i-send-zeek-and-wazuh-logs-to-an-external-syslog-collector" title="Permalink to this headline">¶</a></h4>
 <p>Configure <code class="docutils literal notranslate"><span class="pre">/etc/syslog-ng/syslog-ng.conf</span></code> with a new <code class="docutils literal notranslate"><span class="pre">destination</span></code> to forward to your external syslog collector and then restart <code class="docutils literal notranslate"><span class="pre">syslog-ng</span></code>.</p>
 </div>
 <div class="section" id="how-do-i-send-ids-alerts-to-an-external-system">
@@ -9078,8 +9085,8 @@ Elastic. However, please note the following caveats:</p>
 <ul class="simple">
 <li>this creates yet another copy of the data and so it is essential that
 you have plenty of free space</li>
-<li>Logstash only has parsers for the current version of Bro, so older
-Bro logs may not parse correctly</li>
+<li>Logstash only has parsers for the current version of Zeek, so older
+Zeek/Bro logs may not parse correctly</li>
 </ul>
 </div>
 <div class="section" id="upgrade-process">
@@ -9683,10 +9690,10 @@ configuration to boot into text mode:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019
+        &copy; Copyright 2020
       
         <span class="commit">
-          Revision <code>dca3bae7</code>.
+          Revision <code>732a2d21</code>.
         </span>
       
 
