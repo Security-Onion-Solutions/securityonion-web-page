@@ -13,7 +13,7 @@
 </center>
 <br> 
 <b>What is Security Onion?</b><br>
-Security Onion is a Linux distro for intrusion detection, enterprise security monitoring, and log management. It's based on Ubuntu and contains Snort, Suricata, Bro, OSSEC, Sguil, Squert, NetworkMiner, the Elastic Stack, and many other security tools. The easy-to-use Setup wizard allows you to build an army of distributed nodes for your enterprise in minutes!<br>
+Security Onion is a Linux distro for intrusion detection, enterprise security monitoring, and log management. It's based on Ubuntu and contains Snort, Suricata, Zeek, OSSEC, Sguil, Squert, NetworkMiner, the Elastic Stack, and many other security tools. The easy-to-use Setup wizard allows you to build an army of distributed nodes for your enterprise in minutes!<br>
 <br>
 <b>Where do I find documentation?</b><br>
 If you have Internet access, please use the <a href="https://securityonion.net/docs">online documentation</a>.<br>
@@ -30,7 +30,7 @@ Please follow the Installation guides in the documentation (see above).<br>
 * <a href="/cyberchef/cyberchef.htm">CyberChef</a>: The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis<br>
 <?php if (file_exists("/etc/nsm/servertab")): ?>
 	* <a href="/squert/">Squert</a>: View and categorize NIDS/HIDS alerts<br>
-	* <a href="/app/kibana">Kibana</a>: Search logs (IDS, Bro, and syslog) stored in Elasticsearch<br>
+	* <a href="/app/kibana">Kibana</a>: Search logs (IDS, Zeek, and syslog) stored in Elasticsearch<br>
 <?php else: ?>
 (More tools will be available here after you run Setup.)<br>
 <?php endif; ?>
