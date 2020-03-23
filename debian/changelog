@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion106) xenial; urgency=medium
+
+  * update docs and cyberchef for 16.04.6.5 
+
+ -- Doug Burks <doug.burks@gmail.com>  Mon, 23 Mar 2020 15:19:49 -0400
+
 securityonion-web-page (20141015-0ubuntu0securityonion105) xenial; urgency=medium
 
   * update cheat sheet for 16.04.6.4 
