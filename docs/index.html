@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Security Onion 16.04.6.4 documentation</title>
+  <title>Security Onion 16.04.6.5 documentation</title>
   
 
   
@@ -118,6 +118,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="index.html#document-analyst">Analyst Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-browser">Browser</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-kibana">Kibana</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-capme">CapME</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-cyberchef">CyberChef</a></li>
@@ -202,6 +203,7 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-airgap">Airgapped Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-analyst-vm">Analyst VM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-cloud-ami">Cloud AMI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-cloud-client">Cloud Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-connecting-to-sguil">Connecting to Sguild</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-desktop">Disabling Desktop</a></li>
@@ -306,7 +308,7 @@
     
       <li><a href="index.html#document-index">Docs</a> &raquo;</li>
         
-      <li>Security Onion 16.04.6.4 documentation</li>
+      <li>Security Onion 16.04.6.5 documentation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -735,7 +737,7 @@
 <div class="section" id="storage">
 <h5>Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h5>
 <p>Sensors that have full packet capture enabled need LOTS of storage. For example, suppose you are monitoring a link that averages 50Mbps, here are some quick calculations: 50Mb/s = 6.25 MB/s = 375 MB/minute = 22,500 MB/hour = 540,000 MB/day. So you’re going to need about 540GB for one day’s worth of pcaps (multiply this by the number of days you want to keep on disk for investigative/forensic purposes). The more disk space you have, the more PCAP retention you’ll have for doing investigations after the fact. Disk is cheap, get all you can!</p>
-<p>We highly recommend using local storage whenever possible! SAN/iSCSI/FibreChannel/NFS can be made to work, but they increase complexity, points of failure and have serious performance implications. By using local storage, you keep everything self-contained and you don’t have to worry about competing for resources. Local storage is most times the most cost efficient solution as well.</p>
+<p>We highly recommend using local storage whenever possible! SAN/iSCSI/FibreChannel/NFS can be made to work, but they increase complexity, points of failure, and have serious performance implications. By using local storage, you keep everything self-contained and you don’t have to worry about competing for resources. Local storage is most times the most cost efficient solution as well.</p>
 </div>
 <div class="section" id="nic">
 <h5>NIC<a class="headerlink" href="#nic" title="Permalink to this headline">¶</a></h5>
@@ -1041,6 +1043,7 @@ try pressing the “Esc” key to see the current status.</p>
 </div>
 <span id="document-installing-on-ubuntu"></span><div class="section" id="quick-evaluation-on-ubuntu">
 <h3>Quick Evaluation on Ubuntu<a class="headerlink" href="#quick-evaluation-on-ubuntu" title="Permalink to this headline">¶</a></h3>
+<p>The following guide is for quick evaluation only.  If you’re building a production deployment, please see the <a class="reference external" href="ProductionDeployment">Production Deployment</a> section.</p>
 <p>If you want to quickly evaluate Security Onion on your preferred flavor of Ubuntu 16.04 64-bit (not using our ISO image), follow these steps:</p>
 <ul>
 <li><p class="first">Review the <a class="reference external" href="Hardware">Hardware Requirements</a> page.</p>
@@ -1092,6 +1095,11 @@ try pressing the “Esc” key to see the current status.</p>
 </pre></div>
 </div>
 </li>
+<li><p class="first">If you want to use <a class="reference external" href="Salt">Salt</a>, then also install <code class="docutils literal notranslate"><span class="pre">securityonion-onionsalt</span></code>. You can do this before or after Setup, but it’s much easier if you do it before Setup.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">securityonion</span><span class="o">-</span><span class="n">onionsalt</span>
+</pre></div>
+</div>
+</li>
 <li><p class="first">Run the Setup wizard (you can replace <code class="docutils literal notranslate"><span class="pre">sosetup</span></code> with <code class="docutils literal notranslate"><span class="pre">sosetup-minimal</span></code> if you prefer the minimal configuration):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sosetup</span>
 </pre></div>
@@ -1110,7 +1118,7 @@ try pressing the “Esc” key to see the current status.</p>
 <p>If you’re going to be deploying Security Onion in production, please use the following steps.</p>
 <div class="section" id="hardware-requirements">
 <h4>Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this headline">¶</a></h4>
-<p>First, check the <a class="reference external" href="Hardware">Hardware Requirements</a> page.</p>
+<p>First, check the <a class="reference external" href="Hardware">Hardware Requirements</a> section.</p>
 </div>
 <div class="section" id="download-and-verify">
 <h4>Download and Verify<a class="headerlink" href="#download-and-verify" title="Permalink to this headline">¶</a></h4>
@@ -1179,7 +1187,7 @@ try pressing the “Esc” key to see the current status.</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">OPTIONAL: If you want to use <a class="reference external" href="Salt">Salt</a> to manage your deployment, also install <code class="docutils literal notranslate"><span class="pre">securityonion-onionsalt</span></code>. You can do this before or after Setup, but it’s much easier if you do it before Setup.</p>
+<li><p class="first">If you want to use <a class="reference external" href="Salt">Salt</a> to manage your deployment, also install <code class="docutils literal notranslate"><span class="pre">securityonion-onionsalt</span></code>. You can do this before or after Setup, but it’s much easier if you do it before Setup.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">securityonion</span><span class="o">-</span><span class="n">onionsalt</span>
 </pre></div>
 </div>
@@ -1403,6 +1411,19 @@ try pressing the “Esc” key to see the current status.</p>
 <h2>Analyst Tools<a class="headerlink" href="#analyst-tools" title="Permalink to this headline">¶</a></h2>
 <p>In this section, we’ll look at different analyst tools that can be used for slicing and dicing data coming from your network and endpoints.</p>
 <div class="toctree-wrapper compound">
+<span id="document-browser"></span><div class="section" id="browser">
+<h3>Browser<a class="headerlink" href="#browser" title="Permalink to this headline">¶</a></h3>
+<p>Many of our analyst tools are browser-based.  Our Security Onion ISO image includes the Chromium browser.  We recommend chromium-based browsers (this includes Google Chrome).  Other browsers may work, but we recommend chromium-based browsers for best compatibility.</p>
+<div class="section" id="mac-os-x-catalina">
+<h4>Mac OS X Catalina<a class="headerlink" href="#mac-os-x-catalina" title="Permalink to this headline">¶</a></h4>
+<p>If you try to connect to Security Onion from Google Chrome on Mac OS X Catalina, you may get a NET::ERR_CERT_REVOKED error.  This is because Catalina is enforcing new SSL certificate standards.  Here are a few possible workarounds:</p>
+<ul class="simple">
+<li>Click into the page, blindly type <code class="docutils literal notranslate"><span class="pre">thisisunsafe</span></code>, and then accept the certificate.</li>
+<li>Try a different browser like Safari.</li>
+<li>Replace the default Ubuntu SSL certificate with one that meets Catalina’s requirements.</li>
+</ul>
+</div>
+</div>
 <span id="document-kibana"></span><div class="section" id="kibana">
 <h3>Kibana<a class="headerlink" href="#kibana" title="Permalink to this headline">¶</a></h3>
 <p>From <a class="reference external" href="https://www.elastic.co/products/kibana">https://www.elastic.co/products/kibana</a> :</p>
@@ -1417,7 +1438,8 @@ have on your quarterly numbers.</div></blockquote>
 </div>
 <div class="section" id="authentication">
 <h4>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h4>
-<p>If prompted for username and password, simply enter your normal Sguil/Squert/Kibana username and password.</p>
+<p>If you’re using our default SSO authentication, then you can login using your normal Sguil/Squert/Kibana username and password.</p>
+<p>If you switch to Elastic authentication, then you will have a separate username and password to login to Kibana.  For more information, please see the <a class="reference external" href="elastic-auth">Elastic Auth</a> section.</p>
 </div>
 <div class="section" id="configuration">
 <h4>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h4>
@@ -1678,8 +1700,6 @@ Monitoring and event driven analysis.</div></blockquote>
 <li><div class="first line-block">
 <div class="line">Developed by Bamm Visscher:</div>
 <div class="line"><a class="reference external" href="http://sguil.net">http://sguil.net</a></div>
-<div class="line"><a class="reference external" href="http://nsmwiki.org/Sguil">http://nsmwiki.org/Sguil</a></div>
-<div class="line"><a class="reference external" href="http://nsmwiki.org/Sguil_Client">http://nsmwiki.org/Sguil_Client</a></div>
 </div>
 </li>
 <li><p class="first">tcl/tk (not web-based)</p>
@@ -1851,6 +1871,21 @@ severity level, by editing <code class="docutils literal notranslate"><span clas
 <span class="n">sudo</span> <span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;s|ENGINE=suricata|ENGINE=snort|g&#39;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">securityonion</span><span class="o">.</span><span class="n">conf</span>
 <span class="n">sudo</span> <span class="n">rule</span><span class="o">-</span><span class="n">update</span>
 <span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">sensor</span><span class="o">-</span><span class="n">start</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="switching-from-snort-to-suricata-in-a-salted-distributed-environment">
+<h4>Switching from Snort to Suricata in a salted distributed environment<a class="headerlink" href="#switching-from-snort-to-suricata-in-a-salted-distributed-environment" title="Permalink to this headline">¶</a></h4>
+<p>From the Master Server, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">sensor</span><span class="o">-</span><span class="n">stop</span>
+<span class="n">sudo</span> <span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;s|ENGINE=snort|ENGINE=suricata|g&#39;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">securityonion</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">sudo</span> <span class="n">rule</span><span class="o">-</span><span class="n">update</span>
+<span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">sensor</span><span class="o">-</span><span class="n">start</span>
+<span class="c1">#The remaining commands assume all sensor hostnames contain &quot;securityonionsensor&quot;</span>
+<span class="n">sudo</span> <span class="n">salt</span> <span class="s1">&#39;*securityonionsensor*&#39;</span> <span class="n">cmd</span><span class="o">.</span><span class="n">run</span> <span class="s1">&#39;so-sensor-stop&#39;</span>
+<span class="n">sudo</span> <span class="n">salt</span> <span class="s1">&#39;*securityonionsensor*&#39;</span> <span class="n">cmd</span><span class="o">.</span><span class="n">run</span> <span class="s1">&#39;sed -i &quot;s|ENGINE=snort|ENGINE=suricata|g&quot; /etc/nsm/securityonion.conf&#39;</span>
+<span class="n">sudo</span> <span class="n">salt</span> <span class="s1">&#39;*securityonionsensor*&#39;</span> <span class="n">state</span><span class="o">.</span><span class="n">highstate</span>
+<span class="n">sudo</span> <span class="n">salt</span> <span class="s1">&#39;*securityonionsensor*&#39;</span> <span class="n">cmd</span><span class="o">.</span><span class="n">run</span> <span class="s1">&#39;so-sensor-start&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -2366,6 +2401,10 @@ point:</div>
 <div class="line">Also see “How to Go from Responding to Hunting with Sysinternals Sysmon”:</div>
 <div class="line"><a class="reference external" href="https://onedrive.live.com/view.aspx?resid=D026B4699190F1E6!2843&amp;ithint=file%2cpptx">https://onedrive.live.com/view.aspx?resid=D026B4699190F1E6!2843&amp;ithint=file%2cpptx</a></div>
 </div>
+<div class="line-block">
+<div class="line">TrustedSec has a great Community Guide on Sysmon:</div>
+<div class="line"><a class="reference external" href="https://github.com/trustedsec/SysmonCommunityGuide">https://github.com/trustedsec/SysmonCommunityGuide</a></div>
+</div>
 </div>
 </div>
 <span id="document-autoruns"></span><div class="section" id="autoruns">
@@ -2707,6 +2746,7 @@ for more details.</p>
 <div class="section" id="parsing">
 <h5>Parsing<a class="headerlink" href="#parsing" title="Permalink to this headline">¶</a></h5>
 <p>Configuration files for custom parsing can be placed in <code class="docutils literal notranslate"><span class="pre">/etc/logstash/custom</span></code>. These will automatically get copied over to <code class="docutils literal notranslate"><span class="pre">/etc/logstash/conf.d</span></code> during the starting of Logstash.</p>
+<p>Note: If you are using a distributed or heavy distributed <a class="reference external" href="architecture#deployment-types">deployment type</a>, it is best practice to put your custom configuration files in the <code class="docutils literal notranslate"><span class="pre">/etc/logstash/custom</span></code> directory on the Master node.  The custom configuration files will then be replicated every 15 minutes or immediately if you use <a class="reference external" href="Salt#features">Salt</a> to force the replication to take place.</p>
 <p>After adding your custom configuration file(s), restart Logstash and check the log(s) for errors:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">logstash</span><span class="o">-</span><span class="n">restart</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">tail</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">logstash</span><span class="o">/</span><span class="n">logstash</span><span class="o">.</span><span class="n">log</span>
 </pre></div>
@@ -4359,7 +4399,7 @@ Elastalert.</p>
 </div>
 <span id="document-elastic-auth"></span><div class="section" id="elastic-auth">
 <h3>Elastic Auth<a class="headerlink" href="#elastic-auth" title="Permalink to this headline">¶</a></h3>
-<p>Starting in Elastic 6.8.0, Elastic authentication is included for free in Elastic Features.  This allows you to assign different privileges to different users in Kibana.</p>
+<p>Starting in Elastic 6.8.0, Elastic authentication is included for free in <a class="reference external" href="elastic-features">Elastic Features</a>.  This allows you to assign different privileges to different users in Kibana.</p>
 <p>To enable, simply run <code class="docutils literal notranslate"><span class="pre">so-elastic-auth</span></code> on your master server only (or standalone) and follow the prompts.  <code class="docutils literal notranslate"><span class="pre">so-elastic-auth</span></code> will do the following:</p>
 <ul class="simple">
 <li>walk you through switching to Elastic Features if necessary</li>
@@ -4373,6 +4413,7 @@ Elastalert.</p>
 <li>distribute the temporary passwords generated by <code class="docutils literal notranslate"><span class="pre">so-elastic-auth</span></code> to your users and have them reset their passwords</li>
 </ul>
 <p>Please note that you will continue to authenticate to Sguil, Squert, and CapMe with your traditional Sguil/Squert/CapMe account.</p>
+<p>If you add new Elastic Auth accounts in the future, you will need to assign them at least the <code class="docutils literal notranslate"><span class="pre">so_user_read_only</span></code> role.</p>
 </div>
 </div>
 </div>
@@ -4407,6 +4448,7 @@ Elastalert.</p>
 </div>
 <div class="section" id="zeek">
 <h4>Zeek<a class="headerlink" href="#zeek" title="Permalink to this headline">¶</a></h4>
+<p>If you upgrade from Bro to Zeek, then Bro will automatically stop before Zeek is installed and so you may need to restart Zeek after the upgrade is complete.  If you upgrade from Zeek to a newer version of Zeek, Zeek will not automatically stop.</p>
 <p>Zeek package upgrades will attempt to migrate your Zeek config. You should double-check your config and see if there are any local customizations that you need to manually re-apply. Then restart Zeek as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">zeek</span><span class="o">-</span><span class="n">restart</span>
 </pre></div>
@@ -4940,7 +4982,6 @@ EMAIL=YourUsername@YourDomain.com\
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">head</span> <span class="o">-</span><span class="mi">20</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">securityonion</span><span class="o">/</span><span class="n">sguild</span><span class="o">.</span><span class="n">log</span>
 </pre></div>
 </div>
-<p>For more information, please see <a class="reference external" href="http://nsmwiki.org/Sguil_FAQ#Can_sguil_page_me_when_it_sees_a_particular_alert.3F">http://nsmwiki.org/Sguil_FAQ#Can_sguil_page_me_when_it_sees_a_particular_alert.3F</a>.</p>
 <p>You may want to install a local mail relay on your master server, configure it to relay mail to your corporate mail server, and then configure Sguil to send email to the local mail relay.</p>
 <p><strong>Please note</strong>: Sguil will only send email alerts for what is considers <em>new</em> events. Ensure you classify events within the Sguil console, or consider <a class="reference external" href="ManagingAlerts#autocategorize-events">creating an Autocat rule</a> to automatically classify them if you prefer to receive emails for all instances of an alert. Otherwise, you may not receive alerts as intended.</p>
 </div>
@@ -5955,7 +5996,7 @@ alert tcp $HOME_NET any -&gt; $EXTERNAL_NET !1433 (msg:&quot;ET TROJAN Bancos.DV
 </div>
 <div class="section" id="cpu-affinity-pinning">
 <h4>CPU Affinity/Pinning<a class="headerlink" href="#cpu-affinity-pinning" title="Permalink to this headline">¶</a></h4>
-<p>For best performance, CPU intensive processes like Zeek and Suricata should be pinned to specific CPUs.</p>
+<p>For best performance, CPU intensive processes like Zeek, Suricata, and Snort should be pinned to specific CPUs.  In most cases, you’ll want to pin sniffing processes to the same CPU that your sniffing NIC is bound to.</p>
 <div class="line-block">
 <div class="line">For Zeek, use the <code class="docutils literal notranslate"><span class="pre">pin_cpus</span></code> setting in <code class="docutils literal notranslate"><span class="pre">/opt/bro/etc/node.cfg</span></code>:</div>
 <div class="line"><a class="reference external" href="https://docs.zeek.org/en/stable/configuration/#using-pf-ring">https://docs.zeek.org/en/stable/configuration/#using-pf-ring</a></div>
@@ -5964,6 +6005,12 @@ alert tcp $HOME_NET any -&gt; $EXTERNAL_NET !1433 (msg:&quot;ET TROJAN Bancos.DV
 <div class="line">For Suricata, use the affinity settings in <code class="docutils literal notranslate"><span class="pre">suricata.yaml</span></code>:</div>
 <div class="line"><a class="reference external" href="https://suricata.readthedocs.io/en/latest/configuration/suricata-yaml.html#threading">https://suricata.readthedocs.io/en/latest/configuration/suricata-yaml.html#threading</a></div>
 </div>
+<p>Starting in <code class="docutils literal notranslate"><span class="pre">securityonion-nsmnow-admin-scripts</span> <span class="pre">-</span> <span class="pre">20120724-0ubuntu0securityonion226</span></code>, we now have the ability to pin Snort processes.  With this package in place, you can pin Snort processes to specific CPUs by adding a line to the <code class="docutils literal notranslate"><span class="pre">/etc/nsm/HOSTNAME-INTERFACE/sensor.conf</span></code> file like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IDS_LB_CPUS</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span>
+</pre></div>
+</div>
+<p>and then (re)starting the Snort process(es) using <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">so-nids-start</span></code> or <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">so-nids-restart</span></code>.</p>
+<p>In the example above, the first four snort processes would be pinned to the first four odd-numbered CPU cores. If there are more Snort processes enabled via <code class="docutils literal notranslate"><span class="pre">IDS_LB_PROCS</span></code> than are listed in the pin config in <code class="docutils literal notranslate"><span class="pre">IDS_LB_CPUS</span></code>, then any processes without a CPU listed would have the default CPU affinity.  You can verify proper pinning using <code class="docutils literal notranslate"><span class="pre">taskset</span> <span class="pre">-cp</span> <span class="pre">PID</span></code> where PID is the actual process ID of the Snort process you are checking.</p>
 </div>
 <div class="section" id="rss">
 <h4>RSS<a class="headerlink" href="#rss" title="Permalink to this headline">¶</a></h4>
@@ -6273,19 +6320,181 @@ something like the following:</div>
 </div>
 <p>For more information, please see the <a class="reference external" href="DisablingProcesses#disabling-a-process">Disabling Processes</a> section.</p>
 </div>
+<span id="document-cloud-ami"></span><div class="section" id="cloud-ami">
+<h3>Cloud AMI<a class="headerlink" href="#cloud-ami" title="Permalink to this headline">¶</a></h3>
+<p>Security Onion VPC Traffic Mirroring Configuration</p>
+<p>NOTE: THE CLOUD AMI IS STILL IN TESTING!  IF IT BREAKS YOU CAN KEEP ALL THE PIECES.</p>
+<p>This section covers configuring a Security Onion 16.04 cloud image hosted in Amazon Web Services (AWS) to receive mirrored/spanned traffic from other instances hosted within an Amazon Virtual Private Cloud (VPC).</p>
+<p>Note:  You can only mirror traffic from an EC2 instance that is powered by the AWS Nitro system.  For a list of supported Nitro systems please see:</p>
+<p><a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances</a></p>
+<p>Note: This section does not cover network connectivity to the Security Onion node. This can be achieved through
+configuring an external IP for the node’s management interface, or through the use of a VPN connection
+via OpenVPN, PfSense etc.</p>
+<p>For more details about vpn connections please see:</p>
+<p><a class="reference external" href="https://medium.com/&#64;svfusion/setup-site-to-site-vpn-to-aws-with-pfsense-1cac16623bd6">https://medium.com/&#64;svfusion/setup-site-to-site-vpn-to-aws-with-pfsense-1cac16623bd6</a></p>
+<p>Note:  This guide does not cover how to set up a VPC in AWS.</p>
+<p>For more details about setting up a VPC please see:</p>
+<p><a class="reference external" href="https://docs.aws.amazon.com/directoryservice/latest/admin-guide/gsg_create_vpc.html">https://docs.aws.amazon.com/directoryservice/latest/admin-guide/gsg_create_vpc.html</a></p>
+<div class="section" id="getting-started">
+<h4>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="terraform">
+<h5>Terraform<a class="headerlink" href="#terraform" title="Permalink to this headline">¶</a></h5>
+<p>To quickly setup a VPC, mirror configuration, and test the Security Onion AMI using Terraform, see the following:
+<a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion-cloud/tree/dev">https://github.com/Security-Onion-Solutions/securityonion-cloud/tree/dev</a></p>
+</div>
+<div class="section" id="manual">
+<h5>Manual<a class="headerlink" href="#manual" title="Permalink to this headline">¶</a></h5>
+<p>To setup the Security Onion AMI and VPC mirror configuration manually, use the steps below.</p>
+<div class="section" id="create-a-security-group-for-sniffing-interface">
+<h6>Create a Security Group for Sniffing Interface<a class="headerlink" href="#create-a-security-group-for-sniffing-interface" title="Permalink to this headline">¶</a></h6>
+<p>Security Groups act like a firewall for your Amazon EC2 instances controlling both inbound and outbound traffic. We will need to create a security group specifically for the interface we will be using to sniff the traffic.  This security group will need to be as open as possible to ensure all traffic destined to the sniffing interface will be allowed through.  To create a security group, follow these steps:</p>
+<ul class="simple">
+<li>From the EC2 Dashboard Select: <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Groups</span></code> under the Network &amp; Security sections in the left window pane.</li>
+<li>Select: <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Security</span> <span class="pre">Group</span></code></li>
+<li>Provide a Security Group Name and Description.</li>
+<li>Select the appropriate VPC for the security group.</li>
+<li>With the inbound tab selected, select: <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Rule</span></code></li>
+<li>Add the appropriate inbound rules to ensure all desired traffic destined for the sniffing interface is allowed.</li>
+<li>Select: <code class="docutils literal notranslate"><span class="pre">Create</span></code></li>
+</ul>
+</div>
+<div class="section" id="create-sniffing-interface">
+<h6>Create Sniffing Interface<a class="headerlink" href="#create-sniffing-interface" title="Permalink to this headline">¶</a></h6>
+<p>Prior to launching the Security Onion AMI you will need to create the interface that will be used to monitor your VPC.  This interface will be attached to the Security Onion AMI as a secondary interface.  To create a sniffing interface, follow these steps:</p>
+<ul class="simple">
+<li>From the EC2 Dashboard Select: <code class="docutils literal notranslate"><span class="pre">Network</span> <span class="pre">Interfaces</span></code> under the Network &amp; Security section in the left window pane.</li>
+<li>Select: <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Network</span> <span class="pre">Interface</span></code></li>
+<li>Provide a description and choose the appropriate subnet you want to monitor.</li>
+<li>Select the security Group that you created for the sniffing interface.</li>
+<li>Select: <code class="docutils literal notranslate"><span class="pre">Create</span></code></li>
+</ul>
+</div>
+<div class="section" id="create-a-security-onion-ec2-instance-in-amazon-web-services-aws">
+<h6>Create a Security Onion EC2 instance in Amazon Web Services (AWS)<a class="headerlink" href="#create-a-security-onion-ec2-instance-in-amazon-web-services-aws" title="Permalink to this headline">¶</a></h6>
+<p>To configure a Security Onion instance, follow these steps:</p>
+<ul>
+<li><p class="first">From the EC2 dashboard select: <code class="docutils literal notranslate"><span class="pre">Launch</span> <span class="pre">Instance</span></code></p>
+</li>
+<li><p class="first">Select the <code class="docutils literal notranslate"><span class="pre">Community</span> <span class="pre">AMI's</span></code> option in the left pane and search for <code class="docutils literal notranslate"><span class="pre">Security-Onion-16.04</span></code> in the search bar.</p>
+</li>
+<li><p class="first">Select the <code class="docutils literal notranslate"><span class="pre">Security-Onion-16.04</span></code> AMI with the most recent build date.</p>
+</li>
+<li><p class="first">Choose the appropriate instance type based on the desired hardware requirements and select <code class="docutils literal notranslate"><span class="pre">Next:</span> <span class="pre">Configure</span> <span class="pre">Instance</span> <span class="pre">Details</span></code>.  For assistance on determining resource requirements please visit our Hardware Requirements section.</p>
+<blockquote>
+<div><p><a class="reference external" href="https://securityonion.readthedocs.io/en/latest/hardware.html">https://securityonion.readthedocs.io/en/latest/hardware.html</a></p>
+</div></blockquote>
+</li>
+<li><p class="first">From the subnet drop-down menu select the same subnet as the sniffing interface.</p>
+</li>
+<li><p class="first">Under the Network interfaces section configure the eth0 (management) interface.</p>
+</li>
+<li><p class="first">Under the Network interfaces section select: <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Device</span></code> to attach the previously created sniffing interface to the instance.</p>
+</li>
+<li><p class="first">From the Network Interface drop-down menu for eth1 choose the sniffing interface you created for this instance.  Please note if you have multiple interfaces listed you can verify the correct interface by navigating to the Network Interfaces section in the EC2 Dashboard.</p>
+</li>
+<li><p class="first">Select: <code class="docutils literal notranslate"><span class="pre">Next:</span> <span class="pre">Add</span> <span class="pre">Storage</span></code> and configure the volume settings.</p>
+</li>
+<li><p class="first">Select: <code class="docutils literal notranslate"><span class="pre">Next:</span> <span class="pre">Add</span> <span class="pre">Tags</span></code> and add any additional tags for the instance.</p>
+</li>
+<li><p class="first">Select: <code class="docutils literal notranslate"><span class="pre">Next:</span> <span class="pre">Configure</span> <span class="pre">Security</span> <span class="pre">Group</span></code> and add the appropriate inbound rules.</p>
+</li>
+<li><p class="first">Select: <code class="docutils literal notranslate"><span class="pre">Review</span> <span class="pre">and</span> <span class="pre">Launch</span></code></p>
+</li>
+<li><p class="first">If prompted, select the appropriate SSH keypair that will be used to ssh into the Security Onion instance for administration</p>
+</li>
+<li><p class="first">Please note that the default username for the Security-Onion-16.04 AMI is: <code class="docutils literal notranslate"><span class="pre">onion</span></code></p>
+</li>
+<li><p class="first">Once you have logged in, please do the following steps.</p>
+<blockquote>
+<div><p>Change the hostname (Optional):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">hostname</span>
+</pre></div>
+</div>
+<p>Update packages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">soup</span>
+</pre></div>
+</div>
+<p>Run through both phases of setup:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sosetup</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="traffic-mirroring">
+<h6>Traffic Mirroring<a class="headerlink" href="#traffic-mirroring" title="Permalink to this headline">¶</a></h6>
+<p>Traffic mirroring allows you to copy the traffic to/from an instance and send it to the sniffing interface of a network security monitoring sensor or a group of interfaces using a network load balancer.  For more details about AWS Traffic Mirroring please see: <a class="reference external" href="https://docs.aws.amazon.com/vpc/latest/mirroring/what-is-traffic-mirroring.html">https://docs.aws.amazon.com/vpc/latest/mirroring/what-is-traffic-mirroring.html</a></p>
+</div>
+<div class="section" id="create-mirror-target">
+<h6>Create Mirror Target<a class="headerlink" href="#create-mirror-target" title="Permalink to this headline">¶</a></h6>
+<p>A mirror target in AWS refers to the destination for the mirrored traffic.  This can be a single interface or a group of interfaces using a network load balancer.  To configure a mirror target, follow these steps:</p>
+<ul class="simple">
+<li>From the VPC dashboard select: <code class="docutils literal notranslate"><span class="pre">Mirror</span> <span class="pre">Targets</span></code> under the Traffic Mirroring section in the left window pane.</li>
+<li>Select: <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">traffic</span> <span class="pre">mirror</span> <span class="pre">target</span></code></li>
+<li>Under the Choose target section select the appropriate target type and choose the sniffing interface connected to the Security Onion instance.  For more details about traffic mirror targets please see: <a class="reference external" href="https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-targets.html">https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-targets.html</a></li>
+<li>Select: <code class="docutils literal notranslate"><span class="pre">Create</span></code></li>
+</ul>
+</div>
+<div class="section" id="create-mirror-filter">
+<h6>Create Mirror Filter<a class="headerlink" href="#create-mirror-filter" title="Permalink to this headline">¶</a></h6>
+<p>A mirror filter allows you to define the traffic that is copied to in the mirrored session and is useful for tuning out noisy or unwanted traffic.  To configure a mirror filter, follow these steps:</p>
+<ul class="simple">
+<li>From the VPC dashboard select: <code class="docutils literal notranslate"><span class="pre">Mirror</span> <span class="pre">Filters</span></code> under the Traffic Mirroring section in the left window pane.</li>
+<li>Select: <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">traffic</span> <span class="pre">mirror</span> <span class="pre">filter</span></code></li>
+<li>Add the appropriate inbound and outbound rules.  For mor details about traffic mirror filters please see: <a class="reference external" href="https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-filters.html">https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-filters.html</a></li>
+<li>Select: <code class="docutils literal notranslate"><span class="pre">Create</span></code></li>
+</ul>
+</div>
+<div class="section" id="create-mirror-session">
+<h6>Create Mirror Session<a class="headerlink" href="#create-mirror-session" title="Permalink to this headline">¶</a></h6>
+<p>A traffic mirror session defines the source of the traffic to be mirrored based on the selected traffic mirror filters and sends that traffic to the desired traffic mirror target.  For more details about traffic mirror sessions please see: <a class="reference external" href="https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-session.html">https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-session.html</a></p>
+<ul class="simple">
+<li>From the VPC dashboard select: <code class="docutils literal notranslate"><span class="pre">Mirror</span> <span class="pre">Sessions</span></code> under the Traffic Mirroring section in the left window pane.</li>
+<li>Select: <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">traffic</span> <span class="pre">mirror</span> <span class="pre">session</span></code></li>
+<li>Under the Mirror source section, choose the interface that you want to be mirrored.</li>
+<li>Under the Mirror target section, choose the interface or load balancer you want to send the mirrored traffic to.</li>
+<li>Assign a session number under the Additional settings section for the mirror session.</li>
+<li>In the filters section under Additional settings choose the mirror filter you want to apply to the mirrored traffic.</li>
+<li>Select: <code class="docutils literal notranslate"><span class="pre">Create</span></code></li>
+</ul>
+</div>
+<div class="section" id="verify-traffic-mirroring">
+<h6>Verify Traffic Mirroring<a class="headerlink" href="#verify-traffic-mirroring" title="Permalink to this headline">¶</a></h6>
+<p>To verify the mirror session is sending the correct data to the sniffing interface run the following command on the Security Onion instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">tcpdump</span> <span class="o">-</span><span class="n">nni</span> <span class="o">&lt;</span><span class="n">interface</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>You should see <code class="docutils literal notranslate"><span class="pre">VXLAN</span></code> tagged traffic being mirrored from the interface you selected as the Mirror Source.</p>
+<p>To verify Zeek is properly decapsulating and parsing the VXLAN traffic you can verify logs are being generated in the <code class="docutils literal notranslate"><span class="pre">/nsm/zeek/logs/current</span></code> directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">la</span> <span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">zeek</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">curent</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <span id="document-cloud-client"></span><div class="section" id="cloud-client">
 <h3>Cloud Client<a class="headerlink" href="#cloud-client" title="Permalink to this headline">¶</a></h3>
 <p><strong>Please Note!</strong></p>
-<p>This cloud client idea was developed before cloud providers offered virtual taps.  If you are able to use your cloud provider’s virtual tap, please do so instead of using this cloud client workaround.  For example:</p>
-<p><a class="reference external" href="https://aws.amazon.com/blogs/aws/new-vpc-traffic-mirroring/">https://aws.amazon.com/blogs/aws/new-vpc-traffic-mirroring/</a></p>
+<p>This cloud client idea was developed before cloud providers offered virtual taps.  If you are able to use your cloud provider’s virtual tap, please do so instead of using this cloud client workaround.</p>
+<div class="section" id="amazon">
+<h4>Amazon<a class="headerlink" href="#amazon" title="Permalink to this headline">¶</a></h4>
+<p>AWS Virtual Taps use VXLAN encoding and we now have versions of Suricata and Zeek that support decoding that VXLAN traffic.  <strong>We recommend using our Security Onion AMI as it includes this support out of the box:</strong></p>
+<p><a class="reference external" href="https://securityonion.net/docs/cloud-ami">https://securityonion.net/docs/cloud-ami</a></p>
+</div>
+<div class="section" id="microsoft-azure">
+<h4>Microsoft Azure<a class="headerlink" href="#microsoft-azure" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-tap-overview">https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-tap-overview</a></p>
-<p>AWS Virtual Taps use VXLAN encoding and we now have a version of Suricata that supports decoding that VXLAN traffic:
-<a class="reference external" href="https://blog.securityonion.net/2019/09/suricata-415-now-available-for-security.html">https://blog.securityonion.net/2019/09/suricata-415-now-available-for-security.html</a></p>
-<p>Zeek 3.0 includes native support for VXLAN traffic as well and that is coming soon.</p>
+</div>
+<div class="section" id="legacy-cloud-client">
+<h4>Legacy Cloud Client<a class="headerlink" href="#legacy-cloud-client" title="Permalink to this headline">¶</a></h4>
+<p>If for some reason you can’t use the options above, you can try this legacy cloud client idea, but please keep in mind:</p>
 <p><strong>Warning! This cloud client is considered experimental! USE AT YOUR OWN RISK!</strong></p>
 <p>If your cloud provider doesn’t already offer a virtual tap, you can use daemonlogger or netsniff-ng as a virtual tap. This virtual tap will copy all traffic from our production cloud box to an OpenVPN bridge that transports the traffic to our
 Security Onion sensor where it is then analyzed.</p>
 <p>This guide was originally written for Security Onion 12.04 and was updated for Security Onion 14.04, but hasn’t been updated or tested on 16.04.</p>
+</div>
 <div class="section" id="traffic-flow-and-nic-offloading-functions">
 <h4>Traffic Flow and NIC offloading functions<a class="headerlink" href="#traffic-flow-and-nic-offloading-functions" title="Permalink to this headline">¶</a></h4>
 <p>The cloud client uses <code class="docutils literal notranslate"><span class="pre">daemonlogger</span></code> or <code class="docutils literal notranslate"><span class="pre">netsniff-ng</span></code> to copy all
@@ -6981,28 +7190,23 @@ non-production system!</p>
 </div>
 <span id="document-pcaps"></span><div class="section" id="pcaps-for-testing">
 <h3>PCAPs for Testing<a class="headerlink" href="#pcaps-for-testing" title="Permalink to this headline">¶</a></h3>
-<p>Security Onion 16.04 comes with several pcap samples in
-<code class="docutils literal notranslate"><span class="pre">/opt/samples/</span></code>.</p>
+<p>Security Onion 16.04 comes with several pcap samples in <code class="docutils literal notranslate"><span class="pre">/opt/samples/</span></code>.</p>
 <div class="section" id="links">
 <h4>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><a class="reference external" href="http://www.malware-traffic-analysis.net/">http://www.malware-traffic-analysis.net/</a></li>
-<li><a class="reference external" href="http://digitalcorpora.org/corpora/network-packet-dumps">http://digitalcorpora.org/corpora/network-packet-dumps</a></li>
-<li><a class="reference external" href="http://www.netresec.com/?page=PcapFiles">http://www.netresec.com/?page=PcapFiles</a></li>
-<li><a class="reference external" href="http://www.netresec.com/?page=MACCDC">http://www.netresec.com/?page=MACCDC</a></li>
+<li><a class="reference external" href="https://www.malware-traffic-analysis.net/">https://www.malware-traffic-analysis.net/</a></li>
+<li><a class="reference external" href="https://digitalcorpora.org/corpora/network-packet-dumps">https://digitalcorpora.org/corpora/network-packet-dumps</a></li>
+<li><a class="reference external" href="https://www.netresec.com/?page=PcapFiles">https://www.netresec.com/?page=PcapFiles</a></li>
+<li><a class="reference external" href="https://www.netresec.com/?page=MACCDC">https://www.netresec.com/?page=MACCDC</a></li>
 <li><a class="reference external" href="https://github.com/zeek/zeek/tree/master/testing/btest/Traces">https://github.com/zeek/zeek/tree/master/testing/btest/Traces</a></li>
-<li><a class="reference external" href="http://www.ll.mit.edu/mission/communications/cyber/CSTcorpora/ideval/data/">http://www.ll.mit.edu/mission/communications/cyber/CSTcorpora/ideval/data/</a></li>
+<li><a class="reference external" href="https://www.ll.mit.edu/r-d/datasets/2000-darpa-intrusion-detection-scenario-specific-datasets">https://www.ll.mit.edu/r-d/datasets/2000-darpa-intrusion-detection-scenario-specific-datasets</a></li>
 <li><a class="reference external" href="https://wiki.wireshark.org/SampleCaptures">https://wiki.wireshark.org/SampleCaptures</a></li>
-<li><a class="reference external" href="https://stratosphereips.org/category/dataset.html">https://stratosphereips.org/category/dataset.html</a></li>
-<li><a class="reference external" href="http://old.honeynet.org/scans/">http://old.honeynet.org/scans/</a></li>
-<li><a class="reference external" href="http://cctf.shmoo.com/">http://cctf.shmoo.com/</a></li>
-<li><a class="reference external" href="http://ee.lbl.gov/anonymized-traces.html">http://ee.lbl.gov/anonymized-traces.html</a></li>
+<li><a class="reference external" href="https://www.stratosphereips.org/datasets-overview">https://www.stratosphereips.org/datasets-overview</a></li>
+<li><a class="reference external" href="https://ee.lbl.gov/anonymized-traces.html">https://ee.lbl.gov/anonymized-traces.html</a></li>
 <li><a class="reference external" href="https://redmine.openinfosecfoundation.org/projects/suricata/wiki/Public_Data_Sets">https://redmine.openinfosecfoundation.org/projects/suricata/wiki/Public_Data_Sets</a></li>
-<li><a class="reference external" href="http://forensicscontest.com/puzzles">http://forensicscontest.com/puzzles</a></li>
-<li><a class="reference external" href="https://www.evilfingers.com/repository/pcaps.php">https://www.evilfingers.com/repository/pcaps.php</a></li>
-<li><a class="reference external" href="http://www.honeynet.org/node/504">http://www.honeynet.org/node/504</a></li>
+<li><a class="reference external" href="https://forensicscontest.com/puzzles">https://forensicscontest.com/puzzles</a></li>
 <li><a class="reference external" href="https://github.com/markofu/hackeire/tree/master/2011/pcap">https://github.com/markofu/hackeire/tree/master/2011/pcap</a></li>
-<li><a class="reference external" href="http://www.defcon.org/html/links/dc-ctf.html">http://www.defcon.org/html/links/dc-ctf.html</a></li>
+<li><a class="reference external" href="https://www.defcon.org/html/links/dc-ctf.html">https://www.defcon.org/html/links/dc-ctf.html</a></li>
 <li><a class="reference external" href="https://archive.wrccdc.org/">https://archive.wrccdc.org/</a></li>
 <li><a class="reference external" href="https://github.com/chrissanders/packets">https://github.com/chrissanders/packets</a></li>
 </ul>
@@ -7013,16 +7217,11 @@ non-production system!</p>
 </div>
 <div class="section" id="so-replay">
 <h4>so-replay<a class="headerlink" href="#so-replay" title="Permalink to this headline">¶</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">so-replay</span></code> will use <code class="docutils literal notranslate"><span class="pre">tcpreplay</span></code> to replay <strong>all</strong> pcap samples in
-<code class="docutils literal notranslate"><span class="pre">/opt/samples</span></code> to your sniffing interface.</p>
+<p><code class="docutils literal notranslate"><span class="pre">so-replay</span></code> will use <code class="docutils literal notranslate"><span class="pre">tcpreplay</span></code> to replay <strong>all</strong> pcap samples in <code class="docutils literal notranslate"><span class="pre">/opt/samples</span></code> to your sniffing interface.</p>
 </div>
 <div class="section" id="so-import-pcap">
 <h4>so-import-pcap<a class="headerlink" href="#so-import-pcap" title="Permalink to this headline">¶</a></h4>
-<p>A drawback to using tcpreplay is that it’s replaying the pcap as new
-traffic and thus the timestamps that you see in Kibana, Squert, and
-Sguil do not reflect the original timestamps from the pcap. To avoid
-this, a new tool was developed called
-<a class="reference external" href="so-import-pcap">so-import-pcap</a>.</p>
+<p>A drawback to using tcpreplay is that it’s replaying the pcap as new traffic and thus the timestamps that you see in Kibana, Squert, and Sguil do not reflect the original timestamps from the pcap. To avoid this, a new tool was developed called <a class="reference external" href="so-import-pcap">so-import-pcap</a>.</p>
 </div>
 </div>
 <span id="document-removing-a-sensor"></span><div class="section" id="removing-a-sensor">
@@ -7186,6 +7385,20 @@ the window (modifying <code class="docutils literal notranslate"><span class="pr
 <ul class="simple">
 <li>For each user account in /opt/onionsalt/pillar/users/init.sls, you can add an SSH Public Key to <code class="docutils literal notranslate"><span class="pre">/opt/onionsalt/salt/users/keys/USERNAME.id_rsa.pub</span></code> (replacing <code class="docutils literal notranslate"><span class="pre">USERNAME</span></code> with the user’s actual username)</li>
 </ul>
+</li>
+<li><p class="first">Logstash custom configuration in /etc/logstash/custom/</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Logstash does not restart automatically, but you can easily use salt on your master server to tell all your Logstash instances to update and restart:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Force all Salt minions to update custom Logstash scripts</span>
+<span class="n">sudo</span> <span class="n">salt</span> <span class="s1">&#39;*&#39;</span> <span class="n">state</span><span class="o">.</span><span class="n">highstate</span>
+<span class="c1"># Restart Logstash</span>
+<span class="n">sudo</span> <span class="n">salt</span> <span class="s1">&#39;*&#39;</span> <span class="n">cmd</span><span class="o">.</span><span class="n">run</span> <span class="s1">&#39;so-logstash-restart&#39;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
 </li>
 </ul>
 <p>In addition, Salt is a full configuration management system, so you can script anything that you want to deploy across your army of sensors.</p>
@@ -7648,9 +7861,10 @@ Please enter your selection (a - analyst, c - apt-cacher-ng client, l - syslog, 
 </div>
 <span id="document-so-import-pcap"></span><div class="section" id="so-import-pcap">
 <h3>so-import-pcap<a class="headerlink" href="#so-import-pcap" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">so-import-pcap</span></code> is a quick and dirty EXPERIMENTAL script that will import one or more pcaps into Security Onion and preserve original timestamps.</p>
+<p><code class="docutils literal notranslate"><span class="pre">so-import-pcap</span></code> will import one or more pcaps into Security Onion and preserve original timestamps.</p>
 <p>It will do the following:</p>
 <ul class="simple">
+<li>automatically run Setup to configure the system if necessary</li>
 <li>stop and disable Curator to avoid closing old indices</li>
 <li>stop and disable all active sniffing processes (Zeek, Snort, Suricata, and netsniff-ng)</li>
 <li>stop and disable ossec_agent</li>
@@ -7975,10 +8189,6 @@ and <code class="docutils literal notranslate"><span class="pre">sensor1-eth1</s
 <div class="section" id="i-get-periodic-mysql-crashes-and-or-error-code-24-out-of-resources-when-searching-in-sguil-how-do-i-fix-that">
 <h5>I get periodic MySQL crashes and/or error code 24 “out of resources” when searching in Sguil. How do I fix that?<a class="headerlink" href="#i-get-periodic-mysql-crashes-and-or-error-code-24-out-of-resources-when-searching-in-sguil-how-do-i-fix-that" title="Permalink to this headline">¶</a></h5>
 <p>Modern versions of Setup should set MySQL’s <code class="docutils literal notranslate"><span class="pre">open-files-limit</span></code> to 90000 to avoid this problem.</p>
-<div class="line-block">
-<div class="line">For more information, please see:</div>
-<div class="line"><a class="reference external" href="http://nsmwiki.org/Sguil_FAQ#I.27m_seeing_error_code_24_from_MySQL._How_do_I_fix_that.3F">http://nsmwiki.org/Sguil_FAQ#I.27m_seeing_error_code_24_from_MySQL._How_do_I_fix_that.3F</a></div>
-</div>
 </div>
 <div class="section" id="barnyard2-is-failing-with-an-error-like-error-sguil-expected-confirm-13324-and-got-failed-to-insert-13324-mysqlexec-db-server-duplicate-entry-9-13324-for-key-primary-how-do-i-fix-this">
 <h5>Barnyard2 is failing with an error like “ERROR: sguil: Expected Confirm 13324 and got: Failed to insert 13324: mysqlexec/db server: Duplicate entry ‘9-13324’ for key ‘PRIMARY’”. How do I fix this?<a class="headerlink" href="#barnyard2-is-failing-with-an-error-like-error-sguil-expected-confirm-13324-and-got-failed-to-insert-13324-mysqlexec-db-server-duplicate-entry-9-13324-for-key-primary-how-do-i-fix-this" title="Permalink to this headline">¶</a></h5>
@@ -7997,8 +8207,7 @@ and <code class="docutils literal notranslate"><span class="pre">sensor1-eth1</s
 <span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">sensor</span><span class="o">-</span><span class="n">restart</span> <span class="o">--</span><span class="n">only</span><span class="o">-</span><span class="n">barnyard2</span>
 </pre></div>
 </div>
-<p>If that still doesn’t fix it, you may have to perform MySQL surgery on the database <code class="docutils literal notranslate"><span class="pre">securityonion_db</span></code> as described in the Sguil FAQ:
-<a class="reference external" href="http://nsmwiki.org/Sguil_FAQ#Barnyard_dies_at_startup.2C_with_.22Duplicate_Entry.22_error">http://nsmwiki.org/Sguil_FAQ#Barnyard_dies_at_startup.2C_with_.22Duplicate_Entry.22_error</a></p>
+<p>If that still doesn’t fix it, you may have to perform MySQL surgery on the database <code class="docutils literal notranslate"><span class="pre">securityonion_db</span></code>.</p>
 </div>
 <div class="section" id="why-does-snort-segfault-every-day-at-7-01-am">
 <h5>Why does Snort segfault every day at 7:01 AM?<a class="headerlink" href="#why-does-snort-segfault-every-day-at-7-01-am" title="Permalink to this headline">¶</a></h5>
@@ -8764,8 +8973,7 @@ filter:
 alert: hivealerter
 
 hive_connection:
-  hive_host: http(s)://YOUR_HIVE_INSTANCE
-  hive_port: YOUR_HIVE_INSTANCE_PORT
+  hive_host: http(s)://YOUR_HIVE_INSTANCE:PORT # Add port if necessary
   hive_apikey: APIKEY
 
 hive_proxies:
@@ -8802,9 +9010,7 @@ hive_observable_data_mapping:
 </div>
 <div class="section" id="warning">
 <h4>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h4>
-<p>Please keep in mind we do not officially support this integration, so installation is at your own risk.
-Additionally, the current version of MISP seems to have an issue with Zeek Intel export, therefore, this particular functionality may not work as intended ( depending on the version of MISP you are using).</p>
-<p>See: <a class="reference external" href="https://github.com/MISP/MISP/issues/4050">https://github.com/MISP/MISP/issues/4050</a> for more details.</p>
+<p>Please keep in mind we do not officially support this integration, so installation is at your own risk.</p>
 </div>
 <div class="section" id="installation">
 <h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
@@ -8851,8 +9057,7 @@ Additionally, the current version of MISP seems to have an issue with Zeek Intel
 <span class="o">-</span> <span class="s2">&quot;hivealerter&quot;</span>
 
 <span class="n">hive_connection</span><span class="p">:</span>
-    <span class="n">hive_host</span><span class="p">:</span>  <span class="n">http</span><span class="p">(</span><span class="n">s</span><span class="p">):</span><span class="o">//</span><span class="n">YOUR_HIVE_INSTANCE</span>
-    <span class="n">hive_port</span><span class="p">:</span> <span class="n">YOUR_HIVE_INSTANCE_PORT</span>
+    <span class="n">hive_host</span><span class="p">:</span>  <span class="n">http</span><span class="p">(</span><span class="n">s</span><span class="p">):</span><span class="o">//</span><span class="n">YOUR_HIVE_INSTANCE</span><span class="p">:</span><span class="n">PORT</span> <span class="c1"># Add port if necessary</span>
     <span class="n">hive_apikey</span><span class="p">:</span> <span class="n">APIKEY</span>
 
 <span class="n">hive_proxies</span><span class="p">:</span>
@@ -8907,16 +9112,12 @@ your network</div>
 <div class="line">DNS Tunneling Search for signs of DNS based covert channels</div>
 <div class="line">Blacklisted: Query blacklists to search for suspicious domains and
 hosts</div>
-<div class="line">URL Length Analysis: Search for lengthy URLs indicative of malware</div>
-<div class="line">Scanning: Search for signs of port scans in your network</div>
 </div>
 </div></blockquote>
 <p>We can add RITA to Security Onion to enhance its current capabilities and leverage the great work from the folks at <a class="reference external" href="https://activecountermeasures.com/">Active Countermeasures</a>. They’ve done a fantastic job of allowing RITA to be easy to integrate with Security Onion.</p>
 <div class="section" id="warning">
 <h4>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h4>
 <p>Please keep in mind we do not officially support RITA, so installation is at your own risk.</p>
-<p>Additionally, RITA currently only supports use of Zeek logs in <code class="docutils literal notranslate"><span class="pre">TSV</span></code> format. If you are running the latest version of Security Onion, you will need to switch from <code class="docutils literal notranslate"><span class="pre">JSON</span></code> to <code class="docutils literal notranslate"><span class="pre">TSV</span></code> format by following the steps here:</p>
-<p><a class="reference external" href="Zeek#tsv">Zeek#tsv</a></p>
 </div>
 <div class="section" id="installation">
 <h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
@@ -8926,23 +9127,19 @@ hosts</div>
 </pre></div>
 </div>
 <p>Run the installer:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">bash</span> <span class="o">./</span><span class="n">install</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">bash</span> <span class="o">./</span><span class="n">install</span><span class="o">.</span><span class="n">sh</span> <span class="o">--</span><span class="n">disable</span><span class="o">-</span><span class="n">bro</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="configuration">
 <h4>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h4>
-<p>You must set your own values for <code class="docutils literal notranslate"><span class="pre">InternalSubnets</span></code> in <code class="docutils literal notranslate"><span class="pre">/etc/rita/config.yaml</span></code> before importing
+<p>You should set your own values for <code class="docutils literal notranslate"><span class="pre">InternalSubnets</span></code> in <code class="docutils literal notranslate"><span class="pre">/etc/rita/config.yaml</span></code> before importing
 data into RITA. See <a class="reference external" href="https://github.com/activecm/rita#configuration-file">https://github.com/activecm/rita#configuration-file</a> for more information.</p>
 </div>
 <div class="section" id="usage">
 <h4>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h4>
 <p>You can then import logs with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rita</span> <span class="kn">import</span> <span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">bro</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">04</span> <span class="n">dataset1</span>
-</pre></div>
-</div>
-<p>To see the most visited URLs:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rita</span> <span class="n">show</span><span class="o">-</span><span class="n">most</span><span class="o">-</span><span class="n">visited</span><span class="o">-</span><span class="n">urls</span> <span class="n">dataset1</span>
 </pre></div>
 </div>
 <p>To see long connections, type:</p>
@@ -9669,12 +9866,11 @@ configuration to boot into text mode:</p>
 </div>
 <span id="document-cheat-sheet"></span><div class="section" id="cheat-sheet">
 <h2>Cheat Sheet<a class="headerlink" href="#cheat-sheet" title="Permalink to this headline">¶</a></h2>
-<p>If you are viewing the online version of this documentation, you can click on the image below to view a larger version or <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion-docs/raw/master/images/cheat-sheet/Security-Onion-Cheat-Sheet.pdf">click here for the PDF version</a>.</p>
+<p>If you are viewing the online version of this documentation, you can <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion-docs/raw/master/images/cheat-sheet/Security-Onion-Cheat-Sheet.pdf">click here for our Security Onion Cheat Sheet</a>.</p>
 <div class="line-block">
 <div class="line">This was based on a cheat sheet originally created by <a class="reference external" href="http://chrissanders.org/">Chris Sanders</a> which can be found here:</div>
 <div class="line"><a class="reference external" href="http://chrissanders.org/2017/06/security-onion-cheat-sheet/">http://chrissanders.org/2017/06/security-onion-cheat-sheet/</a></div>
 </div>
-<a class="reference external image-reference" href="https://github.com/Security-Onion-Solutions/securityonion-docs/raw/master/images/cheat-sheet/Security-Onion-Cheat-Sheet.jpg"><img alt="_images/Security-Onion-Cheat-Sheet.jpg" src="_images/Security-Onion-Cheat-Sheet.jpg" /></a>
 </div>
 </div>
 </div>
@@ -9693,7 +9889,7 @@ configuration to boot into text mode:</p>
         &copy; Copyright 2020
       
         <span class="commit">
-          Revision <code>732a2d21</code>.
+          Revision <code>3df39cf2</code>.
         </span>
       
 
@@ -9727,11 +9923,11 @@ configuration to boot into text mode:</p>
       <dl>
         <dt>Downloads</dt>
         
-          <dd><a href="//readthedocs.org/projects/securityonion/downloads/pdf/latest/">pdf</a></dd>
+          <dd><a href="//securityonion.readthedocs.io/_/downloads/en/latest/pdf/">pdf</a></dd>
         
-          <dd><a href="//readthedocs.org/projects/securityonion/downloads/htmlzip/latest/">html</a></dd>
+          <dd><a href="//securityonion.readthedocs.io/_/downloads/en/latest/htmlzip/">html</a></dd>
         
-          <dd><a href="//readthedocs.org/projects/securityonion/downloads/epub/latest/">epub</a></dd>
+          <dd><a href="//securityonion.readthedocs.io/_/downloads/en/latest/epub/">epub</a></dd>
         
       </dl>
       <dl>
