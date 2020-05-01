@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Security Onion 16.04.6.5 documentation</title>
+  <title>Security Onion 16.04.6.6 documentation</title>
   
 
   
@@ -108,8 +108,8 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-vmware">VMWare</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-virtualbox">VirtualBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-trouble-booting">Booting Issues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#document-installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-release-notes">ISO Release Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-so-import-pcap">so-import-pcap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-quick-iso-image">Quick Evaluation using Security Onion ISO image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-installing-on-ubuntu">Quick Evaluation on Ubuntu</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-production-deployment">Production Deployment</a></li>
@@ -231,7 +231,6 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-setup">Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-so-allow">so-allow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#document-so-elasticsearch-query">so-elasticsearch-query</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#document-so-import-pcap">so-import-pcap</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="index.html#document-help">Help</a><ul>
@@ -308,7 +307,7 @@
     
       <li><a href="index.html#document-index">Docs</a> &raquo;</li>
         
-      <li>Security Onion 16.04.6.5 documentation</li>
+      <li>Security Onion 16.04.6.6 documentation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -642,7 +641,10 @@
 </div>
 <div class="section" id="elastic-stack">
 <h4>Elastic Stack<a class="headerlink" href="#elastic-stack" title="Permalink to this headline">¶</a></h4>
-<p>If you’re going to enable the Elastic Stack, please note that the MINIMUM requirements are 4 CPU cores and 8GB RAM. These requirements increase as you monitor more traffic and consume more logs.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you’re going to enable the Elastic Stack, please note that the MINIMUM requirements are 4 CPU cores and 8GB RAM. These requirements increase as you monitor more traffic and consume more logs.</p>
+</div>
 <p>Please refer to our <a class="reference external" href="Elastic-Architecture">Architecture Page</a> for detailed deployment scenarios.</p>
 <p><strong>We recommend placing all Elastic storage on SSD or fast spinning disk in a RAID 10 configuration.</strong> This includes <code class="docutils literal notranslate"><span class="pre">/nsm/elasticsearch</span></code> and <code class="docutils literal notranslate"><span class="pre">/nsm/logstash</span></code>.</p>
 </div>
@@ -823,7 +825,7 @@ Taps</a></li>
 <h3>VMWare<a class="headerlink" href="#vmware" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="overview">
 <h4>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h4>
-<p>In this section, we’ll cover creating a virtual machine (VM) for Security Onion 16.04 in VMWare Workstation Pro 12 (although this should be similar for most VMWare installations).</p>
+<p>In this section, we’ll cover creating a virtual machine (VM) for Security Onion 16.04 in VMWare Workstation Pro (although this should be similar for most VMWare installations).</p>
 <p>If you don’t have VMWare Workstation, you could also use VMWare Player, found here:</p>
 <p><a class="reference external" href="http://www.vmware.com/products/player/playerpro-evaluation.html">http://www.vmware.com/products/player/playerpro-evaluation.html</a></p>
 </div>
@@ -837,9 +839,7 @@ Taps</a></li>
 <li>Choose Linux, Ubuntu 64-Bit and click <code class="docutils literal notranslate"><span class="pre">Next</span></code>.</li>
 <li>Specify virtual machine name and click <code class="docutils literal notranslate"><span class="pre">Next</span></code>.</li>
 <li>Specify disk size (min 40GB), store as single file, click <code class="docutils literal notranslate"><span class="pre">Next</span></code>.</li>
-<li>Customize hardware:</li>
-<li>Memory – 8GB or more</li>
-<li>Processors – 4 CPU cores or more</li>
+<li>Customize hardware and increase Memory (min 8GB for most use cases) and Processors (4 CPU cores for most use cases).</li>
 <li>Network Adapter (NAT or Bridged – if you want to be able to access
 your Security Onion machine from other devices in the network, then
 choose Bridged, otherwise choose NAT to leave it behind the host) –
@@ -963,67 +963,95 @@ try pressing the “Esc” key to see the current status.</p>
 </li>
 </ul>
 </div>
-<span id="document-installation"></span><div class="section" id="installation">
-<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="language">
-<h4>Language<a class="headerlink" href="#language" title="Permalink to this headline">¶</a></h4>
-<p>Please note that we only support the English language at this time.</p>
-</div>
-<div class="section" id="choose-your-installation-guide">
-<h4>Choose your Installation Guide<a class="headerlink" href="#choose-your-installation-guide" title="Permalink to this headline">¶</a></h4>
-<p>We have different Installation Guides to cover various use cases. Please choose the appropriate Installation Guide for your use case.</p>
-<div class="section" id="quickly-evaluating-security-onion">
-<h5>Quickly Evaluating Security Onion<a class="headerlink" href="#quickly-evaluating-security-onion" title="Permalink to this headline">¶</a></h5>
-<p>If you just want to <strong>quickly evaluate</strong> Security Onion, choose one of the following two options. If you’re a first time user, we recommend the first option.</p>
-<ul class="simple">
-<li>To quickly evaluate using <strong>our Security Onion ISO image</strong>, please see the <a class="reference external" href="QuickISOImage">QuickISOImage</a> section.</li>
-</ul>
-<p>OR</p>
-<ul class="simple">
-<li>To quickly evaluate using <strong>your preferred flavor of Ubuntu 16.04</strong>, please see the <a class="reference external" href="InstallingOnUbuntu">InstallingOnUbuntu</a> section.</li>
-</ul>
-</div>
-<div class="section" id="production-deployment">
-<h5>Production Deployment<a class="headerlink" href="#production-deployment" title="Permalink to this headline">¶</a></h5>
-<p>If you’re deploying Security Onion in <strong>production</strong>, please see the <a class="reference external" href="ProductionDeployment">Production Deployment</a> section.</p>
-</div>
-</div>
-</div>
 <span id="document-release-notes"></span><div class="section" id="iso-release-notes">
 <h3>ISO Release Notes<a class="headerlink" href="#iso-release-notes" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><div class="first line-block">
-<div class="line">As always, make sure you verify the downloaded ISO image:</div>
-<div class="line"><a class="reference external" href="https://github.com/Security-Onion-Solutions/security-onion/blob/master/Verify_ISO.md">https://github.com/Security-Onion-Solutions/security-onion/blob/master/Verify_ISO.md</a></div>
-</div>
-</li>
-<li><p class="first">When the ISO boots, choose the default boot menu option.</p>
-</li>
-<li><p class="first">Once the live desktop appears, double-click the <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">SecurityOnion</span></code> icon.</p>
-</li>
-<li><p class="first">On the “Installation type” screen, you may want to select the <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">LVM</span></code> option, as this will automatically create a <code class="docutils literal notranslate"><span class="pre">/boot</span></code> partition at the beginning of the drive and will give you more flexibility later. Check to see if the installer allocates a large amount of space to <code class="docutils literal notranslate"><span class="pre">/home</span></code>. If this is the case, you may want to shrink <code class="docutils literal notranslate"><span class="pre">/home</span></code> to give more space to <code class="docutils literal notranslate"><span class="pre">/</span></code>.</p>
-</li>
-<li><p class="first">If prompted with an encrypt home folder or encrypt partition option, DO NOT enable this feature.</p>
-</li>
-<li><p class="first">If asked about automatic updates, DO NOT enable automatic updates.</p>
-</li>
-<li><p class="first">The Keyboard Layout screen may be larger than your screen resolution and so the Continue button may be off the screen to the right as shown at <a class="reference external" href="https://launchpadlibrarian.net/207213663/Screenshot_wilyi386deskmanual_2015-05-22_13%3A05%3A41.png">https://launchpadlibrarian.net/207213663/Screenshot_wilyi386deskmanual_2015-05-22_13%3A05%3A41.png</a>.  You can simply slide the window over until you see the Continue button. For more information, please see <a class="reference external" href="https://bugs.launchpad.net/ubuntu/+source/ubiquity/+bug/1458039">https://bugs.launchpad.net/ubuntu/+source/ubiquity/+bug/1458039</a>.</p>
-</li>
-<li><p class="first">Once the installer completes, it should prompt to remove installation media and press ENTER. If instead it appears to hang, simply press the ENTER key to reboot. If that doesn’t work, you may forcibly restart the machine.</p>
-</li>
-<li><p class="first">Once you’ve logged into your newly installed Security Onion, you’ll notice that there is only a Setup icon on the desktop. Other icons will be created when you complete both phases of Setup. So you’ll run Setup, configure your network interfaces, reboot, run Setup again to configure services, and then you’ll see desktop icons for user interfaces.</p>
-</li>
-<li><p class="first">Setup now defaults to enabling the Elastic Stack. We recommend a BARE MINIMUM of 4 CPU cores and 8GB RAM.</p>
-</li>
-<li><p class="first">When choosing Evaluation Mode, the following services are enabled by default: <a class="reference external" href="Snort">Snort</a>, <a class="reference external" href="Zeek">Zeek</a>, <a class="reference external" href="netsniff-ng">netsniff-ng</a>, pcap_agent, snort_agent, barnyard2.</p>
-</li>
-<li><p class="first">When choosing Production Mode, you then have the option of Best Practices or Custom. Best Practices asks a smaller number of questions and chooses the services that most folks want (<a class="reference external" href="Snort">Snort</a> or <a class="reference external" href="Suricata">Suricata</a>, <a class="reference external" href="Zeek">Zeek</a>, <a class="reference external" href="netsniff-ng">netsniff-ng</a>, pcap_agent, snort_agent, barnyard2, <a class="reference external" href="salt">salt</a>). Custom gives you more control over your system but requires more in-depth knowledge about services and their functions.</p>
-</li>
-<li><p class="first">Once you’ve completed both phases of Setup, you should see new icons on your Desktop.</p>
-</li>
-<li><p class="first">For more information, please refer to the full <a class="reference external" href="Installation">Installation</a> guide and other documentation.</p>
-</li>
+<ul class="simple">
+<li>Please note that we only support the English language at this time.</li>
+<li>As always, make sure you verify the downloaded ISO image: <a class="reference external" href="https://github.com/Security-Onion-Solutions/security-onion/blob/master/Verify_ISO.md">https://github.com/Security-Onion-Solutions/security-onion/blob/master/Verify_ISO.md</a></li>
+<li>When the ISO boots, choose the default boot menu option.</li>
+<li>Once the live desktop appears, double-click the <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">SecurityOnion</span></code> icon.</li>
+<li>On the “Installation type” screen, you may want to select the <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">LVM</span></code> option, as this will automatically create a <code class="docutils literal notranslate"><span class="pre">/boot</span></code> partition at the beginning of the drive and will give you more flexibility later. Check to see if the installer allocates a large amount of space to <code class="docutils literal notranslate"><span class="pre">/home</span></code>. If this is the case, you may want to shrink <code class="docutils literal notranslate"><span class="pre">/home</span></code> to give more space to <code class="docutils literal notranslate"><span class="pre">/</span></code>.</li>
+<li>If prompted with an encrypt home folder or encrypt partition option, DO NOT enable this feature.</li>
+<li>If asked about automatic updates, DO NOT enable automatic updates.</li>
+<li>The Keyboard Layout screen may be larger than your screen resolution and so the Continue button may be off the screen to the right as shown at <a class="reference external" href="https://launchpadlibrarian.net/207213663/Screenshot_wilyi386deskmanual_2015-05-22_13%3A05%3A41.png">https://launchpadlibrarian.net/207213663/Screenshot_wilyi386deskmanual_2015-05-22_13%3A05%3A41.png</a>.  You can simply slide the window over until you see the Continue button. For more information, please see <a class="reference external" href="https://bugs.launchpad.net/ubuntu/+source/ubiquity/+bug/1458039">https://bugs.launchpad.net/ubuntu/+source/ubiquity/+bug/1458039</a>.</li>
+<li>Once the installer completes, it should prompt to remove installation media and press ENTER. If instead it appears to hang, simply press the ENTER key to reboot. If that doesn’t work, you may forcibly restart the machine.</li>
+<li>Once you’ve logged into your newly installed Security Onion, you’ll notice that there is only a Setup icon on the desktop. Other icons will be created when you complete both phases of Setup. So you’ll run Setup, configure your network interfaces, reboot, run Setup again to configure services, and then you’ll see desktop icons for user interfaces.</li>
+<li>Setup now defaults to enabling the Elastic Stack. We recommend a BARE MINIMUM of 4 CPU cores and 8GB RAM.</li>
+<li>When choosing Evaluation Mode, the following services are enabled by default: <a class="reference external" href="Snort">Snort</a>, <a class="reference external" href="Zeek">Zeek</a>, <a class="reference external" href="netsniff-ng">netsniff-ng</a>, pcap_agent, snort_agent, barnyard2.</li>
+<li>When choosing Production Mode, you then have the option of Best Practices or Custom. Best Practices asks a smaller number of questions and chooses the services that most folks want (<a class="reference external" href="Snort">Snort</a> or <a class="reference external" href="Suricata">Suricata</a>, <a class="reference external" href="Zeek">Zeek</a>, <a class="reference external" href="netsniff-ng">netsniff-ng</a>, pcap_agent, snort_agent, barnyard2, <a class="reference external" href="salt">salt</a>). Custom gives you more control over your system but requires more in-depth knowledge about services and their functions.</li>
+<li>Once you’ve completed both phases of Setup, you should see new icons on your Desktop.</li>
+<li>For more information, please refer to the full <a class="reference external" href="Installation">Installation</a> guide and other documentation.</li>
 </ul>
+</div>
+<span id="document-so-import-pcap"></span><div class="section" id="so-import-pcap">
+<h3>so-import-pcap<a class="headerlink" href="#so-import-pcap" title="Permalink to this headline">¶</a></h3>
+<p>If you just want to analyze one or more pcap files, then <code class="docutils literal notranslate"><span class="pre">so-import-pcap</span></code> is the quickest and easiest way to get started with Security Onion!  It will import one or more pcaps into Security Onion and preserve original timestamps.</p>
+<p>It will do the following:</p>
+<ul class="simple">
+<li>automatically run Setup to configure the system if necessary</li>
+<li>stop and disable Curator to avoid closing old indices</li>
+<li>stop and disable all active sniffing processes (Zeek, Snort, Suricata, and netsniff-ng)</li>
+<li>stop and disable ossec_agent</li>
+<li>reconfigure and restart sguild, syslog-ng, and Logstash where necessary</li>
+<li>generate IDS alerts using Snort or Suricata</li>
+<li>generate Zeek logs</li>
+<li>store IDS alerts and Zeek logs with original timestamps</li>
+<li>split traffic into separate daily pcaps and store them where sguil’s pcap_agent can find them</li>
+</ul>
+<div class="section" id="minimum-requirements">
+<h4>Minimum Requirements<a class="headerlink" href="#minimum-requirements" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>50GB storage</li>
+<li>4GB RAM</li>
+<li>2 CPU cores</li>
+</ul>
+<p>Please note these are MINIMUM requirements.  If you can allocate more resources, please do so.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Do NOT run so-import-pcap on an existing production deployment!</p>
+<p class="last">It is designed for standalone systems designated for so-import-pcap.</p>
+</div>
+</div>
+<div class="section" id="installation">
+<h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
+<p>If you haven’t already installed the latest Security Onion ISO image, here are the steps to do so:</p>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://github.com/Security-Onion-Solutions/security-onion/blob/master/Verify_ISO.md">Download and verify our Security Onion ISO image</a>.</li>
+<li>Boot the ISO image and choose the default boot menu option.</li>
+<li>Once the live desktop appears, double-click the <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">SecurityOnion</span></code> icon.</li>
+<li>Follow the prompts in the installer. If prompted with an <code class="docutils literal notranslate"><span class="pre">encrypt</span> <span class="pre">home</span> <span class="pre">folder</span></code> or <code class="docutils literal notranslate"><span class="pre">encrypt</span> <span class="pre">partition</span></code> option, <strong>DO NOT</strong> enable this feature. If asked about automatic updates, <strong>DO NOT</strong> enable automatic updates.</li>
+<li>Once the installer completes, reboot into your new installation and login using the username and password you specified during installation.</li>
+<li>NOTE! It is NOT necessary to run Setup as so-import-pcap will do this automatically.</li>
+</ol>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">If you’re running so-import-pcap in a VM with snapshot capability, you might want to take a snapshot before this program makes changes.</p>
+</div>
+</div>
+<div class="section" id="usage">
+<h4>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h4>
+<p>Please supply the full path to at least one pcap file.</p>
+<p>For example, to import a single pcap named <code class="docutils literal notranslate"><span class="pre">import.pcap</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">import</span><span class="o">-</span><span class="n">pcap</span> <span class="o">/</span><span class="n">full</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">import</span><span class="o">.</span><span class="n">pcap</span>
+</pre></div>
+</div>
+<p>To import multiple pcaps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">import</span><span class="o">-</span><span class="n">pcap</span> <span class="o">/</span><span class="n">full</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">import1</span><span class="o">.</span><span class="n">pcap</span> <span class="o">/</span><span class="n">full</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">import2</span><span class="o">.</span><span class="n">pcap</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example">
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<p>For a detailed walk-through with screenshots, please see <a class="reference external" href="https://blog.securityonion.net/2019/06/analyze-pcaps-in-3-simple-steps-using.html">https://blog.securityonion.net/2019/06/analyze-pcaps-in-3-simple-steps-using.html</a>.</p>
+</div>
+<div class="section" id="warning">
+<h4>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h4>
+<p>Please note that so-import-pcap will make changes to your system! It will warn you before doing so and will prompt you to press Enter to continue or Ctrl-c to cancel.</p>
+<p>If you want to bypass the “Press Enter to continue” prompt, you can do something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">import</span><span class="o">-</span><span class="n">pcap</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">samples</span><span class="o">/</span><span class="n">markofu</span><span class="o">/</span><span class="n">ie</span><span class="o">*</span>
+</pre></div>
+</div>
+</div>
 </div>
 <span id="document-quick-iso-image"></span><div class="section" id="quick-evaluation-using-security-onion-iso-image">
 <h3>Quick Evaluation using Security Onion ISO image<a class="headerlink" href="#quick-evaluation-using-security-onion-iso-image" title="Permalink to this headline">¶</a></h3>
@@ -1034,7 +1062,7 @@ try pressing the “Esc” key to see the current status.</p>
 <li>Boot the ISO image and choose the default boot menu option.</li>
 <li>Once the live desktop appears, double-click the <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">SecurityOnion</span></code> icon.</li>
 <li>Follow the prompts in the installer. If prompted with an <code class="docutils literal notranslate"><span class="pre">encrypt</span> <span class="pre">home</span> <span class="pre">folder</span></code> or <code class="docutils literal notranslate"><span class="pre">encrypt</span> <span class="pre">partition</span></code> option, <strong>DO NOT</strong> enable this feature. If asked about automatic updates, <strong>DO NOT</strong> enable automatic updates.</li>
-<li>Once the installer completes, rebooot into your new installation and login using the username and password you specified during installation.</li>
+<li>Once the installer completes, reboot into your new installation and login using the username and password you specified during installation.</li>
 <li>Double-click the Setup icon to run normal Setup.  Alternatively, you can run minimal Setup by opening a terminal (Ctrl-Alt-T) and then typing <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">sosetup-minimal</span></code> and pressing Enter. The Setup wizard will walk you through configuring <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code> and will then reboot.</li>
 <li>After rebooting, log back in and start Setup the same way you did previously (either double-clicking the icon or running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">sosetup-minimal</span></code>). It will detect that you have already configured <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code> and will walk you through the rest of the configuration. When prompted for <code class="docutils literal notranslate"><span class="pre">Evaluation</span> <span class="pre">Mode</span></code> or <code class="docutils literal notranslate"><span class="pre">Production</span> <span class="pre">Mode</span></code>, choose <code class="docutils literal notranslate"><span class="pre">Evaluation</span> <span class="pre">Mode</span></code>.</li>
 <li>Once you’ve completed the Setup wizard, use the Desktop icons to login to <a class="reference external" href="Sguil">Sguil</a>, <a class="reference external" href="Squert">Squert</a>, or <a class="reference external" href="Kibana">Kibana</a>.</li>
@@ -1494,7 +1522,10 @@ have on your quarterly numbers.</div></blockquote>
 </div>
 <div class="section" id="plugins">
 <h4>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h4>
-<p>Please note that we do not officially support installing plugins.  Do so at your own risk!</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please note that we do not officially support installing plugins.  Do so at your own risk!</p>
+</div>
 <p>To add a plugin to Kibana, you can expose the plugins directory to the host filesystem and then copy your plugins to that directory. For example, to load the <a class="reference external" href="https://github.com/dlumbrer/kbn_network">kbn_network</a> plugin you can do something like the following.</p>
 <p>Create a new directory in the host filesystem called <code class="docutils literal notranslate"><span class="pre">/nsm/kibana/plugins</span></code> to store plugins:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">kibana</span><span class="o">/</span><span class="n">plugins</span>
@@ -1857,7 +1888,10 @@ severity level, by editing <code class="docutils literal notranslate"><span clas
 </div>
 <div class="section" id="switching-from-snort-to-suricata">
 <h4>Switching from Snort to Suricata<a class="headerlink" href="#switching-from-snort-to-suricata" title="Permalink to this headline">¶</a></h4>
-<p>Please note that, if you’re running the Snort Talos ruleset, Snort Shared Object rules will not load in Suricata. Most folks who choose the Suricata engine choose to run the Emerging Threats ruleset.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you’re running the Snort Talos ruleset, Snort Shared Object rules will not load in Suricata. Most folks who choose the Suricata engine choose to run the Emerging Threats ruleset.</p>
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">sensor</span><span class="o">-</span><span class="n">stop</span>
 <span class="n">sudo</span> <span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;s|ENGINE=snort|ENGINE=suricata|g&#39;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">securityonion</span><span class="o">.</span><span class="n">conf</span>
 <span class="n">sudo</span> <span class="n">rule</span><span class="o">-</span><span class="n">update</span>
@@ -2113,14 +2147,10 @@ script(s) is/are not working as desired.</p>
 </li>
 </ul>
 <p>To check and see if a Zeek script has fired a Notice, go to Kibana and check our <code class="docutils literal notranslate"><span class="pre">Zeek</span> <span class="pre">Notices</span></code> dashboard. Alternatively, you can check for entries in <code class="docutils literal notranslate"><span class="pre">/nsm/bro/logs/current/notice.log</span></code>.</p>
-<p><strong>PLEASE NOTE</strong>: In a distributed deployment, all custom scripts created
-under <code class="docutils literal notranslate"><span class="pre">/opt/bro/share/bro/policy/</span></code> on a master server will be
-replicated to sensors via Salt, however, they will not be enabled, as
-<code class="docutils literal notranslate"><span class="pre">/opt/bro/share/bro/site/local.bro</span></code> is not replicated. Therefore, you
-will either need to manually add a reference to the scripts in
-<code class="docutils literal notranslate"><span class="pre">/opt/bro/share/bro/site/local.bro</span></code>, or add additional configuration
-in <code class="docutils literal notranslate"><span class="pre">/opt/onionsalt/salt/sensor/init.sls</span></code> for Salt to replicate this
-information.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In a distributed deployment, all custom scripts created under <code class="docutils literal notranslate"><span class="pre">/opt/bro/share/bro/policy/</span></code> on a master server will be replicated to sensors via Salt, however, they will not be enabled, as <code class="docutils literal notranslate"><span class="pre">/opt/bro/share/bro/site/local.bro</span></code> is not replicated. Therefore, you will either need to manually add a reference to the scripts in <code class="docutils literal notranslate"><span class="pre">/opt/bro/share/bro/site/local.bro</span></code>, or add additional configuration in <code class="docutils literal notranslate"><span class="pre">/opt/onionsalt/salt/sensor/init.sls</span></code> for Salt to replicate this information.</p>
+</div>
 <ul class="simple">
 <li>Make a symlink to <code class="docutils literal notranslate"><span class="pre">local.bro</span></code>:</li>
 </ul>
@@ -2202,7 +2232,10 @@ from kernel space to user space and vice versa.</div></blockquote>
 <li>increase <code class="docutils literal notranslate"><span class="pre">PCAP_RING_SIZE</span></code></li>
 <li>set <code class="docutils literal notranslate"><span class="pre">PCAP_OPTIONS</span></code> to <code class="docutils literal notranslate"><span class="pre">--mmap</span></code> to enable memory-mapped IO</li>
 </ul>
-<p>Please note that both of these options will cause netsniff-ng to consume more RAM.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Both of these options will cause netsniff-ng to consume more RAM.</p>
+</div>
 </div>
 <div class="section" id="reducing-storage">
 <h4>Reducing Storage<a class="headerlink" href="#reducing-storage" title="Permalink to this headline">¶</a></h4>
@@ -2226,7 +2259,10 @@ from kernel space to user space and vice versa.</div></blockquote>
 <h4>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h4>
 <p>To download a Beat, choose the correct version from the Past Releases page:</p>
 <p><a class="reference external" href="https://www.elastic.co/downloads/past-releases">https://www.elastic.co/downloads/past-releases</a></p>
-<p>PLEASE NOTE: Choosing a Beat version that is greater than the Elastic version is not supported and may not work as expected.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Choosing a Beat version that is greater than the Elastic version is not supported and may not work as expected.</p>
+</div>
 <p>To check your current version of Elastic, navigate to the Management section in Kibana.  The version should be displayed on the screen.</p>
 <p>Alternatively, run the following command from your master server:</p>
 <p><code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">localhost:9200</span></code></p>
@@ -2253,12 +2289,12 @@ from kernel space to user space and vice versa.</div></blockquote>
 <h4>Log files<a class="headerlink" href="#log-files" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="filebeat">
 <h5>Filebeat<a class="headerlink" href="#filebeat" title="Permalink to this headline">¶</a></h5>
-<p>Windows: <code class="docutils literal notranslate"><span class="pre">C:\\Program</span> <span class="pre">Files\Filebeat\filebeat.log</span></code></p>
+<p>Windows: <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\Filebeat\filebeat.log</span></code></p>
 <p>Linux: <code class="docutils literal notranslate"><span class="pre">/var/log/filebeat/filebeat</span></code></p>
 </div>
 <div class="section" id="winlogbeat">
 <h5>Winlogbeat<a class="headerlink" href="#winlogbeat" title="Permalink to this headline">¶</a></h5>
-<p><code class="docutils literal notranslate"><span class="pre">C:\\Program</span> <span class="pre">Files\Winlogbeat\winlogbeat.log</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\Winlogbeat\winlogbeat.log</span></code></p>
 <p>Default fields:
 <a class="reference external" href="https://www.elastic.co/guide/en/beats/winlogbeat/master/exported-fields-eventlog.html">https://www.elastic.co/guide/en/beats/winlogbeat/master/exported-fields-eventlog.html</a></p>
 </div>
@@ -2276,7 +2312,10 @@ from kernel space to user space and vice versa.</div></blockquote>
 </div>
 <div class="section" id="encryption">
 <h4>Encryption<a class="headerlink" href="#encryption" title="Permalink to this headline">¶</a></h4>
-<p>Beats communication with Elasticsearch/Logstash is <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">encrypted</span></code> by default. If you require encryption, please consult the appropriate Elastic documentation to configure the use of TLS.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Beats communication with Elasticsearch/Logstash is <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">encrypted</span></code> by default. If you require encryption, please consult the appropriate Elastic documentation to configure the use of TLS.</p>
+</div>
 </div>
 </div>
 <span id="document-wazuh"></span><div class="section" id="wazuh">
@@ -2327,7 +2366,10 @@ from kernel space to user space and vice versa.</div></blockquote>
 <div class="line">The Wazuh agent is cross platform and you can download agents for Windows/Unix/Linux/FreeBSD from the Wazuh website:</div>
 <div class="line"><a class="reference external" href="https://documentation.wazuh.com/3.9/installation-guide/packages-list/index.html">https://documentation.wazuh.com/3.9/installation-guide/packages-list/index.html</a></div>
 </div>
-<p>Please note! It is important to ensure that you download the agent that matches the version of your Wazuh server. For example, if your Wazuh server is version 3.9.5, then you will want to deploy Wazuh agent version 3.9.5.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is important to ensure that you download the agent that matches the version of your Wazuh server. For example, if your Wazuh server is version 3.9.5, then you will want to deploy Wazuh agent version 3.9.5.</p>
+</div>
 <div class="line-block">
 <div class="line">Once you’ve installed the Wazuh agent on the host(s) to be monitored, then perform the steps defined here:</div>
 <div class="line"><a class="reference external" href="https://documentation.wazuh.com/current/user-manual/registering/cli/using-command-line-linux.html">https://documentation.wazuh.com/current/user-manual/registering/cli/using-command-line-linux.html</a></div>
@@ -2746,7 +2788,10 @@ for more details.</p>
 <div class="section" id="parsing">
 <h5>Parsing<a class="headerlink" href="#parsing" title="Permalink to this headline">¶</a></h5>
 <p>Configuration files for custom parsing can be placed in <code class="docutils literal notranslate"><span class="pre">/etc/logstash/custom</span></code>. These will automatically get copied over to <code class="docutils literal notranslate"><span class="pre">/etc/logstash/conf.d</span></code> during the starting of Logstash.</p>
-<p>Note: If you are using a distributed or heavy distributed <a class="reference external" href="architecture#deployment-types">deployment type</a>, it is best practice to put your custom configuration files in the <code class="docutils literal notranslate"><span class="pre">/etc/logstash/custom</span></code> directory on the Master node.  The custom configuration files will then be replicated every 15 minutes or immediately if you use <a class="reference external" href="Salt#features">Salt</a> to force the replication to take place.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you are using a distributed or heavy distributed <a class="reference external" href="architecture#deployment-types">deployment type</a>, it is best practice to put your custom configuration files in the <code class="docutils literal notranslate"><span class="pre">/etc/logstash/custom</span></code> directory on the Master node.  The custom configuration files will then be replicated every 15 minutes or immediately if you use <a class="reference external" href="Salt#features">Salt</a> to force the replication to take place.</p>
+</div>
 <p>After adding your custom configuration file(s), restart Logstash and check the log(s) for errors:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">logstash</span><span class="o">-</span><span class="n">restart</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">tail</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">logstash</span><span class="o">/</span><span class="n">logstash</span><span class="o">.</span><span class="n">log</span>
 </pre></div>
@@ -2877,8 +2922,12 @@ Logstash uses whichever criteria is reached &gt;first.</div></blockquote>
 </div>
 <div class="section" id="logstash-minimal">
 <h4>LOGSTASH_MINIMAL<a class="headerlink" href="#logstash-minimal" title="Permalink to this headline">¶</a></h4>
-<p>We now have a <code class="docutils literal notranslate"><span class="pre">LOGSTASH_MINIMAL</span></code> mode which will offload log parsing to Elasticsearch ingest node.  This allows Logstash to run in as little as 200MB RAM and start instantly.  Please note that the Elasticsearch ingest node parsing currently only supports standard IDS alerts and Zeek logs in JSON format.</p>
-<p>To enable on a new installation, simply run through Setup using:</p>
+<p>We now have a <code class="docutils literal notranslate"><span class="pre">LOGSTASH_MINIMAL</span></code> mode which will offload log parsing to Elasticsearch ingest node.  This allows Logstash to run in as little as 200MB RAM and start instantly.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Elasticsearch ingest node parsing currently only supports standard IDS alerts and Zeek logs in JSON format.</p>
+</div>
+<p>Starting in <code class="docutils literal notranslate"><span class="pre">securityonion-setup</span> <span class="pre">-</span> <span class="pre">20120912-0ubuntu0securityonion327</span></code>, <code class="docutils literal notranslate"><span class="pre">LOGSTASH_MINIMAL</span></code> is enabled by default for new Production Mode deployments.  Evaluation Mode continues to default to traditional Logstash parsing.  If you want to run Evaluation Mode with <code class="docutils literal notranslate"><span class="pre">LOGSTASH_MINIMAL</span></code>, you can run minimal Setup:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sosetup</span><span class="o">-</span><span class="n">minimal</span>
 </pre></div>
 </div>
@@ -2969,7 +3018,10 @@ you.</p>
 <div class="section" id="so-elastalert-test">
 <h5>so-elastalert-test<a class="headerlink" href="#so-elastalert-test" title="Permalink to this headline">¶</a></h5>
 <p><code class="docutils literal notranslate"><span class="pre">so-elastalert-test</span></code> is a wrapper script originally written by Bryant Treacle for ElastAlert’s <code class="docutils literal notranslate"><span class="pre">elastalert-test-rule</span></code> tool.  The script allows you to test an ElastAlert rule and get results immediately. Simply run <code class="docutils literal notranslate"><span class="pre">so-elastalert-test</span></code>, and follow the prompt(s).</p>
-<p>Please note, all options available to <code class="docutils literal notranslate"><span class="pre">elastalert-test-rule</span></code> are not yet included with <code class="docutils literal notranslate"><span class="pre">so-elastalert-test</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">so-elastalert-test</span></code> does not yet include all options available to <code class="docutils literal notranslate"><span class="pre">elastalert-test-rule</span></code>.</p>
+</div>
 </div>
 <div class="section" id="defaults">
 <h5>Defaults<a class="headerlink" href="#defaults" title="Permalink to this headline">¶</a></h5>
@@ -3226,7 +3278,10 @@ Linux-on-mainframe apps.</div></blockquote>
 <p>To maintain a high level of stability, reliability, and support, our Elastic Docker images are based on the Docker images provided by Elastic.co. Their Docker images are built on CentOS 7:
 <a class="reference external" href="https://www.elastic.co/blog/docker-base-centos7">https://www.elastic.co/blog/docker-base-centos7</a></p>
 <p>To leverage a common core OS layer, all of our Docker images are then built on CentOS 7.</p>
-<p>Please note that in the current platform, only a few of the components are delivered via containers. The remaining components (including the configuration files for those containers) are delivered via Ubuntu packages.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the current Security Onion 16.04 platform, only a few of the components are delivered via containers. The remaining components (including the configuration files for those containers) are delivered via Ubuntu packages.</p>
+</div>
 </div>
 <div class="section" id="registry">
 <h4>Registry<a class="headerlink" href="#registry" title="Permalink to this headline">¶</a></h4>
@@ -4340,7 +4395,10 @@ Elastalert.</p>
 </pre></div>
 </div>
 <p>The script should then progress to re-index the matching indices, and inform you when it has completed.</p>
-<p>Please note, abnormal execution of this script may result in data loss– there are <strong>NO GUARANTEES</strong> this process will work perfectly for you.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Abnormal execution of this script may result in data loss– there are <strong>NO GUARANTEES</strong> this process will work perfectly for you.</p>
+</div>
 </div>
 <span id="document-elastic-features"></span><div class="section" id="elastic-features">
 <h3>Elastic Features<a class="headerlink" href="#elastic-features" title="Permalink to this headline">¶</a></h3>
@@ -4412,7 +4470,10 @@ Elastalert.</p>
 <li>set any other account privileges as necessary</li>
 <li>distribute the temporary passwords generated by <code class="docutils literal notranslate"><span class="pre">so-elastic-auth</span></code> to your users and have them reset their passwords</li>
 </ul>
-<p>Please note that you will continue to authenticate to Sguil, Squert, and CapMe with your traditional Sguil/Squert/CapMe account.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please note that you will continue to authenticate to Sguil, Squert, and CapMe with your traditional Sguil/Squert/CapMe account.</p>
+</div>
 <p>If you add new Elastic Auth accounts in the future, you will need to assign them at least the <code class="docutils literal notranslate"><span class="pre">so_user_read_only</span></code> role.</p>
 </div>
 </div>
@@ -4528,11 +4589,7 @@ soup</a></p>
 </pre></div>
 </div>
 <p class="rubric" id="security-onion-14-04">Security Onion 14.04</p>
-<p><strong>Please note</strong>: If you’re still running the old Security Onion
-14.04, <code class="docutils literal notranslate"><span class="pre">soup</span></code> will continue to install Ubuntu updates until Ubuntu
-stops releasing updates for 14.04. However, there won’t be any more
-Security Onion updates for version 14.04 as all development will be
-on version 16.04 moving forward.</p>
+<p>If you’re still running the old Security Onion 14.04, <code class="docutils literal notranslate"><span class="pre">soup</span></code> will continue to install Ubuntu updates until Ubuntu    stops releasing updates for 14.04. However, there won’t be any more Security Onion updates for version 14.04 as all development will be on version 16.04 moving forward.</p>
 </li>
 </ul>
 </div>
@@ -4709,6 +4766,10 @@ Onion and older components.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cut</span> <span class="o">-</span><span class="n">d</span><span class="p">:</span> <span class="o">-</span><span class="n">f1</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">passwd</span>
 </pre></div>
 </div>
+<p>Furthermore, you can get a list of all OS accounts that had a UID &gt; 1000 (not a service account) using the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">passwd</span> <span class="o">|</span> <span class="n">awk</span> <span class="o">-</span><span class="n">F</span><span class="p">:</span> <span class="s1">&#39;$3 &gt; 1000 {print ;}&#39;</span> <span class="o">|</span> <span class="n">cut</span> <span class="o">-</span><span class="n">d</span><span class="p">:</span> <span class="o">-</span><span class="n">f1</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="sso">
 <h4>SSO<a class="headerlink" href="#sso" title="Permalink to this headline">¶</a></h4>
@@ -4754,7 +4815,10 @@ Onion and older components.</p>
 <span id="document-network-configuration"></span><div class="section" id="network-configuration">
 <h3>Network Configuration<a class="headerlink" href="#network-configuration" title="Permalink to this headline">¶</a></h3>
 <p>All of this configuration will happen automatically if you choose <code class="docutils literal notranslate"><span class="pre">Yes,</span> <span class="pre">configure</span> <span class="pre">/etc/network/interfaces</span></code> in the Setup wizard.  If for some reason you need to configure <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code> manually, you can do the following.</p>
-<p>NOTE! You may lose network connectivity during this process! Have a backup plan if attempting over SSH!</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You may lose network connectivity during this process! Have a backup plan if attempting over SSH!</p>
+</div>
 <p>Stop Network Manager:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">network</span><span class="o">-</span><span class="n">manager</span> <span class="n">stop</span>
 </pre></div>
@@ -4983,7 +5047,10 @@ EMAIL=YourUsername@YourDomain.com\
 </pre></div>
 </div>
 <p>You may want to install a local mail relay on your master server, configure it to relay mail to your corporate mail server, and then configure Sguil to send email to the local mail relay.</p>
-<p><strong>Please note</strong>: Sguil will only send email alerts for what is considers <em>new</em> events. Ensure you classify events within the Sguil console, or consider <a class="reference external" href="ManagingAlerts#autocategorize-events">creating an Autocat rule</a> to automatically classify them if you prefer to receive emails for all instances of an alert. Otherwise, you may not receive alerts as intended.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Sguil will only send email alerts for what is considers <em>new</em> events. Ensure you classify events within the Sguil console, or consider <a class="reference external" href="ManagingAlerts#autocategorize-events">creating an Autocat rule</a> to automatically classify them if you prefer to receive emails for all instances of an alert. Otherwise, you may not receive alerts as intended.</p>
+</div>
 </div>
 <div class="section" id="wazuh">
 <h4>Wazuh<a class="headerlink" href="#wazuh" title="Permalink to this headline">¶</a></h4>
@@ -5420,7 +5487,10 @@ and no tags simultaneously. Bro 2.0 should work fine at least.</p>
 </div>
 <div class="section" id="ips-policy">
 <h4>IPS Policy<a class="headerlink" href="#ips-policy" title="Permalink to this headline">¶</a></h4>
-<p>Please note if you are using a ruleset that enables an IPS policy in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/pulledpork/pulledpork.conf</span></code>, your local rules will be disabled. To enabled them, either revert the policy by remarking the <code class="docutils literal notranslate"><span class="pre">ips_policy</span></code> line (and run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code>), or add the policy type to the rules in local.rules.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please note if you are using a ruleset that enables an IPS policy in <code class="docutils literal notranslate"><span class="pre">/etc/nsm/pulledpork/pulledpork.conf</span></code>, your local rules will be disabled. To enabled them, either revert the policy by remarking the <code class="docutils literal notranslate"><span class="pre">ips_policy</span></code> line (and run <code class="docutils literal notranslate"><span class="pre">rule-update</span></code>), or add the policy type to the rules in local.rules.</p>
+</div>
 <p>For example, if <code class="docutils literal notranslate"><span class="pre">ips_policy</span></code> was set to <code class="docutils literal notranslate"><span class="pre">security</span></code>, you would add the following to each rule:</p>
 <p><code class="docutils literal notranslate"><span class="pre">metadata:policy</span> <span class="pre">security-ips</span></code></p>
 <p>The whole rule would then look something like:</p>
@@ -5442,12 +5512,15 @@ from Snort/Suricata, and full packet capture from netsniff-ng, you have,
 in a very short amount of time, enough information to begin making
 identifying areas of interest and making positive changes to your
 security stance.</p>
-<p>However, Network Security Monitoring, as a practice, is not a solution
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Network Security Monitoring, as a practice, is not a solution
 you can plug into your network, make sure you see blinking lights and
 tell people you are “secure.” It requires active intervention from an
 analyst to qualify the quantity of information presented. One of those
 regular interventions is to ensure that you are tuning properly and
 proactively attempting to reach an acceptable level of signal to noise.</p>
+</div>
 <div class="section" id="testing-to-make-sure-the-ids-is-working">
 <h4>Testing to make sure the IDS is working<a class="headerlink" href="#testing-to-make-sure-the-ids-is-working" title="Permalink to this headline">¶</a></h4>
 <p>Below, we’ll provide a few ways we can test our IDS (Snort/Suricata) to
@@ -5927,7 +6000,11 @@ alert tcp $HOME_NET any -&gt; $EXTERNAL_NET !1433 (msg:&quot;ET TROJAN Bancos.DV
 </div>
 <span id="document-af-packet"></span><div class="section" id="af-packet">
 <h3>AF-PACKET<a class="headerlink" href="#af-packet" title="Permalink to this headline">¶</a></h3>
-<p>Modern versions of Setup will configure <a class="reference external" href="Suricata">Suricata</a> and <a class="reference external" href="Zeek">Zeek</a> to use AF-PACKET instead of <a class="reference external" href="PF-RING">PF-RING</a>. (<a class="reference external" href="Snort">Snort</a> will continue to use <a class="reference external" href="PF-RING">PF-RING</a> for load balancing until Snort 3.0 is released.)</p>
+<p>Modern versions of Setup will configure <a class="reference external" href="Suricata">Suricata</a> and <a class="reference external" href="Zeek">Zeek</a> to use AF-PACKET instead of <a class="reference external" href="PF-RING">PF-RING</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><a class="reference external" href="Snort">Snort</a> will continue to use <a class="reference external" href="PF-RING">PF-RING</a> for load balancing until Snort 3.0 is released.</p>
+</div>
 <p>If you want to change the number of AF-PACKET workers after running Setup, you can do the following.</p>
 <div class="section" id="id1">
 <h4>Suricata<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
@@ -5969,7 +6046,10 @@ alert tcp $HOME_NET any -&gt; $EXTERNAL_NET !1433 (msg:&quot;ET TROJAN Bancos.DV
 </div>
 <div class="section" id="tcpreplay">
 <h4>tcpreplay<a class="headerlink" href="#tcpreplay" title="Permalink to this headline">¶</a></h4>
-<p>If you try to test AF-PACKET load balancing using tcpreplay locally, please note that load balancing will not work properly and all (or most) traffic will be handled by the first worker in the AF-PACKET cluster.  If you need to test AF-PACKET load balancing properly, you can run tcpreplay on another machine connected to your AF-PACKET machine.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If you try to test AF-PACKET load balancing using tcpreplay locally, please note that load balancing will not work properly and all (or most) traffic will be handled by the first worker in the AF-PACKET cluster.  If you need to test AF-PACKET load balancing properly, you can run tcpreplay on another machine connected to your AF-PACKET machine.</p>
+</div>
 </div>
 </div>
 <span id="document-performance"></span><div class="section" id="high-performance-tuning">
@@ -6323,18 +6403,28 @@ something like the following:</div>
 <span id="document-cloud-ami"></span><div class="section" id="cloud-ami">
 <h3>Cloud AMI<a class="headerlink" href="#cloud-ami" title="Permalink to this headline">¶</a></h3>
 <p>Security Onion VPC Traffic Mirroring Configuration</p>
-<p>NOTE: THE CLOUD AMI IS STILL IN TESTING!  IF IT BREAKS YOU CAN KEEP ALL THE PIECES.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">THE CLOUD AMI IS STILL IN TESTING!  IF IT BREAKS YOU CAN KEEP ALL THE PIECES.</p>
+</div>
 <p>This section covers configuring a Security Onion 16.04 cloud image hosted in Amazon Web Services (AWS) to receive mirrored/spanned traffic from other instances hosted within an Amazon Virtual Private Cloud (VPC).</p>
-<p>Note:  You can only mirror traffic from an EC2 instance that is powered by the AWS Nitro system.  For a list of supported Nitro systems please see:</p>
-<p><a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances</a></p>
-<p>Note: This section does not cover network connectivity to the Security Onion node. This can be achieved through
-configuring an external IP for the node’s management interface, or through the use of a VPN connection
-via OpenVPN, PfSense etc.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>You can only mirror traffic from an EC2 instance that is powered by the AWS Nitro system.  For a list of supported Nitro systems please see:</p>
+<p class="last"><a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances</a></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This section does not cover network connectivity to the Security Onion node. This can be achieved through configuring an external IP for the node’s management interface, or through the use of a VPN connection via OpenVPN, PfSense etc.</p>
 <p>For more details about vpn connections please see:</p>
-<p><a class="reference external" href="https://medium.com/&#64;svfusion/setup-site-to-site-vpn-to-aws-with-pfsense-1cac16623bd6">https://medium.com/&#64;svfusion/setup-site-to-site-vpn-to-aws-with-pfsense-1cac16623bd6</a></p>
-<p>Note:  This guide does not cover how to set up a VPC in AWS.</p>
+<p class="last"><a class="reference external" href="https://medium.com/&#64;svfusion/setup-site-to-site-vpn-to-aws-with-pfsense-1cac16623bd6">https://medium.com/&#64;svfusion/setup-site-to-site-vpn-to-aws-with-pfsense-1cac16623bd6</a></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This guide does not cover how to set up a VPC in AWS.</p>
 <p>For more details about setting up a VPC please see:</p>
-<p><a class="reference external" href="https://docs.aws.amazon.com/directoryservice/latest/admin-guide/gsg_create_vpc.html">https://docs.aws.amazon.com/directoryservice/latest/admin-guide/gsg_create_vpc.html</a></p>
+<p class="last"><a class="reference external" href="https://docs.aws.amazon.com/directoryservice/latest/admin-guide/gsg_create_vpc.html">https://docs.aws.amazon.com/directoryservice/latest/admin-guide/gsg_create_vpc.html</a></p>
+</div>
 <div class="section" id="getting-started">
 <h4>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="terraform">
@@ -6402,7 +6492,7 @@ via OpenVPN, PfSense etc.</p>
 </li>
 <li><p class="first">If prompted, select the appropriate SSH keypair that will be used to ssh into the Security Onion instance for administration</p>
 </li>
-<li><p class="first">Please note that the default username for the Security-Onion-16.04 AMI is: <code class="docutils literal notranslate"><span class="pre">onion</span></code></p>
+<li><p class="first">The default username for the Security-Onion-16.04 AMI is: <code class="docutils literal notranslate"><span class="pre">onion</span></code></p>
 </li>
 <li><p class="first">Once you have logged in, please do the following steps.</p>
 <blockquote>
@@ -6476,8 +6566,10 @@ via OpenVPN, PfSense etc.</p>
 </div>
 <span id="document-cloud-client"></span><div class="section" id="cloud-client">
 <h3>Cloud Client<a class="headerlink" href="#cloud-client" title="Permalink to this headline">¶</a></h3>
-<p><strong>Please Note!</strong></p>
-<p>This cloud client idea was developed before cloud providers offered virtual taps.  If you are able to use your cloud provider’s virtual tap, please do so instead of using this cloud client workaround.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This cloud client idea was developed before cloud providers offered virtual taps.  If you are able to use your cloud provider’s virtual tap, please do so instead of using this cloud client workaround.</p>
+</div>
 <div class="section" id="amazon">
 <h4>Amazon<a class="headerlink" href="#amazon" title="Permalink to this headline">¶</a></h4>
 <p>AWS Virtual Taps use VXLAN encoding and we now have versions of Suricata and Zeek that support decoding that VXLAN traffic.  <strong>We recommend using our Security Onion AMI as it includes this support out of the box:</strong></p>
@@ -6490,7 +6582,10 @@ via OpenVPN, PfSense etc.</p>
 <div class="section" id="legacy-cloud-client">
 <h4>Legacy Cloud Client<a class="headerlink" href="#legacy-cloud-client" title="Permalink to this headline">¶</a></h4>
 <p>If for some reason you can’t use the options above, you can try this legacy cloud client idea, but please keep in mind:</p>
-<p><strong>Warning! This cloud client is considered experimental! USE AT YOUR OWN RISK!</strong></p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This cloud client is considered experimental! USE AT YOUR OWN RISK!</p>
+</div>
 <p>If your cloud provider doesn’t already offer a virtual tap, you can use daemonlogger or netsniff-ng as a virtual tap. This virtual tap will copy all traffic from our production cloud box to an OpenVPN bridge that transports the traffic to our
 Security Onion sensor where it is then analyzed.</p>
 <p>This guide was originally written for Security Onion 12.04 and was updated for Security Onion 14.04, but hasn’t been updated or tested on 16.04.</p>
@@ -6851,8 +6946,10 @@ limited user!</p>
 DNS Anomaly Detection script based on the query logs coming from his DNS
 server. We can do the same thing with Zeek’s dns.log (where Zeek captures
 all the DNS queries it sees on the network).</p>
-<p>Please note that this script is only intended for standalone machines
-and will not work properly on distributed deployments.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please note that this script is only intended for standalone machines and will not work properly on distributed deployments.</p>
+</div>
 <p>This version of the script works on older installations using Zeek TSV
 output:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
@@ -7859,60 +7956,6 @@ Please enter your selection (a - analyst, c - apt-cacher-ng client, l - syslog, 
 </pre></div>
 </div>
 </div>
-<span id="document-so-import-pcap"></span><div class="section" id="so-import-pcap">
-<h3>so-import-pcap<a class="headerlink" href="#so-import-pcap" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">so-import-pcap</span></code> will import one or more pcaps into Security Onion and preserve original timestamps.</p>
-<p>It will do the following:</p>
-<ul class="simple">
-<li>automatically run Setup to configure the system if necessary</li>
-<li>stop and disable Curator to avoid closing old indices</li>
-<li>stop and disable all active sniffing processes (Zeek, Snort, Suricata, and netsniff-ng)</li>
-<li>stop and disable ossec_agent</li>
-<li>reconfigure and restart sguild, syslog-ng, and Logstash where necessary</li>
-<li>generate IDS alerts using Snort or Suricata</li>
-<li>generate Zeek logs</li>
-<li>store IDS alerts and Zeek logs with original timestamps</li>
-<li>split traffic into separate daily pcaps and store them where sguil’s pcap_agent can find them</li>
-</ul>
-<p>Requirements:</p>
-<ul class="simple">
-<li>You must be running at least Security Onion 16.04.</li>
-</ul>
-<p>Warnings:</p>
-<ul class="simple">
-<li>Do NOT run this on a production deployment. It is designed for standalone systems designated for so-import-pcap.</li>
-<li>If you’re running in a VM with snapshot capability, you might want to take a snapshot before this program makes changes.</li>
-</ul>
-<p>Reverting System Changes:</p>
-<ul class="simple">
-<li>If you take a VM snapshot before this program makes changes, then just revert to snapshot.</li>
-<li>Otherwise, you can re-run Setup and it should overwrite all modified files to revert the system to normal operation.</li>
-</ul>
-<div class="section" id="usage">
-<h4>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h4>
-<p>Please supply the full path to at least one pcap file.</p>
-<p>For example, to import a single pcap named <code class="docutils literal notranslate"><span class="pre">import.pcap</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">import</span><span class="o">-</span><span class="n">pcap</span> <span class="o">/</span><span class="n">full</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">import</span><span class="o">.</span><span class="n">pcap</span>
-</pre></div>
-</div>
-<p>To import multiple pcaps:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">import</span><span class="o">-</span><span class="n">pcap</span> <span class="o">/</span><span class="n">full</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">import1</span><span class="o">.</span><span class="n">pcap</span> <span class="o">/</span><span class="n">full</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">import2</span><span class="o">.</span><span class="n">pcap</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="example">
-<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
-<p>For a detailed walk-through with screenshots, please see <a class="reference external" href="https://blog.securityonion.net/2019/06/analyze-pcaps-in-3-simple-steps-using.html">https://blog.securityonion.net/2019/06/analyze-pcaps-in-3-simple-steps-using.html</a>.</p>
-</div>
-<div class="section" id="warning">
-<h4>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h4>
-<p>Please note that so-import-pcap will make changes to your system! It will warn you before doing so and will prompt you to press Enter to continue or Ctrl-c to cancel.</p>
-<p>If you want to bypass the “Press Enter to continue” prompt, you can do something like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">import</span><span class="o">-</span><span class="n">pcap</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">samples</span><span class="o">/</span><span class="n">markofu</span><span class="o">/</span><span class="n">ie</span><span class="o">*</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <span id="document-help"></span><div class="section" id="help">
@@ -8653,17 +8696,20 @@ for their contribution to our community!</div>
 </div>
 <span id="document-support"></span><div class="section" id="support">
 <h3>Support<a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="commercial-support">
-<h4>Commercial Support<a class="headerlink" href="#commercial-support" title="Permalink to this headline">¶</a></h4>
-<p>If you need private and/or priority support, please consider purchasing
-commercial support:</p>
+<div class="section" id="paid-support">
+<h4>Paid Support<a class="headerlink" href="#paid-support" title="Permalink to this headline">¶</a></h4>
+<p>If you need private or priority support, please consider purchasing support or hardware appliances from Security Onion Solutions:</p>
 <p><a class="reference external" href="https://securityonionsolutions.com">https://securityonionsolutions.com</a></p>
+<p>Purchasing from Security Onion Solutions helps to fund further development of the Security Onion platform!</p>
 </div>
-<div class="section" id="free-support">
-<h4>Free Support<a class="headerlink" href="#free-support" title="Permalink to this headline">¶</a></h4>
-<p>If you need free support, please use our public security-onion mailing
+<div class="section" id="community-support">
+<h4>Community Support<a class="headerlink" href="#community-support" title="Permalink to this headline">¶</a></h4>
+<p>If you need free support, you can reach out to one of the following public communities for support.</p>
+<p>If you’re using our traditional Security Onion 16.04 platform, you can reach out to our public security-onion mailing
 list:</p>
 <p><a class="reference external" href="MailingLists">MailingLists</a></p>
+<p>If you have questions or problems relating to our new Security Onion Hybrid Hunter platform, you can reach out to our reddit community:</p>
+<p><a class="reference external" href="https://www.reddit.com/r/securityonion/">https://www.reddit.com/r/securityonion/</a></p>
 </div>
 </div>
 <span id="document-mailing-lists"></span><div class="section" id="mailing-lists">
@@ -8780,9 +8826,9 @@ list:</p>
 <span id="document-alienvault-otx"></span><div class="section" id="alienvault-otx">
 <h3>AlienVault-OTX<a class="headerlink" href="#alienvault-otx" title="Permalink to this headline">¶</a></h3>
 <p>We can easily pull in <a class="reference external" href="https://otx.alienvault.com">Alienvault OTX</a> pulses into Security Onion and have Zeek utilize them for the <a class="reference external" href="https://www.bro.org/sphinx-git/frameworks/intel.html">Intel Framework</a> by leveraging <a class="reference external" href="https://github.com/hosom/bro-otx">Stephen Hosom</a>’s work with Alienvault OTX integration.</p>
-<div class="section" id="warning">
-<h4>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h4>
-<p>Please keep in mind we do not officially support use of this script, so installation is at your own risk.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please keep in mind we do not officially support use of this script, so installation is at your own risk.</p>
 </div>
 <div class="section" id="installation">
 <h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
@@ -8860,9 +8906,9 @@ generic as possible before releasing it &gt;so that &gt;other teams around
 the world may also use it and customize it as they see fit.</p>
 </div></blockquote>
 <p>We can add FIR to Security Onion as a Docker container to enhance its current capabilities and leverage the great work from the folks at <a class="reference external" href="https://github.com/certsocietegenerale">CERT Societe Generale</a>.</p>
-<div class="section" id="warning">
-<h4>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h4>
-<p>Please keep in mind we do not officially support FIR, so installation is at your own risk.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please keep in mind we do not officially support FIR, so installation is at your own risk.</p>
 </div>
 <div class="section" id="installation">
 <h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
@@ -8895,9 +8941,9 @@ or</li>
 <blockquote>
 <div>GRR Rapid Response: remote live forensics for incident response</div></blockquote>
 <p>We can add GRR to Security Onion as a Docker container to enhance its current capabilities and leverage the great work from the folks at <a class="reference external" href="https://github.com/google/grr">Google</a>.</p>
-<div class="section" id="warning">
-<h4>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h4>
-<p>Please keep in mind we do not officially support GRR, so installation is at your own risk.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please keep in mind we do not officially support GRR, so installation is at your own risk.</p>
 </div>
 <div class="section" id="installation">
 <h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
@@ -9007,10 +9053,10 @@ hive_observable_data_mapping:
 <div class="line"><a class="reference external" href="https://www.circl.lu/doc/misp/automation/#get-eventsnids-nids-rules-export">https://www.circl.lu/doc/misp/automation/#get-eventsnids-nids-rules-export</a></div>
 </div>
 <p>We can leverage this functionality by quickly and easily setting up an automated mechanism to pull NIDS rules from a MISP instance and add them to our local rules for Security Onion. To do so, we just need to follow the simple steps below.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please keep in mind we do not officially support this integration, so installation is at your own risk.</p>
 </div>
-<div class="section" id="warning">
-<h4>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h4>
-<p>Please keep in mind we do not officially support this integration, so installation is at your own risk.</p>
 </div>
 <div class="section" id="installation">
 <h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
@@ -9115,9 +9161,9 @@ hosts</div>
 </div>
 </div></blockquote>
 <p>We can add RITA to Security Onion to enhance its current capabilities and leverage the great work from the folks at <a class="reference external" href="https://activecountermeasures.com/">Active Countermeasures</a>. They’ve done a fantastic job of allowing RITA to be easy to integrate with Security Onion.</p>
-<div class="section" id="warning">
-<h4>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h4>
-<p>Please keep in mind we do not officially support RITA, so installation is at your own risk.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please keep in mind we do not officially support RITA, so installation is at your own risk.</p>
 </div>
 <div class="section" id="installation">
 <h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
@@ -9169,9 +9215,9 @@ data into RITA. See <a class="reference external" href="https://github.com/activ
 <p>From <a class="reference external" href="https://github.com/target/strelka">https://github.com/target/strelka</a>:</p>
 <blockquote>
 <div>Strelka is a real-time file scanning system used for threat hunting, threat detection, and incident response. Based on the design established by Lockheed Martin’s Laika BOSS and similar projects (see: related projects), Strelka’s purpose is to perform file extraction and metadata collection at huge scale.</div></blockquote>
-<div class="section" id="warning">
-<h4>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h4>
-<p>Please keep in mind we do not officially support Strelka, so installation is at your own risk.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please keep in mind we do not officially support Strelka, so installation is at your own risk.</p>
 </div>
 <div class="section" id="installation">
 <h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
@@ -9220,7 +9266,10 @@ data into RITA. See <a class="reference external" href="https://github.com/activ
 <span class="p">};</span>
 </pre></div>
 </div>
-<p>Please note that this option requires <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">DEBUG</span> <span class="pre">2</span></code> in <code class="docutils literal notranslate"><span class="pre">/etc/sguild/sguild.conf</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This option requires <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">DEBUG</span> <span class="pre">2</span></code> in <code class="docutils literal notranslate"><span class="pre">/etc/sguild/sguild.conf</span></code>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -9236,10 +9285,10 @@ you have uncovered a vulnerability, please follow these steps:</p>
 <li>please do not disclose publicly until we have had sufficient time to
 resolve the issue</li>
 </ul>
-<p>Note that this security address should be used only for undisclosed
-vulnerabilities. Dealing with fixed issues or general questions on how
-to use Security Onion should be handled regularly via the
-<a class="reference external" href="MailingLists">security-onion Google Group</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This security address should be used only for undisclosed vulnerabilities. Dealing with fixed issues or general questions on how to use Security Onion should be handled regularly via the <a class="reference external" href="MailingLists">security-onion Google Group</a>.</p>
+</div>
 </div>
 <span id="document-appendix"></span><div class="section" id="appendix">
 <h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h2>
@@ -9254,11 +9303,11 @@ installation on new hardware designed to meet these requirements. If
 your ELSA hardware already meets these requirements and you really need
 to perform an in-place upgrade from ELSA to Elastic, this page will
 provide an overview of steps necessary.</p>
-<div class="section" id="warning">
-<h4>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h4>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
 <p>The in-place upgrade process is still considered EXPERIMENTAL and so the
 usual warnings and disclaimers apply:</p>
-<ul class="simple">
+<ul class="last simple">
 <li>This is BLEEDING EDGE and TOTALLY UNSUPPORTED!</li>
 <li>If this breaks your system, you get to keep both pieces!</li>
 <li>This may result in nausea, vomiting, or a burning sensation.</li>
@@ -9463,25 +9512,13 @@ logs from the new sensor.</p>
 <span id="document-upgrading-from-14.04-to-16.04"></span><div class="section" id="upgrading-from-14-04-to-16-04">
 <h3>Upgrading from 14.04 to 16.04<a class="headerlink" href="#upgrading-from-14-04-to-16-04" title="Permalink to this headline">¶</a></h3>
 <p>Please read through this entire page before beginning!</p>
-<div class="section" id="disclaimers">
-<h4>Disclaimers<a class="headerlink" href="#disclaimers" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<ul class="last simple">
 <li>We offer no guarantees that this upgrade process will work perfectly.</li>
-</ul>
-</div>
-<div class="section" id="warnings">
-<h4>Warnings<a class="headerlink" href="#warnings" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li>Before upgrading production sensors, you should fully test this
-upgrade process on test sensors in a test environment that closely
-matches your production environment.</li>
-<li>Argus, Pads, Prads, and ELSA are no longer supported – these
-software packages will be removed upon upgrade and will not be
-supported in future releases.</li>
-<li>If you were previously running ELSA, please ensure your system has
-been converted to
-<a class="reference external" href="ELSA-to-Elastic">Elastic</a>
-before upgrading.</li>
+<li>Before upgrading production sensors, you should fully test this upgrade process on test sensors in a test environment that closely matches your production environment.</li>
+<li>Argus, Pads, Prads, and ELSA are no longer supported – these software packages will be removed upon upgrade and will not be supported in future releases.</li>
+<li>If you were previously running ELSA, please ensure your system has been converted to <a class="reference external" href="ELSA-to-Elastic">Elastic</a> before upgrading.</li>
 </ul>
 </div>
 <div class="section" id="pre-upgrade-notes">
@@ -9889,7 +9926,7 @@ configuration to boot into text mode:</p>
         &copy; Copyright 2020
       
         <span class="commit">
-          Revision <code>3df39cf2</code>.
+          Revision <code>046e1b05</code>.
         </span>
       
 
