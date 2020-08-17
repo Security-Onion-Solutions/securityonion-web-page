@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Security Onion 16.04.6.6 documentation</title>
+  <title>Security Onion 16.04.7.1 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                latest
+                16.04
               </div>
             
           
@@ -307,14 +307,14 @@
     
       <li><a href="index.html#document-index">Docs</a> &raquo;</li>
         
-      <li>Security Onion 16.04.6.6 documentation</li>
+      <li>Security Onion 16.04.7.1 documentation</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/Security-Onion-Solutions/securityonion-docs/blob/master/index.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/Security-Onion-Solutions/securityonion-docs/blob/16.04/index.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -578,34 +578,35 @@
 <li>Curator</li>
 <li>Elastalert</li>
 <li>Redis (Only if configured to output to a storage node)</li>
-<li>OSSEC</li>
+<li>Wazuh/OSSEC</li>
 <li>Sguild</li>
 </ul>
 </div>
 <div class="section" id="forward-node">
 <h5>Forward Node<a class="headerlink" href="#forward-node" title="Permalink to this headline">¶</a></h5>
-<p>When using a <code class="docutils literal notranslate"><span class="pre">forward</span> <span class="pre">node</span></code>, Elastic Stack components are not installed. Syslog-NG forwards all logs to Logstash on the master server via an autossh tunnel, where they are stored in Elasticsearch on the master server, or forwarded to storage node’s Elasticsearch instance (if the master server has been configured to use a storage node). From there, the data can be queried through the use of cross-cluster search.</p>
+<p>When using a <code class="docutils literal notranslate"><span class="pre">forward</span> <span class="pre">node</span></code>, Elastic Stack components are not installed. Syslog-ng forwards all logs to Logstash on the master server via an autossh tunnel, where they are stored in Elasticsearch on the master server, or forwarded to storage node’s Elasticsearch instance (if the master server has been configured to use a storage node). From there, the data can be queried through the use of cross-cluster search.</p>
 <p>Forward Nodes run the following components (Production Mode w/ Best Practices):</p>
 <ul class="simple">
-<li>Zeek</li>
+<li>Zeek (formerly Bro)</li>
 <li>Snort/Suricata</li>
-<li>Netsniff-NG</li>
-<li>OSSEC</li>
-<li>Syslog-NG</li>
+<li>netsniff-ng</li>
+<li>Wazuh/OSSEC</li>
+<li>syslog-ng</li>
 </ul>
 </div>
 <div class="section" id="heavy-node">
 <h5>Heavy Node<a class="headerlink" href="#heavy-node" title="Permalink to this headline">¶</a></h5>
 <p>When using a <code class="docutils literal notranslate"><span class="pre">heavy</span> <span class="pre">node</span></code>, Security Onion implements distributed deployments using Elasticsearch’s <a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html">cross cluster search</a>. When you run Setup and choose <code class="docutils literal notranslate"><span class="pre">Heavy</span> <span class="pre">Node</span></code>, it will create a local Elasticsearch instance and then configure the master server to query that instance (similar to ELSA distributed deployments). This is done by constructing an autossh tunnel from the heavy node to the master server, configuring reverse port forwarding to allow the master server to connect to the local Elasticsearch instance, and updating _cluster/settings on the master server so that it will query the local Elasticsearch instance.</p>
+<p>Heavy Nodes run the following components (Production Mode w/ Best Practices):</p>
 <ul class="simple">
 <li>Elasticsearch</li>
 <li>Logstash</li>
 <li>Curator</li>
 <li>Zeek</li>
 <li>Snort/Suricata</li>
-<li>Netsniff-NG</li>
-<li>OSSEC</li>
-<li>Syslog-NG (forwards logs locally to Logstash)</li>
+<li>netsniff-ng</li>
+<li>Wazuh/OSSEC</li>
+<li>syslog-ng (forwards logs locally to Logstash)</li>
 </ul>
 </div>
 <div class="section" id="storage-node">
@@ -616,7 +617,7 @@
 <li>Elasticsearch</li>
 <li>Logstash</li>
 <li>Curator</li>
-<li>OSSEC</li>
+<li>Wazuh/OSSEC</li>
 </ul>
 </div>
 </div>
@@ -1941,6 +1942,12 @@ severity level, by editing <code class="docutils literal notranslate"><span clas
 <div class="section" id="performance">
 <h4>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h4>
 <p>In Security Onion, we compile Snort with <a class="reference external" href="PF-RING">PF-RING</a> to allow you to spin up multiple instances to handle more traffic.</p>
+<p>For best performance, Snort should be pinned to specific CPUs. In most cases, you’ll want to pin sniffing processes to the same CPU that your sniffing NIC is bound to.  Starting in <code class="docutils literal notranslate"><span class="pre">securityonion-nsmnow-admin-scripts</span> <span class="pre">-</span> <span class="pre">20120724-0ubuntu0securityonion226</span></code>, we now have the ability to pin Snort processes.  With this package in place, you can pin Snort processes to specific CPUs by adding a line to the <code class="docutils literal notranslate"><span class="pre">/etc/nsm/HOSTNAME-INTERFACE/sensor.conf</span></code> file like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IDS_LB_CPUS</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span>
+</pre></div>
+</div>
+<p>and then (re)starting the Snort process(es) using <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">so-nids-start</span></code> or <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">so-nids-restart</span></code>.</p>
+<p>In the example above, the first four snort processes would be pinned to the first four odd-numbered CPU cores. If there are more Snort processes enabled via <code class="docutils literal notranslate"><span class="pre">IDS_LB_PROCS</span></code> than are listed in the pin config in <code class="docutils literal notranslate"><span class="pre">IDS_LB_CPUS</span></code>, then any processes without a CPU listed would have the default CPU affinity.  You can verify proper pinning using <code class="docutils literal notranslate"><span class="pre">taskset</span> <span class="pre">-cp</span> <span class="pre">PID</span></code> where PID is the actual process ID of the Snort process you are checking.</p>
 </div>
 <div class="section" id="configuration">
 <h4>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h4>
@@ -1967,10 +1974,8 @@ powerful Lua scripting support for detection of complex threats.</div></blockquo
 <div class="section" id="performance">
 <h4>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h4>
 <p>We compile Suricata to support both <a class="reference external" href="PF-RING">PF-RING</a> and <a class="reference external" href="AF-PACKET">AF-PACKET</a> to allow you to spin up multiple workers to handle more traffic.  Modern versions of Setup default to <a class="reference external" href="AF-PACKET">AF-PACKET</a>.</p>
-<div class="line-block">
-<div class="line">For high traffic levels, you may want to pin Suricata to specific CPU cores using the affinity settings in <code class="docutils literal notranslate"><span class="pre">suricata.yaml</span></code>:</div>
-<div class="line"><a class="reference external" href="https://suricata.readthedocs.io/en/latest/configuration/suricata-yaml.html#threading">https://suricata.readthedocs.io/en/latest/configuration/suricata-yaml.html#threading</a></div>
-</div>
+<p>For best performance, Suricata processes should be pinned to specific CPUs. In most cases, you’ll want to pin sniffing processes to the same CPU that your sniffing NIC is bound to. You can use the affinity settings in <code class="docutils literal notranslate"><span class="pre">suricata.yaml</span></code> as shown in <a class="reference external" href="https://suricata.readthedocs.io/en/latest/configuration/suricata-yaml.html#threading">https://suricata.readthedocs.io/en/latest/configuration/suricata-yaml.html#threading</a>.</p>
+<p>Also see <a class="reference external" href="https://suricata.readthedocs.io/en/latest/performance/tuning-considerations.html">https://suricata.readthedocs.io/en/latest/performance/tuning-considerations.html</a>.</p>
 </div>
 <div class="section" id="configuration">
 <h4>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h4>
@@ -1996,6 +2001,12 @@ powerful Lua scripting support for detection of complex threats.</div></blockquo
 <p>Zeek is formerly known as Bro.  From <a class="reference external" href="https://www.zeek.org/">https://www.zeek.org/</a>:</p>
 <blockquote>
 <div>Zeek is a powerful network analysis framework that is much different from the typical IDS you may know. (Zeek is the new name for the long-established Bro system. Note that parts of the system retain the “Bro” name, and it also often appears in the documentation and distributions.)</div></blockquote>
+<div class="section" id="performance">
+<h4>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">/opt/bro/etc/node.cfg</span></code></p>
+<p>We compile Zeek to support both <a class="reference external" href="PF-RING">PF-RING</a> and <a class="reference external" href="AF-PACKET">AF-PACKET</a> so that you can spin up multiple Zeek workers to handle more traffic.  Modern versions of Setup now default to <a class="reference external" href="AF-PACKET">AF-PACKET</a>.</p>
+<p>For best performance, Zeek should be pinned to specific CPUs. In most cases, you’ll want to pin sniffing processes to the same CPU that your sniffing NIC is bound to.  You can do this using the <code class="docutils literal notranslate"><span class="pre">pin_cpus</span></code> setting as shown at <a class="reference external" href="https://docs.zeek.org/en/stable/configuration/#using-pf-ring">https://docs.zeek.org/en/stable/configuration/#using-pf-ring</a>.</p>
+</div>
 <div class="section" id="logs">
 <h4>Logs<a class="headerlink" href="#logs" title="Permalink to this headline">¶</a></h4>
 <p>Zeek logs are stored in <code class="docutils literal notranslate"><span class="pre">/nsm/bro/logs</span></code>. They are consumed by <a class="reference external" href="syslog">syslog-ng</a>, parsed and augmented by <a class="reference external" href="Logstash">Logstash</a>, stored in <a class="reference external" href="Elasticsearch">Elasticsearch</a>, and viewable in <a class="reference external" href="Kibana">Kibana</a>.</p>
@@ -2104,12 +2115,6 @@ powerful Lua scripting support for detection of complex threats.</div></blockquo
 <li><p class="first">To install and configure an Alienvault OTX Connector, please see the <a class="reference external" href="Alienvault-OTX">Alienvault-OTX</a> section.</p>
 </li>
 </ul>
-</div>
-<div class="section" id="workers">
-<h4>Workers<a class="headerlink" href="#workers" title="Permalink to this headline">¶</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">/opt/bro/etc/node.cfg</span></code></p>
-<p>We compile Zeek to support both <a class="reference external" href="PF-RING">PF-RING</a> and <a class="reference external" href="AF-PACKET">AF-PACKET</a> so that you can spin up multiple Zeek workers to handle more traffic.  Modern versions of Setup now default to <a class="reference external" href="AF-PACKET">AF-PACKET</a>.</p>
-<p>If you are monitoring high traffic levels, you may need to use the <code class="docutils literal notranslate"><span class="pre">pin_cpus</span></code> setting.  For more information, please see <a class="reference external" href="https://docs.zeek.org/en/stable/configuration/#using-pf-ring">https://docs.zeek.org/en/stable/configuration/#using-pf-ring</a>.</p>
 </div>
 <div class="section" id="custom-scripts">
 <h4>Custom Scripts<a class="headerlink" href="#custom-scripts" title="Permalink to this headline">¶</a></h4>
@@ -2372,7 +2377,7 @@ from kernel space to user space and vice versa.</div></blockquote>
 </div>
 <div class="line-block">
 <div class="line">Once you’ve installed the Wazuh agent on the host(s) to be monitored, then perform the steps defined here:</div>
-<div class="line"><a class="reference external" href="https://documentation.wazuh.com/current/user-manual/registering/cli/using-command-line-linux.html">https://documentation.wazuh.com/current/user-manual/registering/cli/using-command-line-linux.html</a></div>
+<div class="line"><a class="reference external" href="https://documentation.wazuh.com/3.9/user-manual/registering/cli/using-command-line-linux.html">https://documentation.wazuh.com/3.9/user-manual/registering/cli/using-command-line-linux.html</a></div>
 </div>
 <p>You may need to run <a class="reference external" href="so-allow">so-allow</a> to allow traffic from the IP address of your Wazuh agent(s).</p>
 </div>
@@ -2414,7 +2419,7 @@ malware operate on your network.</div></blockquote>
 <div class="line-block">
 <div class="line">Josh Brower wrote a great paper on integrating sysmon into Security
 Onion:</div>
-<div class="line"><a class="reference external" href="https://digital-forensics.sans.org/community/papers/gcfa/sysmon-enrich-security-onions-host-level-capabilities_10612">https://digital-forensics.sans.org/community/papers/gcfa/sysmon-enrich-security-onions-host-level-capabilities_10612</a></div>
+<div class="line"><a class="reference external" href="https://www.sans.org/reading-room/whitepapers/forensics/sysmon-enrich-security-onion-039-s-host-level-capabilities-35837">https://www.sans.org/reading-room/whitepapers/forensics/sysmon-enrich-security-onion-039-s-host-level-capabilities-35837</a></div>
 </div>
 </div>
 <div class="section" id="configuration">
@@ -2715,7 +2720,7 @@ stay in good health.</p>
 </div>
 <div class="section" id="removing-a-node-from-the-master">
 <h4>Removing a node from the master<a class="headerlink" href="#removing-a-node-from-the-master" title="Permalink to this headline">¶</a></h4>
-<p>If you need to remove a node (such as a <code class="docutils literal notranslate"><span class="pre">heavy</span> <span class="pre">node</span></code> or a <code class="docutils literal notranslate"><span class="pre">storage</span> <span class="pre">node</span></code>) from your cross cluster search configuration, send the following to Elasticsearch on your master server (replacing “node1” with the actual node you’d like to remove and noting that null must be in square brackets):</p>
+<p>If you need to remove a node (such as a <code class="docutils literal notranslate"><span class="pre">heavy</span> <span class="pre">node</span></code> or a <code class="docutils literal notranslate"><span class="pre">storage</span> <span class="pre">node</span></code>) from your cross cluster search configuration, send the following to Elasticsearch on your master server (replacing “node1” with the actual node you’d like to remove):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PUT</span> <span class="n">_cluster</span><span class="o">/</span><span class="n">settings</span>
 <span class="p">{</span>
 <span class="s2">&quot;persistent&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -5106,16 +5111,15 @@ add n$actions[Notice::ACTION\_ALARM];
 </div>
 <span id="document-ip"></span><div class="section" id="changing-ip-addresses">
 <h3>Changing IP Addresses<a class="headerlink" href="#changing-ip-addresses" title="Permalink to this headline">¶</a></h3>
-<p>If you need to update the IP address of your server/sensor to move it to
-a different area of your network, you need to do a few things:</p>
+<p>If you need to update the IP address of your server/sensor to move it to a different area of your network, you need to do a few things:</p>
 <ul class="simple">
 <li>update the actual IP address of the management interface</li>
 <li>update NSM config files to reflect the new IP address</li>
 </ul>
+<p>You may also need to update your SSH key configuration.</p>
 <div class="section" id="update-the-actual-ip-address-of-the-management-interface">
 <h4>Update the actual IP address of the management interface<a class="headerlink" href="#update-the-actual-ip-address-of-the-management-interface" title="Permalink to this headline">¶</a></h4>
-<p>To update the actual IP address of the management interface, you have
-two options:</p>
+<p>To update the actual IP address of the management interface, you have two options:</p>
 <ul>
 <li><p class="first">manually update <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code></p>
 <p>OR</p>
@@ -5126,8 +5130,7 @@ two options:</p>
 </div>
 <div class="section" id="update-nsm-config-files-to-reflect-the-new-ip-address">
 <h4>Update NSM config files to reflect the new IP address<a class="headerlink" href="#update-nsm-config-files-to-reflect-the-new-ip-address" title="Permalink to this headline">¶</a></h4>
-<p>To update NSM config files to reflect the new IP address, you have two
-options:</p>
+<p>To update NSM config files to reflect the new IP address, you have two options:</p>
 <ul>
 <li><p class="first">re-run the <code class="docutils literal notranslate"><span class="pre">SECOND</span></code> phase of Setup on all server/sensors <strong>(wiping all data and config)</strong></p>
 <p>OR</p>
@@ -6058,13 +6061,13 @@ alert tcp $HOME_NET any -&gt; $EXTERNAL_NET !1433 (msg:&quot;ET TROJAN Bancos.DV
 <h4>Ubuntu Server<a class="headerlink" href="#ubuntu-server" title="Permalink to this headline">¶</a></h4>
 <p>For best performance, we recommend starting with Ubuntu Server (no GUI) and adding our Security Onion packages as described in our <a class="reference external" href="ProductionDeployment">ProductionDeployment</a> guide.</p>
 </div>
+<div class="section" id="disable-gui">
+<h4>Disable GUI<a class="headerlink" href="#disable-gui" title="Permalink to this headline">¶</a></h4>
+<p>If you’re unable to start with Ubuntu Server (no GUI) as recommended above, you can <a class="reference external" href="Desktop">disable the GUI</a> after the system is installed.</p>
+</div>
 <div class="section" id="best-practices">
 <h4>Best Practices<a class="headerlink" href="#best-practices" title="Permalink to this headline">¶</a></h4>
 <p>When you run Setup, make sure you choose <a class="reference external" href="Best-Practices">Best Practices</a>.</p>
-</div>
-<div class="section" id="disable-gui">
-<h4>Disable GUI<a class="headerlink" href="#disable-gui" title="Permalink to this headline">¶</a></h4>
-<p>If you’re unable to start with Ubuntu Server (no GUI) as recommended above, you can <a class="reference external" href="Desktop">disable the GUI</a> after the system is fully configured.</p>
 </div>
 <div class="section" id="disable-unnecessary-services">
 <h4>Disable Unnecessary Services<a class="headerlink" href="#disable-unnecessary-services" title="Permalink to this headline">¶</a></h4>
@@ -6077,20 +6080,9 @@ alert tcp $HOME_NET any -&gt; $EXTERNAL_NET !1433 (msg:&quot;ET TROJAN Bancos.DV
 <div class="section" id="cpu-affinity-pinning">
 <h4>CPU Affinity/Pinning<a class="headerlink" href="#cpu-affinity-pinning" title="Permalink to this headline">¶</a></h4>
 <p>For best performance, CPU intensive processes like Zeek, Suricata, and Snort should be pinned to specific CPUs.  In most cases, you’ll want to pin sniffing processes to the same CPU that your sniffing NIC is bound to.</p>
-<div class="line-block">
-<div class="line">For Zeek, use the <code class="docutils literal notranslate"><span class="pre">pin_cpus</span></code> setting in <code class="docutils literal notranslate"><span class="pre">/opt/bro/etc/node.cfg</span></code>:</div>
-<div class="line"><a class="reference external" href="https://docs.zeek.org/en/stable/configuration/#using-pf-ring">https://docs.zeek.org/en/stable/configuration/#using-pf-ring</a></div>
-</div>
-<div class="line-block">
-<div class="line">For Suricata, use the affinity settings in <code class="docutils literal notranslate"><span class="pre">suricata.yaml</span></code>:</div>
-<div class="line"><a class="reference external" href="https://suricata.readthedocs.io/en/latest/configuration/suricata-yaml.html#threading">https://suricata.readthedocs.io/en/latest/configuration/suricata-yaml.html#threading</a></div>
-</div>
-<p>Starting in <code class="docutils literal notranslate"><span class="pre">securityonion-nsmnow-admin-scripts</span> <span class="pre">-</span> <span class="pre">20120724-0ubuntu0securityonion226</span></code>, we now have the ability to pin Snort processes.  With this package in place, you can pin Snort processes to specific CPUs by adding a line to the <code class="docutils literal notranslate"><span class="pre">/etc/nsm/HOSTNAME-INTERFACE/sensor.conf</span></code> file like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IDS_LB_CPUS</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span>
-</pre></div>
-</div>
-<p>and then (re)starting the Snort process(es) using <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">so-nids-start</span></code> or <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">so-nids-restart</span></code>.</p>
-<p>In the example above, the first four snort processes would be pinned to the first four odd-numbered CPU cores. If there are more Snort processes enabled via <code class="docutils literal notranslate"><span class="pre">IDS_LB_PROCS</span></code> than are listed in the pin config in <code class="docutils literal notranslate"><span class="pre">IDS_LB_CPUS</span></code>, then any processes without a CPU listed would have the default CPU affinity.  You can verify proper pinning using <code class="docutils literal notranslate"><span class="pre">taskset</span> <span class="pre">-cp</span> <span class="pre">PID</span></code> where PID is the actual process ID of the Snort process you are checking.</p>
+<p><a class="reference external" href="snort.html#performance">Snort Performance</a></p>
+<p><a class="reference external" href="suricata.html#performance">Suricata Performance</a></p>
+<p><a class="reference external" href="zeek.html#performance">Zeek Performance</a></p>
 </div>
 <div class="section" id="rss">
 <h4>RSS<a class="headerlink" href="#rss" title="Permalink to this headline">¶</a></h4>
@@ -7726,14 +7718,7 @@ sudo service salt-minion restart
 </div>
 <span id="document-timezones"></span><div class="section" id="utc-and-time-zones">
 <h3>UTC and Time Zones<a class="headerlink" href="#utc-and-time-zones" title="Permalink to this headline">¶</a></h3>
-<div class="line-block">
-<div class="line">When you run Security Onion Setup, it sets the timezone to UTC/GMT
-because that is the recommended/required setting for Sguil:</div>
-<div class="line"><a class="reference external" href="http://osdir.com/ml/security.sguil.general/2008-09/msg00003.html">http://osdir.com/ml/security.sguil.general/2008-09/msg00003.html</a></div>
-<div class="line"><a class="reference external" href="https://forums.snort.org/forums/linux/topics/barnyard-sguil-time-problem">https://forums.snort.org/forums/linux/topics/barnyard-sguil-time-problem</a></div>
-<div class="line"><br /></div>
-<div class="line">Trying to use a non-UTC timezone can result in the following:</div>
-</div>
+<p>When you run Security Onion Setup, it sets the timezone to UTC/GMT because that is the recommended/required setting for Sguil. Trying to use a non-UTC timezone can result in the following:</p>
 <ul class="simple">
 <li>Time zones that have daylight saving time have a one-hour time warp twice a year. This manifests itself in Sguil not being able to pull transcripts for events within that one-hour time period. This is avoided by using UTC, since there is no daylight saving time.</li>
 <li>Something similar can happen on a daily basis under certain conditions. If there is a discrepancy between the OS timezone and the Sguil UTC settings, then Sguil will be unable to pull transcripts for events in a window of time around midnight coinciding with the timezone’s offset from UTC.</li>
@@ -9903,7 +9888,7 @@ configuration to boot into text mode:</p>
 </div>
 <span id="document-cheat-sheet"></span><div class="section" id="cheat-sheet">
 <h2>Cheat Sheet<a class="headerlink" href="#cheat-sheet" title="Permalink to this headline">¶</a></h2>
-<p>If you are viewing the online version of this documentation, you can <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion-docs/raw/master/images/cheat-sheet/Security-Onion-Cheat-Sheet.pdf">click here for our Security Onion Cheat Sheet</a>.</p>
+<p>If you are viewing the online version of this documentation, you can <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion-docs/raw/16.04/images/cheat-sheet/Security-Onion-Cheat-Sheet.pdf">click here for our Security Onion Cheat Sheet</a>.</p>
 <div class="line-block">
 <div class="line">This was based on a cheat sheet originally created by <a class="reference external" href="http://chrissanders.org/">Chris Sanders</a> which can be found here:</div>
 <div class="line"><a class="reference external" href="http://chrissanders.org/2017/06/security-onion-cheat-sheet/">http://chrissanders.org/2017/06/security-onion-cheat-sheet/</a></div>
@@ -9926,7 +9911,7 @@ configuration to boot into text mode:</p>
         &copy; Copyright 2020
       
         <span class="commit">
-          Revision <code>046e1b05</code>.
+          Revision <code>5d9001cb</code>.
         </span>
       
 
@@ -9947,7 +9932,7 @@ configuration to boot into text mode:</p>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Read the Docs</span>
-      v: latest
+      v: 16.04
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -9956,15 +9941,19 @@ configuration to boot into text mode:</p>
         
           <dd><a href="/en/latest/">latest</a></dd>
         
+          <dd><a href="/en/16.04/">16.04</a></dd>
+        
+          <dd><a href="/en/2.0/">2.0</a></dd>
+        
       </dl>
       <dl>
         <dt>Downloads</dt>
         
-          <dd><a href="//securityonion.readthedocs.io/_/downloads/en/latest/pdf/">pdf</a></dd>
+          <dd><a href="//docs.securityonion.net/_/downloads/en/16.04/pdf/">pdf</a></dd>
         
-          <dd><a href="//securityonion.readthedocs.io/_/downloads/en/latest/htmlzip/">html</a></dd>
+          <dd><a href="//docs.securityonion.net/_/downloads/en/16.04/htmlzip/">html</a></dd>
         
-          <dd><a href="//securityonion.readthedocs.io/_/downloads/en/latest/epub/">epub</a></dd>
+          <dd><a href="//docs.securityonion.net/_/downloads/en/16.04/epub/">epub</a></dd>
         
       </dl>
       <dl>
