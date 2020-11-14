@@ -16,9 +16,9 @@
 Security Onion is a Linux distro for intrusion detection, enterprise security monitoring, and log management. It's based on Ubuntu and contains Snort, Suricata, Zeek, OSSEC, Sguil, Squert, NetworkMiner, the Elastic Stack, and many other security tools. The easy-to-use Setup wizard allows you to build an army of distributed nodes for your enterprise in minutes!<br>
 <br>
 <b>Where do I find documentation?</b><br>
-If you have Internet access, please use the <a href="https://securityonion.net/docs">online documentation</a>.<br>
+If you have Internet access, please use the <a href="https://docs.securityonion.net/en/16.04/">online documentation</a>.<br>
 If you have don't have Internet access, you can access the <a href="/docs">offline documentation</a>.<br>
-(The <a href="https://securityonion.net/docs">online documentation</a> is updated more frequently than the <a href="/docs">offline documentation</a>.)<br>
+(The <a href="https://docs.securityonion.net/en/16.04/">online documentation</a> is updated more frequently than the <a href="/docs">offline documentation</a>.)<br>
 <br>
 <b>How do I install and configure Security Onion?</b><br>
 Please follow the Installation guides in the documentation (see above).<br>
