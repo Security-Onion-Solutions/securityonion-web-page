@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Security Onion 16.04.7.1 documentation</title>
+  <title>Security Onion 16.04.7.2 documentation</title>
   
 
   
@@ -307,7 +307,7 @@
     
       <li><a href="index.html#document-index">Docs</a> &raquo;</li>
         
-      <li>Security Onion 16.04.7.1 documentation</li>
+      <li>Security Onion 16.04.7.2 documentation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -2792,7 +2792,7 @@ for more details.</p>
 </div>
 <div class="section" id="parsing">
 <h5>Parsing<a class="headerlink" href="#parsing" title="Permalink to this headline">¶</a></h5>
-<p>Configuration files for custom parsing can be placed in <code class="docutils literal notranslate"><span class="pre">/etc/logstash/custom</span></code>. These will automatically get copied over to <code class="docutils literal notranslate"><span class="pre">/etc/logstash/conf.d</span></code> during the starting of Logstash.</p>
+<p>Configuration files for custom parsing can be placed in <code class="docutils literal notranslate"><span class="pre">/etc/logstash/custom/</span></code>. These will automatically get copied over to the appropriate <code class="docutils literal notranslate"><span class="pre">/etc/logstash/conf.d*</span></code> directory during the starting of Logstash.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If you are using a distributed or heavy distributed <a class="reference external" href="architecture#deployment-types">deployment type</a>, it is best practice to put your custom configuration files in the <code class="docutils literal notranslate"><span class="pre">/etc/logstash/custom</span></code> directory on the Master node.  The custom configuration files will then be replicated every 15 minutes or immediately if you use <a class="reference external" href="Salt#features">Salt</a> to force the replication to take place.</p>
@@ -2800,6 +2800,10 @@ for more details.</p>
 <p>After adding your custom configuration file(s), restart Logstash and check the log(s) for errors:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">logstash</span><span class="o">-</span><span class="n">restart</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">tail</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">logstash</span><span class="o">/</span><span class="n">logstash</span><span class="o">.</span><span class="n">log</span>
 </pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please note that if you delete or rename config files in <code class="docutils literal notranslate"><span class="pre">/etc/logstash/custom/</span></code> then you’ll need to also delete the old files in the appopriate <code class="docutils literal notranslate"><span class="pre">/etc/logstash/conf.d*</span></code> directories. Otherwise the old config files will remain in <code class="docutils literal notranslate"><span class="pre">/etc/logstash/conf.d*</span></code> and still be parsed for the actual Logstash configuration.</p>
 </div>
 </div>
 <div class="section" id="mapping-templates">
@@ -4675,6 +4679,10 @@ can be ignored as Security Onion 16.04 uses MySQL 5.7:</p>
 <h3>End Of Life<a class="headerlink" href="#end-of-life" title="Permalink to this headline">¶</a></h3>
 <p>This page lists End Of Life (EOL) dates for older versions of Security
 Onion and older components.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Ubuntu 16.04 reaches EOL in April 2021 and so therefore Security Onion 16.04 does as well. We will not provide any support for Security Onion 16.04 after April 16, 2021.  Please plan to upgrade or replace any existing 16.04 systems before then. If you have existing installations of Security Onion 16.04, you can upgrade to Security Onion 2: <a class="reference external" href="https://docs.securityonion.net/en/2.3/appendix.html">https://docs.securityonion.net/en/2.3/appendix.html</a></p>
+</div>
 <div class="line-block">
 <div class="line">Security Onion 14.04 reached EOL on November 30, 2018:</div>
 <div class="line"><a class="reference external" href="https://blog.securityonion.net/2018/06/6-month-eol-notice-for-security-onion.html">https://blog.securityonion.net/2018/06/6-month-eol-notice-for-security-onion.html</a></div>
@@ -5434,7 +5442,7 @@ and no tags simultaneously. Bro 2.0 should work fine at least.</p>
 <li><p class="first">Open <code class="docutils literal notranslate"><span class="pre">/etc/nsm/rules/local.rules</span></code> using your favorite text editor.  If this is a distributed deployment, edit local.rules on your master server and it will replicate to your sensors.</p>
 </li>
 <li><p class="first">Let’s add a simple rule that will alert on the detection of a string in a tcp session:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>alert tcp any any -&gt; $HOME_NET 7789 (msg: &quot;Vote for Security Onion Toolsmith Tool of 2011!&quot;; reference: url,http://holisticinfosec.blogspot.com/2011/12/choose-2011-toolsmith-tool-of-year.html; content: &quot;toolsmith&quot;; flow:to_server; nocase; sid:9000547; rev:1)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>alert tcp any any -&gt; $HOME_NET 7789 (msg: &quot;Vote for Security Onion Toolsmith Tool of 2011!&quot;; reference: url,http://holisticinfosec.blogspot.com/2011/12/choose-2011-toolsmith-tool-of-year.html; content: &quot;toolsmith&quot;; flow:to_server; nocase; classtype:misc-attack; sid:9000547; rev:1)
 </pre></div>
 </div>
 </li>
@@ -8689,12 +8697,8 @@ for their contribution to our community!</div>
 </div>
 <div class="section" id="community-support">
 <h4>Community Support<a class="headerlink" href="#community-support" title="Permalink to this headline">¶</a></h4>
-<p>If you need free support, you can reach out to one of the following public communities for support.</p>
-<p>If you’re using our traditional Security Onion 16.04 platform, you can reach out to our public security-onion mailing
-list:</p>
+<p>If you need free support for Security Onion 16.04, you can reach out to our public security-onion mailing list:</p>
 <p><a class="reference external" href="MailingLists">MailingLists</a></p>
-<p>If you have questions or problems relating to our new Security Onion Hybrid Hunter platform, you can reach out to our reddit community:</p>
-<p><a class="reference external" href="https://www.reddit.com/r/securityonion/">https://www.reddit.com/r/securityonion/</a></p>
 </div>
 </div>
 <span id="document-mailing-lists"></span><div class="section" id="mailing-lists">
@@ -8826,7 +8830,7 @@ list:</p>
 (<a class="reference external" href="https://otx.alienvault.com/api/v1/pulses/subscribed">https://otx.alienvault.com/api/v1/pulses/subscribed</a>)</div>
 </div>
 <p>Download the installation script:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">weslambert</span><span class="o">/</span><span class="n">securityonion</span><span class="o">-</span><span class="n">otx</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">securityonion</span><span class="o">-</span><span class="n">otx</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">weslambert</span><span class="o">/</span><span class="n">securityonion</span><span class="o">-</span><span class="n">otx</span><span class="o">/</span><span class="mf">16.04</span><span class="o">/</span><span class="n">securityonion</span><span class="o">-</span><span class="n">otx</span>
 </pre></div>
 </div>
 <p>Run the script:</p>
@@ -9046,7 +9050,7 @@ hive_observable_data_mapping:
 <div class="section" id="installation">
 <h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
 <p>Clone the repo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">weslambert</span><span class="o">/</span><span class="n">securityonion</span><span class="o">-</span><span class="n">misp</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">-</span><span class="n">b</span> <span class="mf">16.04</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">weslambert</span><span class="o">/</span><span class="n">securityonion</span><span class="o">-</span><span class="n">misp</span>
 </pre></div>
 </div>
 <p>Run the setup script:</p>
@@ -9911,7 +9915,7 @@ configuration to boot into text mode:</p>
         &copy; Copyright 2020
       
         <span class="commit">
-          Revision <code>5d9001cb</code>.
+          Revision <code>38e30d52</code>.
         </span>
       
 
@@ -9943,7 +9947,11 @@ configuration to boot into text mode:</p>
         
           <dd><a href="/en/16.04/">16.04</a></dd>
         
-          <dd><a href="/en/2.0/">2.0</a></dd>
+          <dd><a href="/en/2.3/">2.3</a></dd>
+        
+          <dd><a href="/en/2.2/">2.2</a></dd>
+        
+          <dd><a href="/en/2.1/">2.1</a></dd>
         
       </dl>
       <dl>

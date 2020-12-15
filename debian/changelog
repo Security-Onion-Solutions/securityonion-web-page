@@ -1,3 +1,9 @@
+securityonion-web-page (20141015-0ubuntu0securityonion110) xenial; urgency=medium
+
+  * Update docs and cheat sheet for 16.04.7.2 Security-Onion-Solutions/security-onion#1806 
+
+ -- Doug Burks <doug.burks@gmail.com>  Mon, 14 Dec 2020 19:19:06 -0500
+
 securityonion-web-page (20141015-0ubuntu0securityonion109) xenial; urgency=medium
 
   * securityonion-web-page: update links to documentation Security-Onion-Solutions/security-onion#1799 
