@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Security Onion 16.04.7.2 documentation</title>
+  <title>Security Onion 16.04.7.3 documentation</title>
   
 
   
@@ -307,7 +307,7 @@
     
       <li><a href="index.html#document-index">Docs</a> &raquo;</li>
         
-      <li>Security Onion 16.04.7.2 documentation</li>
+      <li>Security Onion 16.04.7.3 documentation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -346,6 +346,10 @@
 </div>
 <div class="section" id="documentation">
 <h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="license">
+<h4>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h4>
+<p>This documentation is licensed under CC BY 4.0. You can read more about this license at <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a>.</p>
+</div>
 <div class="section" id="formats">
 <h4>Formats<a class="headerlink" href="#formats" title="Permalink to this headline">¶</a></h4>
 <p>This documentation is published online at <a class="reference external" href="https://securityonion.net/docs">https://securityonion.net/docs</a>.  If you are viewing an offline version of this documentation but have Internet access, you might want to switch to the online version at <a class="reference external" href="https://securityonion.net/docs">https://securityonion.net/docs</a> to see the latest version.</p>
@@ -4526,7 +4530,17 @@ Elastalert.</p>
 </div>
 <div class="section" id="elastic">
 <h4>Elastic<a class="headerlink" href="#elastic" title="Permalink to this headline">¶</a></h4>
-<p>If <code class="docutils literal notranslate"><span class="pre">soup</span></code> upgrades the Elastic stack, it should automatically reload your Kibana dashboards.  If for some reason this fails and Kibana is not showing any dashboards, then simply run:</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">soup</span></code> upgrades the Elastic stack, and you then try to login to Kibana and it says <code class="docutils literal notranslate"><span class="pre">Kibana</span> <span class="pre">server</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">ready</span> <span class="pre">yet</span></code> even after waiting a few minutes for Kibana to fully initialize, then check <code class="docutils literal notranslate"><span class="pre">/var/log/kibana/kibana.log</span></code>. You may see something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Another</span> <span class="n">Kibana</span> <span class="n">instance</span> <span class="n">appears</span> <span class="n">to</span> <span class="n">be</span> <span class="n">migrating</span> <span class="n">the</span> <span class="n">index</span><span class="o">.</span> <span class="n">Waiting</span> <span class="k">for</span> <span class="n">that</span> <span class="n">migration</span> <span class="n">to</span> <span class="n">complete</span><span class="o">.</span> <span class="n">If</span> <span class="n">no</span> <span class="n">other</span> <span class="n">Kibana</span> <span class="n">instance</span> <span class="ow">is</span> <span class="n">attempting</span> <span class="n">migrations</span><span class="p">,</span> <span class="n">you</span> <span class="n">can</span> <span class="n">get</span> <span class="n">past</span> <span class="n">this</span> <span class="n">message</span> <span class="n">by</span> <span class="n">deleting</span> <span class="n">index</span> <span class="o">.</span><span class="n">kibana_6</span> <span class="ow">and</span> <span class="n">restarting</span> <span class="n">Kibana</span>
+</pre></div>
+</div>
+<p>If that’s the case, then you can do the following (replacing <code class="docutils literal notranslate"><span class="pre">.kibana_6</span></code> with the actual index name that was mentioned in your Kibana log):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">XDELETE</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">9200</span><span class="o">/.</span><span class="n">kibana_6</span>
+
+<span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">kibana</span><span class="o">-</span><span class="n">restart</span>
+</pre></div>
+</div>
+<p>Once you’re logged into Kibana, check your Kibana dashboards. If they weren’t reloaded automatically, you can manually reload them:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">elastic</span><span class="o">-</span><span class="n">configure</span><span class="o">-</span><span class="n">kibana</span>
 </pre></div>
 </div>
@@ -9912,10 +9926,10 @@ configuration to boot into text mode:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020
+        &copy; Copyright 2021
       
         <span class="commit">
-          Revision <code>38e30d52</code>.
+          Revision <code>e878f34c</code>.
         </span>
       
 
@@ -9948,10 +9962,6 @@ configuration to boot into text mode:</p>
           <dd><a href="/en/16.04/">16.04</a></dd>
         
           <dd><a href="/en/2.3/">2.3</a></dd>
-        
-          <dd><a href="/en/2.2/">2.2</a></dd>
-        
-          <dd><a href="/en/2.1/">2.1</a></dd>
         
       </dl>
       <dl>
